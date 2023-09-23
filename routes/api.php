@@ -423,6 +423,46 @@ Route::group(
                     Route::post('/bulk-import', 'Blog\BlogCommentsController@bulk_import');
                     Route::get('/{id}', 'Blog\BlogCommentsController@show');
                 });
+
+                Route::group(['prefix' => 'blog-video-link'], function () {
+                    Route::get('/all', 'Blog\BlogVideoLinksController@all');
+                    Route::post('/store', 'Blog\BlogVideoLinksController@store');
+                    Route::post('/canvas-store', 'Blog\BlogVideoLinksController@canvas_store');
+                    Route::post('/update', 'Blog\BlogVideoLinksController@update');
+                    Route::post('/canvas-update', 'Blog\BlogVideoLinksController@canvas_update');
+                    Route::post('/soft-delete', 'Blog\BlogVideoLinksController@soft_delete');
+                    Route::post('/destroy', 'Blog\BlogVideoLinksController@destroy');
+                    Route::post('/restore', 'Blog\BlogVideoLinksController@restore');
+                    Route::post('/bulk-import', 'Blog\BlogVideoLinksController@bulk_import');
+                    Route::get('/{id}', 'Blog\BlogVideoLinksController@show');
+                });
+
+
+                Route::group(['prefix' => 'blog-view'], function () {
+                    Route::get('/all', 'Blog\BlogViewController@all');
+                    Route::post('/store', 'Blog\BlogViewController@store');
+                    Route::post('/canvas-store', 'Blog\BlogViewController@canvas_store');
+                    Route::post('/update', 'Blog\BlogViewController@update');
+                    Route::post('/canvas-update', 'Blog\BlogViewController@canvas_update');
+                    Route::post('/soft-delete', 'Blog\BlogViewController@soft_delete');
+                    Route::post('/destroy', 'Blog\BlogViewController@destroy');
+                    Route::post('/restore', 'Blog\BlogViewController@restore');
+                    Route::post('/bulk-import', 'Blog\BlogViewController@bulk_import');
+                    Route::get('/{id}', 'Blog\BlogViewController@show');
+                });
+
+                Route::group(['prefix' => 'blog-writers'], function () {
+                    Route::get('/all', 'Blog\BlogWritersController@all');
+                    Route::post('/store', 'Blog\BlogWritersController@store');
+                    Route::post('/canvas-store', 'Blog\BlogWritersController@canvas_store');
+                    Route::post('/update', 'Blog\BlogWritersController@update');
+                    Route::post('/canvas-update', 'Blog\BlogWritersController@canvas_update');
+                    Route::post('/soft-delete', 'Blog\BlogWritersController@soft_delete');
+                    Route::post('/destroy', 'Blog\BlogWritersController@destroy');
+                    Route::post('/restore', 'Blog\BlogWritersController@restore');
+                    Route::post('/bulk-import', 'Blog\BlogWritersController@bulk_import');
+                    Route::get('/{id}', 'Blog\BlogWritersController@show');
+                });
             });
 
         });
