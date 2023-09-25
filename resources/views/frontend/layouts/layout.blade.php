@@ -21,6 +21,7 @@
     <link rel="stylesheet" href="{{ asset('css/plugins/bootstrap.css') }}">
     <link rel="stylesheet" href="{{ asset('frontend') }}/assets/icon/fontawesome-free-6.2.0-web/css/all.min.css">
     <link rel="stylesheet" href="{{ asset('frontend') }}/assets/styles/style.css">
+    <link rel="stylesheet" href="{{ asset('frontend') }}/assets/styles/custom.css">
 
     {{-- js plugins --}}
     <script src="{{ asset('js/plugins/localforage.min.js') }}"></script>
@@ -40,6 +41,18 @@
 </head>
 
 <body id="top">
+
+    @if (session()->has('success'))
+        <script>
+            window.toaster("{{session()->get('success')}}");
+        </script>
+    @endif
+    @if (session()->has('warning'))
+        <script>
+            window.toaster("{{session()->get('warning')}}", 'warning');
+        </script>
+    @endif
+   
     <!-- header_area start -->
     <header class="header_area">
         <div class="container">
@@ -139,7 +152,7 @@
                             <!-- footer_logo area start -->
                             <div class="footer_logo_area">
                                 <a href="#">
-                                    <img src="{{setting(key:'footer_logo')}}"
+                                    <img src="/{{setting(key:'footer_logo')}}"
                                         alt="logo tech_park_it">
                                 </a>
                             </div>
