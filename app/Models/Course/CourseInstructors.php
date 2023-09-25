@@ -2,6 +2,8 @@
 
 namespace App\Models\Course;
 
+use App\Models\User;
+use App\Models\User\UserSocialLinks;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -16,4 +18,16 @@ class CourseInstructors extends Model
             $data->save();
         });
     }
+    
+    public function user()
+    {
+        return $this->hasOne(User::class, 'user_id');
+    }
+
+    public function social_links()
+    {
+        return $this->hasMany(UserSocialLinks::class, 'user_id');
+    }
+
+    // public social_media
 }
