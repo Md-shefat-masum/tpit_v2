@@ -20,7 +20,7 @@ class CreateCourseBatchStudentsTable extends Migration
             $table->bigInteger('student_id')->nullable();
 
             $table->integer('course_percent')->unsigned()->default(0);
-            $table->enum('is_complete',['complete','incomplete'])->unsigned()->default('complete');
+            $table->enum('is_complete',['complete','incomplete'])->default('incomplete');
 
             $table->bigInteger("creator")->unsigned()->nullable();
             $table->string("slug", 50)->nullable();
