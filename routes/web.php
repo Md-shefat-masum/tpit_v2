@@ -29,6 +29,7 @@ Route::group( ['prefix'=>'','namespace' => "Controllers" ],function(){
     Route::get('/contact', 'WebsiteController@contact')->name("contact");
     Route::get('/courses', 'WebsiteController@courses')->name("courses");
     Route::get('/course/{slug}', 'WebsiteController@course_details')->name("course_details");
+    Route::get('/course/enroll/{slug}', 'WebsiteController@course_enroll')->name("course_enroll");
     Route::get('/gallery', 'WebsiteController@gallery')->name("gallery");
     Route::get('/blog', 'WebsiteController@blog')->name("blog");
     Route::get('/seminar', 'WebsiteController@seminar')->name("seminar");
@@ -36,7 +37,7 @@ Route::group( ['prefix'=>'','namespace' => "Controllers" ],function(){
 
     Route::get('/login', 'Auth\AuthController@login')->name('login');
     Route::post('/login', 'Auth\AuthController@login_submit')->name('login_sumbit');
-    Route::post('/logout', 'Auth\AuthController@logout_submit')->name('logout_sumbit');
+    Route::get('/logout', 'Auth\AuthController@logout_submit')->name('logout_sumbit');
 });
 
 Route::get('/dashboard', function () {

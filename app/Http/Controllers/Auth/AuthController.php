@@ -22,11 +22,11 @@ class AuthController extends Controller
     public function login_submit()
     {
         $this->validate(request(),[
-            "email" => ["required","email","exists:users,email"],
+            "email" => ["required"],
             "password" => ["required"],
         ]);
 
-        $user = User::where('email',request()->email)->with(['roles'])->first();
+        $user = User::where('email',request()->email)->orWhere('mobile_number',request()->email)->with(['roles'])->first();
         $check_password = Hash::check(request()->password, $user->password);
 
         if(!$check_password){

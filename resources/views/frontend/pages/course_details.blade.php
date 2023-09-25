@@ -294,7 +294,8 @@
                     </script>
                     <!-- /class module end -->
                     <!-- course trainer start-->
-                    @if ($data->course_instactor)    
+                    @if ($data->course_instructor != null && count($data->course_instructor) > 0) 
+                    {{-- @dump($data->course_instructor)    --}}
                         <section class="course_trainers_area">
                             <div class="container">
                                 <div class="trainers_description">
@@ -302,7 +303,7 @@
                                         <h2 class="trainers_title_bangla">কোর্স প্রশিক্ষক</h2>
                                     </div>
                                     <div class="d-flex flex-wrap gap-3">
-                                        @foreach ($data->course_instactor as $teacher) 
+                                        @foreach ($data->course_instructor as $teacher) 
                                             <div class="trainers_details mb-4">
                                                 <div class="trainer_details">
                                                     <div class="trainer_images">
@@ -392,10 +393,10 @@
                             @endif
                         </div>
                         <div class="admit_course">
-                            <div class="admit_course_title_and_icon">
-                                <a href="#" class="admit_course_title">কোর্সে ভর্তি হোন</a>
+                            <a href="#" class="admit_course_title_and_icon">
+                                <div href="#" class="admit_course_title">কোর্সে ভর্তি হোন</div>
                                 <div class="admit_course_icon"><i class="fa-solid fa-angle-right"></i></div>
-                            </div>
+                            </a>
                             <div class="admit_course_batch">
                                 <div class="admit_course_batch_title">ব্যাচ <span>{{ $batch_info->batch_name }}</span></div>
                                 <div class="admit_course_start_and_deadline">
@@ -466,6 +467,7 @@
     </section>
 
     <!-- general question area start-->
+    @if (count($data->course_faqs) > 0) 
     <div class="general_question_part">
         <div class="container">
             <div class="general_questions">
@@ -476,64 +478,30 @@
                             আপনার কোন জিজ্ঞাসা থাকলে এখান থেকে খুঁজে দেখতে পারেন
                         </div>
                     </div>
-                    <ul class="general_question_all">
-                        <div class="general_question">
-                            <li class="">
-                                <div class="general_question_title_and_icon">
-                                    <div class="general_question_title">
-                                        আপনাদের এখানে ইন্টার্নের সুজোগ আছে?
+                    <ul class="general_question_all" style="width: 600px;">
+                        @foreach ($data->course_faqs as $faq)    
+                            <div class="general_question">
+                                <li class="">
+                                    <div class="general_question_title_and_icon">
+                                        <div class="general_question_title">
+                                            {{ $faq->title }}
+                                        </div>
+                                        <div class="general_question_acordion_icon">
+                                            <i class="fa-solid fa-chevron-down"></i>
+                                        </div>
                                     </div>
-                                    <div class="general_question_acordion_icon">
-                                        <i class="fa-solid fa-chevron-down"></i>
+                                    <div class="general_question_content">
+                                        {{ $faq->description }}
                                     </div>
-                                </div>
-                                <div class="general_question_content">
-                                    আমরা সকল ক্লাসের রেকর্ডেড ভিডিও সরবরাহ করি, আপনি আপনার স্টুডেন্ট
-                                    পোর্টাল থেকে আপনার কোর্সের সকল ক্লাসের রেকর্ডেড ভিডিও পাবেন।
-                                </div>
-                            </li>
-                        </div>
-                        <div class="general_question">
-                            <li>
-                            <li class="general_question active">
-                                <div class="general_question_title_and_icon">
-                                    <div class="general_question_title">
-                                        অনলাইন/অফলাইন ক্লাসের রেকর্ডেড ভিডিও পাওয়া যায়?
-                                    </div>
-                                    <div class="general_question_acordion_icon">
-                                        <i class="fa-solid fa-chevron-down"></i>
-                                    </div>
-                                </div>
-                                <div class="general_question_content">
-                                    আমরা সকল ক্লাসের রেকর্ডেড ভিডিও সরবরাহ করি, আপনি আপনার স্টুডেন্ট
-                                    পোর্টাল থেকে আপনার কোর্সের সকল ক্লাসের রেকর্ডেড ভিডিও পাবেন।
-                                </div>
-                            </li>
-                            </li>
-                        </div>
-                        <div class="general_question">
-                            <li>
-                            <li class="general_question ">
-                                <div class="general_question_title_and_icon">
-                                    <div class="general_question_title">
-                                        একাধিক স্কিমে পেমেন্ট করার সুজোগ আছে কি?
-                                    </div>
-                                    <div class="general_question_acordion_icon">
-                                        <i class="fa-solid fa-chevron-down"></i>
-                                    </div>
-                                </div>
-                                <div class="general_question_content">
-                                    আমরা সকল ক্লাসের রেকর্ডেড ভিডিও সরবরাহ করি, আপনি আপনার স্টুডেন্ট
-                                    পোর্টাল থেকে আপনার কোর্সের সকল ক্লাসের রেকর্ডেড ভিডিও পাবেন।
-                                </div>
-                            </li>
-                            </li>
-                        </div>
+                                </li>
+                            </div>
+                        @endforeach
                     </ul>
                 </div>
             </div>
         </div>
     </div>
+    @endif
     <script>
         [
             ...document.querySelectorAll(".general_question_acordion_icon"),

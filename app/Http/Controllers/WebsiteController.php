@@ -71,6 +71,16 @@ class WebsiteController extends Controller
         return view('frontend.pages.course_details', ['data' => $data]);
     }
 
+    public function course_enroll($slug) {
+        $course = Course::active()->where('slug',$slug)->select('id', 'title','slug', 'image')->with([
+            'course_batch' => function($q) {
+                $q->select('id', 'course_id', 'course_price', 'after_discount_price');
+            }
+        ])->first();
+
+        return view('frontend.pages.course_enroll', ['course' => $course]);
+    }
+
     public function type_wise_course()
     {
         // $courses = Course
