@@ -19,7 +19,7 @@ class CreateCourseBatchStudentsTable extends Migration
             $table->bigInteger('batch_id')->nullable();
             $table->bigInteger('student_id')->nullable();
 
-            $table->tinyInteger("creator")->unsigned()->nullable();
+            $table->bigInteger("creator")->unsigned()->nullable();
             $table->string("slug", 50)->nullable();
             $table->enum('status',['active','inactive'])->default('active');
             

@@ -22,7 +22,7 @@ class CreateCoursesTable extends Migration
             $table->text("why_is_this_course")->nullable();
             $table->enum("type",['online','offline','daycare'])->nullable();
 
-            $table->tinyInteger("creator")->unsigned()->nullable();
+            $table->bigInteger("creator")->unsigned()->nullable();
             $table->enum('status',['active','inactive'])->default('active');
             $table->string("slug", 50)->nullable();
             $table->timestamps();

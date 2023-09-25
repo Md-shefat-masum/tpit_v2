@@ -1,4 +1,4 @@
-    <link rel="shortcut icon" type="image/x-icon" href="{{$meta->fabicon ?? asset('fabicon.png')}}">
+    <link rel="shortcut icon" type="image/x-icon" href="{{$meta->fabicon ?? asset(setting(key:'fabicon')) }}">
 
     <meta name="robots" content="index, follow">
     <!-- <meta http-equiv="refresh" content="5"> -->

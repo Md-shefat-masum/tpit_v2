@@ -18,7 +18,7 @@ class CreateCourseModuleClassQuizesTable extends Migration
             $table->bigInteger("course_id")->unsigned()->nullable();
             $table->bigInteger("course_module_class_id")->unsigned()->nullable();
             $table->bigInteger("quiz_id")->unsigned()->nullable();
-            $table->tinyInteger("creator")->unsigned()->nullable();
+            $table->bigInteger("creator")->unsigned()->nullable();
             $table->string("slug", 50)->nullable();
             $table->enum('status',['active','inactive'])->default('active');
             $table->timestamps();

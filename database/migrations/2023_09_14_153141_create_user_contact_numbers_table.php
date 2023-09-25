@@ -18,7 +18,7 @@ class CreateUserContactNumbersTable extends Migration
             $table->bigInteger("user_id")->unsigned()->nullable();
             $table->string('phone_number', 45)->nullable();
             
-            $table->tinyInteger("creator")->unsigned()->nullable();
+            $table->bigInteger("creator")->unsigned()->nullable();
             $table->string("slug", 50)->nullable();
             $table->enum('status',['active','inactive'])->default('active');
             $table->timestamps();

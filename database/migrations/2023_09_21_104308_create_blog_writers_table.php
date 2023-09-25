@@ -20,7 +20,7 @@ class CreateBlogWritersTable extends Migration
             $table->longText('description')->nullable();
             $table->string('image', 100)->nullable();
 
-            $table->tinyInteger("creator")->unsigned()->nullable();
+            $table->bigInteger("creator")->unsigned()->nullable();
             $table->string("slug", 50)->nullable();
             $table->enum('status',['active','inactive'])->default('active');
             $table->timestamps();
