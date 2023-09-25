@@ -6,6 +6,8 @@ use App\Models\Course\Course;
 use App\Models\Course\CourseBatches;
 use App\Models\Course\CourseCategory;
 use App\Models\CourseType;
+use App\Models\Seminars\Seminars;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 
@@ -18,12 +20,14 @@ class WebsiteController extends Controller
         $courses = Course::active()->with(['course_batch' => function ($batch) {
             $batch->orderBY('id', 'desc')->take(1);
         }])->get();
+        $seminar = Seminars::whereDate('date_time', '>', Carbon::today())->get();
         return view(
             'frontend.home',
             [
                 'course_categories' => $course_categories,
                 'course_types' => $course_types,
-                'courses' => $courses
+                'courses' => $courses,
+                "seminar" => $seminar,
             ]
         );
     }
@@ -69,6 +73,8 @@ class WebsiteController extends Controller
     public function type_wise_course()
     {
         // $courses = Course
+        $seminar = Seminars::whereDate('date_time', '>', Carbon::today())->get();
+        return view('frontend.home', compact('seminar'));
     }
 
     public function about()
@@ -95,6 +101,13 @@ class WebsiteController extends Controller
     {
         return view('frontend.pages.blog');
     }
+
+    public function seminar()
+    {
+        $seminars = Seminars::whereDate('date_time', '>', Carbon::today())->get();
+        return view('frontend.pages.seminar', compact('seminars'));
+    }
+
     public function it_solution_services()
     {
         return view('frontend.pages.it_solution_services');

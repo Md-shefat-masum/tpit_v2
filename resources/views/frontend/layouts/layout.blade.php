@@ -17,7 +17,7 @@
     @else
         @include('frontend.layouts.includes.meta', ['seo' => (object) $seo])
     @endif
-    <link rel="fabicon" type="image/png" sizes="16x16" href="{{ asset('favicon.png') }}">
+    <link rel="fabicon" type="image/png" sizes="16x16" href="{{ setting(key:'facebook') }}">
     <link rel="stylesheet" href="{{ asset('css/plugins/bootstrap.css') }}">
     <link rel="stylesheet" href="{{ asset('frontend') }}/assets/icon/fontawesome-free-6.2.0-web/css/all.min.css">
     <link rel="stylesheet" href="{{ asset('frontend') }}/assets/styles/style.css">
@@ -139,7 +139,7 @@
                             <!-- footer_logo area start -->
                             <div class="footer_logo_area">
                                 <a href="#">
-                                    <img src="{{ asset('frontend') }}/assets/images/tech_park_it_logo/logo_small.png"
+                                    <img src="{{setting(key:'footer_logo')}}"
                                         alt="logo tech_park_it">
                                 </a>
                             </div>
@@ -157,16 +157,16 @@
                                 <!-- contact_number_and_email_area start -->
                                 <ul class="contact_number_and_email_area">
                                     <li>
-                                        <a href="#" class="contact align-items-start">
+                                        <div href="#" class="contact align-items-start">
                                             <div class="logo phone">
                                                 <i class="fa-solid fa-phone"></i>
                                             </div>
                                             <div class="number">
                                                 @foreach (setting(key: 'phone_numbers', multiple: true) as $item)
-                                                    <p class="text"> {{ $item->value }} </p>
+                                                    <a href="tel:{{ $item->value }}" class="text"> {{ $item->value }} </a> <br>
                                                 @endforeach
                                             </div>
-                                        </a>
+                                        </div>
                                     </li>
 
                                     <li>
@@ -175,7 +175,7 @@
                                                 <i class="fa-brands fa-square-whatsapp"></i>
                                             </div>
                                             <div class="number">
-                                                <p class="text"> 01719-229595 </p>
+                                                <p class="text">{{ setting(key:'whatsapp') }}</p>
                                             </div>
                                         </a>
                                     </li>
@@ -186,7 +186,7 @@
                                                 <i class="fa-brands fa-telegram"></i>
                                             </div>
                                             <div class="number">
-                                                <p class="text"> 01719-229595 </p>
+                                                <p class="text">{{ setting(key:'telegram') }}</p>
                                             </div>
                                         </a>
                                     </li>
@@ -197,7 +197,7 @@
                                                 <i class="fa-regular fa-envelope"></i>
                                             </div>
                                             <div class="number email_address">
-                                                <p class="text"> techparkitofficial@gmail.com </p>
+                                                <p class="text">{{ setting(key:'emails') }}</p>
                                             </div>
                                         </a>
                                     </li>
@@ -213,27 +213,27 @@
                                     <div class="social_media">
                                         <ul>
                                             <li>
-                                                <a href="#" class="facebook">
+                                                <a href="{{ setting(key:'facebook') }}" class="facebook">
                                                     <i class="fa-brands fa-square-facebook"></i>
                                                 </a>
                                             </li>
                                             <li>
-                                                <a href="#" class="instagram">
+                                                <a href="{{ setting(key:'instagram') }}" class="instagram">
                                                     <i class="fa-brands fa-square-instagram"></i>
                                                 </a>
                                             </li>
                                             <li>
-                                                <a href="#" class="youtube">
+                                                <a href="{{ setting(key:'youtube') }}" class="youtube">
                                                     <i class="fa-brands fa-youtube"></i>
                                                 </a>
                                             </li>
                                             <li>
-                                                <a href="#" class="linkedin-in">
+                                                <a href="{{ setting(key:'linkedin') }}" class="linkedin-in">
                                                     <i class="fa-brands fa-linkedin-in"></i>
                                                 </a>
                                             </li>
                                             <li>
-                                                <a href="#" class="twitter">
+                                                <a href="{{ setting(key:'twitter') }}" class="twitter">
                                                     <i class="fa-brands fa-twitter"></i>
                                                 </a>
                                             </li>
@@ -393,8 +393,7 @@
 
                             <!-- address start -->
                             <div class="address">
-                                <p class="text">বাড়ি ৩১, লেন ০১, ব্লক বি, সেকশন ০৬, মিরপুর, ঢাকা, বাংলাদেশ। (প্রশিকা
-                                    মোড়ের পাশে)</p>
+                                <p class="text">{{setting(key:'address_bangla')}}</p>
                             </div>
                             <!-- address end -->
 
@@ -405,10 +404,11 @@
                                 </div>
 
                                 <div class="full_map">
-                                    <iframe
-                                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3650.2465079689377!2d90.35894107488434!3d23.80983177862991!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3755c1670cdb1779%3A0x645bbf4f0aeb1d56!2sTech%20Park%20IT!5e0!3m2!1sen!2sbd!4v1686513904138!5m2!1sen!2sbd"
+                                    {!! setting(key:'map_link')  !!}
+                                    {{-- <iframe
+                                        src="{{setting(key:'map_link')}}"
                                         width="100%" height="" style="border:0;" allowfullscreen=""
-                                        loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                                        loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe> --}}
                                 </div>
                             </div>
                             <!-- map_area end -->
@@ -422,7 +422,7 @@
 
         <!-- footer_copyright_area start -->
         <div class="footer_copyright_area">
-            <p class="text">স্বত্ব &copy; 2023| টেক পার্ক আইটি কর্তৃক সর্বস্বত্ব সংরক্ষিত</p>
+            <p class="text">{{setting(key:'copy_right')}}</p>
         </div>
         <!-- footer_copyright_area end -->
     </footer>

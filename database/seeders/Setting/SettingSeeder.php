@@ -188,7 +188,7 @@ class SettingSeeder extends Seeder
                 "title" => "instagram",
                 "values" => [
                     [
-                        "value" => "https://www.youtube.com/@TechParkITOrg",
+                        "value" => "https://www.instagram.com/@TechParkITOrg",
                         "use" => "yes",
                     ],
                 ]
@@ -199,6 +199,17 @@ class SettingSeeder extends Seeder
                 "values" => [
                     [
                         "value" => "https://bd.linkedin.com/company/techparkit",
+                        "use" => "yes",
+                    ],
+                ]
+            ],
+
+            [
+                "group" => "social_media",
+                "title" => "twitter",
+                "values" => [
+                    [
+                        "value" => "https://twitter.com/company/techparkit",
                         "use" => "yes",
                     ],
                 ]
@@ -245,6 +256,16 @@ class SettingSeeder extends Seeder
         $term_pages = [
             [
                 "group" => "term_pages",
+                "title" => "about_us",
+                "values" => [
+                    [
+                        "value" => $this->about_us(),
+                        "use" => "yes",
+                    ],
+                ]
+            ],
+            [
+                "group" => "term_pages",
                 "title" => "terms_and_condition",
                 "values" => [
                     [
@@ -280,205 +301,7 @@ class SettingSeeder extends Seeder
                 "title" => "sitemap",
                 "values" => [
                     [
-                        "value" => `
-                        <div class="container">
-                            <div class="sitemap_heading">Sitemap</div>
-                                <div class="sitemap_details">
-                                <div>
-                                    <div class="sitemap_info">
-                                    <h2 class="info_title">হোম</h2>
-                                    <ul>
-                                        <li><a href="#">হেডলাইন</a></li>
-                                        <li><a href="#">কোর্স লিস্ট</a></li>
-                                        <li><a href="#">কোর্স ফিচার</a></li>
-                                        <li><a href="#">আর্নিং স্টেপস</a></li>
-                                        <li><a href="#">সাকসেস স্টোরি</a></li>
-                                        <li><a href="#">ট্রেইনারস</a></li>
-                                        <li><a href="#">কাউনসিলিং</a></li>
-                                        <li><a href="#">ফ্রি সেমিনার</a></li>
-                                        <li><a href="#">আইটি সার্ভিসগুলো</a></li>
-                                        <li><a href="#">আমরা যাদের সাথে কাজ করেছি</a></li>
-                                    </ul>
-                                    </div>
-                                    <div class="sitemap_info">
-                                    <h2 class="info_title">ব্লগ</h2>
-                                    <ul>
-                                        <li><a href="#">ব্লগ লিস্ট</a></li>
-                                        <li><a href="#">ব্লগ ক্যাটাগরি</a></li>
-                                    </ul>
-                                    </div>
-                                    <div class="sitemap_info">
-                                    <h2 class="info_title">ব্লগ ডিটেইলস</h2>
-                                    <ul></ul>
-                                    </div>
-                                    <div class="sitemap_info">
-                                    <h2 class="info_title">ফ্রি সেমিনার</h2>
-                                    <ul>
-                                        <li><a href="#">সেমিনার লিস্ট</a></li>
-                                        <li><a href="#">কোর্স লিস্ট</a></li>
-                                    </ul>
-                                    </div>
-                                </div>
-                                <div>
-                                    <div class="sitemap_info">
-                                    <h2 class="info_title">আমাদের সম্পর্কে</h2>
-                                    <ul>
-                                        <li><a href="#">আমাদের সম্পর্কে</a></li>
-                                        <li><a href="#">আমরা যাদের সাথে কাজ করেছি</a></li>
-                                        <li><a href="#">আমাদের মটো</a></li>
-                                        <li><a href="#">আমাদের মিশন</a></li>
-                                        <li><a href="#">আমাদের ভিশন</a></li>
-                                        <li><a href="#">কোর্স লিস্ট</a></li>
-                                        <li><a href="#">সার্ভিস লিস্ট</a></li>
-                                        <li><a href="#">আমাদের টিম</a></li>
-                                        <li><a href="#">ট্রেইনারস</a></li>
-                                    </ul>
-                                    </div>
-                                    <div class="sitemap_info">
-                                    <h2 class="info_title">এফিলিয়েশন</h2>
-                                    <ul></ul>
-                                    </div>
-                                    <div class="sitemap_info">
-                                    <h2 class="info_title">যোগাযোগ</h2>
-                                    <ul>
-                                        <li><a href="#">যোগাযোগ নাম্বার</a></li>
-                                        <li><a href="#">সাবমিট মেসেজ</a></li>
-                                        <li><a href="#">অফিস লোকেশন</a></li>
-                                        <li><a href="#">সাধারণ জিজ্ঞাসা</a></li>
-                                    </ul>
-                                    </div>
-                                    <div class="sitemap_info">
-                                    <h2 class="info_title">টার্মস এন্ড কন্ডিশন</h2>
-                                    <ul></ul>
-                                    </div>
-                                </div>
-                                <div>
-                                    <div class="sitemap_info">
-                                    <h2 class="info_title">সাকসেস স্টোরি</h2>
-                                    <ul>
-                                        <li><a href="#">সাকসেস স্টোরি ভিডিও</a></li>
-                                        <li><a href="#">সাকসেস স্টোরি টেক্সট</a></li>
-                                    </ul>
-                                    </div>
-                                    <div class="sitemap_info">
-                                    <h2 class="info_title">কোর্স লিস্ট</h2>
-                                    <ul>
-                                        <li><a href="#">সকল কোর্স</a></li>
-                                        <li><a href="#">গ্রাফিক্স ডিজাইন</a></li>
-                                        <li><a href="#">ওয়েব ডেভোলাপমেন্ট</a></li>
-                                        <li><a href="#">ডিজিটাল মার্কেটিং</a></li>
-                                    </ul>
-                                    </div>
-                                    <div class="sitemap_info">
-                                    <h2 class="info_title">কোর্স ডিটেইলস</h2>
-                                    <ul>
-                                        <li><a href="#">কোর্স ডিটেইলস</a></li>
-                                        <li><a href="#">কোর্স এনরোলমেন্ট</a></li>
-                                        <li><a href="#">কোর্স মডিউল</a></li>
-                                        <li><a href="#">কোর্স প্রশিক্ষক</a></li>
-                                        <li><a href="#">সাধারণ জিজ্ঞাসা</a></li>
-                                    </ul>
-                                    </div>
-                                    <div class="sitemap_info">
-                                    <h2 class="info_title">রিফান্ড পলিসি</h2>
-                                    <ul></ul>
-                                    </div>
-                                    <div class="sitemap_info">
-                                    <h2 class="info_title">প্রাইভেসি পলিসি</h2>
-                                    <ul></ul>
-                                    </div>
-                                </div>
-                                <div>
-                                    <div class="sitemap_info">
-                                    <h2 class="info_title">গ্যালারি</h2>
-                                    <ul>
-                                        <li><a href="#">আমাদের টিম</a></li>
-                                        <li><a href="#">ওরিয়েন্টেশন ক্লাস</a></li>
-                                        <li><a href="#">ফেয়ারওয়েল ও সার্টিফিকেট প্রদান</a></li>
-                                    </ul>
-                                    </div>
-                                    <div class="sitemap_info">
-                                    <h2 class="info_title">আইটি সার্ভিস</h2>
-                                    <ul>
-                                        <li><a href="#">সার্ভিস লিস্ট</a></li>
-                                        <li><a href="#">ক্লায়েন্ট রেটিং</a></li>
-                                        <li><a href="#">আমরা যাদের সাথে কাজ করেছি</a></li>
-                                        <li><a href="#">ক্লায়েন্ট প্রজেক্ট </a></li>
-                                        <li><a href="#">Hire Us</a></li>
-                                    </ul>
-                                    </div>
-                                    <div class="sitemap_info">
-                                    <h2 class="info_title">আইটি সার্ভিস ডিটেইলস</h2>
-                                    <ul>
-                                        <li><a href="#">সার্ভিস ডিটেইলস</a></li>
-                                        <li><a href="#">প্রাইসিং প্ল্যানিং</a></li>
-                                        <li><a href="#">ক্লায়েন্ট প্রজেক্ট </a></li>
-                                        <li><a href="#">Hire Us</a></li>
-                                    </ul>
-                                    </div>
-                                    <div class="sitemap_info">
-                                    <h2 class="info_title">কুকিস পলিসি</h2>
-                                    <ul></ul>
-                                    </div>
-                                    <div class="sitemap_info">
-                                    <h2 class="info_title">সার্টিফিকেট ভেরিফাই</h2>
-                                    <ul></ul>
-                                    </div>
-                                </div>
-                                </div>
-                                <div class="student_panel">
-                                    <div class="student_panel_heading">
-                                        <h2 class="student_panel_title">স্টুডেন্ট প্যানেল</h2>
-                                        <div class="student_panel_border"></div>
-                                    </div>
-                                    <div class="sitemap_details">
-                                        <div>
-                                        <div class="sitemap_info">
-                                            <h2 class="info_title">হোম</h2>
-                                            <ul>
-                                            <li><a href="#">চলমান কোর্স</a></li>
-                                            <li><a href="#">কমপ্লিট কোর্স</a></li>
-                                            <li><a href="#">অসম্পন্ন কোর্স</a></li>
-                                            </ul>
-                                        </div>
-                                        <div class="sitemap_info">
-                                            <h2 class="continue_info_title">চলমান কোর্স</h2>
-                                            <ul>
-                                            <li><a href="#">কোর্সের অগ্রগতি</a></li>
-                                            <li><a href="#">ক্লাস রুটিন</a></li>
-                                            <li><a href="#">কোর্স মডিউল</a></li>
-                                            </ul>
-                                        </div>
-                                        
-                                        </div>
-                                        <div>
-                                        <div class="sitemap_info">
-                                            <h2 class="info_title">প্রোফাইল সেটিংস</h2>
-                                            <ul>
-                                            
-                                            </ul>
-                                        </div>
-                                        
-                                        </div>
-                                        <div>
-                                        <div class="sitemap_info">
-                                            <h2 class="info_title">পাসওয়ার্ড পরিবর্তন</h2>
-                                            <ul>
-                                            </ul>
-                                        </div>
-                                        
-                                        </div>
-                                        <div>
-                                        <div class="sitemap_info">
-                                            <h2 class="info_title">লগ আউট</h2>
-                                            <ul>
-                                            </ul>
-                                        </div>
-                                        
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>`,
+                        "value" => $this->site_map(),
                         "use" => "yes",
                     ],
                 ]
@@ -486,5 +309,229 @@ class SettingSeeder extends Seeder
         ];
 
         $this->setting_save($term_pages);
+    }
+
+    public function site_map()
+    {
+        return "
+            <div class=\"sitemap_heading\">Sitemap</div>
+            <div class=\"sitemap_details\">
+                <div>
+                    <div class=\"sitemap_info\">
+                        <h2 class=\"info_title\">হোম</h2>
+                        <ul>
+                            <li><a href=\"#\">হেডলাইন</a></li>
+                            <li><a href=\"#\">কোর্স লিস্ট</a></li>
+                            <li><a href=\"#\">কোর্স ফিচার</a></li>
+                            <li><a href=\"#\">আর্নিং স্টেপস</a></li>
+                            <li><a href=\"#\">সাকসেস স্টোরি</a></li>
+                            <li><a href=\"#\">ট্রেইনারস</a></li>
+                            <li><a href=\"#\">কাউনসিলিং</a></li>
+                            <li><a href=\"#\">ফ্রি সেমিনার</a></li>
+                            <li><a href=\"#\">আইটি সার্ভিসগুলো</a></li>
+                            <li><a href=\"#\">আমরা যাদের সাথে কাজ করেছি</a></li>
+                        </ul>
+                    </div>
+                    <div class=\"sitemap_info\">
+                        <h2 class=\"info_title\">ব্লগ</h2>
+                        <ul>
+                            <li><a href=\"#\">ব্লগ লিস্ট</a></li>
+                            <li><a href=\"#\">ব্লগ ক্যাটাগরি</a></li>
+                        </ul>
+                    </div>
+                    <div class=\"sitemap_info\">
+                        <h2 class=\"info_title\">ব্লগ ডিটেইলস</h2>
+                        <ul></ul>
+                    </div>
+                    <div class=\"sitemap_info\">
+                        <h2 class=\"info_title\">ফ্রি সেমিনার</h2>
+                        <ul>
+                            <li><a href=\"#\">সেমিনার লিস্ট</a></li>
+                            <li><a href=\"#\">কোর্স লিস্ট</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div>
+                    <div class=\"sitemap_info\">
+                        <h2 class=\"info_title\">আমাদের সম্পর্কে</h2>
+                        <ul>
+                            <li><a href=\"#\">আমাদের সম্পর্কে</a></li>
+                            <li><a href=\"#\">আমরা যাদের সাথে কাজ করেছি</a></li>
+                            <li><a href=\"#\">আমাদের মটো</a></li>
+                            <li><a href=\"#\">আমাদের মিশন</a></li>
+                            <li><a href=\"#\">আমাদের ভিশন</a></li>
+                            <li><a href=\"#\">কোর্স লিস্ট</a></li>
+                            <li><a href=\"#\">সার্ভিস লিস্ট</a></li>
+                            <li><a href=\"#\">আমাদের টিম</a></li>
+                            <li><a href=\"#\">ট্রেইনারস</a></li>
+                        </ul>
+                    </div>
+                    <div class=\"sitemap_info\">
+                        <h2 class=\"info_title\">এফিলিয়েশন</h2>
+                        <ul></ul>
+                    </div>
+                    <div class=\"sitemap_info\">
+                        <h2 class=\"info_title\">যোগাযোগ</h2>
+                        <ul>
+                            <li><a href=\"#\">যোগাযোগ নাম্বার</a></li>
+                            <li><a href=\"#\">সাবমিট মেসেজ</a></li>
+                            <li><a href=\"#\">অফিস লোকেশন</a></li>
+                            <li><a href=\"#\">সাধারণ জিজ্ঞাসা</a></li>
+                        </ul>
+                    </div>
+                    <div class=\"sitemap_info\">
+                        <h2 class=\"info_title\">টার্মস এন্ড কন্ডিশন</h2>
+                        <ul></ul>
+                    </div>
+                </div>
+                <div>
+                    <div class=\"sitemap_info\">
+                        <h2 class=\"info_title\">সাকসেস স্টোরি</h2>
+                        <ul>
+                            <li><a href=\"#\">সাকসেস স্টোরি ভিডিও</a></li>
+                            <li><a href=\"#\">সাকসেস স্টোরি টেক্সট</a></li>
+                        </ul>
+                    </div>
+                    <div class=\"sitemap_info\">
+                        <h2 class=\"info_title\">কোর্স লিস্ট</h2>
+                        <ul>
+                            <li><a href=\"#\">সকল কোর্স</a></li>
+                            <li><a href=\"#\">গ্রাফিক্স ডিজাইন</a></li>
+                            <li><a href=\"#\">ওয়েব ডেভোলাপমেন্ট</a></li>
+                            <li><a href=\"#\">ডিজিটাল মার্কেটিং</a></li>
+                        </ul>
+                    </div>
+                    <div class=\"sitemap_info\">
+                        <h2 class=\"info_title\">কোর্স ডিটেইলস</h2>
+                        <ul>
+                            <li><a href=\"#\">কোর্স ডিটেইলস</a></li>
+                            <li><a href=\"#\">কোর্স এনরোলমেন্ট</a></li>
+                            <li><a href=\"#\">কোর্স মডিউল</a></li>
+                            <li><a href=\"#\">কোর্স প্রশিক্ষক</a></li>
+                            <li><a href=\"#\">সাধারণ জিজ্ঞাসা</a></li>
+                        </ul>
+                    </div>
+                    <div class=\"sitemap_info\">
+                        <h2 class=\"info_title\">রিফান্ড পলিসি</h2>
+                        <ul></ul>
+                        </div>
+                        <div class=\"sitemap_info\">
+                        <h2 class=\"info_title\">প্রাইভেসি পলিসি</h2>
+                        <ul></ul>
+                    </div>
+                </div>
+                <div>
+                    <div class=\"sitemap_info\">
+                        <h2 class=\"info_title\">গ্যালারি</h2>
+                        <ul>
+                            <li><a href=\"#\">আমাদের টিম</a></li>
+                            <li><a href=\"#\">ওরিয়েন্টেশন ক্লাস</a></li>
+                            <li><a href=\"#\">ফেয়ারওয়েল ও সার্টিফিকেট প্রদান</a></li>
+                        </ul>
+                    </div>
+                    <div class=\"sitemap_info\">
+                        <h2 class=\"info_title\">আইটি সার্ভিস</h2>
+                        <ul>
+                            <li><a href=\"#\">সার্ভিস লিস্ট</a></li>
+                            <li><a href=\"#\">ক্লায়েন্ট রেটিং</a></li>
+                            <li><a href=\"#\">আমরা যাদের সাথে কাজ করেছি</a></li>
+                            <li><a href=\"#\">ক্লায়েন্ট প্রজেক্ট </a></li>
+                            <li><a href=\"#\">Hire Us</a></li>
+                        </ul>
+                    </div>
+                    <div class=\"sitemap_info\">
+                        <h2 class=\"info_title\">আইটি সার্ভিস ডিটেইলস</h2>
+                        <ul>
+                            <li><a href=\"#\">সার্ভিস ডিটেইলস</a></li>
+                            <li><a href=\"#\">প্রাইসিং প্ল্যানিং</a></li>
+                            <li><a href=\"#\">ক্লায়েন্ট প্রজেক্ট </a></li>
+                            <li><a href=\"#\">Hire Us</a></li>
+                        </ul>
+                    </div>
+                    <div class=\"sitemap_info\">
+                        <h2 class=\"info_title\">কুকিস পলিসি</h2>
+                        <ul></ul>
+                    </div>
+                    <div class=\"sitemap_info\">
+                        <h2 class=\"info_title\">সার্টিফিকেট ভেরিফাই</h2>
+                        <ul></ul>
+                    </div>
+                </div>
+                </div>
+                <div class=\"student_panel\">
+                    <div class=\"student_panel_heading\">
+                        <h2 class=\"student_panel_title\">স্টুডেন্ট প্যানেল</h2>
+                        <div class=\"student_panel_border\"></div>
+                    </div>
+                    <div class=\"sitemap_details\">
+                        <div>
+                            <div class=\"sitemap_info\">
+                                <h2 class=\"info_title\">হোম</h2>
+                                <ul>
+                                <li><a href=\"#\">চলমান কোর্স</a></li>
+                                <li><a href=\"#\">কমপ্লিট কোর্স</a></li>
+                                <li><a href=\"#\">অসম্পন্ন কোর্স</a></li>
+                                </ul>
+                            </div>
+                            <div class=\"sitemap_info\">
+                                <h2 class=\"continue_info_title\">চলমান কোর্স</h2>
+                                <ul>
+                                <li><a href=\"#\">কোর্সের অগ্রগতি</a></li>
+                                <li><a href=\"#\">ক্লাস রুটিন</a></li>
+                                <li><a href=\"#\">কোর্স মডিউল</a></li>
+                                </ul>
+                            </div>
+
+                        </div>
+                        <div>
+                            <div class=\"sitemap_info\">
+                                <h2 class=\"info_title\">প্রোফাইল সেটিংস</h2>
+                                <ul>
+
+                                </ul>
+                            </div>
+                        </div>
+                        <div>
+                            <div class=\"sitemap_info\">
+                                <h2 class=\"info_title\">পাসওয়ার্ড পরিবর্তন</h2>
+                                <ul>
+                                </ul>
+                            </div>
+                        </div>
+                        <div>
+                            <div class=\"sitemap_info\">
+                                <h2 class=\"info_title\">লগ আউট</h2>
+                                <ul>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        ";
+    }
+    public function about_us()
+    {
+        return "
+            <div class=\"aboutus_relation_description\">
+                <p class=\"aboutus_info\">
+                    দেশের মানুষের বেকারত্বের সমাধান ও আইটি সেক্টরে দক্ষ জনবল তৈরি, মূলত
+                    এই মৌলিক বিষয়কে ধারণ করেই টেক পার্ক আইটির যাত্রা শুরু। টেক পার্ক
+                    আইটি এদেশের মানুষের মধ্যে আইসিটিতে দক্ষতার উন্নয়ন ঘটাতে চায়, যার
+                    মাধ্যমে মানুষের কর্মসংস্থান তৈরির পাশাপাশি এদেশের অর্থনৈতিক উন্নয়নে
+                    ভূমিকা পালন করা যাবে।
+                </p>
+                <p class=\"aboutus_info\">
+                    শিক্ষার্থীদের চাহিদার কথা বিবেচনায় রেখে কোর্স কারিকুলাম নিয়মিত আপডেট
+                    করার কারণে আমরা শিক্ষার্থীদেরকে সর্বাধুনিক প্রশিক্ষণ দিতে পারছি বলে
+                    আমরা আশাবাদী। নির্দিষ্ট সময়ে কোর্স করিয়ে দিয়েই দায়িত্ব পালন সম্পন্ন
+                    হয়েছে মনে না করে, আমাদের সাথে সংযুক্ত হওয়া শিক্ষার্থীদেরকে 'টেক
+                    পার্ক আইটি পরিবার'-এর সদস্য হিসেবে বিবেচনা করে তাদেরকে প্রফেশনাল
+                    প্রতিষ্ঠানে জবের সুযোগ করে দেওয়া এবং প্রফেশনাল উন্নয়ন দেখে আনন্দিত
+                    হওয়াটা আমাদের স্বপ্নের মতো। যে স্বপ্ন পূরণে আছে আত্মীক প্রশান্তি। এ
+                    প্রশান্তির পথে আমরা এগিয়ে যেতে চাই বহু দূরের পথ।
+                </p>
+            </div>
+        ";
     }
 }

@@ -40,6 +40,8 @@ use Database\Seeders\Quiz\QuizQuestionSubmissionSeeder;
 use Database\Seeders\Quiz\QuizSeeder;
 use Database\Seeders\Quiz\QuizUserSeeder;
 use Database\Seeders\Setting\SettingSeeder;
+use Database\Seeders\Seminar\SeminarParticipantsSeeder;
+use Database\Seeders\Seminar\SeminarSeeder;
 use Database\Seeders\User\UserSocialLinksSeeder;
 use Database\Seeders\User\UserContactNumberSeeder;
 use Illuminate\Database\Seeder;
@@ -66,7 +68,7 @@ class DatabaseSeeder extends Seeder
             CourseInstructorsSeeder::class,
             CourseCourseCategorySeeder::class,
             CourseBatchSeeder::class,
-            
+
             CourseEssentialRequirementsSeeder::class,
             CourseFaqsSeeder::class,
             CourseForWhomsSeeder::class,
@@ -101,7 +103,12 @@ class DatabaseSeeder extends Seeder
             QuizQuestionSeeder::class,
             QuizQuestionOptionSeeder::class,
             QuizQuestionSubmissionSeeder::class,
-            QuizUserSeeder::class
+            QuizUserSeeder::class,
+            BlogWriterSeeder::class,
+
+            SeminarSeeder::class,
+            SeminarParticipantsSeeder::class,
+
         ]);
 
 

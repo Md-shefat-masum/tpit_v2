@@ -6209,6 +6209,8 @@ html ::-webkit-scrollbar-thumb:hover {
 
 .footer_area_start .footer_area_content .footer_address_area .map_area .full_map iframe {
   border: 0px solid red;
+  width: 100%!important;
+  height: 200px!important;
 }
 
 .footer_area_start .footer_copyright_area {

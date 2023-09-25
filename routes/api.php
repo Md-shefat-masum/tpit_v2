@@ -89,9 +89,9 @@ Route::group(
             });
         });
 
-        Route::group( ['prefix'=>'','middleware'=>['guest:api'] ],function(){
-            Route::group( ['prefix'=>'course'],function(){
+        Route::group(['prefix' => '', 'middleware' => ['guest:api']], function () {
 
+            Route::group(['prefix' => 'course'], function () {
                 Route::get('/all', 'Course\CourseController@all');
                 Route::post('/store', 'Course\CourseController@store');
                 Route::post('/canvas-store', 'Course\CourseController@canvas_store');
@@ -232,7 +232,7 @@ Route::group(
                     Route::post('/bulk-import', 'Course\CourseWhyYouLearnFromUsController@bulk_import');
                     Route::get('/{id}', 'Course\CourseWhyYouLearnFromUsController@show');
                 });
-                
+
                 Route::group(['prefix' => 'course-you-will-learns'], function () {
                     Route::get('/all', 'Course\CourseYouWillLearnsController@all');
                     Route::post('/store', 'Course\CourseYouWillLearnsController@store');
@@ -310,7 +310,7 @@ Route::group(
                     Route::post('/bulk-import', 'Course\CourseModuleClassRoutinesController@bulk_import');
                     Route::get('/{id}', 'Course\CourseModuleClassRoutinesController@show');
                 });
- 
+
                 Route::group(['prefix' => 'course-modules-class'], function () {
                     Route::get('/all', 'Course\CourseModuleClassController@all');
                     Route::post('/store', 'Course\CourseModuleClassController@store');
@@ -349,10 +349,6 @@ Route::group(
                     Route::post('/bulk-import', 'Course\CourseModuleTaskCompleteByUsersController@bulk_import');
                     Route::get('/{id}', 'Course\CourseModuleTaskCompleteByUsersController@show');
                 });
-
-
-                
-
             });
 
             Route::group(['prefix' => 'blog'], function () {
@@ -378,8 +374,8 @@ Route::group(
                     Route::post('/restore', 'Blog\BlogCategoriesController@restore');
                     Route::post('/bulk-import', 'Blog\BlogCategoriesController@bulk_import');
                     Route::get('/{id}', 'Blog\BlogCategoriesController@show');
-        
                 });
+
                 Route::group(['prefix' => 'blog-meta'], function () {
                     Route::get('/all', 'Blog\BlogMetaController@all');
                     Route::post('/store', 'Blog\BlogMetaController@store');
@@ -473,14 +469,40 @@ Route::group(
                 });
             });
 
+            Route::group(['prefix' => 'seminar'], function () {
+                Route::get('/all', 'seminar\SeminarController@all');
+                Route::post('/store', 'seminar\SeminarController@store');
+                Route::post('/canvas-store', 'seminar\SeminarController@canvas_store');
+                Route::post('/update', 'seminar\SeminarController@update');
+                Route::post('/canvas-update', 'seminar\SeminarController@canvas_update');
+                Route::post('/soft-delete', 'seminar\SeminarController@soft_delete');
+                Route::post('/destroy', 'seminar\SeminarController@destroy');
+                Route::post('/restore', 'seminar\SeminarController@restore');
+                Route::post('/bulk-import', 'seminar\SeminarController@bulk_import');
+                Route::get('/{id}', 'seminar\SeminarController@show');
+
+                Route::group(['prefix' => 'seminar-participants'], function () {
+                    Route::get('/all', 'seminar\SeminarParticipantsController@all');
+                    Route::post('/store', 'seminar\SeminarParticipantsController@store');
+                    Route::post('/canvas-store', 'seminar\SeminarParticipantsController@canvas_store');
+                    Route::post('/update', 'seminar\SeminarParticipantsController@update');
+                    Route::post('/canvas-update', 'seminar\SeminarParticipantsController@canvas_update');
+                    Route::post('/soft-delete', 'seminar\SeminarParticipantsController@soft_delete');
+                    Route::post('/destroy', 'seminar\SeminarParticipantsController@destroy');
+                    Route::post('/restore', 'seminar\SeminarParticipantsController@restore');
+                    Route::post('/bulk-import', 'seminar\SeminarParticipantsController@bulk_import');
+                    Route::get('/{id}', 'seminar\SeminarParticipantsController@show');
+                });
+
+            });
         });
     }
 );
 
-Route::post('/tests',function(){
+Route::post('/tests', function () {
     return request()->all();
 });
 
-Route::get('/demodata',function(){
-    return ["name"=>"demodata", "time" => Carbon\Carbon::now()->toDateTimeString()];
+Route::get('/demodata', function () {
+    return ["name" => "demodata", "time" => Carbon\Carbon::now()->toDateTimeString()];
 });
