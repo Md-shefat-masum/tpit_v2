@@ -16,18 +16,19 @@ class CourseCategorySeeder extends Seeder
     public function run()
     {
         CourseCategory::truncate();
-        CourseCategory::create([
-            'title' => 'ওয়েব ডিজাইন',
-        ]);
+        
         CourseCategory::create([
 
-            'title' => 'ওয়েব ডেভেলপম্যান্ট ',
+            'title' => 'ওয়েব ডিজাইন & ডেভেলপম্যান্ট ',
+            'image' => 'frontend/assets/images/course_icon/web.svg'
         ]);
         CourseCategory::create([
             'title' => 'গ্রাফিক্স ডিজাইন',
+            'image' => 'frontend/assets/images/course_icon/graphics.svg'
         ]);
         CourseCategory::create([
             'title' => 'ডিজিটাল মার্কেটিং',
+            'image' => 'frontend/assets/images/course_icon/digital_marketing.svg'
         ]);
 
         DB::table('course_course_category')->truncate();

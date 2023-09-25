@@ -33,6 +33,7 @@ use Database\Seeders\Course\CourseYouWillLearnsSeeder;
 use Database\Seeders\Course\CourseModuleClassQuizesSeeder;
 use Database\Seeders\Course\CourseModuleClassResoursesSeeder;
 use Database\Seeders\Course\CourseModuleClassRoutinesSeeder;
+use Database\Seeders\Setting\SettingSeeder;
 use Database\Seeders\User\UserSocialLinksSeeder;
 use Database\Seeders\User\UserContactNumberSeeder;
 use Illuminate\Database\Seeder;
@@ -86,8 +87,8 @@ class DatabaseSeeder extends Seeder
             BlogTagSeeder::class,
             BlogVideoLinksSeeder::class,
             BlogViewSeeder::class,
-            BlogWriterSeeder  ::class,
-
+            BlogWriterSeeder::class,
+            SettingSeeder::class
             
 
         ]);
