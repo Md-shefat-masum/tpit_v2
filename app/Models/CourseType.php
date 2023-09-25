@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class CourseType extends Model
 {
     use HasFactory;
+
+    public function scopeActive($q)
+    {
+        return $q->where('status', 'active');
+    }
 }

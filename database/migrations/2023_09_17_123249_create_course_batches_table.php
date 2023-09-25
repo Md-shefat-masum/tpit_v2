@@ -21,6 +21,7 @@ class CreateCourseBatchesTable extends Migration
             $table->timestamp('admission_end_date')->nullable();
             $table->bigInteger('batch_student_limit')->nullable();
             $table->integer('seat_booked')->nullable();
+            $table->integer('booked_percent')->nullable();
             $table->float('course_price')->nullable();
             $table->float('course_discount')->nullable();
             $table->float('after_discount_price')->nullable();

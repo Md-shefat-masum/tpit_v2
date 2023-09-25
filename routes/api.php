@@ -21,6 +21,14 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::group(
     ['prefix' => 'v1', 'namespace' => 'Controllers'],
     function () {
+
+        Route::group(['prefix' => '/course', 'middleware' => ['guest:api']], function () {
+            Route::get('/all-types', 'WebsiteController@all_types');
+            Route::get('/all-course', 'WebsiteController@all_course');
+            Route::get('/type-wise-course', 'WebsiteController@type_wise_course');
+        });
+        
+
         Route::group(['prefix' => '/user', 'middleware' => ['guest:api']], function () {
             Route::post('/get-token', 'Auth\ApiLoginController@get_token');
             Route::post('/api-login', 'Auth\ApiLoginController@login');

@@ -1549,6 +1549,10 @@ html ::-webkit-scrollbar-thumb:hover {
   padding-bottom: 32px;
 }
 
+.course_type_active {
+  color: #dc2626 !important;
+}
+
 @media (min-width: 992px) and (max-width: 1199.9px) {
   .our_course_area .our_course_area_content .course_schedule_name {
     justify-content: center;

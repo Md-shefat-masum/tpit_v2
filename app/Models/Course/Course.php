@@ -18,6 +18,11 @@ class Course extends Model
     });
   }
 
+  public function scopeActive($q)
+  {
+    return $q->where('status','active');
+  }
+
   public function course_batch()
   {
     return $this->hasMany(CourseBatches::class, 'course_id');

@@ -33,5 +33,30 @@ class CourseTypeSeeder extends Seeder
             'course_type_id' => 1,
             'course_id' => 1,
         ]);
+
+        DB::table('course_course_types')->insert([
+            'course_type_id' => 1,
+            'course_id' => 1,
+        ]);
+
+        DB::table('course_course_types')->insert([
+            'course_type_id' => 1,
+            'course_id' => 2,
+        ]);
+
+        DB::table('course_course_types')->insert([
+            'course_type_id' => 2,
+            'course_id' => 3,
+        ]);
+
+        DB::table('course_course_types')->insert([
+            'course_type_id' => 3,
+            'course_id' => 1,
+        ]);
+
+        DB::table('course_course_types')->insert([
+            'course_type_id' => 3,
+            'course_id' => 2,
+        ]);
     }
 }

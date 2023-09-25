@@ -20,45 +20,8 @@
     <!-- course_item end -->
 
     <!-- our_course area start -->
-    <section class="our_course_area">
-        <div class="container">
-            <div class="our_course_area_content">
-
-                <!-- our_course_area_title start -->
-                <div class="our_course_area_title">
-                    <h2 class="area_title">
-                        আমাদের কোর্সসমূহ
-                    </h2>
-                </div>
-                <!-- our_course_area_title end -->
-
-                <!-- course_schedule_name start-->
-                <div class="course_schedule_name">
-                    <ul>
-                        <li>
-                            <a href="#">সকল কোর্স</a>
-                        </li>
-                        @foreach ($course_types as $type)
-                            <li>
-                                <a href="#">{{ $type->title }}</a>
-                            </li>
-                        @endforeach
-                    </ul>
-                </div>
-                <!-- course_schedule_name end-->
-
-                <!-- our_course_all_card start -->
-                <div class="our_course_all_card">
-                    @include('frontend.pages.homepage_sections.course_section', [
-                        'courses' => $courses,
-                    ])
-                </div>
-                
-            </div>
-            <!-- our_course_all_card end -->
-        </div>
-        </div>
-    </section>
+    @include('frontend.pages.homepage_sections.course_section')
+    
     <!-- our_course area end -->
 
     <!-- our_course_specialty area start -->
