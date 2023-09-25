@@ -25,6 +25,7 @@
     <script src="{{ asset('js/plugins/turbolinks.min.js') }}"></script>
     <script src="{{ asset('js/plugins/sweetalert.js') }}"></script>
     <script src="{{ asset('js/plugins/axios.js') }}"></script>
+    <script src="{{ asset('js/plugins/vue.min.js') }}"></script>
     <script src="{{ asset('js/frontend.js') }}" defer></script>
     {{-- <script src="{{ asset('main.js') }}" defer></script> --}}
 </head>

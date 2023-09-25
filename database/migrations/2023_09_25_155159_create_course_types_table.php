@@ -15,6 +15,17 @@ class CreateCourseTypesTable extends Migration
     {
         Schema::create('course_types', function (Blueprint $table) {
             $table->id();
+            $table->string("title", 200)->nullable();
+            $table->bigInteger("creator")->unsigned()->nullable();
+            $table->string("slug", 50)->nullable();
+            $table->enum('status',['active','inactive'])->default('active');
+            $table->timestamps();
+        });
+
+        Schema::create('course_course_types', function (Blueprint $table) {
+            $table->id();
+            $table->bigInteger('course_type_id')->nullable();
+            $table->bigInteger('course_id')->nullable();
             $table->timestamps();
         });
     }

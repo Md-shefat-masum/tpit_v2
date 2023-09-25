@@ -88,8 +88,8 @@ class DatabaseSeeder extends Seeder
             BlogVideoLinksSeeder::class,
             BlogViewSeeder::class,
             BlogWriterSeeder::class,
-            SettingSeeder::class
-            
+            SettingSeeder::class,
+            CourseTypeSeeder::class
 
         ]);
 

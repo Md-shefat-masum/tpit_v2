@@ -18,6 +18,11 @@ class Course extends Model
     });
   }
 
+  public function course_batch()
+  {
+    return $this->hasMany(CourseBatches::class, 'course_id');
+  }
+
   public function course_job_works()
   {
 

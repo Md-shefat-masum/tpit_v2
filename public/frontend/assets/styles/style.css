@@ -1455,7 +1455,7 @@ html ::-webkit-scrollbar-thumb:hover {
 
 .course_item .course_item_content .course a .course_text_area .course_text {
   border: 0px solid red;
-  font-size: 26px;
+  font-size: 21px;
   line-height: 39px;
   font-family: "SemiBold";
   color: #1c1c1c;

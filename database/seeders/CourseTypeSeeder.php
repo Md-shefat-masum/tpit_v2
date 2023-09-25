@@ -2,7 +2,9 @@
 
 namespace Database\Seeders;
 
+use App\Models\CourseType;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class CourseTypeSeeder extends Seeder
 {
@@ -13,6 +15,23 @@ class CourseTypeSeeder extends Seeder
      */
     public function run()
     {
-        //
+        CourseType::truncate();
+        CourseType::create([
+            'title' => 'অনলাইন কোর্স'
+        ]);
+
+        CourseType::create([
+            'title' => 'অফলাইন কোর্স'
+        ]);
+
+        CourseType::create([
+            'title' => 'ডে-কেয়ার কোর্স'
+        ]);
+
+        DB::table('course_course_types')->truncate();
+        DB::table('course_course_types')->insert([
+            'course_type_id' => 1,
+            'course_id' => 1,
+        ]);
     }
 }
