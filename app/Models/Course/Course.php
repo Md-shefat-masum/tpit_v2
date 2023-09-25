@@ -77,6 +77,11 @@ class Course extends Model
     return $this->hasMany(CourseFaqs::class, 'course_id');
   }
 
+  public function course_essentials()
+  {
+    return $this->hasMany(CourseEssentialRequirements::class, 'course_id');
+  }
+
 
   public function course_essential_requirements()
   {
