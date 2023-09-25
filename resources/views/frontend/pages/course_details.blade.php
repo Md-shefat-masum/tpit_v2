@@ -294,48 +294,67 @@
                     </script>
                     <!-- /class module end -->
                     <!-- course trainer start-->
-                    <section class="course_trainers_area">
-                        <div class="container">
-                            <div class="trainers_description">
-                                <div class="trainers_title">
-                                    <h2 class="trainers_title_bangla">কোর্স প্রশিক্ষক</h2>
-                                </div>
-                                <div class="trainers_details">
-                                    <div class="trainer_details">
-                                        <div class="trainer_images">
-                                            <div class="image">
-                                                <img src="./assets/images/about_page_image/trainers_images/trainer.png"
-                                                    alt="" />
-                                            </div>
-                                            <div class="trainer_info">
-                                                <div class="trainer_name">মুহাম্মদ সিফাতুল্লাহ</div>
-                                                <p>ওয়েব ডিজাইন ও ডেভোলাপমেন্ট</p>
-                                                <div class="trainer_link">
-                                                    <i class="fa-brands tw fa-square-twitter"></i>
-                                                    <i class="fa-brands fb fa-square-facebook"></i>
-                                                    <i class="fa-brands ld fa-linkedin"></i>
-                                                    <i class="fa-brands in fa-square-instagram"></i>
+
+                    @if ($data->course_instactor)    
+                        <section class="course_trainers_area">
+                            <div class="container">
+                                <div class="trainers_description">
+                                    <div class="trainers_title">
+                                        <h2 class="trainers_title_bangla">কোর্স প্রশিক্ষক</h2>
+                                    </div>
+                                    <div class="d-flex flex-wrap gap-3">
+                                        @foreach ($data->course_instactor as $teacher) 
+                                            <div class="trainers_details mb-4">
+                                                <div class="trainer_details">
+                                                    <div class="trainer_images">
+                                                        <div class="image">
+                                                            <img src="{{ asset($teacher->cover_photo) }}"
+                                                                alt="" />
+                                                        </div>
+                                                        <div class="trainer_info">
+                                                            <div class="trainer_name">{{ $teacher->full_name }}</div>
+                                                            <p>{{ $teacher->designation }}</p>
+                                                            @if ($teacher->social_links)    
+                                                                <div class="trainer_link">
+                                                                    @foreach ($teacher->social_links as $link)
+                                                                        @if($link->media_name == 'twitter')
+                                                                            <a target="_blank" href="{{ $link->link ? : '#' }}"><i class="fa-brands tw fa-square-twitter"></i></a>
+                                                                        @endif
+                                                                        @if($link->media_name == 'facebook')
+                                                                            <a target="_blank" href="{{ $link->link ? : '#' }}"><i class="fa-brands fb fa-square-facebook"></i></a>
+                                                                        @endif
+                                                                        @if($link->media_name == 'linkedin')
+                                                                            <a target="_blank" href="{{ $link->link ? : '#' }}"><i class="fa-brands ld fa-linkedin"></i></a>
+                                                                        @endif
+                                                                        @if($link->media_name == 'instagram')
+                                                                            <a target="_blank" href="{{ $link->link ? : '#' }}"><i class="fa-brands in fa-square-instagram"></i></a>
+                                                                        @endif
+                                                                    @endforeach
+                                                                </div>
+                                                            @endif
+                                                        </div>
+                                                    </div>
+                                                    <div class="trainer_descrip">
+                                                        <p>
+                                                            {{ $teacher->details }}
+                                                        </p>
+                                                        {{-- <p>
+                                                            তিনি ৫০০+ স্টুডেন্টকে ট্রেনিং করিয়েছেন, যারা বর্তমানে
+                                                            বাংলাদেশের বিভিন্ন স্বনামধন্য প্রতিষ্ঠানে কর্মরত আছেন।
+                                                        </p> --}}
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div class="trainer_descrip">
-                                            <p>
-                                                ৩ বছরেরও বেশি সময় ধরে ওয়েব ডিজাইন ও ডেভোলাপম্যান্ট
-                                                ট্রেইনার হিসেবে কর্মরত আছেন। এছাড়াও তিনি গত ৫ বছর ধরে
-                                                Fiverr, Upwork ও Freelancer.com এ সফলতার সাথে
-                                                ফ্রিলান্সিং করে আসছেন, ও ৩০০+ প্রজেক্ট সম্পন্ন
-                                                করিয়েছেন
-                                            </p>
-                                            <p>
-                                                তিনি ৫০০+ স্টুডেন্টকে ট্রেনিং করিয়েছেন, যারা বর্তমানে
-                                                বাংলাদেশের বিভিন্ন স্বনামধন্য প্রতিষ্ঠানে কর্মরত আছেন।
-                                            </p>
-                                        </div>
+                                        @endforeach
                                     </div>
                                 </div>
+                                
                             </div>
-                        </div>
-                    </section>
+                        </section>
+                    @endif
+                    <!-- /course trainer end -->
+                </div>
+                
                     <!-- /course trainer end -->
                 </div>
                 <div class="course_info">
@@ -360,11 +379,26 @@
                                 </ul>
                             </div>
                             <div class="course_booked">
-                                <div>৬৮%</div>
+                                <div>{{ $batch_info->booked_percent }}%</div>
+
                                 <div>বুকড</div>
                             </div>
                         </div>
                         <div class="course_fee">
+                            @if($batch_info)
+                                <del class="twenty_thousand">৳ {{ $batch_info->course_price }}</del>
+                                <div class="ten_thousand">৳ {{ $batch_info->after_discount_price }}</div>
+                            @else
+                                <div class="ten_thousand">৳ {{ $batch_info->course_price }}</div>
+                            @endif
+                        </div>
+                        <div class="admit_course">
+                            <div class="admit_course_title_and_icon">
+                                <a href="#" class="admit_course_title">কোর্সে ভর্তি হোন</a>
+                                <div class="admit_course_icon"><i class="fa-solid fa-angle-right"></i></div>
+                            </div>
+                            <div class="admit_course_batch">
+                                <div class="admit_course_batch_title">ব্যাচ <span>{{ $batch_info->batch_name }}</span></div>
                             <del class="twenty_thousand">৳ ২০,০০০</del>
                             <div class="ten_thousand">৳ ১০,০০০</div>
                         </div>
@@ -380,18 +414,36 @@
                                         <div class="admit_course_start_title"><span><i
                                                     class="fa-regular fa-calendar-days"></i></span><span>ভর্তী শুরুঃ</span>
                                         </div>
-                                        <div class="admit_course_start_date">১২ অক্টোবর ২০২২</div>
+                                        <div class="admit_course_start_date">{{ \Carbon\Carbon::parse($batch_info->admission_start_date)->format('d M Y') }}</div>
+
                                     </div>
                                     <div class="admit_course_line"></div>
                                     <div class="admit_course_deadline">
                                         <div class="admit_course_deadline_title"><span><i
                                                     class="fa-regular fa-calendar-xmark"></i></span><span>ভর্তী শেষঃ</span>
                                         </div>
-                                        <div class="admit_course_deadline_date">১২ জানুয়ারি ২০২৩</div>
+                                        <div class="admit_course_deadline_date">{{ \Carbon\Carbon::parse($batch_info->admission_end_date)->format('d M Y') }}</div>
+
                                     </div>
                                 </div>
                             </div>
                             <div class="admit_course_batch_details">
+                                <div class="admit_course_orientation">
+                                        <span>
+                                            <i class="fa-regular fa-calendar-days"></i>
+                                        </span>
+                                            <span>
+                                                ওরিয়েন্টেশন ও প্রথম ক্লাসঃ {{ \Carbon\Carbon::parse($batch_info->admission_end_date)->format('d M l') }}
+                                            </span>
+                                        </div>
+                                <div class="admit_course_class_date">
+                                        <span><i class="fa-regular fa-calendar-days"></i></span>
+                                        <span>ক্লাসের দিনঃ {{ $batch_info->class_days }}</span>
+                                    </div>
+                                <div class="admit_course_class_time"><span>
+                                    <i class="fa-regular fa-calendar-days"></i></span>
+                                    <span>ক্লাসের সময়ঃ {{ \Carbon\Carbon::parse($batch_info->class_start_time)->format('g:i A') }} - {{ \Carbon\Carbon::parse($batch_info->class_end_time)->format('g:i A') }}</span>
+
                                 <div class="admit_course_orientation"><span><i
                                             class="fa-regular fa-calendar-days"></i></span><span>ওরিয়েন্টেশন ও প্রথম ক্লাসঃ
                                         ১২ অক্টোবর,
@@ -408,6 +460,28 @@
                     </div>
                     <div class="course_needed">
                         <div class="course_needed_title">কোর্সটি করার জন্য যা যা লাগবে</div>
+
+                        @if($data->course_essentials)
+                            @foreach ($data->course_essentials as $course_essential)    
+                                <div class="course_needed_internet">
+                                    <i class="fa-regular fa-circle-dot"></i>
+                                    {{ $course_essential->title }}
+                                </div>
+                            @endforeach
+                        @endif
+                        <div class="course_hotline_and_schedule">
+                            <div class="course_hotline" style="display: unset; padding: 20px;">
+                                <div class="course_hotline_title">
+                                    যেকোনো প্রয়োজনে কল করুনঃ 
+                                </div>
+                                @foreach (setting(key: 'phone_numbers', multiple: true) as $item)
+                                <div class="d-flex mt-2 gap-2 align-items-center justify-content-center">
+                                    <i class="fa-solid fa-phone"></i>
+                                    <div class="course_hotline_number"> {{ $item->value }} </div>
+                                </div>
+                                @endforeach
+                                
+
                         <div class="course_needed_internet"><i class="fa-regular fa-circle-dot"></i>ইন্টারনেট সংযোগ যুক্ত
                             কম্পিউটার
                         </div>

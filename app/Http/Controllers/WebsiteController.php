@@ -26,6 +26,7 @@ class WebsiteController extends Controller
             [
                 'course_categories' => $course_categories,
                 'course_types' => $course_types,
+
                 'courses' => $courses,
                 "seminar" => $seminar,
             ]
