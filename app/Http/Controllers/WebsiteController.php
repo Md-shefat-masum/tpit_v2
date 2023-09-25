@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Models\Course\Course;
 use App\Models\Course\CourseBatches;
+use App\Models\Course\CourseBatchStudent;
 use App\Models\Course\CourseCategory;
 use App\Models\CourseType;
+use App\Models\EnrollInformation;
 use App\Models\Seminars\Seminars;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -40,7 +42,7 @@ class WebsiteController extends Controller
 
     public function all_course()
     {
-        $query = Course::select('id', 'title','slug', 'image')->active();
+        $query = Course::select('id', 'title', 'slug', 'image')->active();
         if (request()->has('course_type')) {
             $query->whereExists(function ($query) {
                 $query->from('course_course_types')
@@ -66,19 +68,61 @@ class WebsiteController extends Controller
         return response()->json($courses);
     }
 
-    public function course_details($slug) {
-        $data = Course::active()->where('slug',$slug)->first();
-        return view('frontend.pages.course_details', ['data' => $data]);
+    public function course_details($slug)
+    {
+        $data = Course::active()->where('slug', $slug)->first();
+        $check_enrolled = false;
+        if(auth()->check()) {
+            $check_enrolled = EnrollInformation::where('student_id', auth()->user()->id)
+            ->where('course_id', $data->id)->exists();
+        }
+        return view('frontend.pages.course_details', ['data' => $data, 'check_enrolled' => $check_enrolled]);
     }
 
-    public function course_enroll($slug) {
-        $course = Course::active()->where('slug',$slug)->select('id', 'title','slug', 'image')->with([
-            'course_batch' => function($q) {
-                $q->select('id', 'course_id', 'course_price', 'after_discount_price');
+    public function course_enroll($slug)
+    {
+        $course = Course::active()->where('slug', $slug)->select('id', 'title', 'slug', 'image')->with([
+            'course_batch' => function ($q) {
+                $q->select('id', 'course_id', 'course_price', 'after_discount_price')->active()->orderBy('id', 'DESC');
             }
         ])->first();
 
         return view('frontend.pages.course_enroll', ['course' => $course]);
+    }
+
+    public function course_enroll_submit($slug)
+    {
+        $this->validate(request(), [
+            "trx_id" => ["required"],
+        ]);
+
+        $course = Course::active()->where('slug', $slug)->select('id', 'slug', 'title')->first();
+        $batch = CourseBatches::active()->where('course_id', $course->id)
+            ->orderBy('id', 'DESC')->select('id', 'batch_name')->first();
+
+        $course_std_check = CourseBatchStudent::where('student_id', auth()->user()->id)
+            ->where('batch_id', $batch->id)->where('course_id', $course->id)->exists();
+
+        if (!$course_std_check) {
+            $enroll_payment = new EnrollInformation();
+            $enroll_payment->course_id = $course->id;
+            $enroll_payment->student_id = auth()->user()->id;
+            $enroll_payment->batch_id = $batch->id;
+            $enroll_payment->trx_id = request()->trx_id;
+            $enroll_payment->payment_type = 'online';
+            $enroll_payment->save();
+
+            $course_batch_student = new CourseBatchStudent();
+            $course_batch_student->course_id = $enroll_payment->course_id;
+            $course_batch_student->batch_id = $enroll_payment->batch_id;
+            $course_batch_student->student_id = $enroll_payment->student_id;
+            $course_batch_student->status = 'active';
+            $course_batch_student->save();
+            return redirect('/')->with('success', 'Course Enrolled Successfully!');
+
+        } else {
+            return redirect()->back()->with('warning', 'You are already enrolled!');
+        }
     }
 
     public function type_wise_course()

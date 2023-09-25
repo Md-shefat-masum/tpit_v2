@@ -29,11 +29,16 @@ Route::group( ['prefix'=>'','namespace' => "Controllers" ],function(){
     Route::get('/contact', 'WebsiteController@contact')->name("contact");
     Route::get('/courses', 'WebsiteController@courses')->name("courses");
     Route::get('/course/{slug}', 'WebsiteController@course_details')->name("course_details");
-    Route::get('/course/enroll/{slug}', 'WebsiteController@course_enroll')->name("course_enroll");
+
     Route::get('/gallery', 'WebsiteController@gallery')->name("gallery");
     Route::get('/blog', 'WebsiteController@blog')->name("blog");
     Route::get('/seminar', 'WebsiteController@seminar')->name("seminar");
     Route::get('/it-solution-services', 'WebsiteController@it_solution_services')->name("it_solution_services");
+
+    Route::group(['middleware' => ['auth']], function () {
+        Route::get('/course/enroll/{slug}', 'WebsiteController@course_enroll')->name("course_enroll");
+        Route::post('/course/enroll/submit/{slug}', 'WebsiteController@course_enroll_submit')->name("course_enroll_submit");
+    });
 
     Route::get('/login', 'Auth\AuthController@login')->name('login');
     Route::post('/login', 'Auth\AuthController@login_submit')->name('login_sumbit');

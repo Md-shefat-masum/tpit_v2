@@ -361,7 +361,7 @@
                     <div class="course_info_div">
                         <div class="course_info_thubnail_and_icon">
                             <div class="course_info_thubnail">
-                                <img src="{{ asset($data->image) }}"
+                                <img class="img-fluid" src="{{ asset($data->image) }}"
                                     alt="">
                             </div>
                             <div class="course_info_icon">
@@ -393,10 +393,17 @@
                             @endif
                         </div>
                         <div class="admit_course">
-                            <a href="#" class="admit_course_title_and_icon">
-                                <div href="#" class="admit_course_title">কোর্সে ভর্তি হোন</div>
-                                <div class="admit_course_icon"><i class="fa-solid fa-angle-right"></i></div>
-                            </a>
+                            @if ($check_enrolled)
+                                <a onclick="event.preventDefault()" href="#" class="admit_course_title_and_icon">
+                                    <div class="admit_course_title">কোর্স দেখুন</div>
+                                    <div class="admit_course_icon"><i class="fa-solid fa-angle-right"></i></div>
+                                </a>
+                            @else
+                                <a href="{{ route('course_enroll', $data->slug) }}" class="admit_course_title_and_icon">
+                                    <div class="admit_course_title">কোর্সে ভর্তি হোন</div>
+                                    <div class="admit_course_icon"><i class="fa-solid fa-angle-right"></i></div>
+                                </a>
+                            @endif
                             <div class="admit_course_batch">
                                 <div class="admit_course_batch_title">ব্যাচ <span>{{ $batch_info->batch_name }}</span></div>
                                 <div class="admit_course_start_and_deadline">

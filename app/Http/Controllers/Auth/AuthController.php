@@ -7,6 +7,7 @@ use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Validation\ValidationException;
 
 class AuthController extends Controller
@@ -46,7 +47,9 @@ class AuthController extends Controller
             return redirect()->route('dashboard')->withCookie($token_c);
         }
 
-        return redirect('/');
+        $urls = Session::get('url');
+        $redirect_url = $urls['intended'];
+        return redirect($redirect_url);
     }
 
     public function logout_submit()
