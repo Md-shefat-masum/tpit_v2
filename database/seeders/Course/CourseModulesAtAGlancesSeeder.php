@@ -10,7 +10,7 @@ class CourseModulesAtAGlancesSeeder extends Seeder
 {
     /**
      * Run the database seeds.
-     *
+     * php artisan db:seed --class="Database\Seeders\Course\CourseModulesAtAGlancesSeeder"
      * @return void
      */
     public function run()
@@ -22,17 +22,17 @@ class CourseModulesAtAGlancesSeeder extends Seeder
         ]);
 
         CourseModuleAtAGlances::create([
-            'course_id' => 2,
+            'course_id' => 1,
             'title' => 'জব/ফ্রিলান্সিং গাইডলাইন',
         ]);
 
         CourseModuleAtAGlances::create([
-            'course_id' => 3,
+            'course_id' => 1,
             'title' => '১৫ টি কুইজ',
         ]);
 
         CourseModuleAtAGlances::create([
-            'course_id' => 4,
+            'course_id' => 1,
             'title' => 'কোর্স শেসে সার্টিফিকেট প্রদান',
         ]);
 

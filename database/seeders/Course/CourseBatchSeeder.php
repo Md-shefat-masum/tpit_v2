@@ -22,6 +22,7 @@ class CourseBatchSeeder extends Seeder
             'admission_start_date' => '2023-09-25',
             'admission_end_date' => '2023-10-25',
             'batch_student_limit' => 30,
+            'booked_percent' => 65,
             'seat_booked' => rand(5,10),
             'course_price' => 10000,
             'course_discount' => 30,
@@ -44,6 +45,30 @@ class CourseBatchSeeder extends Seeder
             'admission_start_date' => '2023-09-25',
             'admission_end_date' => '2023-10-25',
             'batch_student_limit' => 30,
+            'booked_percent' => 56,
+            'seat_booked' => rand(5,10),
+            'course_price' => 10000,
+            'course_discount' => 30,
+            'after_discount_price' => 7000,
+            'first_class_date' => '2023-10-26',
+            'class_days' => 'রবিবার,মঙ্গলবার,বৃহস্পতিবার' ,
+            'class_start_time' => '10:00',
+            'class_end_time' => '12:00',
+        ]);
+
+        CourseBatchStudent::create([
+            'course_id' => 1,
+            'batch_id' => $batch->id,
+            'student_id' => 7,
+        ]);
+
+        $batch = CourseBatches::create([
+            'course_id' => 3,
+            'batch_name' => 'dm-202305',
+            'admission_start_date' => '2023-09-25',
+            'admission_end_date' => '2023-10-25',
+            'batch_student_limit' => 30,
+            'booked_percent' => 76,
             'seat_booked' => rand(5,10),
             'course_price' => 10000,
             'course_discount' => 30,

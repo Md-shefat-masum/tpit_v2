@@ -28,6 +28,7 @@ Route::group( ['prefix'=>'','namespace' => "Controllers" ],function(){
     Route::get('/about', 'WebsiteController@about')->name("about");
     Route::get('/contact', 'WebsiteController@contact')->name("contact");
     Route::get('/courses', 'WebsiteController@courses')->name("courses");
+    Route::get('/course/{slug}', 'WebsiteController@course_details')->name("course_details");
     Route::get('/gallery', 'WebsiteController@gallery')->name("gallery");
     Route::get('/blog', 'WebsiteController@blog')->name("blog");
     Route::get('/it-solution-services', 'WebsiteController@it_solution_services')->name("it_solution_services");

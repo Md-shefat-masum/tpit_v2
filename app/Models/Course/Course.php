@@ -4,6 +4,7 @@ namespace App\Models\Course;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Str;
 
 class Course extends Model
 {
@@ -13,32 +14,40 @@ class Course extends Model
   protected static function booted()
   {
     static::created(function ($data) {
-      $data->slug = random_int(100, 999) . $data->id . random_int(1000, 9999);
+      $random_no = random_int(100, 999) . $data->id . random_int(100, 999);
+      $slug = $data->title . " " . $random_no;
+      $data->slug = Str::slug($slug);
       $data->save();
     });
   }
 
+  public function scopeActive($q)
+  {
+    return $q->where('status', 'active');
+  }
+
+  public function course_batch()
+  {
+    return $this->hasMany(CourseBatches::class, 'course_id');
+  }
+
   public function course_job_works()
   {
-
     return $this->hasMany(CourseJobWorks::class, 'course_id');
   }
 
   public function course_modules()
   {
-
-    return $this->hasMany(CourseModul::class, 'course_id');
+    return $this->hasMany(CourseModule::class, 'course_id');
   }
 
   public function course_module_task_complite_by_user()
   {
-
     return $this->hasMany(CourseModulTaskCompleteByUsers::class, 'course_id');
   }
 
   public function course_instactor()
   {
-
     return $this->hasMany(CourseInstructors::class, 'course_id');
   }
 
@@ -49,7 +58,7 @@ class Course extends Model
 
   public function course_module_at_a_glance()
   {
-    return $this->hasMany(CourseModulAtAGlances::class, 'course_id');
+    return $this->hasMany(CourseModuleAtAGlances::class, 'course_id');
   }
 
   public function course_what_you_will_get()
@@ -76,7 +85,7 @@ class Course extends Model
 
   public function course_you_will_learns()
   {
-    return $this->hasMany(CourseWillLearns::class, 'course_id');
+    return $this->hasMany(CourseYouWillLearns::class, 'course_id');
   }
 
   public function course_you_will_learn_for_us()

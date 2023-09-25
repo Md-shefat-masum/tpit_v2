@@ -16,6 +16,7 @@ class CreateCourseModuleClassQuizesTable extends Migration
         Schema::create('course_module_class_quizes', function (Blueprint $table) {
             $table->id();
             $table->bigInteger("course_id")->unsigned()->nullable();
+            $table->bigInteger("course_module_id")->unsigned()->nullable();
             $table->bigInteger("course_module_class_id")->unsigned()->nullable();
             $table->bigInteger("quiz_id")->unsigned()->nullable();
             $table->bigInteger("creator")->unsigned()->nullable();

@@ -16,4 +16,14 @@ class CourseModule extends Model
             $data->save();
         });
     }
+
+    public function classes()
+    {
+        return $this->hasMany(CourseModuleClasses::class,'course_modules_id');
+    }
+
+    public function quizes()
+    {
+        return $this->hasMany(CourseModuleClassQuizes::class,'course_module_id');
+    }
 }

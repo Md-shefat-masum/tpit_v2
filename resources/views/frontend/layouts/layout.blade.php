@@ -21,11 +21,21 @@
     <link rel="stylesheet" href="{{ asset('css/plugins/bootstrap.css') }}">
     <link rel="stylesheet" href="{{ asset('frontend') }}/assets/icon/fontawesome-free-6.2.0-web/css/all.min.css">
     <link rel="stylesheet" href="{{ asset('frontend') }}/assets/styles/style.css">
+
+    {{-- js plugins --}}
     <script src="{{ asset('js/plugins/localforage.min.js') }}"></script>
     <script src="{{ asset('js/plugins/turbolinks.min.js') }}"></script>
     <script src="{{ asset('js/plugins/sweetalert.js') }}"></script>
     <script src="{{ asset('js/plugins/axios.js') }}"></script>
+    <script src="{{ asset('js/plugins/vue.min.js') }}"></script>
+
+    {{-- frontend vue scripts --}}
+    <script src="{{ asset('js/frontend_vue.js') }}"></script>
+
+    {{-- turbo link setup --}}
     <script src="{{ asset('js/frontend.js') }}" defer></script>
+
+    {{-- pwa setup --}}
     {{-- <script src="{{ asset('main.js') }}" defer></script> --}}
 </head>
 

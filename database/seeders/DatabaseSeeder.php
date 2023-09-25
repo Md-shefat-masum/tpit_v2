@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\ContactMessage;
+use App\Models\Quiz\QuizQuestionSubmission;
 use Database\Seeders\Blog\BlogCategorySeeder;
 use Database\Seeders\Blog\BlogCommentRepliesSeeder;
 use Database\Seeders\Blog\BlogCommentsSeeder;
@@ -33,6 +34,12 @@ use Database\Seeders\Course\CourseYouWillLearnsSeeder;
 use Database\Seeders\Course\CourseModuleClassQuizesSeeder;
 use Database\Seeders\Course\CourseModuleClassResoursesSeeder;
 use Database\Seeders\Course\CourseModuleClassRoutinesSeeder;
+use Database\Seeders\Quiz\QuizQuestionOptionSeeder;
+use Database\Seeders\Quiz\QuizQuestionSeeder;
+use Database\Seeders\Quiz\QuizQuestionSubmissionSeeder;
+use Database\Seeders\Quiz\QuizSeeder;
+use Database\Seeders\Quiz\QuizUserSeeder;
+use Database\Seeders\Setting\SettingSeeder;
 use Database\Seeders\User\UserSocialLinksSeeder;
 use Database\Seeders\User\UserContactNumberSeeder;
 use Illuminate\Database\Seeder;
@@ -86,10 +93,15 @@ class DatabaseSeeder extends Seeder
             BlogTagSeeder::class,
             BlogVideoLinksSeeder::class,
             BlogViewSeeder::class,
-            BlogWriterSeeder  ::class,
+            BlogWriterSeeder::class,
+            SettingSeeder::class,
+            CourseTypeSeeder::class,
 
-            
-
+            QuizSeeder::class,
+            QuizQuestionSeeder::class,
+            QuizQuestionOptionSeeder::class,
+            QuizQuestionSubmissionSeeder::class,
+            QuizUserSeeder::class
         ]);
 
 
