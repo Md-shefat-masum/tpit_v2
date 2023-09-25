@@ -432,6 +432,14 @@ $meta = [
                     </div>
                 </div>
                 <!-- left_area end -->
+
+                <div class="col-xs-12 col-md-12 col-lg-6">
+                    <div class="right_area">
+                        <div class="free_seminar_image">
+                            <img src="/frontend/assets/images/home_page_image/free_seminar_area/img.png" alt="seminar_image tech park it">
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

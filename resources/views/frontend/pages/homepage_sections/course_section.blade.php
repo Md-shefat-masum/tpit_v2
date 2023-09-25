@@ -30,8 +30,7 @@
                         <!-- card_img start -->
                         <a href="#" class="card_img_area">
                             <div class="card_img">
-                                <img :src="course.image"
-                                    alt="graphic_designer, tech park it" />
+                                <img :src="course.image" alt="graphic_designer, tech park it" />
                             </div>
                         </a>
                         <!-- card_img end -->
@@ -87,7 +86,7 @@
                                     <!-- all_amount area end -->
 
                                     <!-- button_area start -->
-                                    <a :href="`course/${course.slug}`" class="button_all">
+                                    <a :href="`/course/${course.slug}`" class="button_all">
                                         <span class="btn-text">কোর্সটি দেখি</span>
                                         <span class="btn_icon">
                                             <i class="fa-solid fa-arrow-right"></i>
@@ -113,7 +112,7 @@
         <script>
             setTimeout(() => {
                 initiate_our_course_types();
-            }, 500);
+            }, 1000);
         </script>
     </div>
 </section>
