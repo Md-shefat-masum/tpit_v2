@@ -31,6 +31,7 @@ Route::group( ['prefix'=>'','namespace' => "Controllers" ],function(){
     Route::get('/course/{slug}', 'WebsiteController@course_details')->name("course_details");
     Route::get('/gallery', 'WebsiteController@gallery')->name("gallery");
     Route::get('/blog', 'WebsiteController@blog')->name("blog");
+    Route::get('/seminar', 'WebsiteController@seminar')->name("seminar");
     Route::get('/it-solution-services', 'WebsiteController@it_solution_services')->name("it_solution_services");
 
     Route::get('/login', 'Auth\AuthController@login')->name('login');

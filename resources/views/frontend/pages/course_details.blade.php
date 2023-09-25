@@ -294,6 +294,7 @@
                     </script>
                     <!-- /class module end -->
                     <!-- course trainer start-->
+
                     @if ($data->course_instactor)    
                         <section class="course_trainers_area">
                             <div class="container">
@@ -353,18 +354,18 @@
                     @endif
                     <!-- /course trainer end -->
                 </div>
+                
+                    <!-- /course trainer end -->
+                </div>
                 <div class="course_info">
-                    @php
-                        $batch_info = $data->course_batch()->first();
-                    @endphp
                     <div class="course_info_div">
                         <div class="course_info_thubnail_and_icon">
                             <div class="course_info_thubnail">
-                                <img src="{{ asset($data->image) }}"
+                                <img src="./assets/images/course_details_image/course_details_thumbnail.png"
                                     alt="">
                             </div>
                             <div class="course_info_icon">
-                                <img src="{{ asset('frontend/') }}/assets/images/course_details_image/course_info_icon.png" alt="">
+                                <img src="./assets/images/course_details_image/course_info_icon.png" alt="">
                             </div>
                         </div>
                         <div class="course_info_time">
@@ -379,11 +380,11 @@
                             </div>
                             <div class="course_booked">
                                 <div>{{ $batch_info->booked_percent }}%</div>
+
                                 <div>বুকড</div>
                             </div>
                         </div>
                         <div class="course_fee">
-                            
                             @if($batch_info)
                                 <del class="twenty_thousand">৳ {{ $batch_info->course_price }}</del>
                                 <div class="ten_thousand">৳ {{ $batch_info->after_discount_price }}</div>
@@ -398,12 +399,23 @@
                             </div>
                             <div class="admit_course_batch">
                                 <div class="admit_course_batch_title">ব্যাচ <span>{{ $batch_info->batch_name }}</span></div>
+                            <del class="twenty_thousand">৳ ২০,০০০</del>
+                            <div class="ten_thousand">৳ ১০,০০০</div>
+                        </div>
+                        <div class="admit_course">
+                            <div class="admit_course_title_and_icon">
+                                <div class="admit_course_title">কোর্সে ভর্তি হোন</div>
+                                <div class="admit_course_icon"><i class="fa-solid fa-angle-right"></i></div>
+                            </div>
+                            <div class="admit_course_batch">
+                                <div class="admit_course_batch_title">ব্যাচ <span>২</span></div>
                                 <div class="admit_course_start_and_deadline">
                                     <div class="admit_course_start">
                                         <div class="admit_course_start_title"><span><i
                                                     class="fa-regular fa-calendar-days"></i></span><span>ভর্তী শুরুঃ</span>
                                         </div>
                                         <div class="admit_course_start_date">{{ \Carbon\Carbon::parse($batch_info->admission_start_date)->format('d M Y') }}</div>
+
                                     </div>
                                     <div class="admit_course_line"></div>
                                     <div class="admit_course_deadline">
@@ -411,6 +423,7 @@
                                                     class="fa-regular fa-calendar-xmark"></i></span><span>ভর্তী শেষঃ</span>
                                         </div>
                                         <div class="admit_course_deadline_date">{{ \Carbon\Carbon::parse($batch_info->admission_end_date)->format('d M Y') }}</div>
+
                                     </div>
                                 </div>
                             </div>
@@ -430,12 +443,24 @@
                                 <div class="admit_course_class_time"><span>
                                     <i class="fa-regular fa-calendar-days"></i></span>
                                     <span>ক্লাসের সময়ঃ {{ \Carbon\Carbon::parse($batch_info->class_start_time)->format('g:i A') }} - {{ \Carbon\Carbon::parse($batch_info->class_end_time)->format('g:i A') }}</span>
+
+                                <div class="admit_course_orientation"><span><i
+                                            class="fa-regular fa-calendar-days"></i></span><span>ওরিয়েন্টেশন ও প্রথম ক্লাসঃ
+                                        ১২ অক্টোবর,
+                                        বুধবার</span></div>
+                                <div class="admit_course_class_date"><span><i
+                                            class="fa-regular fa-calendar-days"></i></span><span>ক্লাসের দিনঃ
+                                        শনি-সোম-বুধ</span></div>
+                                <div class="admit_course_class_time"><span><i
+                                            class="fa-regular fa-calendar-days"></i></span><span>ক্লাসের সময়ঃ রাত ০৮ঃ৩০ -
+                                        রাত ১১ঃ৩০</span>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="course_needed">
                         <div class="course_needed_title">কোর্সটি করার জন্য যা যা লাগবে</div>
+
                         @if($data->course_essentials)
                             @foreach ($data->course_essentials as $course_essential)    
                                 <div class="course_needed_internet">
@@ -456,6 +481,15 @@
                                 </div>
                                 @endforeach
                                 
+
+                        <div class="course_needed_internet"><i class="fa-regular fa-circle-dot"></i>ইন্টারনেট সংযোগ যুক্ত
+                            কম্পিউটার
+                        </div>
+                        <div class="course_hotline_and_schedule">
+                            <div class="course_hotline">
+                                <div class="course_hotline_title">যেকোনো প্রয়োজনে কল করুনঃ </div>
+                                <i class="fa-solid fa-phone"></i>
+                                <div class="course_hotline_number"> 01719-229595</div>
                             </div>
                             <div class="course_schedule">(সকাল ১০ টা থেকে রাত ৮ টা)</div>
                         </div>
