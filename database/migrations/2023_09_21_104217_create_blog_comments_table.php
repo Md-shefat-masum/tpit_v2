@@ -19,7 +19,7 @@ class CreateBlogCommentsTable extends Migration
             $table->bigInteger('user_id')->nullable();
             $table->text('comment')->nullable();
 
-            $table->tinyInteger("creator")->unsigned()->nullable();
+            $table->bigInteger("creator")->unsigned()->nullable();
             $table->string("slug", 50)->nullable();
             $table->enum('status',['active','inactive'])->default('active');
             $table->timestamps();

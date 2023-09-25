@@ -20,7 +20,7 @@ class CreateCourseModuleClassResoursesTable extends Migration
             $table->bigInteger("course_module_id")->unsigned()->nullable();
             $table->text("resourse_content")->nullable();
             $table->string("resourse_link", 100)->nullable();
-            $table->tinyInteger("creator")->unsigned()->nullable();
+            $table->bigInteger("creator")->unsigned()->nullable();
             $table->string("slug", 50)->nullable();
             $table->enum('status',['active','inactive'])->default('active');
             $table->timestamps();

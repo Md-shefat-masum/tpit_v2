@@ -22,7 +22,7 @@ class CreateCourseModuleClassesTable extends Migration
             $table->enum('type', ['live','recorded'])->default('recorded');
             $table->string("class_vedio_link", 150)->nullable();
             $table->string("class_vedio_poster", 100)->nullable();
-            $table->tinyInteger("creator")->unsigned()->nullable();
+            $table->bigInteger("creator")->unsigned()->nullable();
             $table->string("slug", 50)->nullable();
             $table->enum('status',['active','inactive'])->default('active');
             $table->timestamps();

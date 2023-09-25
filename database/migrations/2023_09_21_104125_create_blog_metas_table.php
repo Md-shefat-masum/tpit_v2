@@ -23,7 +23,7 @@ class CreateBlogMetasTable extends Migration
             $table->string('image_alter_text', 150)->nullable();
             $table->string('image_title', 150)->nullable();
 
-            $table->tinyInteger("creator")->unsigned()->nullable();
+            $table->bigInteger("creator")->unsigned()->nullable();
             $table->string("slug", 50)->nullable();
             $table->enum('status',['active','inactive'])->default('active');
 

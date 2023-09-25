@@ -18,7 +18,7 @@ class CreateBlogViewsTable extends Migration
             $table->bigInteger('blog_id')->nullable();
             $table->string('device_ip', 50)->nullable();
 
-            $table->tinyInteger("creator")->unsigned()->nullable();
+            $table->bigInteger("creator")->unsigned()->nullable();
             $table->string("slug", 50)->nullable();
             $table->enum('status',['active','inactive'])->default('active');
 

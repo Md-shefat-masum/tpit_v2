@@ -8,14 +8,14 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
     {{-- @include('frontend.layouts.includes.pwa') --}}
-    @if(!isset($seo))
-    @include('frontend.layouts.includes.meta',[
-        'seo'=> (object) [
-            'title' => 'website'
-        ]
-    ])
+    @if (!isset($seo))
+        @include('frontend.layouts.includes.meta', [
+            'seo' => (object) [
+                'title' => 'website',
+            ],
+        ])
     @else
-    @include('frontend.layouts.includes.meta',['seo'=>(object) $seo])
+        @include('frontend.layouts.includes.meta', ['seo' => (object) $seo])
     @endif
     <link rel="fabicon" type="image/png" sizes="16x16" href="{{ asset('favicon.png') }}">
     <link rel="stylesheet" href="{{ asset('css/plugins/bootstrap.css') }}">
@@ -37,8 +37,7 @@
                 <!-- logo_area start -->
                 <div class="logo_area">
                     <a href="/">
-                        <img src="{{ asset('frontend') }}/assets/images/tech_park_it_logo/logo_big.png"
-                            alt="logo, tech park it">
+                        <img src="{{ asset(setting(key:'header_logo')) }}" alt="tech park it">
                     </a>
                 </div>
                 <!-- logo_area end -->
@@ -130,7 +129,8 @@
                             <!-- footer_logo area start -->
                             <div class="footer_logo_area">
                                 <a href="#">
-                                    <img src="{{ asset('frontend') }}/assets/images/tech_park_it_logo/logo_small.png" alt="logo tech_park_it">
+                                    <img src="{{ asset('frontend') }}/assets/images/tech_park_it_logo/logo_small.png"
+                                        alt="logo tech_park_it">
                                 </a>
                             </div>
                             <!-- footer_logo area end -->
@@ -147,18 +147,20 @@
                                 <!-- contact_number_and_email_area start -->
                                 <ul class="contact_number_and_email_area">
                                     <li>
-                                        <a href="#" class="contact">
+                                        <a href="#" class="contact align-items-start">
                                             <div class="logo phone">
                                                 <i class="fa-solid fa-phone"></i>
                                             </div>
                                             <div class="number">
-                                                <p class="text"> 01719-229595 </p>
+                                                @foreach (setting(key: 'phone_numbers', multiple: true) as $item)
+                                                    <p class="text"> {{ $item->value }} </p>
+                                                @endforeach
                                             </div>
                                         </a>
                                     </li>
 
                                     <li>
-                                        <a href="#" class="contact">
+                                        <a href="#" class="contact align-items-start">
                                             <div class="logo whatsapp">
                                                 <i class="fa-brands fa-square-whatsapp"></i>
                                             </div>
@@ -169,7 +171,7 @@
                                     </li>
 
                                     <li>
-                                        <a href="#" class="contact">
+                                        <a href="#" class="contact align-items-start">
                                             <div class="logo telegram">
                                                 <i class="fa-brands fa-telegram"></i>
                                             </div>
@@ -180,7 +182,7 @@
                                     </li>
 
                                     <li>
-                                        <a href="#" class="contact">
+                                        <a href="#" class="contact align-items-start">
                                             <div class="logo email">
                                                 <i class="fa-regular fa-envelope"></i>
                                             </div>
@@ -395,8 +397,8 @@
                                 <div class="full_map">
                                     <iframe
                                         src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3650.2465079689377!2d90.35894107488434!3d23.80983177862991!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3755c1670cdb1779%3A0x645bbf4f0aeb1d56!2sTech%20Park%20IT!5e0!3m2!1sen!2sbd!4v1686513904138!5m2!1sen!2sbd"
-                                        width="100%" height="" style="border:0;" allowfullscreen="" loading="lazy"
-                                        referrerpolicy="no-referrer-when-downgrade"></iframe>
+                                        width="100%" height="" style="border:0;" allowfullscreen=""
+                                        loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                                 </div>
                             </div>
                             <!-- map_area end -->

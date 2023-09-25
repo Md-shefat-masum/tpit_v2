@@ -17,7 +17,7 @@ class CreateCourseForWhomsTable extends Migration
             $table->id();
             $table->bigInteger("course_id")->unsigned()->nullable();
             $table->text("title")->nullable();
-            $table->tinyInteger("creator")->unsigned()->nullable();
+            $table->bigInteger("creator")->unsigned()->nullable();
             $table->string("slug", 50)->nullable();
             $table->enum('status',['active','inactive'])->default('active');
             $table->timestamps();

@@ -17,7 +17,7 @@ class CreateBlogTagsTable extends Migration
             $table->id();
             $table->string('title', 150)->nullable();
 
-            $table->tinyInteger("creator")->unsigned()->nullable();
+            $table->bigInteger("creator")->unsigned()->nullable();
             $table->string("slug", 50)->nullable();
             $table->enum('status',['active','inactive'])->default('active');
             $table->timestamps();

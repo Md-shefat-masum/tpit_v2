@@ -17,7 +17,7 @@ class CreateBlogCommentRepliesTable extends Migration
             $table->id();
             $table->text('comment')->nullable();
 
-            $table->tinyInteger("creator")->unsigned()->nullable();
+            $table->bigInteger("creator")->unsigned()->nullable();
             $table->string("slug", 50)->nullable();
             $table->enum('status',['active','inactive'])->default('active');
             $table->timestamps();

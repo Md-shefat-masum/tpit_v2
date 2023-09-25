@@ -21,7 +21,7 @@ class CreateCourseModuleClassRoutinesTable extends Migration
             $table->date("date")->nullable();
             $table->time("time")->nullable();
             $table->text("topic")->nullable();
-            $table->tinyInteger("creator")->unsigned()->nullable();
+            $table->bigInteger("creator")->unsigned()->nullable();
             $table->string("slug", 50)->nullable();
             $table->enum('status',['active','inactive'])->default('active');
             $table->timestamps();

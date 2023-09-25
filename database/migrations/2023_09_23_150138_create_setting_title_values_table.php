@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateCourseWhyYouLearnFromUsTable extends Migration
+class CreateSettingTitleValuesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,15 @@ class CreateCourseWhyYouLearnFromUsTable extends Migration
      */
     public function up()
     {
-        Schema::create('course_why_you_learn_from_us', function (Blueprint $table) {
+        Schema::create('setting_title_values', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger("course_id")->unsigned()->nullable();
-            $table->text("title")->nullable();
+            $table->bigInteger('setting_title_id')->nullable();
+            $table->text('setting_title')->nullable();
+            $table->longText('value')->nullable();
+            $table->enum('use',['yes','no'])->default('yes');
+
             $table->bigInteger("creator")->unsigned()->nullable();
-            $table->string("slug", 50)->nullable();
+            $table->string('slug',100)->nullable();
             $table->enum('status',['active','inactive'])->default('active');
             $table->timestamps();
         });
@@ -31,6 +34,6 @@ class CreateCourseWhyYouLearnFromUsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('course_why_you_learn_from_us');
+        Schema::dropIfExists('setting_title_values');
     }
 }

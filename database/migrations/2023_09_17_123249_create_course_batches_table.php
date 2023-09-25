@@ -29,7 +29,7 @@ class CreateCourseBatchesTable extends Migration
             $table->time('class_start_time')->nullable();
             $table->time('class_end_time')->nullable();
             
-            $table->tinyInteger("creator")->unsigned()->nullable();
+            $table->bigInteger("creator")->unsigned()->nullable();
             $table->string("slug", 50)->nullable();
             $table->enum('status',['active','inactive'])->default('active');
             

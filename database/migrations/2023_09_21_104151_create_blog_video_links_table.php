@@ -18,7 +18,7 @@ class CreateBlogVideoLinksTable extends Migration
             $table->bigInteger('blog_id')->nullable();
             $table->string('video_link', 50)->nullable();
 
-            $table->tinyInteger("creator")->unsigned()->nullable();
+            $table->bigInteger("creator")->unsigned()->nullable();
             $table->string("slug", 50)->nullable();
             $table->enum('status',['active','inactive'])->default('active');
             $table->timestamps();
