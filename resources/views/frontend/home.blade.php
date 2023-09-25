@@ -313,7 +313,7 @@ $meta = [
                                     <span class="btn_icon">
                                         <i class="fa-solid fa-arrow-right"></i>
                                         <!-- <img src="{{ asset('frontend') }}/assets/images/home_page_image/our_course_area/arrow.png"
-                alt="arrow, tech park it"> -->
+                               alt="arrow, tech park it"> -->
                                     </span>
                                 </button>
                                 <!-- button_area end-->
@@ -856,21 +856,26 @@ $meta = [
                         <!-- free_seminar_area sub_title end -->
 
                         <!-- date_line_area start -->
+                        @foreach ($seminar as $item)
                         <div class="date_line_area">
+                            @php
+                              $date1 = \Carbon\Carbon::now();
+                              $date2 = \Carbon\Carbon::parse($item->date_time);
 
+                              $difference = $date1->diffInDays($date2);
+                            @endphp
                             <div class="date">
-                                <span class="date_number">৩</span>
+                                <span class="date_number">{{$difference}}</span>
                                 <span class="date_text">দিন বাকী</span>
                             </div>
 
                             <div class="data_science">
-                                <span class="data_science_text_title">ডাটা সায়েন্স এ সম্ভাবনাময় ক্যারিয়ার
-                                    গড়ুন</span>
+                                <span class="data_science_text_title"></span>
                                 <div class="data_science_text_sub_title">
                                     <!-- অনলাইন | ১৯ ডিসেম্বর ২৩ সোমবার, 09:00 pm -->
                                     <span> অনলাইন</span>
-                                    <span class="space_space"> |</span>
-                                    <span> ১৯ ডিসেম্বর ২৩ সোমবার, 09:00 pm</span>
+                                    <span class="space_space">{{$item->title}}</span> <br>
+                                    <span> {{\Carbon\Carbon::parse($item->date_time)->format("d F Y h:i A")}}</span>
 
                                 </div>
                             </div>
@@ -882,14 +887,19 @@ $meta = [
                             </div>
 
                         </div>
+                        @endforeach
+                       
+                        <!--  date_line_area end -->
+                        <!-- date_line_area start -->
+                     
                         <!--  date_line_area end -->
 
                         <!-- free_seminar_area_button start-->
                         <div class="free_seminar_button_area">
-                            <button class="button_all">
+                            <a href="/seminar" class="button_all">
                                 <span class="btn_icon"><i class="fa-solid fa-calendar-days"></i></span>
                                 <span class="btn_text">সকল সেমিনারের সময়সূচি</span>
-                            </button>
+                            </a>
                         </div>
                         <!-- free_seminar_area_button end-->
 

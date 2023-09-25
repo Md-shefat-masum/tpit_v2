@@ -33,6 +33,8 @@ use Database\Seeders\Course\CourseYouWillLearnsSeeder;
 use Database\Seeders\Course\CourseModuleClassQuizesSeeder;
 use Database\Seeders\Course\CourseModuleClassResoursesSeeder;
 use Database\Seeders\Course\CourseModuleClassRoutinesSeeder;
+use Database\Seeders\Seminar\SeminarParticipantsSeeder;
+use Database\Seeders\Seminar\SeminarSeeder;
 use Database\Seeders\User\UserSocialLinksSeeder;
 use Database\Seeders\User\UserContactNumberSeeder;
 use Illuminate\Database\Seeder;
@@ -88,8 +90,9 @@ class DatabaseSeeder extends Seeder
             BlogViewSeeder::class,
             BlogWriterSeeder  ::class,
 
+            SeminarSeeder::class,
+            SeminarParticipantsSeeder::class,
             
-
         ]);
 
 

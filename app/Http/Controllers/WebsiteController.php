@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Seminars\Seminars;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 
@@ -9,7 +11,8 @@ class WebsiteController extends Controller
 {
     public function index()
     {
-        return view('frontend.home');
+        $seminar = Seminars::whereDate('date_time', '>', Carbon::today())->get();
+        return view('frontend.home', compact('seminar'));
     }
 
     public function about()
@@ -36,6 +39,13 @@ class WebsiteController extends Controller
     {
         return view('frontend.pages.blog');
     }
+
+    public function seminar()
+    {
+        $seminars = Seminars::whereDate('date_time', '>', Carbon::today())->get();
+        return view('frontend.pages.seminar', compact('seminars'));
+    }
+
     public function it_solution_services()
     {
         return view('frontend.pages.it_solution_services');

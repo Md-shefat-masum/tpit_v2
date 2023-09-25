@@ -394,10 +394,11 @@
                                 </div>
 
                                 <div class="full_map">
-                                    <iframe
+                                    {!! setting(key:'map_link')  !!}
+                                    {{-- <iframe
                                         src="{{setting(key:'map_link')}}"
                                         width="100%" height="" style="border:0;" allowfullscreen=""
-                                        loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                                        loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe> --}}
                                 </div>
                             </div>
                             <!-- map_area end -->
