@@ -30,7 +30,7 @@ content-type: application/json
 
 {
     "course_id": "1",
-    "moduls_no": "1",
+    "module_no": "1",
     "title": "{{title}}",
     "created_at": "{{createdAt}}"
 }
@@ -44,7 +44,7 @@ content-type: application/json
 
 {
     "course_id": "1",
-    "moduls_no": "1",
+    "module_no": "1",
     "title": "{{title}}",
     "created_at": "{{createdAt}}"
 }
@@ -58,7 +58,7 @@ content-type: application/json
 {
     "id": "{{id}}",
     "course_id": "1",
-    "moduls_no": "1",
+    "module_no": "1",
     "title": "this is a update", 
     "created_at": "{{createdAt}}"
 }
@@ -72,7 +72,7 @@ content-type: application/json
 {
     "id": "{{id}}",
     "course_id": "1",
-    "moduls_no": "1",
+    "module_no": "1",
     "title": "this is a canvous update", 
     "created_at": "{{createdAt}}"
 }

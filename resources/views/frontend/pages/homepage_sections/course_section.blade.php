@@ -87,12 +87,12 @@
                                     <!-- all_amount area end -->
 
                                     <!-- button_area start -->
-                                    <button class="button_all">
+                                    <a :href="`course/${course.slug}`" class="button_all">
                                         <span class="btn-text">কোর্সটি দেখি</span>
                                         <span class="btn_icon">
                                             <i class="fa-solid fa-arrow-right"></i>
                                         </span>
-                                    </button>
+                                    </a>
                                     <!-- button_area end-->
                                 </div>
                                 <!-- amount_and_button_area end -->

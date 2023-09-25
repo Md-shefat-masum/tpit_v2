@@ -35,7 +35,7 @@ class WebsiteController extends Controller
 
     public function all_course()
     {
-        $query = Course::select('id', 'title', 'image')->active();
+        $query = Course::select('id', 'title','slug', 'image')->active();
         if (request()->has('course_type')) {
             $query->whereExists(function ($query) {
                 $query->from('course_course_types')
@@ -59,6 +59,11 @@ class WebsiteController extends Controller
                 ->active()->orderBy('id', 'DESC')->first();
         }
         return response()->json($courses);
+    }
+
+    public function course_details($slug) {
+        $data = Course::active()->where('slug',$slug)->first();
+        return view('frontend.pages.course_details', ['data' => $data]);
     }
 
     public function type_wise_course()

@@ -18,19 +18,19 @@ class CourseModulesSeeder extends Seeder
         CourseModule::truncate();
         CourseModule::create([
             'course_id' => 1,
-            'moduls_no' => 1,
+            'module_no' => 1,
             'title' => 'Frontend Recap',
         ]);   
 
         CourseModule::create([
             'course_id' => 1,
-            'moduls_no' => 2,
+            'module_no' => 2,
             'title' => 'Object Oriented PHP',
         ]);   
 
         CourseModule::create([
             'course_id' => 1,
-            'moduls_no' => 3,
+            'module_no' => 3,
             'title' => 'Understanding Server side Technology',
         ]);   
       

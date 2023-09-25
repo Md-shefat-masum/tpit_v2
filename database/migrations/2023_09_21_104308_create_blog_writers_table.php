@@ -43,5 +43,6 @@ class CreateBlogWritersTable extends Migration
     public function down()
     {
         Schema::dropIfExists('blog_writers');
+        Schema::dropIfExists('blog_blog_writer');
     }
 }

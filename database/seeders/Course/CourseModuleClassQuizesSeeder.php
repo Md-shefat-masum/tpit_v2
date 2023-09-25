@@ -17,12 +17,14 @@ class CourseModuleClassQuizesSeeder extends Seeder
         CourseModuleClassQuizes::truncate();
         CourseModuleClassQuizes::create([
             'course_id' => 1,
+            "course_module_id" => 1,
             'course_module_class_id' => 1,
             'quiz_id'  => 1,
         ]);
-
+        
         CourseModuleClassQuizes::create([
             'course_id' => 1,
+            "course_module_id" => 1,
             'course_module_class_id' => 2,
             'quiz_id'  => 2,
         ]);

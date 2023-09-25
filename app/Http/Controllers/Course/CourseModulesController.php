@@ -30,7 +30,7 @@ class CourseModulesController extends Controller
             $query->where(function ($q) use ($key) {
                 return $q->where('id', '%' . $key . '%')
                 ->orWhere('course_id', '%' . $key . '%')
-                ->orWhere('moduls_no', '%' . $key . '%')
+                ->orWhere('module_no', '%' . $key . '%')
                 ->orWhere('title', 'LIKE', '%' . $key . '%');
             });
         }
@@ -64,7 +64,7 @@ class CourseModulesController extends Controller
     {
         $validator = Validator::make(request()->all(), [
             'course_id' => ['required'],
-            'moduls_no' => ['required'],
+            'module_no' => ['required'],
             'title' => ['required'],
         ]);
 
@@ -77,7 +77,7 @@ class CourseModulesController extends Controller
 
         $data = new CourseModule();
         $data->course_id = request()->course_id;
-        $data->moduls_no = request()->moduls_no;
+        $data->module_no = request()->module_no;
         $data->title = request()->title;
         $data->save();
 
@@ -88,7 +88,7 @@ class CourseModulesController extends Controller
     {
         $validator = Validator::make(request()->all(), [
             'course_id' => ['required'],
-            'moduls_no' => ['required'],
+            'module_no' => ['required'],
             'title' => ['required'],
         ]);
 
@@ -101,7 +101,7 @@ class CourseModulesController extends Controller
 
         $data = new CourseModule();
         $data->course_id = request()->course_id;
-        $data->moduls_no = request()->moduls_no;
+        $data->module_no = request()->module_no;
         $data->title = request()->title;
         $data->save();
 
@@ -120,7 +120,7 @@ class CourseModulesController extends Controller
 
         $validator = Validator::make(request()->all(), [
             'course_id' => ['required'],
-            'moduls_no' => ['required'],
+            'module_no' => ['required'],
             'title' => ['required'],
         ]);
 
@@ -132,7 +132,7 @@ class CourseModulesController extends Controller
         }
 
         $data->course_id = request()->course_id;
-        $data->moduls_no = request()->moduls_no;
+        $data->module_no = request()->module_no;
         $data->title = request()->title;
         $data->save();
 
@@ -151,7 +151,7 @@ class CourseModulesController extends Controller
 
         $validator = Validator::make(request()->all(), [
             'course_id' => ['required'],
-            'moduls_no' => ['required'],
+            'module_no' => ['required'],
             'title' => ['required'],
         ]);
 
@@ -163,7 +163,7 @@ class CourseModulesController extends Controller
         }
 
         $data->course_id = request()->course_id;
-        $data->moduls_no = request()->moduls_no;
+        $data->module_no = request()->module_no;
         $data->title = request()->title;
         $data->save();
 
