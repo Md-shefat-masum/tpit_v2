@@ -19,8 +19,11 @@ class CreateCourseModuleTaskCompleteByUsersTable extends Migration
             $table->bigInteger("module_id")->unsigned()->nullable();
             $table->bigInteger("class_id")->unsigned()->nullable();
             $table->bigInteger("user_id")->unsigned()->nullable();
+
+            $table->bigInteger("content_id")->unsigned()->nullable();
             $table->bigInteger("quiz_id")->unsigned()->nullable();
             $table->bigInteger("exam_id")->unsigned()->nullable();
+
             $table->bigInteger("creator")->unsigned()->nullable();
             $table->string("slug", 50)->nullable();
             $table->enum('status',['active','inactive'])->default('active');
