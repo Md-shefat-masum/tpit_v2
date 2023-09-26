@@ -26,6 +26,7 @@ class WebsiteController extends Controller
             [
                 'course_categories' => $course_categories,
                 'course_types' => $course_types,
+
                 'courses' => $courses,
                 "seminar" => $seminar,
             ]
@@ -111,5 +112,8 @@ class WebsiteController extends Controller
     public function it_solution_services()
     {
         return view('frontend.pages.it_solution_services');
+    }
+    public function myCourse(){
+        return view('frontend.pages.mycouse');
     }
 }

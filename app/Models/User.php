@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Course\CourseBatchStudent;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -48,5 +49,9 @@ class User extends Authenticatable
     public function permissions()
     {
         return $this->belongsToMany(UserPermission::class, 'user_user_permission', 'user_id', 'user_permission_id', 'id', 'permission_serial'); //user::id
+    }
+
+    public function batchStudents(){
+        return $this->hasMany(CourseBatchStudent::class, 'student_id', 'id');
     }
 }
