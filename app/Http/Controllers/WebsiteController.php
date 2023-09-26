@@ -167,4 +167,7 @@ class WebsiteController extends Controller
     {
         return view('frontend.pages.it_solution_services');
     }
+    public function myCourse(){
+        return view('frontend.pages.mycouse');
+    }
 }
