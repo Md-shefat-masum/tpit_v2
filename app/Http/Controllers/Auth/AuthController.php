@@ -28,6 +28,12 @@ class AuthController extends Controller
         ]);
 
         $user = User::where('email',request()->email)->orWhere('mobile_number',request()->email)->with(['roles'])->first();
+        if(!$user) {
+            $error = ValidationException::withMessages([
+                'email' => ['invalid email or phone number'],
+            ]);
+            throw $error;
+        }
         $check_password = Hash::check(request()->password, $user->password);
 
         if(!$check_password){
