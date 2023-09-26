@@ -9,6 +9,7 @@ use App\Models\Course\CourseCategory;
 use App\Models\CourseType;
 use App\Models\EnrollInformation;
 use App\Models\Seminars\Seminars;
+use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 
@@ -168,6 +169,26 @@ class WebsiteController extends Controller
         return view('frontend.pages.it_solution_services');
     }
     public function myCourse(){
-        return view('frontend.pages.mycouse');
+        $user = User::find(auth()->user()->id);
+        $userWithCourses = $user->load([
+            'batchStudents' => function ($query) {
+                $query->select('course_id', 'id', 'batch_id', 'student_id', 'course_percent', 'is_complete');
+            },
+            'batchStudents.course' => function ($query) {
+                $query->select('id', 'title', 'image', 'slug');
+            },
+        ]);
+
+        // Use collection methods to split courses based on 'is_complete'
+        $completedCourses = $userWithCourses->batchStudents->where('is_complete', 'complete');
+        $incompleteCourses = $userWithCourses->batchStudents->where('is_complete', 'incomplete');
+        // dd($userWithCourses, $completedCourses, $incompleteCourses);
+
+        
+        return view('frontend.pages.mycouse', [
+            'user_course' => $userWithCourses->batchStudents,
+            'complete_courses' => $completedCourses,
+            'incomplete_courses' => $incompleteCourses,
+        ]);
     }
 }

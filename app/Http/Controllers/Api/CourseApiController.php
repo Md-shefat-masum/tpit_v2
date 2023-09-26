@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 class CourseApiController extends Controller
 {
     public function currentCourse() {
-        $user = User::find(7);
+        $user = User::find(auth()->user()->id);
         $userWithCourses = $user->load([
             'batchStudents' => function ($query) {
                 $query->select('course_id', 'id', 'batch_id', 'student_id', 'course_percent', 'is_complete');
