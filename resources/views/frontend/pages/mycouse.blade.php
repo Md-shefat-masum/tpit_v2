@@ -72,8 +72,8 @@ $meta = [
                                             কমপ্লিটেডঃ
                                         </span>
                                     </div>
-                                    <div class="boking_area">
-                                        <span class="boking_area d-flex justify-content-center align-items-center pt-0"> 
+                                    <div class="boking_area d-flex justify-content-center align-items-center pt-0">
+                                        <span class="boking_text">
                                             {{ $item->course_percent }} %
                                         </span>
                                     </div>
