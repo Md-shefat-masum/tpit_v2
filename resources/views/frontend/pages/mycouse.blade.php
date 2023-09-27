@@ -72,7 +72,7 @@ $meta = [
                                             কমপ্লিটেডঃ
                                         </span>
                                     </div>
-                                    <div class="boking_area d-flex justify-content-center align-items-center pt-0">
+                                    <div class="boking_area d-flex justify-content-center align-items-center pt-0 fw-bolder">
                                         <span class="boking_text">
                                             {{ $item->course_percent }} %
                                         </span>
@@ -85,14 +85,14 @@ $meta = [
                                     
 
                                     <!-- button_area start -->
-                                    <button class="button_all">
+                                    <a href="{{ route('mycourse_details', $item->course->slug) }}" class="text-center button_all">
                                         <span class="btn-text">কোর্স বিস্তারিত</span>
                                         <span class="btn_icon">
                                             <i class="fa-solid fa-arrow-right"></i>
                                             <!-- <img src="./assets/images/home_page_image/our_course_area/arrow.png"
                                                 alt="arrow, tech park it"> -->
                                         </span>
-                                    </button>
+                                    </a>
                                     <!-- button_area end-->
                                 </div>
                                 <!-- amount_and_button_area end -->
@@ -137,7 +137,7 @@ $meta = [
                                                 কমপ্লিটেডঃ
                                             </span>
                                         </div>
-                                        <div class="boking_area d-flex justify-content-center align-items-center pt-0">
+                                        <div class="boking_area d-flex justify-content-center align-items-center pt-0 fw-bolder">
                                             <span class="boking_text">
                                                 {{ $comp_item->course_percent }} %
                                             </span>
@@ -165,14 +165,14 @@ $meta = [
                                         <!-- all_amount area end -->
 
                                         <!-- button_area start -->
-                                        <button class="button_all">
+                                        <a href="{{ route('mycourse_details', $comp_item->course->slug) }}" class="button_all text-center">
                                             <span class="btn-text">কোর্স সার্টিফিকেট দেখুন</span>
                                             <span class="btn_icon">
                                                 <i class="fa-solid fa-arrow-right"></i>
                                                 <!-- <img src="./assets/images/home_page_image/our_course_area/arrow.png"
                                                     alt="arrow, tech park it"> -->
                                             </span>
-                                        </button>
+                                        </a>
                                         <!-- button_area end-->
                                     </div>
                                     <!-- amount_and_button_area end -->

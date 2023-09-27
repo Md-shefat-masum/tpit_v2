@@ -40,9 +40,10 @@ Route::group( ['prefix'=>'','namespace' => "Controllers" ],function(){
         Route::get('/course/enroll/{slug}', 'WebsiteController@course_enroll')->name("course_enroll");
         Route::post('/course/enroll/submit/{slug}', 'WebsiteController@course_enroll_submit')->name("course_enroll_submit");
 
-        Route::group(['prefix' => 'profile'], function() {
+        Route::group(['prefix' => ''], function() {
             // Route::get('/', 'WebsiteController@myCourse')->name("myCourse");
             Route::get('/my-course', 'WebsiteController@myCourse')->name("myCourse");
+            Route::get('/my-course/{slug}', 'WebsiteController@myCourseDetails')->name("mycourse_details");
         });
     });
 

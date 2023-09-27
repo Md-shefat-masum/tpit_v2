@@ -54,8 +54,13 @@ class AuthController extends Controller
         }
 
         $urls = Session::get('url');
-        $redirect_url = $urls['intended'];
-        return redirect($redirect_url);
+        if(isset($urls['intended'])) {
+
+            $redirect_url = $urls['intended'];
+            return redirect($redirect_url);
+        }else {
+            return redirect()->route('myCourse');
+        }
     }
 
     public function logout_submit()

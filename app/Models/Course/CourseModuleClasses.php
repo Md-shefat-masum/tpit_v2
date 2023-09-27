@@ -22,4 +22,9 @@ class CourseModuleClasses extends Model
     {
         return $this->hasOne(CourseModuleClassQuizes::class, 'course_module_class_id', 'id');
     }
+
+    public function class_exam()
+    {
+        return $this->hasOne(CourseModuleClassExams::class, 'course_module_class_id', 'id');
+    }
 }

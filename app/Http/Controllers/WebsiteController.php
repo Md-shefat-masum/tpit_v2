@@ -6,6 +6,7 @@ use App\Models\Course\Course;
 use App\Models\Course\CourseBatches;
 use App\Models\Course\CourseBatchStudent;
 use App\Models\Course\CourseCategory;
+use App\Models\Course\CourseModuleTaskCompleteByUsers;
 use App\Models\CourseType;
 use App\Models\EnrollInformation;
 use App\Models\Seminars\Seminars;
@@ -190,5 +191,68 @@ class WebsiteController extends Controller
             'complete_courses' => $completedCourses,
             'incomplete_courses' => $incompleteCourses,
         ]);
+    }
+
+    public function myCourseDetails($slug) {
+        
+        $data = Course::active()->where('slug', $slug)->select('id', 'title')->first();
+        $data->course_module = $data->course_modules()->orderBy('module_no','ASC')->get();
+        foreach ($data->course_module as $key => $module) {
+            
+            $classes = $module->classes()->get();
+    
+            foreach ($classes as $key => $class) {
+                $class_watched_check = CourseModuleTaskCompleteByUsers::where('class_id', $class->id)
+                ->where('quiz_id', null)
+                ->where('exam_id', null)
+                ->where('course_id', $data->id)
+                ->first();
+                $class->is_complete = false;
+                if($class_watched_check != null) {
+                    $class->is_complete = true;
+                }
+                $class_quiz = $class->class_quiz()->with(['quiz'])->orderBy('id', 'DESC')->first();
+                $class_exam = $class->class_exam()->with(['exam'])->orderBy('id', 'DESC')->first();
+
+                if($class_quiz != null) {
+                    $quiz_complete_check = CourseModuleTaskCompleteByUsers::where('class_id', $class->id)
+                    ->where('course_id', $data->id)
+                    ->where('user_id', auth()->user()->id)
+                    ->where('quiz_id', $class_quiz->quiz_id)
+                    ->first();
+
+                    $class->class_quiz = $class_quiz;
+
+                    $class->class_quiz->is_complete = false;
+                    if($quiz_complete_check != null) {
+                        $class->class_quiz->is_complete = true;
+                    }
+                }
+
+                if($class_exam != null) {
+                    $exam_complete_check = CourseModuleTaskCompleteByUsers::where('class_id', $class->id)
+                    ->where('course_id', $data->id)
+                    ->where('user_id', auth()->user()->id)
+                    ->where('exam_id', $class_exam->exam_id)
+                    ->first();
+
+                    $class->class_exam = $class_exam; 
+
+                    $class->class_exam->is_complete = false;
+                    if($exam_complete_check != null) {
+                        $class->class_exam->is_complete = true;
+                    }
+                }
+            }
+
+            $module->classes = $classes;
+            $data->course_module[$key] = $module;
+            
+        }
+
+
+        // ddd($data->toArray());
+        
+        return view('frontend.pages.my_course_details', ['course' => $data]);
     }
 }
