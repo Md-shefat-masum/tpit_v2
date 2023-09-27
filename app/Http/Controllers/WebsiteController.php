@@ -7,9 +7,12 @@ use App\Models\Course\CourseBatches;
 use App\Models\Course\CourseBatchStudent;
 use App\Models\Course\CourseCategory;
 use App\Models\Course\CourseModuleTaskCompleteByUsers;
+use App\Models\CourseOutcomeStep;
+use App\Models\CourseSepciality;
 use App\Models\CourseType;
 use App\Models\EnrollInformation;
 use App\Models\Seminars\Seminars;
+use App\Models\SuccessStory;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -25,6 +28,9 @@ class WebsiteController extends Controller
             $batch->orderBY('id', 'desc')->take(1);
         }])->get();
         $seminar = Seminars::whereDate('date_time', '>', Carbon::today())->get();
+        $course_speciality = CourseSepciality::get();
+        $course_learning_steps = CourseOutcomeStep::get();
+        $success_stories = SuccessStory::get();
         return view(
             'frontend.home',
             [
@@ -33,6 +39,10 @@ class WebsiteController extends Controller
 
                 'courses' => $courses,
                 "seminar" => $seminar,
+
+                'course_speciality' => $course_speciality,
+                'course_learning_steps' => $course_learning_steps,
+                'success_stories' => $success_stories
             ]
         );
     }
