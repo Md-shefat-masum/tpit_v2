@@ -22,9 +22,9 @@
             <!-- student_success_history_area_sub_title end -->
 
             <!-- student_success_video_area start -->
-            <div class="student_success_video_area" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            <div class="student_success_video_area">
                 @foreach ($success_stories as $story)
-                <button class="success_video_area">
+                <button class="success_video_area" onclick="showVideo({{$story}})">
                     <div class="success_video_cover_photo">
                         <img class="img-fluid" src="{{ asset($story->thumbnail_image) }}"
                             alt="video_img tech park it">
@@ -46,8 +46,30 @@
                     <span class="btn_icon"><i class="fa-solid fa-arrow-right"></i></span>
                 </button>
             </div>
+
+            <div id="story_modal" class="modal fade modal-xl" tabindex="-1">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                        {{-- <div class="modal-header">
+                            <h5 class="modal-title">
+                                GeeksforGeeks
+                            </h5>
+                        </div> --}}
+                        <div class="modal-body">
+                            <iframe id="success_video" width="100%" height="450" src="#" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <!-- student_success_history_area_button end-->
 
         </div>
     </div>
+    <script>
+        var modal1 = new bootstrap.Modal(document.getElementById('story_modal'));
+        function showVideo(story) {
+            document.getElementById('success_video').src = story.video_link;
+            modal1.toggle();
+        }
+    </script>
 </section>
