@@ -27,7 +27,13 @@ class AuthController extends Controller
             "password" => ["required"],
         ]);
 
-        $user = User::where('email',request()->email)->orWhere('mobile_number',request()->email)->with(['roles'])->first();
+
+        if(!$user) {
+            $error = ValidationException::withMessages([
+                'email' => ['invalid email or phone number'],
+            ]);
+            throw $error;
+        }
         $check_password = Hash::check(request()->password, $user->password);
 
         if(!$check_password){
@@ -48,8 +54,16 @@ class AuthController extends Controller
         }
 
         $urls = Session::get('url');
+        if(isset($urls['intended'])) {
+
+            $redirect_url = $urls['intended'];
+            return redirect($redirect_url);
+        }else {
+            return redirect()->route('myCourse');
+        }
         $redirect_url = $urls['intended'];
         return redirect($redirect_url);
+
     }
 
     public function logout_submit()

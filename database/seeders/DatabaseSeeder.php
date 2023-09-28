@@ -110,12 +110,6 @@ class DatabaseSeeder extends Seeder
 
             SeminarSeeder::class,
             SeminarParticipantsSeeder::class,
-
-            QuizSeeder::class,
-            QuizQuestionSeeder::class,
-            QuizQuestionOptionSeeder::class,
-            QuizQuestionSubmissionSeeder::class,
-            QuizUserSeeder::class
         ]);
 
 

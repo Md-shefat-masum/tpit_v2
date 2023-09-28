@@ -34,6 +34,18 @@ Route::group( ['prefix'=>'','namespace' => "Controllers" ],function(){
     Route::get('/blog', 'WebsiteController@blog')->name("blog");
     Route::get('/seminar', 'WebsiteController@seminar')->name("seminar");
     Route::get('/it-solution-services', 'WebsiteController@it_solution_services')->name("it_solution_services");
+    // Route::get('/my-course', 'WebsiteController@myCourse')->name("myCourse");
+
+    Route::group(['middleware' => ['auth']], function () {
+        Route::get('/course/enroll/{slug}', 'WebsiteController@course_enroll')->name("course_enroll");
+        Route::post('/course/enroll/submit/{slug}', 'WebsiteController@course_enroll_submit')->name("course_enroll_submit");
+
+        Route::group(['prefix' => ''], function() {
+            // Route::get('/', 'WebsiteController@myCourse')->name("myCourse");
+            Route::get('/my-course', 'WebsiteController@myCourse')->name("myCourse");
+            Route::get('/my-course/{slug}', 'WebsiteController@myCourseDetails')->name("mycourse_details");
+        });
+    });
 
     Route::group(['middleware' => ['auth']], function () {
         Route::get('/course/enroll/{slug}', 'WebsiteController@course_enroll')->name("course_enroll");
@@ -42,7 +54,8 @@ Route::group( ['prefix'=>'','namespace' => "Controllers" ],function(){
 
     Route::get('/login', 'Auth\AuthController@login')->name('login');
     Route::post('/login', 'Auth\AuthController@login_submit')->name('login_sumbit');
-    Route::get('/logout', 'Auth\AuthController@logout_submit')->name('logout_sumbit');
+    Route::get('/logout', 'Auth\AuthController@logout_submit')->name('logout');
+
 });
 
 Route::get('/dashboard', function () {

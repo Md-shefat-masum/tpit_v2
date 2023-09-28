@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateCourseBatchStudentsTable extends Migration
+class CreateCourseSepcialitiesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,19 +13,13 @@ class CreateCourseBatchStudentsTable extends Migration
      */
     public function up()
     {
-        Schema::create('course_batch_students', function (Blueprint $table) {
+        Schema::create('course_sepcialities', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('course_id')->nullable();
-            $table->bigInteger('batch_id')->nullable();
-            $table->bigInteger('student_id')->nullable();
-
-            $table->integer('course_percent')->unsigned()->default(0);
-            $table->enum('is_complete',['complete','incomplete'])->default('incomplete');
-
+            $table->string('title',100)->nullable();
+            $table->string('image',200)->nullable();
             $table->bigInteger("creator")->unsigned()->nullable();
             $table->string("slug", 50)->nullable();
             $table->enum('status',['active','inactive'])->default('active');
-
             $table->timestamps();
         });
     }
@@ -37,6 +31,6 @@ class CreateCourseBatchStudentsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('course_batch_students');
+        Schema::dropIfExists('course_sepcialities');
     }
 }

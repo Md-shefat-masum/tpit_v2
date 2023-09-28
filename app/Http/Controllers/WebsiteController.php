@@ -6,9 +6,14 @@ use App\Models\Course\Course;
 use App\Models\Course\CourseBatches;
 use App\Models\Course\CourseBatchStudent;
 use App\Models\Course\CourseCategory;
+use App\Models\Course\CourseModuleTaskCompleteByUsers;
+use App\Models\CourseOutcomeStep;
+use App\Models\CourseSepciality;
 use App\Models\CourseType;
 use App\Models\EnrollInformation;
 use App\Models\Seminars\Seminars;
+use App\Models\SuccessStory;
+use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 
@@ -23,6 +28,9 @@ class WebsiteController extends Controller
             $batch->orderBY('id', 'desc')->take(1);
         }])->get();
         $seminar = Seminars::whereDate('date_time', '>', Carbon::today())->get();
+        $course_speciality = CourseSepciality::get();
+        $course_learning_steps = CourseOutcomeStep::get();
+        $success_stories = SuccessStory::get();
         return view(
             'frontend.home',
             [
@@ -31,6 +39,10 @@ class WebsiteController extends Controller
 
                 'courses' => $courses,
                 "seminar" => $seminar,
+
+                'course_speciality' => $course_speciality,
+                'course_learning_steps' => $course_learning_steps,
+                'success_stories' => $success_stories
             ]
         );
     }
@@ -166,5 +178,91 @@ class WebsiteController extends Controller
     public function it_solution_services()
     {
         return view('frontend.pages.it_solution_services');
+    }
+    public function myCourse(){
+        $user = User::find(auth()->user()->id);
+        $userWithCourses = $user->load([
+            'batchStudents' => function ($query) {
+                $query->select('course_id', 'id', 'batch_id', 'student_id', 'course_percent', 'is_complete');
+            },
+            'batchStudents.course' => function ($query) {
+                $query->select('id', 'title', 'image', 'slug');
+            },
+        ]);
+
+        // Use collection methods to split courses based on 'is_complete'
+        $completedCourses = $userWithCourses->batchStudents->where('is_complete', 'complete');
+        $incompleteCourses = $userWithCourses->batchStudents->where('is_complete', 'incomplete');
+        // dd($userWithCourses, $completedCourses, $incompleteCourses);
+
+        
+        return view('frontend.pages.mycouse', [
+            'user_course' => $userWithCourses->batchStudents,
+            'complete_courses' => $completedCourses,
+            'incomplete_courses' => $incompleteCourses,
+        ]);
+    }
+
+    public function myCourseDetails($slug) {
+        
+        $data = Course::active()->where('slug', $slug)->select('id', 'title')->first();
+        $data->course_module = $data->course_modules()->orderBy('module_no','ASC')->get();
+        foreach ($data->course_module as $key => $module) {
+            
+            $classes = $module->classes()->get();
+    
+            foreach ($classes as $key => $class) {
+                $class_watched_check = CourseModuleTaskCompleteByUsers::where('class_id', $class->id)
+                ->where('quiz_id', null)
+                ->where('exam_id', null)
+                ->where('course_id', $data->id)
+                ->first();
+                $class->is_complete = false;
+                if($class_watched_check != null) {
+                    $class->is_complete = true;
+                }
+                $class_quiz = $class->class_quiz()->with(['quiz'])->orderBy('id', 'DESC')->first();
+                $class_exam = $class->class_exam()->with(['exam'])->orderBy('id', 'DESC')->first();
+
+                if($class_quiz != null) {
+                    $quiz_complete_check = CourseModuleTaskCompleteByUsers::where('class_id', $class->id)
+                    ->where('course_id', $data->id)
+                    ->where('user_id', auth()->user()->id)
+                    ->where('quiz_id', $class_quiz->quiz_id)
+                    ->first();
+
+                    $class->class_quiz = $class_quiz;
+
+                    $class->class_quiz->is_complete = false;
+                    if($quiz_complete_check != null) {
+                        $class->class_quiz->is_complete = true;
+                    }
+                }
+
+                if($class_exam != null) {
+                    $exam_complete_check = CourseModuleTaskCompleteByUsers::where('class_id', $class->id)
+                    ->where('course_id', $data->id)
+                    ->where('user_id', auth()->user()->id)
+                    ->where('exam_id', $class_exam->exam_id)
+                    ->first();
+
+                    $class->class_exam = $class_exam; 
+
+                    $class->class_exam->is_complete = false;
+                    if($exam_complete_check != null) {
+                        $class->class_exam->is_complete = true;
+                    }
+                }
+            }
+
+            $module->classes = $classes;
+            $data->course_module[$key] = $module;
+            
+        }
+
+
+        // ddd($data->toArray());
+        
+        return view('frontend.pages.my_course_details', ['course' => $data]);
     }
 }
