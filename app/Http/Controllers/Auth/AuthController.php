@@ -27,7 +27,7 @@ class AuthController extends Controller
             "password" => ["required"],
         ]);
 
-        $user = User::where('email',request()->email)->orWhere('mobile_number',request()->email)->with(['roles'])->first();
+
         if(!$user) {
             $error = ValidationException::withMessages([
                 'email' => ['invalid email or phone number'],
@@ -61,6 +61,9 @@ class AuthController extends Controller
         }else {
             return redirect()->route('myCourse');
         }
+        $redirect_url = $urls['intended'];
+        return redirect($redirect_url);
+
     }
 
     public function logout_submit()
