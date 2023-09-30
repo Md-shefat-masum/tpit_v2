@@ -47,9 +47,15 @@ Route::group( ['prefix'=>'','namespace' => "Controllers" ],function(){
         });
     });
 
+    Route::group(['middleware' => ['auth']], function () {
+        Route::get('/course/enroll/{slug}', 'WebsiteController@course_enroll')->name("course_enroll");
+        Route::post('/course/enroll/submit/{slug}', 'WebsiteController@course_enroll_submit')->name("course_enroll_submit");
+    });
+
     Route::get('/login', 'Auth\AuthController@login')->name('login');
     Route::post('/login', 'Auth\AuthController@login_submit')->name('login_sumbit');
     Route::get('/logout', 'Auth\AuthController@logout_submit')->name('logout');
+
 });
 
 Route::get('/dashboard', function () {
