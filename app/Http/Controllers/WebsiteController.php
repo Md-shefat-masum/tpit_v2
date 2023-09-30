@@ -11,6 +11,7 @@ use App\Models\CourseOutcomeStep;
 use App\Models\CourseSepciality;
 use App\Models\CourseType;
 use App\Models\EnrollInformation;
+use App\Models\ItServices;
 use App\Models\Seminars\Seminars;
 use App\Models\SuccessStory;
 use App\Models\User;
@@ -31,6 +32,7 @@ class WebsiteController extends Controller
         $course_speciality = CourseSepciality::get();
         $course_learning_steps = CourseOutcomeStep::get();
         $success_stories = SuccessStory::get();
+        $it_services = ItServices::get();
         return view(
             'frontend.home',
             [
@@ -42,7 +44,8 @@ class WebsiteController extends Controller
 
                 'course_speciality' => $course_speciality,
                 'course_learning_steps' => $course_learning_steps,
-                'success_stories' => $success_stories
+                'success_stories' => $success_stories,
+                'it_services' => $it_services
             ]
         );
     }
@@ -256,7 +259,7 @@ class WebsiteController extends Controller
             }
 
             $module->classes = $classes;
-            $data->course_module[$key] = $module;
+            // $data->course_module[$key] = $module;
             
         }
 

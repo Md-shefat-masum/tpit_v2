@@ -404,9 +404,10 @@
                     </div> --}}
 
                     <div class="class_module_details">
-                        {{-- @dump($course->course_modules()->get()) --}}
+                        {{-- @dd($course->course_modules) --}}
 
-                        @foreach ($course->course_module as $item)
+                        @foreach ($course->course_module as $key => $item)
+                            {{-- {{ ddd($course->course_module) }} --}}
                             <ul class="class_module_features">
                                 <li class="active">
                                     <div class="class_module_title">
@@ -447,7 +448,7 @@
                                                     
                                                     
                                                     <div data-key="{{ $key }}" data-link="`{{ $class->link }}`" class="live_class_and_topic" style="cursor: {{$class->is_complete ? "pointer;" : 'not-allowed;'}};" 
-                                                        if ($class->is_complete)
+                                                        @if ($class->is_complete)
                                                             onclick="getClassVideolink(`{{ $class->link }}`)"
                                                         @endif
                                                     >

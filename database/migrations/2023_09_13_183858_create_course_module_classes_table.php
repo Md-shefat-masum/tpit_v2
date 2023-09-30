@@ -16,6 +16,7 @@ class CreateCourseModuleClassesTable extends Migration
         Schema::create('course_module_classes', function (Blueprint $table) {
             $table->id();
             $table->bigInteger("course_id")->unsigned()->nullable();
+            $table->bigInteger("milestone_id")->unsigned()->nullable();
             $table->bigInteger("course_modules_id")->unsigned()->nullable();
             $table->string("class_no", 20)->nullable();
             $table->text("title")->nullable();

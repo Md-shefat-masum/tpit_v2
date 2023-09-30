@@ -1,10 +1,11 @@
 <?php
 
+use Facade\Ignition\Tabs\Tab;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateCourseModulesTable extends Migration
+class CreateCourseMilestonesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +14,10 @@ class CreateCourseModulesTable extends Migration
      */
     public function up()
     {
-        Schema::create('course_modules', function (Blueprint $table) {
+        Schema::create('course_milestones', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger("course_id")->unsigned()->nullable();
-            $table->bigInteger("milestone_id")->unsigned()->nullable();
-            $table->bigInteger("module_no")->unsigned()->nullable();
-            $table->string("title", 100)->nullable();
+            $table->bigInteger('course_id')->unsigned()->nullable();
+            $table->string('title', 200)->nullable();
             $table->bigInteger("creator")->unsigned()->nullable();
             $table->string("slug", 50)->nullable();
             $table->enum('status',['active','inactive'])->default('active');
@@ -33,6 +32,6 @@ class CreateCourseModulesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('course_modules');
+        Schema::dropIfExists('course_milestones');
     }
 }
