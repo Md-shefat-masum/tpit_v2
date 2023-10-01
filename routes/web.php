@@ -45,11 +45,10 @@ Route::group( ['prefix'=>'','namespace' => "Controllers" ],function(){
             Route::get('/my-course', 'WebsiteController@myCourse')->name("myCourse");
             Route::get('/my-course/{slug}', 'WebsiteController@myCourseDetails')->name("mycourse_details");
         });
-    });
 
-    Route::group(['middleware' => ['auth']], function () {
-        Route::get('/course/enroll/{slug}', 'WebsiteController@course_enroll')->name("course_enroll");
-        Route::post('/course/enroll/submit/{slug}', 'WebsiteController@course_enroll_submit')->name("course_enroll_submit");
+        Route::group(['prefix' => 'course-manager'], function() {
+            Route::get('/dashboard', 'Auth\CourseManagerController@dashboard')->name("course_manager_dashboard");
+        });
     });
 
     Route::get('/login', 'Auth\AuthController@login')->name('login');
@@ -57,6 +56,8 @@ Route::group( ['prefix'=>'','namespace' => "Controllers" ],function(){
     Route::get('/logout', 'Auth\AuthController@logout_submit')->name('logout');
 
 });
+
+
 
 Route::get('/dashboard', function () {
     return view('backend.dashboard');
