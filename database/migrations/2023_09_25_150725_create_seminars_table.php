@@ -16,6 +16,9 @@ class CreateSeminarsTable extends Migration
         Schema::create('seminars', function (Blueprint $table) {
             $table->id();
             $table->string('title',100)->nullable();
+            $table->string('whatsapp_group',100)->nullable();
+            $table->string('facebook_group',100)->nullable();
+            $table->string('telegram_group',100)->nullable();
             $table->text('details')->nullable();
             $table->timestamp('date_time')->nullable();
 

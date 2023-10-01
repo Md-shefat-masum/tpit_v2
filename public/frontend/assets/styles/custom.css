@@ -27,3 +27,9 @@
     border-radius: 16px;
     overflow: hidden;
 }
+
+.button_all:hover {
+    background-color: #dc2626;
+    border: 1px solid transparent;
+    color: #ffffff;
+}

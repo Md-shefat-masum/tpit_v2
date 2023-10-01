@@ -13,12 +13,13 @@ use App\Models\CourseSepciality;
 use App\Models\CourseType;
 use App\Models\EnrollInformation;
 use App\Models\ItServices;
+use App\Models\Seminars\SeminarParticipants;
 use App\Models\Seminars\Seminars;
 use App\Models\SuccessStory;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Validator;
 
 class WebsiteController extends Controller
 {
@@ -297,5 +298,31 @@ class WebsiteController extends Controller
         // ddd($data->toArray());
         
         return view('frontend.pages.my_course_details', ['course' => $data]);
+    }
+
+    public function registerSeminar() {
+        $validator = Validator::make(request()->all(), [
+            'full_name' => ['required'],
+            'phone_number' => ['required'],
+            'email' => ['email', 'nullable'],
+            'address' => ['string'],
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json([
+                'err_message' => 'validation error',
+                'errors' => $validator->errors(),
+            ], 422);
+        }
+
+        $seminar = new SeminarParticipants();
+        $seminar->seminar_id = request()->seminar_id;
+        $seminar->full_name = request()->full_name;
+        $seminar->email = request()->email;
+        $seminar->phone_number = request()->phone_number;
+        $seminar->address = request()->address;
+        $seminar->save();
+
+        return response()->json(['message' => 'Registraiton for the seminar completed'], 200);
     }
 }

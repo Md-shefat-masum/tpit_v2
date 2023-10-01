@@ -22,7 +22,7 @@
     <link rel="stylesheet" href="{{ asset('frontend') }}/assets/icon/fontawesome-free-6.2.0-web/css/all.min.css">
     <link rel="stylesheet" href="{{ asset('frontend') }}/assets/styles/style.css">
     <link rel="stylesheet" href="{{ asset('frontend') }}/assets/styles/custom.css">
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     {{-- js plugins --}}
     <script src="{{ asset('js/plugins/localforage.min.js') }}"></script>
     <script src="{{ asset('js/plugins/turbolinks.min.js') }}"></script>
