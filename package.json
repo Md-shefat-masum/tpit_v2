@@ -25,6 +25,9 @@
         "vue-template-compiler": "2.7.14"
     },
     "dependencies": {
+        "@ckeditor/ckeditor5-build-classic": "^39.0.2",
+        "@ckeditor/ckeditor5-vue2": "^3.0.1",
+        "@tinymce/tinymce-vue": "^3.2.8",
         "axios": "^1.2.0",
         "chart.js": "^4.2.1",
         "debounce": "^1.2.1",

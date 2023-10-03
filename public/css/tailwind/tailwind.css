@@ -157,6 +157,9 @@
 .mt-8{
     margin-top: 2rem
 }
+.inline{
+    display: inline
+}
 .flex{
     display: -webkit-box;
     display: -ms-flexbox;

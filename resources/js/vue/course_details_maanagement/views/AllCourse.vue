@@ -70,6 +70,7 @@ export default {
             this.$router.push({ name: 'CourseDetails', params: { id: course.id } })
         },
         get_all_course: async function (event) {
+            
             axios.get('/api/v1/course/all').then((response) => {
                 // console.log(response.data);
                 this.all_courses = response.data;

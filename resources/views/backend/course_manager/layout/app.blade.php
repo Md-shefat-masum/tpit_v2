@@ -24,8 +24,8 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('backend') }}/app-assets/css/colors.css">
     <link rel="stylesheet" type="text/css" href="{{ asset('backend') }}/app-assets/css/components.css">
     <link rel="stylesheet" type="text/css" href="{{ asset('backend') }}/app-assets/css/themes/dark-layout.css">
-    <link rel="stylesheet" type="text/css" href="{{ asset('backend') }}/app-assets/css/themes/semi-dark-layout.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"/>
+    <script src="{{ asset('js/plugins/sweetalert.js') }}"></script>
     <!-- BEGIN: Page CSS-->
     <link rel="stylesheet" type="text/css" href="{{ asset('backend') }}/app-assets/css/core/menu/menu-types/vertical-menu.css">
     <!-- END: Page CSS-->
@@ -63,7 +63,6 @@
 
     <!-- BEGIN: Vendor JS-->
     <script src="{{ asset('backend') }}/app-assets/vendors/js/vendors.min.js"></script>
-    <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
     <script src="{{ asset('backend') }}/app-assets/vendors/js/bootstrap/bootstrap.min.js"></script>
     <!-- BEGIN Vendor JS-->
 
