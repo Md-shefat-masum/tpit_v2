@@ -1,7 +1,8 @@
 // require('../backend/plugins/axios_setup');
+import axios from "axios";
 import Vue from 'vue'
 import router from './router';
-
+window.axios = axios;
 Vue.component('course-management', require('./views/Layout.vue').default);
 
 if (document.getElementById('course-management')) {
