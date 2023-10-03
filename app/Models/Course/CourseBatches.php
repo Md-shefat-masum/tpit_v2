@@ -19,6 +19,10 @@ class CourseBatches extends Model
         return $q->where('status', 'active');
     }
 
+    public function course() {
+        return $this->belongsTo(Course::class, 'course_id');
+    }
+
     public function getLeftDaysAttribute()
     {
         $toDate = Carbon::parse($this->admission_end_date);

@@ -45,11 +45,17 @@
 .top-0{
     top: 0px
 }
+.float-right{
+    float: right
+}
 .float-left{
     float: left
 }
 .m-2{
     margin: 0.5rem
+}
+.m-1{
+    margin: 0.25rem
 }
 .mx-3{
     margin-left: 0.75rem;
@@ -70,6 +76,10 @@
 .my-5{
     margin-top: 1.25rem;
     margin-bottom: 1.25rem
+}
+.my-2{
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem
 }
 .-mt-px{
     margin-top: -1px
@@ -356,6 +366,9 @@
 .pt-8{
     padding-top: 2rem
 }
+.pt-4{
+    padding-top: 1rem
+}
 .text-center{
     text-align: center
 }
@@ -415,6 +428,10 @@
 .text-gray-900{
     --tw-text-opacity: 1;
     color: rgb(17 24 39 / var(--tw-text-opacity))
+}
+.text-white{
+    --tw-text-opacity: 1;
+    color: rgb(255 255 255 / var(--tw-text-opacity))
 }
 .underline{
     text-decoration-line: underline

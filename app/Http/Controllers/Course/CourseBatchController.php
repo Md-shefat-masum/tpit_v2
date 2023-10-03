@@ -46,7 +46,7 @@ class CourseBatchController extends Controller
             });
         }
 
-        $datas = $query->paginate($paginate);
+        $datas = $query->with(['course'])->paginate($paginate);
         return response()->json($datas);
     }
 
@@ -59,6 +59,7 @@ class CourseBatchController extends Controller
         }
         $data = CourseBatches::where('id', $id)
             ->select($select)
+            ->with(['course'])
             ->first();
         if ($data) {
             return response()->json($data, 200);

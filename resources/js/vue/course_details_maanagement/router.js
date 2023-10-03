@@ -7,9 +7,12 @@ import WhatIsThisCourse from "./views/pages/WhatIsThisCourse.vue";
 import WhyIsThisCourse from "./views/pages/WhyIsThisCourse.vue";
 import AllCourse from "./views/AllCourse.vue";
 
+import CourseBatchLayout from "./views/pages/course_batch/CourseBatchLayout.vue";
+import CourseBatchALL from "./views/pages/course_batch/All.vue";
+import CourseBatchCreate from "./views/pages/course_batch/Create.vue";
+import CourseBatchEdit from "./views/pages/course_batch/Edit.vue";
+import CourseBatchDetails from "./views/pages/course_batch/Details.vue";
 
-Vue.use(VueRouter);
-window.Fire = new Vue();
 
 Vue.use(VueRouter);
 window.Fire = new Vue();
@@ -42,6 +45,37 @@ const routes = [
                         path: 'why-is-this-course',
                         name: 'WhyIsThisCourse',
                         component: WhyIsThisCourse,
+                    },
+                    {
+                        path: 'batch',
+                        component: CourseBatchLayout,
+                        children: [
+                            {
+                                path: '',
+                                name: 'batch',
+                                component: CourseBatchALL,
+                            },
+                            {
+                                path: 'batch-all',
+                                name: 'CourseBatchALL',
+                                component: CourseBatchALL,
+                            },
+                            {
+                                path: 'batch-create',
+                                name: 'CourseBatchCreate',
+                                component: CourseBatchCreate,
+                            },
+                            {
+                                path: 'batch-edit/:id',
+                                name: 'CourseBatchEdit',
+                                component: CourseBatchEdit,
+                            },
+                            {
+                                path: 'batch-details/:id',
+                                name: 'CourseBatchDetails',
+                                component: CourseBatchDetails,
+                            },
+                        ]
                     },
                 ],
             },

@@ -32,12 +32,12 @@
                     </li>
 
                     <li>
-                        <a href="" aria-current="page" class="router-link-active">
+                        <router-link :to="{name:'batch'}" class="router-link-active">
                             <i class="far fa-circle mr-1"></i>
                             <div>
                                 Course Batch
                             </div>
-                        </a>
+                        </router-link>
                     </li>
 
                     <li>

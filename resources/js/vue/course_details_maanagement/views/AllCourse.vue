@@ -35,16 +35,7 @@
                                             </a>
                                         </div>
                                     </div>
-                                    <!-- <div class="btn-group" role="group">
-                                        <button id="btnGroupDrop1" type="button"
-                                            class="btn btn-outline-secondary dropdown-toggle waves-effect"
-                                            data-bs-toggle="dropdown" aria-haspopup="true"
-                                            aria-expanded="false">Dropdown</button>
-                                        <div class="dropdown-menu" aria-labelledby="btnGroupDrop1" style="">
-                                            <a class="dropdown-item" href="javascript:void(0);">Dropdown link</a>
-                                            <a class="dropdown-item" href="javascript:void(0);">Dropdown link</a>
-                                        </div>
-                                    </div> -->
+                                    
                                 </td>
                             </tr>
                         </tbody>
@@ -52,7 +43,6 @@
                 </div>
             </div>
         </div>
-
     </div>
 </template>
 
