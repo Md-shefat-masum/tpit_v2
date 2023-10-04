@@ -39,16 +39,13 @@
                                             <i class="fa fa-gears"></i>
                                         </button>
                                         <div class="dropdown-menu">
-                                            <router-link :to="{ name: 'CourseBatchCreate'}" class="dropdown-item">
-                                                <i class="text-primary fa-solid fa-circle-plus mr-2"></i> <span>Create</span>
-                                            </router-link>
                                             <router-link :to="{ name: 'CourseBatchDetails', params: { id: batch.id }}" class="dropdown-item">
                                                 <i class="fa text-info fa-eye mr-2"></i> <span>Details</span>
                                             </router-link>
                                             <router-link :to="{ name: 'CourseBatchEdit', params: { id: batch.id }}" class="dropdown-item">
                                                 <i class="fa text-warning fa-pencil mr-2"></i> <span>Edit</span>
                                             </router-link>
-                                            <a href="javascript:void(0)" class="dropdown-item">
+                                            <a href="javascript:void(0)" @click.prevent="deleteCourseBatch(batch.id)" class="dropdown-item">
                                                 <i class="fa text-danger fa-trash mr-2"></i> <span>Delete</span>
                                             </a>
                                         </div>
@@ -84,11 +81,6 @@ export default {
         }
     },
     methods: {
-        // course_edit: async function(course) {
-        //     let current_course = JSON.stringify(course)
-        //     localStorage.setItem('current_course', current_course);
-        //     this.$router.push({ name: 'CourseDetails', params: { id: course.id } })
-        // },
         get_course_batches: async function () {
             let course_id = this.$route.params.id
             axios.get(`/api/v1/course/course-batch/course-batches/${course_id}`).then((response) => {
@@ -102,6 +94,20 @@ export default {
                 //     location.href = '/';
                 // }
             });
+        },
+        deleteCourseBatch: async function(id) {
+            let confirm = await window.s_confirm("Are you sure?");
+            if (confirm) {
+                axios.post(`/api/v1/course/course-batch/destroy`, {id: id}).then((response) => {
+                    // console.log(response.data);
+                    window.toaster("Course Batch deleted successfully!");
+                    this.get_course_batches();
+                })
+                .catch((e) => {
+                    console.log(e);
+                });
+            }
+            
         }
     },
     computed: {

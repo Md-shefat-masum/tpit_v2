@@ -117,6 +117,7 @@ export default {
             await axios.post('/api/v1/course/course-batch/store', data.formData).then((response) => {
                 // localStorage.setItem('current_course', JSON.stringify(response?.data))
                 window.toaster("Course Batch created successfully!");
+                event.reset();
             })
             .catch((e) => {
                 console.log(e);

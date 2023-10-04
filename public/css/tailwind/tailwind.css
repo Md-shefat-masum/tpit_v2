@@ -54,6 +54,9 @@
 .m-2{
     margin: 0.5rem
 }
+.m-0{
+    margin: 0px
+}
 .mx-3{
     margin-left: 0.75rem;
     margin-right: 0.75rem
@@ -163,6 +166,10 @@
 }
 .mt-8{
     margin-top: 2rem
+}
+.ms-4{
+    -webkit-margin-start: 1rem;
+            margin-inline-start: 1rem
 }
 .flex{
     display: -webkit-box;

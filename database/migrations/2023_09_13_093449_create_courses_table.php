@@ -18,12 +18,14 @@ class CreateCoursesTable extends Migration
             $table->string("title", 200)->nullable();
             $table->string("image", 200)->nullable();
             $table->string("intro_video", 200)->nullable();
+            $table->date('published_at')->nullable();
             $table->text("what_is_this_course")->nullable();
             $table->text("why_is_this_course")->nullable();
             $table->enum("type",['online','offline','daycare'])->nullable();
 
             $table->bigInteger("creator")->unsigned()->nullable();
             $table->enum('status',['active','inactive'])->default('active');
+
             $table->string("slug", 50)->nullable();
             $table->timestamps();
         });

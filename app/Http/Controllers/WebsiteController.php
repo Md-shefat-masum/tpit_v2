@@ -59,7 +59,9 @@ class WebsiteController extends Controller
 
     public function all_course()
     {
-        $query = Course::select('id', 'title', 'slug', 'image')->active();
+        $today = Carbon::today();
+        $query = Course::select('id', 'title', 'slug', 'image')
+        ->where('published_at', '>=', $today)->orWhere('published_at', NULL)->active();
         if (request()->has('course_type')) {
             $query->whereExists(function ($query) {
                 $query->from('course_course_types')

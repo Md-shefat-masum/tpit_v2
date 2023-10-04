@@ -207,7 +207,7 @@ class CourseBatchController extends Controller
         if(!$data){
             return response()->json([
                 'err_message' => 'validation error',
-                'errors' => ['name'=>['user_role not found by given id '.(request()->id?request()->id:'null')]],
+                'errors' => ['name'=>['course_batches not found by given id '.(request()->id?request()->id:'null')]],
             ], 422);
         }
 
@@ -240,6 +240,7 @@ class CourseBatchController extends Controller
         $data->admission_end_date = request()->admission_end_date;
         $data->batch_student_limit = request()->batch_student_limit;
         $data->seat_booked = request()->seat_booked;
+        $data->booked_percent = request()->booked_percent;
         $data->course_price = request()->course_price;
         $data->course_discount = request()->course_discount;
         $data->after_discount_price = request()->after_discount_price;
@@ -339,7 +340,7 @@ class CourseBatchController extends Controller
             ], 422);
         }
 
-        $data = CourseCategory::find(request()->id);
+        $data = CourseBatches::find(request()->id);
         $data->delete();
 
         return response()->json([
