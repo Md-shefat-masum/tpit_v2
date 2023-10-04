@@ -131,6 +131,7 @@ Route::group(
 
                 Route::group(['prefix' => 'course-batch'], function () {
                     Route::get('/all', 'Course\CourseBatchController@all');
+                    Route::get('/course-batches/{course_id}', 'Course\CourseBatchController@course_batches');
                     Route::post('/store', 'Course\CourseBatchController@store');
                     Route::post('/canvas-store', 'Course\CourseBatchController@canvas_store');
                     Route::post('/update', 'Course\CourseBatchController@update');

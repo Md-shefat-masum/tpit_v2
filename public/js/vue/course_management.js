@@ -389,12 +389,14 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     //     this.$router.push({ name: 'CourseDetails', params: { id: course.id } })
     // },
     get_course_batches: function () {
-      var _get_course_batches = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee(event) {
+      var _get_course_batches = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee() {
         var _this = this;
+        var course_id;
         return _regeneratorRuntime().wrap(function _callee$(_context) {
           while (1) switch (_context.prev = _context.next) {
             case 0:
-              axios.get('/api/v1/course/course-batch/all').then(function (response) {
+              course_id = this.$route.params.id;
+              axios.get("/api/v1/course/course-batch/course-batches/".concat(course_id)).then(function (response) {
                 // console.log(response.data);
                 _this.course_batches = response.data;
               })["catch"](function (e) {
@@ -404,13 +406,13 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 //     location.href = '/';
                 // }
               });
-            case 1:
+            case 2:
             case "end":
               return _context.stop();
           }
-        }, _callee);
+        }, _callee, this);
       }));
-      function get_course_batches(_x) {
+      function get_course_batches() {
         return _get_course_batches.apply(this, arguments);
       }
       return get_course_batches;
@@ -459,7 +461,73 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ({});
+function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
+function _regeneratorRuntime() { "use strict"; /*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/facebook/regenerator/blob/main/LICENSE */ _regeneratorRuntime = function _regeneratorRuntime() { return exports; }; var exports = {}, Op = Object.prototype, hasOwn = Op.hasOwnProperty, defineProperty = Object.defineProperty || function (obj, key, desc) { obj[key] = desc.value; }, $Symbol = "function" == typeof Symbol ? Symbol : {}, iteratorSymbol = $Symbol.iterator || "@@iterator", asyncIteratorSymbol = $Symbol.asyncIterator || "@@asyncIterator", toStringTagSymbol = $Symbol.toStringTag || "@@toStringTag"; function define(obj, key, value) { return Object.defineProperty(obj, key, { value: value, enumerable: !0, configurable: !0, writable: !0 }), obj[key]; } try { define({}, ""); } catch (err) { define = function define(obj, key, value) { return obj[key] = value; }; } function wrap(innerFn, outerFn, self, tryLocsList) { var protoGenerator = outerFn && outerFn.prototype instanceof Generator ? outerFn : Generator, generator = Object.create(protoGenerator.prototype), context = new Context(tryLocsList || []); return defineProperty(generator, "_invoke", { value: makeInvokeMethod(innerFn, self, context) }), generator; } function tryCatch(fn, obj, arg) { try { return { type: "normal", arg: fn.call(obj, arg) }; } catch (err) { return { type: "throw", arg: err }; } } exports.wrap = wrap; var ContinueSentinel = {}; function Generator() {} function GeneratorFunction() {} function GeneratorFunctionPrototype() {} var IteratorPrototype = {}; define(IteratorPrototype, iteratorSymbol, function () { return this; }); var getProto = Object.getPrototypeOf, NativeIteratorPrototype = getProto && getProto(getProto(values([]))); NativeIteratorPrototype && NativeIteratorPrototype !== Op && hasOwn.call(NativeIteratorPrototype, iteratorSymbol) && (IteratorPrototype = NativeIteratorPrototype); var Gp = GeneratorFunctionPrototype.prototype = Generator.prototype = Object.create(IteratorPrototype); function defineIteratorMethods(prototype) { ["next", "throw", "return"].forEach(function (method) { define(prototype, method, function (arg) { return this._invoke(method, arg); }); }); } function AsyncIterator(generator, PromiseImpl) { function invoke(method, arg, resolve, reject) { var record = tryCatch(generator[method], generator, arg); if ("throw" !== record.type) { var result = record.arg, value = result.value; return value && "object" == _typeof(value) && hasOwn.call(value, "__await") ? PromiseImpl.resolve(value.__await).then(function (value) { invoke("next", value, resolve, reject); }, function (err) { invoke("throw", err, resolve, reject); }) : PromiseImpl.resolve(value).then(function (unwrapped) { result.value = unwrapped, resolve(result); }, function (error) { return invoke("throw", error, resolve, reject); }); } reject(record.arg); } var previousPromise; defineProperty(this, "_invoke", { value: function value(method, arg) { function callInvokeWithMethodAndArg() { return new PromiseImpl(function (resolve, reject) { invoke(method, arg, resolve, reject); }); } return previousPromise = previousPromise ? previousPromise.then(callInvokeWithMethodAndArg, callInvokeWithMethodAndArg) : callInvokeWithMethodAndArg(); } }); } function makeInvokeMethod(innerFn, self, context) { var state = "suspendedStart"; return function (method, arg) { if ("executing" === state) throw new Error("Generator is already running"); if ("completed" === state) { if ("throw" === method) throw arg; return { value: void 0, done: !0 }; } for (context.method = method, context.arg = arg;;) { var delegate = context.delegate; if (delegate) { var delegateResult = maybeInvokeDelegate(delegate, context); if (delegateResult) { if (delegateResult === ContinueSentinel) continue; return delegateResult; } } if ("next" === context.method) context.sent = context._sent = context.arg;else if ("throw" === context.method) { if ("suspendedStart" === state) throw state = "completed", context.arg; context.dispatchException(context.arg); } else "return" === context.method && context.abrupt("return", context.arg); state = "executing"; var record = tryCatch(innerFn, self, context); if ("normal" === record.type) { if (state = context.done ? "completed" : "suspendedYield", record.arg === ContinueSentinel) continue; return { value: record.arg, done: context.done }; } "throw" === record.type && (state = "completed", context.method = "throw", context.arg = record.arg); } }; } function maybeInvokeDelegate(delegate, context) { var methodName = context.method, method = delegate.iterator[methodName]; if (undefined === method) return context.delegate = null, "throw" === methodName && delegate.iterator["return"] && (context.method = "return", context.arg = undefined, maybeInvokeDelegate(delegate, context), "throw" === context.method) || "return" !== methodName && (context.method = "throw", context.arg = new TypeError("The iterator does not provide a '" + methodName + "' method")), ContinueSentinel; var record = tryCatch(method, delegate.iterator, context.arg); if ("throw" === record.type) return context.method = "throw", context.arg = record.arg, context.delegate = null, ContinueSentinel; var info = record.arg; return info ? info.done ? (context[delegate.resultName] = info.value, context.next = delegate.nextLoc, "return" !== context.method && (context.method = "next", context.arg = undefined), context.delegate = null, ContinueSentinel) : info : (context.method = "throw", context.arg = new TypeError("iterator result is not an object"), context.delegate = null, ContinueSentinel); } function pushTryEntry(locs) { var entry = { tryLoc: locs[0] }; 1 in locs && (entry.catchLoc = locs[1]), 2 in locs && (entry.finallyLoc = locs[2], entry.afterLoc = locs[3]), this.tryEntries.push(entry); } function resetTryEntry(entry) { var record = entry.completion || {}; record.type = "normal", delete record.arg, entry.completion = record; } function Context(tryLocsList) { this.tryEntries = [{ tryLoc: "root" }], tryLocsList.forEach(pushTryEntry, this), this.reset(!0); } function values(iterable) { if (iterable || "" === iterable) { var iteratorMethod = iterable[iteratorSymbol]; if (iteratorMethod) return iteratorMethod.call(iterable); if ("function" == typeof iterable.next) return iterable; if (!isNaN(iterable.length)) { var i = -1, next = function next() { for (; ++i < iterable.length;) if (hasOwn.call(iterable, i)) return next.value = iterable[i], next.done = !1, next; return next.value = undefined, next.done = !0, next; }; return next.next = next; } } throw new TypeError(_typeof(iterable) + " is not iterable"); } return GeneratorFunction.prototype = GeneratorFunctionPrototype, defineProperty(Gp, "constructor", { value: GeneratorFunctionPrototype, configurable: !0 }), defineProperty(GeneratorFunctionPrototype, "constructor", { value: GeneratorFunction, configurable: !0 }), GeneratorFunction.displayName = define(GeneratorFunctionPrototype, toStringTagSymbol, "GeneratorFunction"), exports.isGeneratorFunction = function (genFun) { var ctor = "function" == typeof genFun && genFun.constructor; return !!ctor && (ctor === GeneratorFunction || "GeneratorFunction" === (ctor.displayName || ctor.name)); }, exports.mark = function (genFun) { return Object.setPrototypeOf ? Object.setPrototypeOf(genFun, GeneratorFunctionPrototype) : (genFun.__proto__ = GeneratorFunctionPrototype, define(genFun, toStringTagSymbol, "GeneratorFunction")), genFun.prototype = Object.create(Gp), genFun; }, exports.awrap = function (arg) { return { __await: arg }; }, defineIteratorMethods(AsyncIterator.prototype), define(AsyncIterator.prototype, asyncIteratorSymbol, function () { return this; }), exports.AsyncIterator = AsyncIterator, exports.async = function (innerFn, outerFn, self, tryLocsList, PromiseImpl) { void 0 === PromiseImpl && (PromiseImpl = Promise); var iter = new AsyncIterator(wrap(innerFn, outerFn, self, tryLocsList), PromiseImpl); return exports.isGeneratorFunction(outerFn) ? iter : iter.next().then(function (result) { return result.done ? result.value : iter.next(); }); }, defineIteratorMethods(Gp), define(Gp, toStringTagSymbol, "Generator"), define(Gp, iteratorSymbol, function () { return this; }), define(Gp, "toString", function () { return "[object Generator]"; }), exports.keys = function (val) { var object = Object(val), keys = []; for (var key in object) keys.push(key); return keys.reverse(), function next() { for (; keys.length;) { var key = keys.pop(); if (key in object) return next.value = key, next.done = !1, next; } return next.done = !0, next; }; }, exports.values = values, Context.prototype = { constructor: Context, reset: function reset(skipTempReset) { if (this.prev = 0, this.next = 0, this.sent = this._sent = undefined, this.done = !1, this.delegate = null, this.method = "next", this.arg = undefined, this.tryEntries.forEach(resetTryEntry), !skipTempReset) for (var name in this) "t" === name.charAt(0) && hasOwn.call(this, name) && !isNaN(+name.slice(1)) && (this[name] = undefined); }, stop: function stop() { this.done = !0; var rootRecord = this.tryEntries[0].completion; if ("throw" === rootRecord.type) throw rootRecord.arg; return this.rval; }, dispatchException: function dispatchException(exception) { if (this.done) throw exception; var context = this; function handle(loc, caught) { return record.type = "throw", record.arg = exception, context.next = loc, caught && (context.method = "next", context.arg = undefined), !!caught; } for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i], record = entry.completion; if ("root" === entry.tryLoc) return handle("end"); if (entry.tryLoc <= this.prev) { var hasCatch = hasOwn.call(entry, "catchLoc"), hasFinally = hasOwn.call(entry, "finallyLoc"); if (hasCatch && hasFinally) { if (this.prev < entry.catchLoc) return handle(entry.catchLoc, !0); if (this.prev < entry.finallyLoc) return handle(entry.finallyLoc); } else if (hasCatch) { if (this.prev < entry.catchLoc) return handle(entry.catchLoc, !0); } else { if (!hasFinally) throw new Error("try statement without catch or finally"); if (this.prev < entry.finallyLoc) return handle(entry.finallyLoc); } } } }, abrupt: function abrupt(type, arg) { for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i]; if (entry.tryLoc <= this.prev && hasOwn.call(entry, "finallyLoc") && this.prev < entry.finallyLoc) { var finallyEntry = entry; break; } } finallyEntry && ("break" === type || "continue" === type) && finallyEntry.tryLoc <= arg && arg <= finallyEntry.finallyLoc && (finallyEntry = null); var record = finallyEntry ? finallyEntry.completion : {}; return record.type = type, record.arg = arg, finallyEntry ? (this.method = "next", this.next = finallyEntry.finallyLoc, ContinueSentinel) : this.complete(record); }, complete: function complete(record, afterLoc) { if ("throw" === record.type) throw record.arg; return "break" === record.type || "continue" === record.type ? this.next = record.arg : "return" === record.type ? (this.rval = this.arg = record.arg, this.method = "return", this.next = "end") : "normal" === record.type && afterLoc && (this.next = afterLoc), ContinueSentinel; }, finish: function finish(finallyLoc) { for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i]; if (entry.finallyLoc === finallyLoc) return this.complete(entry.completion, entry.afterLoc), resetTryEntry(entry), ContinueSentinel; } }, "catch": function _catch(tryLoc) { for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i]; if (entry.tryLoc === tryLoc) { var record = entry.completion; if ("throw" === record.type) { var thrown = record.arg; resetTryEntry(entry); } return thrown; } } throw new Error("illegal catch attempt"); }, delegateYield: function delegateYield(iterable, resultName, nextLoc) { return this.delegate = { iterator: values(iterable), resultName: resultName, nextLoc: nextLoc }, "next" === this.method && (this.arg = undefined), ContinueSentinel; } }, exports; }
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+/* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      course_id: ''
+    };
+  },
+  methods: {
+    store_batch: function () {
+      var _store_batch = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee(event) {
+        var formData, course_id, data;
+        return _regeneratorRuntime().wrap(function _callee$(_context) {
+          while (1) switch (_context.prev = _context.next) {
+            case 0:
+              formData = new FormData(event);
+              course_id = this.$route.params.id;
+              formData.append('course_id', course_id);
+              data = {
+                formData: formData
+              };
+              _context.next = 6;
+              return axios.post('/api/v1/course/course-batch/store', data.formData).then(function (response) {
+                // localStorage.setItem('current_course', JSON.stringify(response?.data))
+                window.toaster("Course Batch created successfully!");
+              })["catch"](function (e) {
+                console.log(e);
+              });
+            case 6:
+            case "end":
+              return _context.stop();
+          }
+        }, _callee, this);
+      }));
+      function store_batch(_x) {
+        return _store_batch.apply(this, arguments);
+      }
+      return store_batch;
+    }()
+    // get_course_details: async function (event) {
+    //     let whatcourse = localStorage.getItem('current_course');
+    //     if(whatcourse) {
+    //         whatcourse = JSON.parse(whatcourse);
+    //         this.course_id = whatcourse.id
+    //     }
+    // }
+  },
+
+  computed: {},
+  created: function () {
+    var _created = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2() {
+      return _regeneratorRuntime().wrap(function _callee2$(_context2) {
+        while (1) switch (_context2.prev = _context2.next) {
+          case 0:
+          case "end":
+            return _context2.stop();
+        }
+      }, _callee2);
+    }));
+    function created() {
+      return _created.apply(this, arguments);
+    }
+    return created;
+  }()
+});
 
 /***/ }),
 
@@ -1131,7 +1199,11 @@ var render = function render() {
     on: {
       keyup: function keyup($event) {
         if (!$event.type.indexOf("key") && _vm._k($event.keyCode, "enter", 13, $event.key, "Enter")) return null;
-        return _vm.call_store("store_".concat(_vm.store_prefix), $event.target);
+        return _vm.store_batch($event.target);
+      },
+      submit: function submit($event) {
+        $event.preventDefault();
+        return _vm.store_batch($event.target);
       }
     }
   }, [_vm._m(0), _vm._v(" "), _vm._m(1)])])]);
@@ -1145,7 +1217,7 @@ var staticRenderFns = [function () {
     staticClass: "row justify-content-center"
   }, [_c("div", {
     staticClass: "col-xl-10 col-12"
-  }, [_c("form", [_c("h6", [_vm._v("1. Batch Details 💡")]), _vm._v(" "), _c("div", {
+  }, [_c("h6", [_vm._v("1. Batch Details 💡")]), _vm._v(" "), _c("div", {
     staticClass: "row g-3"
   }, [_c("div", {
     staticClass: "col-md-6"
@@ -1265,60 +1337,88 @@ var staticRenderFns = [function () {
   }, [_c("label", {
     staticClass: "form-label",
     attrs: {
-      "for": "multicol-first-name"
+      "for": "admission_start_date"
     }
-  }, [_vm._v("First Name")]), _vm._v(" "), _c("input", {
+  }, [_vm._v("Admission Start Date")]), _vm._v(" "), _c("input", {
     staticClass: "form-control",
-    attrs: {
-      type: "text",
-      id: "multicol-first-name",
-      placeholder: "John"
-    }
-  })]), _vm._v(" "), _c("div", {
-    staticClass: "col-md-6"
-  }, [_c("label", {
-    staticClass: "form-label",
-    attrs: {
-      "for": "multicol-last-name"
-    }
-  }, [_vm._v("Last Name")]), _vm._v(" "), _c("input", {
-    staticClass: "form-control",
-    attrs: {
-      type: "text",
-      id: "multicol-last-name",
-      placeholder: "Doe"
-    }
-  })]), _vm._v(" "), _c("div", {
-    staticClass: "col-md-6"
-  }, [_c("label", {
-    staticClass: "form-label",
-    attrs: {
-      "for": "multicol-birthdate"
-    }
-  }, [_vm._v("Birth Date")]), _vm._v(" "), _c("input", {
-    staticClass: "form-control dob-picker flatpickr-input",
     attrs: {
       type: "date",
-      id: "multicol-birthdate",
-      placeholder: "YYYY-MM-DD",
-      readonly: "readonly"
+      name: "admission_start_date",
+      id: "admission_start_date"
     }
   })]), _vm._v(" "), _c("div", {
     staticClass: "col-md-6"
   }, [_c("label", {
     staticClass: "form-label",
     attrs: {
-      "for": "multicol-phone"
+      "for": "admission_end_date"
     }
-  }, [_vm._v("Phone No")]), _vm._v(" "), _c("input", {
-    staticClass: "form-control phone-mask",
+  }, [_vm._v("Admission End Date")]), _vm._v(" "), _c("input", {
+    staticClass: "form-control",
+    attrs: {
+      type: "date",
+      name: "admission_end_date",
+      id: "admission_end_date"
+    }
+  })]), _vm._v(" "), _c("div", {
+    staticClass: "col-md-6"
+  }, [_c("label", {
+    staticClass: "form-label",
+    attrs: {
+      "for": "first_class_date"
+    }
+  }, [_vm._v("First Class Date")]), _vm._v(" "), _c("input", {
+    staticClass: "form-control",
+    attrs: {
+      type: "date",
+      name: "first_class_date",
+      id: "first_class_date"
+    }
+  })]), _vm._v(" "), _c("div", {
+    staticClass: "col-md-6"
+  }, [_c("label", {
+    staticClass: "form-label",
+    attrs: {
+      "for": "class_start_time"
+    }
+  }, [_vm._v("Class Start Time")]), _vm._v(" "), _c("input", {
+    staticClass: "form-control",
+    attrs: {
+      type: "time",
+      name: "class_start_time",
+      id: "class_start_time"
+    }
+  })]), _vm._v(" "), _c("div", {
+    staticClass: "col-md-6"
+  }, [_c("label", {
+    staticClass: "form-label",
+    attrs: {
+      "for": "class_end_time"
+    }
+  }, [_vm._v("Class End Time")]), _vm._v(" "), _c("input", {
+    staticClass: "form-control",
+    attrs: {
+      type: "time",
+      name: "class_end_time",
+      id: "class_end_time"
+    }
+  })]), _vm._v(" "), _c("div", {
+    staticClass: "col-md-6"
+  }, [_c("label", {
+    staticClass: "form-label",
+    attrs: {
+      "for": "class_days"
+    }
+  }, [_vm._v("Class Days")]), _vm._v(" "), _c("input", {
+    staticClass: "form-control",
     attrs: {
       type: "text",
-      id: "multicol-phone",
-      placeholder: "658 799 8941",
-      "aria-label": "658 799 8941"
+      id: "class_days",
+      name: "class_days",
+      placeholder: "রবিবার,মঙ্গলবার,বৃহস্পতিবার",
+      "aria-label": "রবিবার,মঙ্গলবার,বৃহস্পতিবার"
     }
-  })])])])])])]);
+  })])])])])]);
 }, function () {
   var _vm = this,
     _c = _vm._self._c;
@@ -1327,7 +1427,7 @@ var staticRenderFns = [function () {
   }, [_c("button", {
     staticClass: "btn btn-outline-info",
     attrs: {
-      type: "button"
+      type: "submit"
     }
   }, [_c("i", {
     staticClass: "fa fa-upload"
@@ -3615,7 +3715,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_laravel_mix_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_laravel_mix_node_modules_css_loader_dist_runtime_cssWithMappingToString_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.ck-editor__editable {\n    min-height: 400px;\n}\n.ck.ck-editor__main>.ck-editor__editable {\n    background-color: #283046;\n    border-color: #757575;\n}\n", "",{"version":3,"sources":["webpack://./../../../WhatIsThisCourse.vue"],"names":[],"mappings":";AA8EA;IACA,iBAAA;AACA;AACA;IACA,yBAAA;IACA,qBAAA;AACA","sourcesContent":["<template>\r\n    <div>\r\n        <h6 class=\"mb-1\">What is this course</h6>\r\n\r\n        <form class=\"m-2\" @submit.prevent=\"updateWhatCourse($event.target)\">\r\n            <div class=\"form-group\">\r\n                <label for=\"\">What is this course</label>\r\n                <!-- <textarea class=\"form-control\" name=\"what_is_this_course\" id=\"default\" cols=\"30\" rows=\"10\" v-model=\"what_course\"></textarea> -->\r\n                <ckeditor :editor=\"editor\" v-model=\"what_course\" :config=\"editorConfig\"></ckeditor>\r\n            </div>\r\n            <button type=\"submit\" class=\"btn btn-primary waves-effect waves-light\">update</button>\r\n        </form>\r\n    </div>\r\n</template>\r\n\r\n<script>\r\nimport ClassicEditor from '@ckeditor/ckeditor5-build-classic';\r\nexport default {\r\n    data() {\r\n        return {\r\n            editor: ClassicEditor,\r\n            what_course: null,\r\n            course_id: '',\r\n            editorConfig: {\r\n                // The configuration of the editor.\r\n                uiColor: '#283046',\r\n                height: 400,\r\n            }\r\n            \r\n        }\r\n    },\r\n    methods: {\r\n        updateWhatCourse: async function(event) {\r\n            let formData = new FormData(event);\r\n            formData.append('what_is_this_course', this.what_course);\r\n            formData.append('id', this.course_id);\r\n\r\n            let data = {\r\n                formData: formData,\r\n            }\r\n\r\n            await axios.post('/api/v1/course/update', data.formData).then((response) => {\r\n                localStorage.setItem('current_course', JSON.stringify(response?.data))\r\n                window.toaster(\"Course Data updated successfully!\");\r\n            })\r\n            .catch((e) => {\r\n                console.log(e);\r\n            });\r\n        },\r\n        get_course_details: async function (event) {\r\n            let whatcourse = localStorage.getItem('current_course');\r\n            if(whatcourse) {\r\n                whatcourse = JSON.parse(whatcourse);\r\n                this.what_course = whatcourse.what_is_this_course;\r\n                this.course_id = whatcourse.id\r\n            }\r\n        }\r\n    },\r\n    computed: {\r\n\r\n    },\r\n\r\n    created: async function () {\r\n        await this.get_course_details();\r\n        \r\n    },\r\n}\r\n</script>\r\n\r\n<style>\r\n    .ck-editor__editable {\r\n        min-height: 400px;\r\n    }\r\n    .ck.ck-editor__main>.ck-editor__editable {\r\n        background-color: #283046;\r\n        border-color: #757575;\r\n    }\r\n</style>"],"sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.ck-editor__editable {\n    min-height: 400px;\n}\n.ck.ck-editor__main>.ck-editor__editable {\n    background-color: #283046;\n    border-color: #757575;\n}\n", "",{"version":3,"sources":["webpack://./resources/js/vue/course_details_maanagement/views/pages/WhatIsThisCourse.vue"],"names":[],"mappings":";AA8EA;IACA,iBAAA;AACA;AACA;IACA,yBAAA;IACA,qBAAA;AACA","sourcesContent":["<template>\r\n    <div>\r\n        <h6 class=\"mb-1\">What is this course</h6>\r\n\r\n        <form class=\"m-2\" @submit.prevent=\"updateWhatCourse($event.target)\">\r\n            <div class=\"form-group\">\r\n                <label for=\"\">What is this course</label>\r\n                <!-- <textarea class=\"form-control\" name=\"what_is_this_course\" id=\"default\" cols=\"30\" rows=\"10\" v-model=\"what_course\"></textarea> -->\r\n                <ckeditor :editor=\"editor\" v-model=\"what_course\" :config=\"editorConfig\"></ckeditor>\r\n            </div>\r\n            <button type=\"submit\" class=\"btn btn-primary waves-effect waves-light\">update</button>\r\n        </form>\r\n    </div>\r\n</template>\r\n\r\n<script>\r\nimport ClassicEditor from '@ckeditor/ckeditor5-build-classic';\r\nexport default {\r\n    data() {\r\n        return {\r\n            editor: ClassicEditor,\r\n            what_course: null,\r\n            course_id: '',\r\n            editorConfig: {\r\n                // The configuration of the editor.\r\n                uiColor: '#283046',\r\n                height: 400,\r\n            }\r\n            \r\n        }\r\n    },\r\n    methods: {\r\n        updateWhatCourse: async function(event) {\r\n            let formData = new FormData(event);\r\n            formData.append('what_is_this_course', this.what_course);\r\n            formData.append('id', this.course_id);\r\n\r\n            let data = {\r\n                formData: formData,\r\n            }\r\n\r\n            await axios.post('/api/v1/course/update', data.formData).then((response) => {\r\n                localStorage.setItem('current_course', JSON.stringify(response?.data))\r\n                window.toaster(\"Course Data updated successfully!\");\r\n            })\r\n            .catch((e) => {\r\n                console.log(e);\r\n            });\r\n        },\r\n        get_course_details: async function (event) {\r\n            let whatcourse = localStorage.getItem('current_course');\r\n            if(whatcourse) {\r\n                whatcourse = JSON.parse(whatcourse);\r\n                this.what_course = whatcourse.what_is_this_course;\r\n                this.course_id = whatcourse.id\r\n            }\r\n        }\r\n    },\r\n    computed: {\r\n\r\n    },\r\n\r\n    created: async function () {\r\n        await this.get_course_details();\r\n        \r\n    },\r\n}\r\n</script>\r\n\r\n<style>\r\n    .ck-editor__editable {\r\n        min-height: 400px;\r\n    }\r\n    .ck.ck-editor__main>.ck-editor__editable {\r\n        background-color: #283046;\r\n        border-color: #757575;\r\n    }\r\n</style>"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ __webpack_exports__["default"] = (___CSS_LOADER_EXPORT___);
 

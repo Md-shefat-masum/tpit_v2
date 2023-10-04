@@ -89,9 +89,9 @@ export default {
         //     localStorage.setItem('current_course', current_course);
         //     this.$router.push({ name: 'CourseDetails', params: { id: course.id } })
         // },
-        get_course_batches: async function (event) {
-            
-            axios.get('/api/v1/course/course-batch/all').then((response) => {
+        get_course_batches: async function () {
+            let course_id = this.$route.params.id
+            axios.get(`/api/v1/course/course-batch/course-batches/${course_id}`).then((response) => {
                 // console.log(response.data);
                 this.course_batches = response.data;
             })

@@ -18,12 +18,50 @@ class CourseBatchController extends Controller
         $orderBy = request()->orderBy ?? 'id';
         $orderByType = request()->orderByType ?? 'ASC';
 
-        $status = 1;
+        $status = 'active';
         if (request()->has('status')) {
             $status = request()->status;
         }
 
         $query = CourseBatches::where('status', $status)->orderBy($orderBy, $orderByType);
+
+        if (request()->has('search_key')) {
+            $key = request()->search_key;
+            $query->where(function ($q) use ($key) {
+                return $q->where('id', '%' . $key . '%')
+                    ->orWhere('course_id', '%' . $key . '%')
+                    ->orWhere('batch_name', '%' . $key . '%')
+                    ->orWhere('admission_start_date', '%' . $key . '%')
+                    ->orWhere('admission_end_date', '%' . $key . '%')
+                    ->orWhere('batch_student_limit', 'LIKE', '%' . $key . '%')
+                    ->orWhere('seat_booked', 'LIKE', '%' . $key . '%')
+                    ->orWhere('course_price', 'LIKE', '%' . $key . '%')
+                    ->orWhere('course_discount', 'LIKE', '%' . $key . '%')
+                    ->orWhere('after_discount_price', 'LIKE', '%' . $key . '%')
+                    ->orWhere('first_class_date', 'LIKE', '%' . $key . '%')
+                    ->orWhere('class_days', 'LIKE', '%' . $key . '%')
+                    ->orWhere('class_start_time', 'LIKE', '%' . $key . '%')
+                    ->orWhere('class_end_time', 'LIKE', '%' . $key . '%');
+
+            });
+        }
+
+        $datas = $query->with(['course'])->paginate($paginate);
+        return response()->json($datas);
+    }
+
+    public function course_batches($course_id)
+    {
+        $paginate = (int) request()->paginate ?? 10;
+        $orderBy = request()->orderBy ?? 'id';
+        $orderByType = request()->orderByType ?? 'ASC';
+
+        $status = 'active';
+        if (request()->has('status')) {
+            $status = request()->status;
+        }
+
+        $query = CourseBatches::where('status', $status)->where('course_id', $course_id)->orderBy($orderBy, $orderByType);
 
         if (request()->has('search_key')) {
             $key = request()->search_key;
@@ -105,6 +143,7 @@ class CourseBatchController extends Controller
         $data->admission_end_date = request()->admission_end_date;
         $data->batch_student_limit = request()->batch_student_limit;
         $data->seat_booked = request()->seat_booked;
+        $data->booked_percent = request()->booked_percent;
         $data->course_price = request()->course_price;
         $data->course_discount = request()->course_discount;
         $data->after_discount_price = request()->after_discount_price;
