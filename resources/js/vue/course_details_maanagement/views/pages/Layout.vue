@@ -13,7 +13,7 @@
                         </router-link>
                     </li>
                     <li>
-                        <router-link :to="{ name: `WhatIsThisCourse`, params: { id: 1 } }" aria-current="page"
+                        <router-link :to="{ name: `WhatIsThisCourse`, params: { id: course_id } }" aria-current="page"
                             class="">
                             <i class="far fa-circle mr-1"></i>
                             <div>
@@ -22,7 +22,7 @@
                         </router-link>
                     </li>
                     <li>
-                        <router-link :to="{ name: `WhyIsThisCourse`, params: { id: 1 } }" aria-current="page"
+                        <router-link :to="{ name: `WhyIsThisCourse`, params: { id: course_id } }" aria-current="page"
                             class="">
                             <i class="far fa-circle mr-1"></i>
                             <div>
@@ -41,12 +41,12 @@
                     </li>
 
                     <li>
-                        <a href="" aria-current="page" class="router-link-active">
+                        <router-link :to="{ name: `CourseWhatLearnALL` }" aria-current="page" class="router-link-active">
                             <i class="far fa-circle mr-1"></i>
                             <div>
                                 Course what will learn
                             </div>
-                        </a>
+                        </router-link>
                     </li>
 
                     <li>
@@ -133,7 +133,14 @@
 
 <script>
 export default {
-
+data() {
+        return {
+            course_id: null,
+        }
+    },
+    created: async function () {
+        this.course_id = this.$route.params.id;
+    },
 }
 </script>
 

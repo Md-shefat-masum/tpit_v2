@@ -4,10 +4,12 @@
             <div class="card-header">
                 <h4>Create</h4>
                 <div class="btns">
-                    <router-link :to="{ name: `CourseBatchALL` }" class="btn rounded-pill btn-outline-warning" >
+                    <a href="" @click.prevent="$router.go(-1)"  class="btn rounded-pill btn-outline-warning" >
                         <i class="fa fa-arrow-left me-5px"></i>
-                        Back
-                    </router-link>
+                        <span >
+                            Back
+                        </span>
+                    </a>
                 </div>
             </div>
             <form @keyup.enter="store_batch($event.target)" @submit.prevent="store_batch($event.target)" class="user_create_form">

@@ -7,11 +7,19 @@ import WhatIsThisCourse from "./views/pages/WhatIsThisCourse.vue";
 import WhyIsThisCourse from "./views/pages/WhyIsThisCourse.vue";
 import AllCourse from "./views/AllCourse.vue";
 
+// course batch
 import CourseBatchLayout from "./views/pages/course_batch/CourseBatchLayout.vue";
 import CourseBatchALL from "./views/pages/course_batch/All.vue";
 import CourseBatchCreate from "./views/pages/course_batch/Create.vue";
 import CourseBatchEdit from "./views/pages/course_batch/Edit.vue";
 import CourseBatchDetails from "./views/pages/course_batch/Details.vue";
+
+// course what will you learn
+import CourseWhatLearnLayout from "./views/pages/course_what_will_learn/CourseWhatLearnLayout.vue";
+import CourseWhatLearnALL from "./views/pages/course_what_will_learn/All.vue";
+import CourseWhatLearnCreate from "./views/pages/course_what_will_learn/Create.vue";
+import CourseWhatLearnEdit from "./views/pages/course_what_will_learn/Edit.vue";
+import CourseWhatLearnDetails from "./views/pages/course_what_will_learn/Details.vue";
 
 
 Vue.use(VueRouter);
@@ -74,6 +82,38 @@ const routes = [
                                 path: 'batch-details/:id',
                                 name: 'CourseBatchDetails',
                                 component: CourseBatchDetails,
+                            },
+                        ]
+                    },
+
+                    {
+                        path: 'what-will-learn',
+                        component: CourseWhatLearnLayout,
+                        children: [
+                            {
+                                path: '',
+                                name: 'what_will_learn',
+                                component: CourseWhatLearnALL,
+                            },
+                            {
+                                path: 'all',
+                                name: 'CourseWhatLearnALL',
+                                component: CourseWhatLearnALL,
+                            },
+                            {
+                                path: 'create',
+                                name: 'CourseWhatLearnCreate',
+                                component: CourseWhatLearnCreate,
+                            },
+                            {
+                                path: 'edit/:id',
+                                name: 'CourseWhatLearnEdit',
+                                component: CourseWhatLearnEdit,
+                            },
+                            {
+                                path: 'details/:id',
+                                name: 'CourseWhatLearnDetails',
+                                component: CourseWhatLearnDetails,
                             },
                         ]
                     },

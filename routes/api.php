@@ -234,8 +234,8 @@ Route::group(
                     Route::get('/{id}', 'Course\CourseWhyYouLearnFromUsController@show');
                 });
 
-                Route::group(['prefix' => 'course-you-will-learns'], function () {
-                    Route::get('/all', 'Course\CourseYouWillLearnsController@all');
+                Route::group(['prefix' => 'course-you-will-learn'], function () {
+                    Route::get('/all/{course_id}', 'Course\CourseYouWillLearnsController@all');
                     Route::post('/store', 'Course\CourseYouWillLearnsController@store');
                     Route::post('/canvas-store', 'Course\CourseYouWillLearnsController@canvas_store');
                     Route::post('/update', 'Course\CourseYouWillLearnsController@update');

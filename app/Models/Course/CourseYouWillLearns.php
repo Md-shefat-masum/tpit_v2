@@ -16,4 +16,8 @@ class CourseYouWillLearns extends Model
             $data->save();
         });
     }
+
+    public function course() {
+        return $this->belongsTo(Course::class, 'course_id');
+    }
 }

@@ -4,7 +4,7 @@
             <div class="card-header">
                 <h4>Course Details</h4>
                 <div class="btns">
-                    <a href="" @click.prevent="$router.go(-1)"  class="btn rounded-pill btn-outline-warning" >
+                    <a href="" @click.prevent="$router.push({ name: `CourseBatchALL` })"  class="btn rounded-pill btn-outline-warning" >
                         <i class="fa fa-arrow-left me-5px"></i>
                         <span >
                             Back
