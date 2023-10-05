@@ -12,7 +12,7 @@ use App\Models\Course\CourseJobPositions;
 
 class CoursejobPositionController extends Controller
 {
-    public function all()
+    public function all($course_id)
     {
         $paginate = (int) request()->paginate ?? 10;
         $orderBy = request()->orderBy ?? 'id';
@@ -23,7 +23,7 @@ class CoursejobPositionController extends Controller
             $status = request()->status;
         }
 
-        $query = CourseJobPositions::where('status', $status)->orderBy($orderBy, $orderByType);
+        $query = CourseJobPositions::where('status', $status)->where('course_id', $course_id)->orderBy($orderBy, $orderByType);
 
         if (request()->has('search_key')) {
             $key = request()->search_key;

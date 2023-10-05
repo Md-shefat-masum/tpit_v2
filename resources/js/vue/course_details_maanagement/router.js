@@ -22,6 +22,14 @@ import CourseWhatLearnEdit from "./views/pages/course_what_will_learn/Edit.vue";
 import CourseWhatLearnDetails from "./views/pages/course_what_will_learn/Details.vue";
 
 
+// course job positions
+import CourseJobPositionLayout from "./views/pages/course_job_position/CourseJobPositionLayout.vue";
+import CourseJobPositionAll from "./views/pages/course_job_position/All.vue";
+import CourseJobPositionCreate from "./views/pages/course_job_position/Create.vue";
+import CourseJobPositionEdit from "./views/pages/course_job_position/Edit.vue";
+import CourseJobPositionDetails from "./views/pages/course_job_position/Details.vue";
+
+
 Vue.use(VueRouter);
 window.Fire = new Vue();
 
@@ -54,6 +62,8 @@ const routes = [
                         name: 'WhyIsThisCourse',
                         component: WhyIsThisCourse,
                     },
+
+                    // course batch
                     {
                         path: 'batch',
                         component: CourseBatchLayout,
@@ -86,6 +96,8 @@ const routes = [
                         ]
                     },
 
+
+                    // course learnings
                     {
                         path: 'what-will-learn',
                         component: CourseWhatLearnLayout,
@@ -114,6 +126,39 @@ const routes = [
                                 path: 'details/:id',
                                 name: 'CourseWhatLearnDetails',
                                 component: CourseWhatLearnDetails,
+                            },
+                        ]
+                    },
+
+                    // course job positions
+                    {
+                        path: 'job-positions',
+                        component: CourseJobPositionLayout,
+                        children: [
+                            {
+                                path: '',
+                                name: 'CourseJobPosition',
+                                component: CourseJobPositionAll,
+                            },
+                            {
+                                path: 'all',
+                                name: 'CourseJobPositionAll',
+                                component: CourseJobPositionAll,
+                            },
+                            {
+                                path: 'create',
+                                name: 'CourseJobPositionCreate',
+                                component: CourseJobPositionCreate,
+                            },
+                            {
+                                path: 'edit/:id',
+                                name: 'CourseJobPositionEdit',
+                                component: CourseJobPositionEdit,
+                            },
+                            {
+                                path: 'details/:id',
+                                name: 'CourseJobPositionDetails',
+                                component: CourseJobPositionDetails,
                             },
                         ]
                     },

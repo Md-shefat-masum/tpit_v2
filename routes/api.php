@@ -183,7 +183,7 @@ Route::group(
                 });
 
                 Route::group(['prefix' => 'course-job-position'], function () {
-                    Route::get('/all', 'Course\CoursejobPositionController@all');
+                    Route::get('/all/{course_id}', 'Course\CoursejobPositionController@all');
                     Route::post('/store', 'Course\CoursejobPositionController@store');
                     Route::post('/canvas-store', 'Course\CoursejobPositionController@canvas_store');
                     Route::post('/update', 'Course\CoursejobPositionController@update');

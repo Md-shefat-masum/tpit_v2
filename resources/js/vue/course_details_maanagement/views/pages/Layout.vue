@@ -50,10 +50,19 @@
                     </li>
 
                     <li>
+                        <router-link :to="{ name: `CourseJobPositionAll` }" aria-current="page" class="router-link-active">
+                            <i class="far fa-circle mr-1"></i>
+                            <div>
+                                Course Job positions
+                            </div>
+                        </router-link>
+                    </li>
+
+                    <li>
                         <a href="" aria-current="page" class="router-link-active">
                             <i class="far fa-circle mr-1"></i>
                             <div>
-                                Course for whoom
+                                Course Job works
                             </div>
                         </a>
                     </li>
