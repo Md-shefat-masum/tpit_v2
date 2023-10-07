@@ -195,7 +195,7 @@ class WebsiteController extends Controller
         $incompleteCourses = $userWithCourses->batchStudents->where('is_complete', 'incomplete');
         // dd($userWithCourses, $completedCourses, $incompleteCourses);
 
-        
+
         return view('frontend.pages.mycouse', [
             'user_course' => $userWithCourses->batchStudents,
             'complete_courses' => $completedCourses,
@@ -204,13 +204,13 @@ class WebsiteController extends Controller
     }
 
     public function myCourseDetails($slug) {
-        
+
         $data = Course::active()->where('slug', $slug)->select('id', 'title')->first();
         $data->course_module = $data->course_modules()->orderBy('module_no','ASC')->get();
         foreach ($data->course_module as $key => $module) {
-            
+
             $classes = $module->classes()->get();
-    
+
             foreach ($classes as $key => $class) {
                 $class_watched_check = CourseModuleTaskCompleteByUsers::where('class_id', $class->id)
                 ->where('quiz_id', null)
@@ -246,7 +246,7 @@ class WebsiteController extends Controller
                     ->where('exam_id', $class_exam->exam_id)
                     ->first();
 
-                    $class->class_exam = $class_exam; 
+                    $class->class_exam = $class_exam;
 
                     $class->class_exam->is_complete = false;
                     if($exam_complete_check != null) {
@@ -257,12 +257,12 @@ class WebsiteController extends Controller
 
             $module->classes = $classes;
             $data->course_module[$key] = $module;
-            
+
         }
 
 
         // ddd($data->toArray());
-        
+
         return view('frontend.pages.my_course_details', ['course' => $data]);
     }
 }
