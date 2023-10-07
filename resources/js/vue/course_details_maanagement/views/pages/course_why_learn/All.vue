@@ -30,9 +30,6 @@
                                             <i class="fa fa-gears"></i>
                                         </button>
                                         <div class="dropdown-menu">
-                                            <!-- <router-link :to="{ name: 'CourseWhatwhylearnCreate', params: { id: whylearn.id }}" class="dropdown-item">
-                                                <i class="fa text-info fa-eye mr-2"></i> <span>Details</span>
-                                            </router-link> -->
                                             <router-link :to="{ name: 'CourseWhyLearnEdit', params: { id: whylearn.id }}" class="dropdown-item">
                                                 <i class="fa text-warning fa-pencil mr-2"></i> <span>Edit</span>
                                             </router-link>
