@@ -118,7 +118,9 @@ Route::group(
 
                 Route::group(['prefix' => 'course-instructor'], function () {
                     Route::get('/all', 'Course\CourseInstructorController@all');
+                    Route::get('/get-all', 'Course\CourseInstructorController@get_all');
                     Route::post('/store', 'Course\CourseInstructorController@store');
+                    Route::post('/update-instructor', 'Course\CourseInstructorController@update_instructor');
                     Route::post('/canvas-store', 'Course\CourseInstructorController@canvas_store');
                     Route::post('/update', 'Course\CourseInstructorController@update');
                     Route::post('/canvas-update', 'Course\CourseInstructorController@canvas_update');

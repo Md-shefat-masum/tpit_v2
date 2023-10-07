@@ -8,7 +8,9 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use App\Models\ContactMessage;
+use App\Models\Course\Course;
 use App\Models\Course\CourseInstructors;
+use Illuminate\Support\Facades\DB;
 
 class CourseInstructorController extends Controller
 {
@@ -41,6 +43,27 @@ class CourseInstructorController extends Controller
 
         $datas = $query->paginate($paginate);
         return response()->json($datas);
+    }
+
+    public function get_all()
+    {
+        $course_instructors = CourseInstructors::where('status', 'active')->get();
+        return response()->json($course_instructors);
+    }
+
+    public function update_instructor() {
+        $course_check = DB::table('course_course_instructor')
+        ->where('course_id', request()->course_id)
+        ->where('instructor_id', request()->instructor_id)->first();
+        if($course_check == null) {
+            $course = Course::where('id', request()->course_id)->first();
+            $course->course_instructor()->attach([request()->instructor_id]);
+            // $course->course_instructor
+
+            return response()->json(['message' => 'course teacher updated']);
+        }
+
+        return response()->json(['message' => 'this teacher already exists for this course!']);
     }
 
     public function show($id)
