@@ -86,12 +86,12 @@
                     </li>
 
                     <li>
-                        <a href="" aria-current="page" class="router-link-active">
+                        <router-link :to="{ name: `CourseWhatWillGetAll` }" aria-current="page" class="router-link-active">
                             <i class="far fa-circle mr-1"></i>
                             <div>
                                 Course what you will get
                             </div>
-                        </a>
+                        </router-link>
                     </li>
 
                     <li>

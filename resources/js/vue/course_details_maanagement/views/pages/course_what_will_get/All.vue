@@ -2,10 +2,10 @@
     <div>
         <div class="card">
             <div class="card-header">
-                <h4 class="card-title">All Course why learn from us: 🎓</h4>
+                <h4 class="card-title">All what you will get: 🎓</h4>
             </div>
             <div class="card-body">
-                <router-link :to="{ name: 'CourseWhyLearnCreate'}" class="btn btn-primary mb-2 float-right">
+                <router-link :to="{ name: 'CourseWhatWillGetCreate'}" class="btn btn-primary mb-2 float-right">
                     <i class="fa-solid fa-plus mr-1"></i> <span>Create</span>
                 </router-link>
                 <div class="table-responsive">
@@ -18,11 +18,11 @@
                                 <td>Actions</td>
                             </tr>
                         </thead>
-                        <tbody v-if="course_why_learn.data && course_why_learn.data.length > 0">
-                            <tr v-for="(whylearn, index) in course_why_learn.data" :key="index">
+                        <tbody v-if="course_what_will_get.data && course_what_will_get.data.length > 0">
+                            <tr v-for="(learn, index) in course_what_will_get.data" :key="index">
                                 <td><span class="text-primary">#{{ index + 1 }}</span></td>
-                                <td><span class="text-warning cursor_pointer">{{ whylearn.title }}</span></td>
-                                <td><span class="badge">{{ whylearn.status }}</span></td>
+                                <td><span class="text-warning cursor_pointer">{{ learn.title }}</span></td>
+                                <td><span class="badge">{{ learn.status }}</span></td>
                                 <td>
                                     <div class="btn-group">
                                         <button class="btn btn-sm btn-outline-secondary dropdown-toggle" type="button"
@@ -30,10 +30,13 @@
                                             <i class="fa fa-gears"></i>
                                         </button>
                                         <div class="dropdown-menu">
-                                            <router-link :to="{ name: 'CourseWhyLearnEdit', params: { id: whylearn.id }}" class="dropdown-item">
+                                            <!-- <router-link :to="{ name: 'CourseWhatLearnCreate', params: { id: learn.id }}" class="dropdown-item">
+                                                <i class="fa text-info fa-eye mr-2"></i> <span>Details</span>
+                                            </router-link> -->
+                                            <router-link :to="{ name: 'CourseWhatWillGetEdit', params: { id: learn.id }}" class="dropdown-item">
                                                 <i class="fa text-warning fa-pencil mr-2"></i> <span>Edit</span>
                                             </router-link>
-                                            <a href="javascript:void(0)" @click.prevent="deleteCourseWhyLearn(whylearn.id)" class="dropdown-item">
+                                            <a href="javascript:void(0)" @click.prevent="deleteCourseGetting(learn.id)" class="dropdown-item">
                                                 <i class="fa text-danger fa-trash mr-2"></i> <span>Delete</span>
                                             </a>
                                         </div>
@@ -64,15 +67,15 @@
 export default {
     data() {
         return {
-            course_why_learn: {},
+            course_what_will_get: {},
         }
     },
     methods: {
-        get_course_why_learns: async function () {
+        get_course_gettings: async function () {
             let course_id = this.$route.params.id
-            axios.get(`/api/v1/course/course-why-you-learn-from-us/all/${course_id}`).then((response) => {
+            axios.get(`/api/v1/course/course-what-you-will-get/all/${course_id}`).then((response) => {
                 // console.log(response.data);
-                this.course_why_learn = response.data;
+                this.course_what_will_get = response.data;
             })
             .catch((e) => {
                 console.log(e);
@@ -82,18 +85,19 @@ export default {
                 // }
             });
         },
-        deleteCourseWhyLearn: async function(id) {
+        deleteCourseGetting: async function(id) {
             let confirm = await window.s_confirm("Are you sure?");
             if (confirm) {
-                axios.post(`/api/v1/course/course-why-you-learn-from-us/destroy`, {id: id}).then((response) => {
+                axios.post(`/api/v1/course/course-what-you-will-get/destroy`, {id: id}).then((response) => {
                     // console.log(response.data);
-                    window.toaster("Course Job Work deleted successfully!");
-                    this.get_course_why_learns();
+                    window.toaster("Course what you will get deleted successfully!");
+                    this.get_course_gettings();
                 })
                 .catch((e) => {
                     console.log(e);
                 });
             }
+            
         }
     },
     computed: {
@@ -101,7 +105,7 @@ export default {
     },
 
     created: async function () {
-        await this.get_course_why_learns();
+        await this.get_course_gettings();
     },
 }
 </script>

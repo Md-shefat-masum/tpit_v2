@@ -209,7 +209,7 @@ Route::group(
                 });
 
                 Route::group(['prefix' => 'course-what-you-will-get'], function () {
-                    Route::get('/all', 'Course\CourseWhatYouWillGetController@all');
+                    Route::get('/all/{course_id}', 'Course\CourseWhatYouWillGetController@all');
                     Route::post('/store', 'Course\CourseWhatYouWillGetController@store');
                     Route::post('/canvas-store', 'Course\CourseWhatYouWillGetController@canvas_store');
                     Route::post('/update', 'Course\CourseWhatYouWillGetController@update');

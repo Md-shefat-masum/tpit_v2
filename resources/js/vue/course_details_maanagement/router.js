@@ -54,6 +54,14 @@ import CourseWhyLearnEdit from "./views/pages/course_why_learn/Edit.vue";
 import CourseWhyLearnDetails from "./views/pages/course_why_learn/Details.vue";
 
 
+// course what will get
+import CourseWhatWillGetLayout from "./views/pages/course_what_will_get/CourseWhatWillGetLayout.vue";
+import CourseWhatWillGetAll from "./views/pages/course_what_will_get/All.vue";
+import CourseWhatWillGetCreate from "./views/pages/course_what_will_get/Create.vue";
+import CourseWhatWillGetEdit from "./views/pages/course_what_will_get/Edit.vue";
+import CourseWhatWillGetDetails from "./views/pages/course_what_will_get/Details.vue";
+
+
 Vue.use(VueRouter);
 window.Fire = new Vue();
 
@@ -283,6 +291,39 @@ const routes = [
                                 path: 'details/:id',
                                 name: 'CourseWhyLearnDetails',
                                 component: CourseWhyLearnDetails,
+                            },
+                        ]
+                    },
+
+                    // couese what you will get
+                    {
+                        path: 'course-what-will-get',
+                        component: CourseWhatWillGetLayout,
+                        children: [
+                            {
+                                path: '',
+                                name: 'CourseWhatWillGet',
+                                component: CourseWhatWillGetAll,
+                            },
+                            {
+                                path: 'all',
+                                name: 'CourseWhatWillGetAll',
+                                component: CourseWhatWillGetAll,
+                            },
+                            {
+                                path: 'create',
+                                name: 'CourseWhatWillGetCreate',
+                                component: CourseWhatWillGetCreate,
+                            },
+                            {
+                                path: 'edit/:id',
+                                name: 'CourseWhatWillGetEdit',
+                                component: CourseWhatWillGetEdit,
+                            },
+                            {
+                                path: 'details/:id',
+                                name: 'CourseWhatWillGetDetails',
+                                component: CourseWhatWillGetDetails,
                             },
                         ]
                     },
