@@ -42,7 +42,7 @@ $meta = [
                 <div class="contunued_courses_border"></div>
                 <div class="my_contunued_all_courses">
                     {{-- @dd($userWithCourses) --}}
-                    @foreach ($incomplete_courses as $item)    
+                    @foreach ($incomplete_courses as $item)
                         <div class="c_card graphic_designer">
                             <!-- card_img start -->
                             <a href="#" class="card_img_area">
@@ -82,7 +82,7 @@ $meta = [
 
                                 <!-- amount_and_button_area start -->
                                 <div class="amount_and_button_area">
-                                    
+
 
                                     <!-- button_area start -->
                                     <a href="{{ route('mycourse_details', $item->course->slug) }}" class="text-center button_all">
@@ -107,7 +107,7 @@ $meta = [
                     <div class="my_contunued_courses_title">কমপ্লিট কোর্সসমূহ</div>
                     <div class="contunued_courses_border"></div>
                     <div class="my_contunued_all_courses">
-                        @foreach ($complete_courses as $comp_item)    
+                        @foreach ($complete_courses as $comp_item)
                             <div class="c_card graphic_designer">
                                 <!-- card_img start -->
                                 <a href="#" class="card_img_area">

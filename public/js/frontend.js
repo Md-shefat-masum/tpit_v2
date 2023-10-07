@@ -1,9 +1,11 @@
 document.addEventListener("DOMContentLoaded", () => {
     Turbolinks.start()
     document.addEventListener("turbolinks:load", function (event) {
-        
+
         if(location.pathname == '/'){
-            // initiate_our_course_types();
+            setTimeout(() => {
+                initiate_our_course_types();
+            }, 1000);
         }
 
         document.querySelector(`nav a[href="${location.pathname}"]`).classList.add('active_button');
