@@ -46,7 +46,7 @@ class Course extends Model
     return $this->hasMany(CourseModulTaskCompleteByUsers::class, 'course_id');
   }
 
-  public function course_instactor()
+  public function course_instructor()
   {
     return $this->hasMany(CourseInstructors::class, 'course_id');
   }

@@ -160,7 +160,7 @@ html ::-webkit-scrollbar-thumb:hover {
   position: sticky;
   top: 0px;
   background-color: #ffffff;
-  z-index: 999999;
+  z-index: 99;
   box-shadow: 0px -6px 5px 10px #e2e3e5;
 }
 
@@ -2626,7 +2626,7 @@ html ::-webkit-scrollbar-thumb:hover {
   background-color: #dc2626;
   border-radius: 50%;
   position: absolute;
-  z-index: 9999;
+  z-index: 99;
   left: 50%;
   top: 50%;
   transform: translateY(-50%) translateX(-50%);

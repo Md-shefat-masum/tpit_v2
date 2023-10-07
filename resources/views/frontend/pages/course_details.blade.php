@@ -294,8 +294,8 @@
                     </script>
                     <!-- /class module end -->
                     <!-- course trainer start-->
-
-                    @if ($data->course_instactor)    
+                    @if ($data->course_instructor != null && count($data->course_instructor) > 0) 
+                    {{-- @dump($data->course_instructor)    --}}
                         <section class="course_trainers_area">
                             <div class="container">
                                 <div class="trainers_description">
@@ -303,7 +303,7 @@
                                         <h2 class="trainers_title_bangla">কোর্স প্রশিক্ষক</h2>
                                     </div>
                                     <div class="d-flex flex-wrap gap-3">
-                                        @foreach ($data->course_instactor as $teacher) 
+                                        @foreach ($data->course_instructor as $teacher) 
                                             <div class="trainers_details mb-4">
                                                 <div class="trainer_details">
                                                     <div class="trainer_images">
@@ -354,18 +354,18 @@
                     @endif
                     <!-- /course trainer end -->
                 </div>
-                
-                    <!-- /course trainer end -->
-                </div>
                 <div class="course_info">
+                    @php
+                        $batch_info = $data->course_batch()->first();
+                    @endphp
                     <div class="course_info_div">
                         <div class="course_info_thubnail_and_icon">
                             <div class="course_info_thubnail">
-                                <img src="./assets/images/course_details_image/course_details_thumbnail.png"
+                                <img class="img-fluid" src="{{ asset($data->image) }}"
                                     alt="">
                             </div>
                             <div class="course_info_icon">
-                                <img src="./assets/images/course_details_image/course_info_icon.png" alt="">
+                                <img src="{{ asset('frontend/') }}/assets/images/course_details_image/course_info_icon.png" alt="">
                             </div>
                         </div>
                         <div class="course_info_time">
@@ -380,11 +380,11 @@
                             </div>
                             <div class="course_booked">
                                 <div>{{ $batch_info->booked_percent }}%</div>
-
                                 <div>বুকড</div>
                             </div>
                         </div>
                         <div class="course_fee">
+                            
                             @if($batch_info)
                                 <del class="twenty_thousand">৳ {{ $batch_info->course_price }}</del>
                                 <div class="ten_thousand">৳ {{ $batch_info->after_discount_price }}</div>
@@ -393,29 +393,25 @@
                             @endif
                         </div>
                         <div class="admit_course">
-                            <div class="admit_course_title_and_icon">
-                                <a href="#" class="admit_course_title">কোর্সে ভর্তি হোন</a>
-                                <div class="admit_course_icon"><i class="fa-solid fa-angle-right"></i></div>
-                            </div>
+                            @if ($check_enrolled)
+                                <a onclick="event.preventDefault()" href="#" class="admit_course_title_and_icon">
+                                    <div class="admit_course_title">কোর্স দেখুন</div>
+                                    <div class="admit_course_icon"><i class="fa-solid fa-angle-right"></i></div>
+                                </a>
+                            @else
+                                <a href="{{ route('course_enroll', $data->slug) }}" class="admit_course_title_and_icon">
+                                    <div class="admit_course_title">কোর্সে ভর্তি হোন</div>
+                                    <div class="admit_course_icon"><i class="fa-solid fa-angle-right"></i></div>
+                                </a>
+                            @endif
                             <div class="admit_course_batch">
                                 <div class="admit_course_batch_title">ব্যাচ <span>{{ $batch_info->batch_name }}</span></div>
-                            <del class="twenty_thousand">৳ ২০,০০০</del>
-                            <div class="ten_thousand">৳ ১০,০০০</div>
-                        </div>
-                        <div class="admit_course">
-                            <div class="admit_course_title_and_icon">
-                                <div class="admit_course_title">কোর্সে ভর্তি হোন</div>
-                                <div class="admit_course_icon"><i class="fa-solid fa-angle-right"></i></div>
-                            </div>
-                            <div class="admit_course_batch">
-                                <div class="admit_course_batch_title">ব্যাচ <span>২</span></div>
                                 <div class="admit_course_start_and_deadline">
                                     <div class="admit_course_start">
                                         <div class="admit_course_start_title"><span><i
                                                     class="fa-regular fa-calendar-days"></i></span><span>ভর্তী শুরুঃ</span>
                                         </div>
                                         <div class="admit_course_start_date">{{ \Carbon\Carbon::parse($batch_info->admission_start_date)->format('d M Y') }}</div>
-
                                     </div>
                                     <div class="admit_course_line"></div>
                                     <div class="admit_course_deadline">
@@ -423,7 +419,6 @@
                                                     class="fa-regular fa-calendar-xmark"></i></span><span>ভর্তী শেষঃ</span>
                                         </div>
                                         <div class="admit_course_deadline_date">{{ \Carbon\Carbon::parse($batch_info->admission_end_date)->format('d M Y') }}</div>
-
                                     </div>
                                 </div>
                             </div>
@@ -443,24 +438,12 @@
                                 <div class="admit_course_class_time"><span>
                                     <i class="fa-regular fa-calendar-days"></i></span>
                                     <span>ক্লাসের সময়ঃ {{ \Carbon\Carbon::parse($batch_info->class_start_time)->format('g:i A') }} - {{ \Carbon\Carbon::parse($batch_info->class_end_time)->format('g:i A') }}</span>
-
-                                <div class="admit_course_orientation"><span><i
-                                            class="fa-regular fa-calendar-days"></i></span><span>ওরিয়েন্টেশন ও প্রথম ক্লাসঃ
-                                        ১২ অক্টোবর,
-                                        বুধবার</span></div>
-                                <div class="admit_course_class_date"><span><i
-                                            class="fa-regular fa-calendar-days"></i></span><span>ক্লাসের দিনঃ
-                                        শনি-সোম-বুধ</span></div>
-                                <div class="admit_course_class_time"><span><i
-                                            class="fa-regular fa-calendar-days"></i></span><span>ক্লাসের সময়ঃ রাত ০৮ঃ৩০ -
-                                        রাত ১১ঃ৩০</span>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="course_needed">
                         <div class="course_needed_title">কোর্সটি করার জন্য যা যা লাগবে</div>
-
                         @if($data->course_essentials)
                             @foreach ($data->course_essentials as $course_essential)    
                                 <div class="course_needed_internet">
@@ -481,15 +464,6 @@
                                 </div>
                                 @endforeach
                                 
-
-                        <div class="course_needed_internet"><i class="fa-regular fa-circle-dot"></i>ইন্টারনেট সংযোগ যুক্ত
-                            কম্পিউটার
-                        </div>
-                        <div class="course_hotline_and_schedule">
-                            <div class="course_hotline">
-                                <div class="course_hotline_title">যেকোনো প্রয়োজনে কল করুনঃ </div>
-                                <i class="fa-solid fa-phone"></i>
-                                <div class="course_hotline_number"> 01719-229595</div>
                             </div>
                             <div class="course_schedule">(সকাল ১০ টা থেকে রাত ৮ টা)</div>
                         </div>
@@ -500,6 +474,7 @@
     </section>
 
     <!-- general question area start-->
+    @if (count($data->course_faqs) > 0) 
     <div class="general_question_part">
         <div class="container">
             <div class="general_questions">
@@ -510,64 +485,30 @@
                             আপনার কোন জিজ্ঞাসা থাকলে এখান থেকে খুঁজে দেখতে পারেন
                         </div>
                     </div>
-                    <ul class="general_question_all">
-                        <div class="general_question">
-                            <li class="">
-                                <div class="general_question_title_and_icon">
-                                    <div class="general_question_title">
-                                        আপনাদের এখানে ইন্টার্নের সুজোগ আছে?
+                    <ul class="general_question_all" style="width: 600px;">
+                        @foreach ($data->course_faqs as $faq)    
+                            <div class="general_question">
+                                <li class="">
+                                    <div class="general_question_title_and_icon">
+                                        <div class="general_question_title">
+                                            {{ $faq->title }}
+                                        </div>
+                                        <div class="general_question_acordion_icon">
+                                            <i class="fa-solid fa-chevron-down"></i>
+                                        </div>
                                     </div>
-                                    <div class="general_question_acordion_icon">
-                                        <i class="fa-solid fa-chevron-down"></i>
+                                    <div class="general_question_content">
+                                        {{ $faq->description }}
                                     </div>
-                                </div>
-                                <div class="general_question_content">
-                                    আমরা সকল ক্লাসের রেকর্ডেড ভিডিও সরবরাহ করি, আপনি আপনার স্টুডেন্ট
-                                    পোর্টাল থেকে আপনার কোর্সের সকল ক্লাসের রেকর্ডেড ভিডিও পাবেন।
-                                </div>
-                            </li>
-                        </div>
-                        <div class="general_question">
-                            <li>
-                            <li class="general_question active">
-                                <div class="general_question_title_and_icon">
-                                    <div class="general_question_title">
-                                        অনলাইন/অফলাইন ক্লাসের রেকর্ডেড ভিডিও পাওয়া যায়?
-                                    </div>
-                                    <div class="general_question_acordion_icon">
-                                        <i class="fa-solid fa-chevron-down"></i>
-                                    </div>
-                                </div>
-                                <div class="general_question_content">
-                                    আমরা সকল ক্লাসের রেকর্ডেড ভিডিও সরবরাহ করি, আপনি আপনার স্টুডেন্ট
-                                    পোর্টাল থেকে আপনার কোর্সের সকল ক্লাসের রেকর্ডেড ভিডিও পাবেন।
-                                </div>
-                            </li>
-                            </li>
-                        </div>
-                        <div class="general_question">
-                            <li>
-                            <li class="general_question ">
-                                <div class="general_question_title_and_icon">
-                                    <div class="general_question_title">
-                                        একাধিক স্কিমে পেমেন্ট করার সুজোগ আছে কি?
-                                    </div>
-                                    <div class="general_question_acordion_icon">
-                                        <i class="fa-solid fa-chevron-down"></i>
-                                    </div>
-                                </div>
-                                <div class="general_question_content">
-                                    আমরা সকল ক্লাসের রেকর্ডেড ভিডিও সরবরাহ করি, আপনি আপনার স্টুডেন্ট
-                                    পোর্টাল থেকে আপনার কোর্সের সকল ক্লাসের রেকর্ডেড ভিডিও পাবেন।
-                                </div>
-                            </li>
-                            </li>
-                        </div>
+                                </li>
+                            </div>
+                        @endforeach
                     </ul>
                 </div>
             </div>
         </div>
     </div>
+    @endif
     <script>
         [
             ...document.querySelectorAll(".general_question_acordion_icon"),

@@ -7,6 +7,7 @@ use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Validation\ValidationException;
 
 class AuthController extends Controller
@@ -22,11 +23,17 @@ class AuthController extends Controller
     public function login_submit()
     {
         $this->validate(request(),[
-            "email" => ["required","email","exists:users,email"],
+            "email" => ["required"],
             "password" => ["required"],
         ]);
 
-        $user = User::where('email',request()->email)->with(['roles'])->first();
+
+        if(!$user) {
+            $error = ValidationException::withMessages([
+                'email' => ['invalid email or phone number'],
+            ]);
+            throw $error;
+        }
         $check_password = Hash::check(request()->password, $user->password);
 
         if(!$check_password){
@@ -46,7 +53,17 @@ class AuthController extends Controller
             return redirect()->route('dashboard')->withCookie($token_c);
         }
 
-        return redirect('/');
+        $urls = Session::get('url');
+        if(isset($urls['intended'])) {
+
+            $redirect_url = $urls['intended'];
+            return redirect($redirect_url);
+        }else {
+            return redirect()->route('myCourse');
+        }
+        $redirect_url = $urls['intended'];
+        return redirect($redirect_url);
+
     }
 
     public function logout_submit()

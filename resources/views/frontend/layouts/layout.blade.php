@@ -21,6 +21,7 @@
     <link rel="stylesheet" href="{{ asset('css/plugins/bootstrap.css') }}">
     <link rel="stylesheet" href="{{ asset('frontend') }}/assets/icon/fontawesome-free-6.2.0-web/css/all.min.css">
     <link rel="stylesheet" href="{{ asset('frontend') }}/assets/styles/style.css">
+    <link rel="stylesheet" href="{{ asset('frontend') }}/assets/styles/custom.css">
 
     {{-- js plugins --}}
     <script src="{{ asset('js/plugins/localforage.min.js') }}"></script>
@@ -28,7 +29,7 @@
     <script src="{{ asset('js/plugins/sweetalert.js') }}"></script>
     <script src="{{ asset('js/plugins/axios.js') }}"></script>
     <script src="{{ asset('js/plugins/vue.min.js') }}"></script>
-
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     {{-- frontend vue scripts --}}
     <script src="{{ asset('js/frontend_vue.js') }}"></script>
 
@@ -40,6 +41,18 @@
 </head>
 
 <body id="top">
+
+    @if (session()->has('success'))
+        <script>
+            window.toaster("{{session()->get('success')}}");
+        </script>
+    @endif
+    @if (session()->has('warning'))
+        <script>
+            window.toaster("{{session()->get('warning')}}", 'warning');
+        </script>
+    @endif
+   
     <!-- header_area start -->
     <header class="header_area">
         <div class="container">
@@ -53,9 +66,24 @@
                 <!-- logo_area end -->
 
                 <!-- extra login_area start -->
-                <div class="extra_login_area">
+                {{-- <div class="extra_login_area">
                     <a href="/login">লগ-ইন</a>
-                </div>
+                </div> --}}
+
+                @guest
+                    @if (Route::has('login'))
+                        <div class="extra_login_area">
+                            <a href="/login">লগ-ইন</a>
+                        </div>
+                    @endif
+                @else
+                    <div class="extra_login_area">
+                        <a href="{{ route('myCourse') }}">
+                            <i class="fa-regular fa-circle-user fa-lg"></i>
+                            {{ Auth::user()->first_name }} {{ Auth::user()->last_name }}
+                        </a>
+                    </div>
+                @endguest
                 <!-- xs login_area end -->
 
                 <!-- menu_ber area start -->
@@ -110,9 +138,21 @@
                         <!-- nav_area end -->
 
                         <!-- login_area start -->
-                        <div class="login_area">
-                            <a href="/login">লগ-ইন</a>
-                        </div>
+
+                        @guest
+                            @if (Route::has('login'))
+                                <div class="login_area">
+                                    <a href="/login">লগ-ইন</a>
+                                </div>
+                            @endif
+                        @else
+                            <div class="login_area">
+                                <a href="{{ route('myCourse') }}">
+                                    <i class="fa-regular fa-circle-user fa-lg"></i>
+                                    {{ Auth::user()->first_name }} {{ Auth::user()->last_name }}
+                                </a>
+                            </div>
+                        @endguest
                         <!-- login_area end -->
 
                     </div>
@@ -139,7 +179,7 @@
                             <!-- footer_logo area start -->
                             <div class="footer_logo_area">
                                 <a href="#">
-                                    <img src="{{setting(key:'footer_logo')}}"
+                                    <img src="/{{setting(key:'footer_logo')}}"
                                         alt="logo tech_park_it">
                                 </a>
                             </div>

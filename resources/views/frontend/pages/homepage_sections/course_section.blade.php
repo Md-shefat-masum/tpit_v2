@@ -110,10 +110,9 @@
         </div>
         <!-- our_course_all_card end -->
         <script>
-            // console.log('course category');
-            // setTimeout(() => {
-                // initiate_our_course_types();
-            // }, 1000);
+            setTimeout(() => {
+                initiate_our_course_types();
+            }, 1000);
         </script>
     </div>
 </section>

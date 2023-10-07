@@ -39,9 +39,9 @@ $meta = [
 
                     <!-- Email input -->
                     <div class="form-outline mb-4">
-                        <label class="form-label" for="form3Example3">Email address</label>
-                        <input type="email" name="email" id="form3Example3" class="form-control "
-                            placeholder="Enter a valid email address" />
+                        <label class="form-label" for="form3Example3">Email Or Mobile Number</label>
+                        <input type="text" name="email" id="form3Example3" class="form-control "
+                            placeholder="Enter your mobile number or email address" />
                         @error('email')
                         <div class="text-danger pt-2">
                             {{$message}}
