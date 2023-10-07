@@ -46,6 +46,14 @@ import CourseForWhomEdit from "./views/pages/course_for_whom/Edit.vue";
 import CourseForWhomDetails from "./views/pages/course_for_whom/Details.vue";
 
 
+// course why learn from us
+import CourseWhyLearnLayout from "./views/pages/course_why_learn/CourseWhyLearnLayout.vue";
+import CourseWhyLearnAll from "./views/pages/course_why_learn/All.vue";
+import CourseWhyLearnCreate from "./views/pages/course_why_learn/Create.vue";
+import CourseWhyLearnEdit from "./views/pages/course_why_learn/Edit.vue";
+import CourseWhyLearnDetails from "./views/pages/course_why_learn/Details.vue";
+
+
 Vue.use(VueRouter);
 window.Fire = new Vue();
 
@@ -248,33 +256,33 @@ const routes = [
 
                     // couese why learn from us
                     {
-                        path: 'course-for-whom',
-                        component: CourseForWhomLayout,
+                        path: 'course-why-learn',
+                        component: CourseWhyLearnLayout,
                         children: [
                             {
                                 path: '',
-                                name: 'CourseForWhom',
-                                component: CourseForWhomAll,
+                                name: 'CourseWhyLearn',
+                                component: CourseWhyLearnAll,
                             },
                             {
                                 path: 'all',
-                                name: 'CourseForWhomAll',
-                                component: CourseForWhomAll,
+                                name: 'CourseWhyLearnAll',
+                                component: CourseWhyLearnAll,
                             },
                             {
                                 path: 'create',
-                                name: 'CourseForWhomCreate',
-                                component: CourseForWhomCreate,
+                                name: 'CourseWhyLearnCreate',
+                                component: CourseWhyLearnCreate,
                             },
                             {
                                 path: 'edit/:id',
-                                name: 'CourseForWhomEdit',
-                                component: CourseForWhomEdit,
+                                name: 'CourseWhyLearnEdit',
+                                component: CourseWhyLearnEdit,
                             },
                             {
                                 path: 'details/:id',
-                                name: 'CourseForWhomDetails',
-                                component: CourseForWhomDetails,
+                                name: 'CourseWhyLearnDetails',
+                                component: CourseWhyLearnDetails,
                             },
                         ]
                     },

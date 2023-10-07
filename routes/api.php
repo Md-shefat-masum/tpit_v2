@@ -222,7 +222,7 @@ Route::group(
                 });
 
                 Route::group(['prefix' => 'course-why-you-learn-from-us'], function () {
-                    Route::get('/all', 'Course\CourseWhyYouLearnFromUsController@all');
+                    Route::get('/all/{course_id}', 'Course\CourseWhyYouLearnFromUsController@all');
                     Route::post('/store', 'Course\CourseWhyYouLearnFromUsController@store');
                     Route::post('/canvas-store', 'Course\CourseWhyYouLearnFromUsController@canvas_store');
                     Route::post('/update', 'Course\CourseWhyYouLearnFromUsController@update');
