@@ -63,8 +63,8 @@ import CourseWhatWillGetDetails from "./views/pages/course_what_will_get/Details
 
 
 // course tariner
-import CourseTrainerLayout from "./views/pages/course_what_will_get/CourseTrainerLayout.vue";
-import CourseTrainerCreate from "./views/pages/course_what_will_get/Trainer.vue";
+import CourseTrainerLayout from "./views/pages/course_trainer/CourseTrainerLayout.vue";
+import CourseTrainerCreate from "./views/pages/course_trainer/Trainer.vue";
 
 Vue.use(VueRouter);
 window.Fire = new Vue();
