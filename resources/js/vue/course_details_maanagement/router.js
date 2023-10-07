@@ -38,6 +38,14 @@ import CourseJobWorkEdit from "./views/pages/course_job_works/Edit.vue";
 import CourseJobWorkDetails from "./views/pages/course_job_works/Details.vue";
 
 
+// course for whom
+import CourseForWhomLayout from "./views/pages/course_for_whom/CourseForWhomLayout.vue";
+import CourseForWhomAll from "./views/pages/course_for_whom/All.vue";
+import CourseForWhomCreate from "./views/pages/course_for_whom/Create.vue";
+import CourseForWhomEdit from "./views/pages/course_for_whom/Edit.vue";
+import CourseForWhomDetails from "./views/pages/course_for_whom/Details.vue";
+
+
 Vue.use(VueRouter);
 window.Fire = new Vue();
 
@@ -200,6 +208,73 @@ const routes = [
                                 path: 'details/:id',
                                 name: 'CourseJobWorkDetails',
                                 component: CourseJobWorkDetails,
+                            },
+                        ]
+                    },
+
+
+                    // course for whooms
+                    {
+                        path: 'course-for-whom',
+                        component: CourseForWhomLayout,
+                        children: [
+                            {
+                                path: '',
+                                name: 'CourseForWhom',
+                                component: CourseForWhomAll,
+                            },
+                            {
+                                path: 'all',
+                                name: 'CourseForWhomAll',
+                                component: CourseForWhomAll,
+                            },
+                            {
+                                path: 'create',
+                                name: 'CourseForWhomCreate',
+                                component: CourseForWhomCreate,
+                            },
+                            {
+                                path: 'edit/:id',
+                                name: 'CourseForWhomEdit',
+                                component: CourseForWhomEdit,
+                            },
+                            {
+                                path: 'details/:id',
+                                name: 'CourseForWhomDetails',
+                                component: CourseForWhomDetails,
+                            },
+                        ]
+                    },
+
+                    // couese why learn from us
+                    {
+                        path: 'course-for-whom',
+                        component: CourseForWhomLayout,
+                        children: [
+                            {
+                                path: '',
+                                name: 'CourseForWhom',
+                                component: CourseForWhomAll,
+                            },
+                            {
+                                path: 'all',
+                                name: 'CourseForWhomAll',
+                                component: CourseForWhomAll,
+                            },
+                            {
+                                path: 'create',
+                                name: 'CourseForWhomCreate',
+                                component: CourseForWhomCreate,
+                            },
+                            {
+                                path: 'edit/:id',
+                                name: 'CourseForWhomEdit',
+                                component: CourseForWhomEdit,
+                            },
+                            {
+                                path: 'details/:id',
+                                name: 'CourseForWhomDetails',
+                                component: CourseForWhomDetails,
                             },
                         ]
                     },

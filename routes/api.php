@@ -170,7 +170,7 @@ Route::group(
                 });
 
                 Route::group(['prefix' => 'course-for-whoms'], function () {
-                    Route::get('/all', 'Course\CourseForWhomsController@all');
+                    Route::get('/all/{course_id}', 'Course\CourseForWhomsController@all');
                     Route::post('/store', 'Course\CourseForWhomsController@store');
                     Route::post('/canvas-store', 'Course\CourseForWhomsController@canvas_store');
                     Route::post('/update', 'Course\CourseForWhomsController@update');

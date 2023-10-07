@@ -68,6 +68,15 @@
                     </li>
 
                     <li>
+                        <router-link :to="{ name: `CourseForWhomAll` }" aria-current="page" class="router-link-active">
+                            <i class="far fa-circle mr-1"></i>
+                            <div>
+                                Course for whom
+                            </div>
+                        </router-link>
+                    </li>
+
+                    <li>
                         <a href="" aria-current="page" class="router-link-active">
                             <i class="far fa-circle mr-1"></i>
                             <div>
