@@ -6,17 +6,20 @@ use App\Models\Course\Course;
 use App\Models\Course\CourseBatches;
 use App\Models\Course\CourseBatchStudent;
 use App\Models\Course\CourseCategory;
+use App\Models\Course\CourseModuleClassRoutines;
 use App\Models\Course\CourseModuleTaskCompleteByUsers;
 use App\Models\CourseOutcomeStep;
 use App\Models\CourseSepciality;
 use App\Models\CourseType;
 use App\Models\EnrollInformation;
+use App\Models\ItServices;
+use App\Models\Seminars\SeminarParticipants;
 use App\Models\Seminars\Seminars;
 use App\Models\SuccessStory;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Validator;
 
 class WebsiteController extends Controller
 {
@@ -31,6 +34,7 @@ class WebsiteController extends Controller
         $course_speciality = CourseSepciality::get();
         $course_learning_steps = CourseOutcomeStep::get();
         $success_stories = SuccessStory::get();
+        $it_services = ItServices::get();
         return view(
             'frontend.home',
             [
@@ -42,7 +46,8 @@ class WebsiteController extends Controller
 
                 'course_speciality' => $course_speciality,
                 'course_learning_steps' => $course_learning_steps,
-                'success_stories' => $success_stories
+                'success_stories' => $success_stories,
+                'it_services' => $it_services
             ]
         );
     }
@@ -54,7 +59,9 @@ class WebsiteController extends Controller
 
     public function all_course()
     {
-        $query = Course::select('id', 'title', 'slug', 'image')->active();
+        $today = Carbon::today();
+        $query = Course::select('id', 'title', 'slug', 'image')
+        ->where('published_at', '>=', $today)->orWhere('published_at', NULL)->active();
         if (request()->has('course_type')) {
             $query->whereExists(function ($query) {
                 $query->from('course_course_types')
@@ -195,7 +202,6 @@ class WebsiteController extends Controller
         $incompleteCourses = $userWithCourses->batchStudents->where('is_complete', 'incomplete');
         // dd($userWithCourses, $completedCourses, $incompleteCourses);
 
-
         return view('frontend.pages.mycouse', [
             'user_course' => $userWithCourses->batchStudents,
             'complete_courses' => $completedCourses,
@@ -203,66 +209,121 @@ class WebsiteController extends Controller
         ]);
     }
 
+    public function routine_details($course_id) {
+        $course_routines = CourseModuleClassRoutines::select('id' , 'course_id','date')->where('course_id', $course_id)->get();
+        $month = [];
+        // ddd($course_routines);
+        foreach($course_routines as $course_routine) {
+            $formated_date = $course_routine->date->format('m');
+            array_push($month, $formated_date);
+        }
+
+        $months = array_unique($month);
+        sort($months);
+        $month_wise_routines = [];
+        foreach ($months as $key => $value) {
+            $month_name = Carbon::parse("2023-$value-01")->format('F');
+            $month_wise_routines[$month_name] = CourseModuleClassRoutines::where('course_id', $course_id)->with(['class'])->whereMonth('date', $value)->get();
+        }
+
+        return $month_wise_routines;
+    }
+
     public function myCourseDetails($slug) {
 
         $data = Course::active()->where('slug', $slug)->select('id', 'title')->first();
-        $data->course_module = $data->course_modules()->orderBy('module_no','ASC')->get();
-        foreach ($data->course_module as $key => $module) {
 
-            $classes = $module->classes()->get();
+        $data->routines = $this->routine_details($data->id);
+        // dd($data->course_mile_stones);
+        $data->course_mile_stones = $data->course_mile_stones()->orderBy('milestone_no', 'ASC')->get();
+        // $data->course_module = $data->course_modules()->orderBy('module_no','ASC')->get();
 
-            foreach ($classes as $key => $class) {
-                $class_watched_check = CourseModuleTaskCompleteByUsers::where('class_id', $class->id)
-                ->where('quiz_id', null)
-                ->where('exam_id', null)
-                ->where('course_id', $data->id)
-                ->first();
-                $class->is_complete = false;
-                if($class_watched_check != null) {
-                    $class->is_complete = true;
-                }
-                $class_quiz = $class->class_quiz()->with(['quiz'])->orderBy('id', 'DESC')->first();
-                $class_exam = $class->class_exam()->with(['exam'])->orderBy('id', 'DESC')->first();
+        foreach ($data->course_mile_stones as $key => $mileStones) {
+            $modules = $mileStones->course_modules()->orderBy('module_no','ASC')->get();
+            $mileStones->course_modules = $modules;
+            foreach ($mileStones->course_modules as $key => $module) {
 
-                if($class_quiz != null) {
-                    $quiz_complete_check = CourseModuleTaskCompleteByUsers::where('class_id', $class->id)
+                $classes = $module->classes()->get();
+
+                foreach ($classes as $key => $class) {
+                    $class_watched_check = CourseModuleTaskCompleteByUsers::where('class_id', $class->id)
+                    ->where('quiz_id', null)
+                    ->where('exam_id', null)
                     ->where('course_id', $data->id)
-                    ->where('user_id', auth()->user()->id)
-                    ->where('quiz_id', $class_quiz->quiz_id)
                     ->first();
+                    $class->is_complete = false;
+                    if($class_watched_check != null) {
+                        $class->is_complete = true;
+                    }
+                    $class_quiz = $class->class_quiz()->with(['quiz'])->orderBy('id', 'DESC')->first();
+                    $class_exam = $class->class_exam()->with(['exam'])->orderBy('id', 'DESC')->first();
 
-                    $class->class_quiz = $class_quiz;
+                    if($class_quiz != null) {
+                        $quiz_complete_check = CourseModuleTaskCompleteByUsers::where('class_id', $class->id)
+                        ->where('course_id', $data->id)
+                        ->where('user_id', auth()->user()->id)
+                        ->where('quiz_id', $class_quiz->quiz_id)
+                        ->first();
 
-                    $class->class_quiz->is_complete = false;
-                    if($quiz_complete_check != null) {
-                        $class->class_quiz->is_complete = true;
+                        $class->class_quiz = $class_quiz;
+
+                        $class->class_quiz->is_complete = false;
+                        if($quiz_complete_check != null) {
+                            $class->class_quiz->is_complete = true;
+                        }
+                    }
+
+                    if($class_exam != null) {
+                        $exam_complete_check = CourseModuleTaskCompleteByUsers::where('class_id', $class->id)
+                        ->where('course_id', $data->id)
+                        ->where('user_id', auth()->user()->id)
+                        ->where('exam_id', $class_exam->exam_id)
+                        ->first();
+
+                        $class->class_exam = $class_exam;
+
+                        $class->class_exam->is_complete = false;
+                        if($exam_complete_check != null) {
+                            $class->class_exam->is_complete = true;
+                        }
                     }
                 }
 
-                if($class_exam != null) {
-                    $exam_complete_check = CourseModuleTaskCompleteByUsers::where('class_id', $class->id)
-                    ->where('course_id', $data->id)
-                    ->where('user_id', auth()->user()->id)
-                    ->where('exam_id', $class_exam->exam_id)
-                    ->first();
+                $module->classes = $classes;
+                // $data->course_module[$key] = $module;
 
-                    $class->class_exam = $class_exam;
-
-                    $class->class_exam->is_complete = false;
-                    if($exam_complete_check != null) {
-                        $class->class_exam->is_complete = true;
-                    }
-                }
             }
-
-            $module->classes = $classes;
-            $data->course_module[$key] = $module;
-
         }
 
 
         // ddd($data->toArray());
 
         return view('frontend.pages.my_course_details', ['course' => $data]);
+    }
+
+    public function registerSeminar() {
+        $validator = Validator::make(request()->all(), [
+            'full_name' => ['required'],
+            'phone_number' => ['required'],
+            'email' => ['email', 'nullable'],
+            'address' => ['string'],
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json([
+                'err_message' => 'validation error',
+                'errors' => $validator->errors(),
+            ], 422);
+        }
+
+        $seminar = new SeminarParticipants();
+        $seminar->seminar_id = request()->seminar_id;
+        $seminar->full_name = request()->full_name;
+        $seminar->email = request()->email;
+        $seminar->phone_number = request()->phone_number;
+        $seminar->address = request()->address;
+        $seminar->save();
+
+        return response()->json(['message' => 'Registraiton for the seminar completed'], 200);
     }
 }

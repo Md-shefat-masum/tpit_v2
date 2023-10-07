@@ -83,7 +83,6 @@ $meta = [
                                 <!-- amount_and_button_area start -->
                                 <div class="amount_and_button_area">
 
-
                                     <!-- button_area start -->
                                     <a href="{{ route('mycourse_details', $item->course->slug) }}" class="text-center button_all">
                                         <span class="btn-text">কোর্স বিস্তারিত</span>

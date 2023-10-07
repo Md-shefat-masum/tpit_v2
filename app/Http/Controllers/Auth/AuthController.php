@@ -27,6 +27,7 @@ class AuthController extends Controller
             "password" => ["required"],
         ]);
 
+        $user = User::where('email', request()->email)->first();
 
         if(!$user) {
             $error = ValidationException::withMessages([
@@ -46,6 +47,14 @@ class AuthController extends Controller
         Auth::login($user);
 
         $check_admin = $user->roles()->whereIn('role_serial',['1','2'])->exists();
+        $check_course_manager = $user->roles()->where('role_serial' , '3')->exists();
+
+        if($check_course_manager) {
+            // $this->remove_access_token();
+            // $token = $user->createToken('accessToken');
+            // $token_c = cookie("AXRF-TOKEN", $token->accessToken, Carbon::now()->addMinute(60)->format('i'), '/', null, null, false, true);
+            return redirect()->route('course_manager_dashboard');
+        }
         if($check_admin){
             $this->remove_access_token();
             $token = $user->createToken('accessToken');

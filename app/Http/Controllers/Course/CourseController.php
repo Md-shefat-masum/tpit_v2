@@ -131,29 +131,33 @@ class CourseController extends Controller
             ], 422);
         }
 
-        $validator = Validator::make(request()->all(), [
-            'title' => ['required'],
-            'intro_video' => ['required'],
-            'what_is_this_course' => ['required'],
-            'why_is_this_course' => ['required'],
-        ]);
+        // $validator = Validator::make(request()->all(), [
+        //     'title' => ['required'],
+        //     'intro_video' => ['required'],
+        //     'what_is_this_course' => ['required'],
+        //     'why_is_this_course' => ['required'],
+        // ]);
 
-        if ($validator->fails()) {
-            return response()->json([
-                'err_message' => 'validation error',
-                'errors' => $validator->errors(),
-            ], 422);
+        // if ($validator->fails()) {
+        //     return response()->json([
+        //         'err_message' => 'validation error',
+        //         'errors' => $validator->errors(),
+        //     ], 422);
+        // }
+
+        if(request()->has('title')) {
+            $data->title = request()->title;
         }
-
-        $data->title = request()->title;
-        $data->intro_video = request()->intro_video;
-        $data->what_is_this_course = request()->what_is_this_course;
-        $data->why_is_this_course = request()->why_is_this_course;
+        if(request()->has('intro_video')) {
+            $data->intro_video = request()->intro_video;
+        }
+        if(request()->has('what_is_this_course')) {
+            $data->what_is_this_course = request()->what_is_this_course;
+        }
+        if(request()->has('why_is_this_course')) {
+            $data->why_is_this_course = request()->why_is_this_course;
+        }
         $data->save();
-
-        if (request()->hasFile('image')) {
-            // 
-        }
 
         return response()->json($data, 200);
     }

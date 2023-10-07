@@ -131,6 +131,7 @@ Route::group(
 
                 Route::group(['prefix' => 'course-batch'], function () {
                     Route::get('/all', 'Course\CourseBatchController@all');
+                    Route::get('/course-batches/{course_id}', 'Course\CourseBatchController@course_batches');
                     Route::post('/store', 'Course\CourseBatchController@store');
                     Route::post('/canvas-store', 'Course\CourseBatchController@canvas_store');
                     Route::post('/update', 'Course\CourseBatchController@update');
@@ -169,7 +170,7 @@ Route::group(
                 });
 
                 Route::group(['prefix' => 'course-for-whoms'], function () {
-                    Route::get('/all', 'Course\CourseForWhomsController@all');
+                    Route::get('/all/{course_id}', 'Course\CourseForWhomsController@all');
                     Route::post('/store', 'Course\CourseForWhomsController@store');
                     Route::post('/canvas-store', 'Course\CourseForWhomsController@canvas_store');
                     Route::post('/update', 'Course\CourseForWhomsController@update');
@@ -182,7 +183,7 @@ Route::group(
                 });
 
                 Route::group(['prefix' => 'course-job-position'], function () {
-                    Route::get('/all', 'Course\CoursejobPositionController@all');
+                    Route::get('/all/{course_id}', 'Course\CoursejobPositionController@all');
                     Route::post('/store', 'Course\CoursejobPositionController@store');
                     Route::post('/canvas-store', 'Course\CoursejobPositionController@canvas_store');
                     Route::post('/update', 'Course\CoursejobPositionController@update');
@@ -195,7 +196,7 @@ Route::group(
                 });
 
                 Route::group(['prefix' => 'course-job-work'], function () {
-                    Route::get('/all', 'Course\CourseJobWorkController@all');
+                    Route::get('/all/{course_id}', 'Course\CourseJobWorkController@all');
                     Route::post('/store', 'Course\CourseJobWorkController@store');
                     Route::post('/canvas-store', 'Course\CourseJobWorkController@canvas_store');
                     Route::post('/update', 'Course\CourseJobWorkController@update');
@@ -208,7 +209,7 @@ Route::group(
                 });
 
                 Route::group(['prefix' => 'course-what-you-will-get'], function () {
-                    Route::get('/all', 'Course\CourseWhatYouWillGetController@all');
+                    Route::get('/all/{course_id}', 'Course\CourseWhatYouWillGetController@all');
                     Route::post('/store', 'Course\CourseWhatYouWillGetController@store');
                     Route::post('/canvas-store', 'Course\CourseWhatYouWillGetController@canvas_store');
                     Route::post('/update', 'Course\CourseWhatYouWillGetController@update');
@@ -221,7 +222,7 @@ Route::group(
                 });
 
                 Route::group(['prefix' => 'course-why-you-learn-from-us'], function () {
-                    Route::get('/all', 'Course\CourseWhyYouLearnFromUsController@all');
+                    Route::get('/all/{course_id}', 'Course\CourseWhyYouLearnFromUsController@all');
                     Route::post('/store', 'Course\CourseWhyYouLearnFromUsController@store');
                     Route::post('/canvas-store', 'Course\CourseWhyYouLearnFromUsController@canvas_store');
                     Route::post('/update', 'Course\CourseWhyYouLearnFromUsController@update');
@@ -233,8 +234,8 @@ Route::group(
                     Route::get('/{id}', 'Course\CourseWhyYouLearnFromUsController@show');
                 });
 
-                Route::group(['prefix' => 'course-you-will-learns'], function () {
-                    Route::get('/all', 'Course\CourseYouWillLearnsController@all');
+                Route::group(['prefix' => 'course-you-will-learn'], function () {
+                    Route::get('/all/{course_id}', 'Course\CourseYouWillLearnsController@all');
                     Route::post('/store', 'Course\CourseYouWillLearnsController@store');
                     Route::post('/canvas-store', 'Course\CourseYouWillLearnsController@canvas_store');
                     Route::post('/update', 'Course\CourseYouWillLearnsController@update');

@@ -22,6 +22,7 @@ use Database\Seeders\Course\CourseForWhomsSeeder;
 use Database\Seeders\Course\CourseInstructorsSeeder;
 use Database\Seeders\Course\CoursejobPositionSeeder;
 use Database\Seeders\Course\CourseJobWorkSeeder;
+use Database\Seeders\Course\CourseMilestoneSeeder;
 use Database\Seeders\Course\CourseModuleClassExamsSeeder;
 use Database\Seeders\Course\CourseModuleClassSeeder;
 use Database\Seeders\Course\CourseModulesAtAGlancesSeeder;
@@ -80,6 +81,7 @@ class DatabaseSeeder extends Seeder
             CourseWhyYouLearnFromUsSeeder::class,
             CourseYouWillLearnsSeeder::class,
 
+            CourseMilestoneSeeder::class,
             CourseModulesSeeder::class,
             CourseModuleClassExamsSeeder::class,
             CourseModuleClassQuizesSeeder::class,
@@ -106,10 +108,15 @@ class DatabaseSeeder extends Seeder
             QuizQuestionOptionSeeder::class,
             QuizQuestionSubmissionSeeder::class,
             QuizUserSeeder::class,
-            BlogWriterSeeder::class,
 
             SeminarSeeder::class,
             SeminarParticipantsSeeder::class,
+
+            CourseOutcomeStepSeeder::class,
+            CourseSepcialitySeeder::class,
+            CourseTypeSeeder::class,
+            ItServicesSeeder::class,
+            SuccessStorySeeder::class,
         ]);
 
 

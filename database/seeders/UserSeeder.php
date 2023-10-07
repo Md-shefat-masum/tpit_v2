@@ -37,20 +37,26 @@ class UserSeeder extends Seeder
 
         $user_role = new UserRole();
         $user_role->id = 30;
-        $user_role->name = 'user';
+        $user_role->name = 'course_manager';
         $user_role->role_serial = 3;
         $user_role->save();
 
         $user_role = new UserRole();
-        $user_role->id = 31;
-        $user_role->name = 'instructor';
+        $user_role->id = 40;
+        $user_role->name = 'user';
         $user_role->role_serial = 4;
+        $user_role->save();
+
+        $user_role = new UserRole();
+        $user_role->id = 41;
+        $user_role->name = 'instructor';
+        $user_role->role_serial = 5;
         $user_role->save();
      
         $user_role = new UserRole();
-        $user_role->id = 32;
+        $user_role->id = 42;
         $user_role->name = 'student';
-        $user_role->role_serial = 5;
+        $user_role->role_serial = 6;
         $user_role->save();
 
         UserPermission::truncate();
@@ -100,6 +106,19 @@ class UserSeeder extends Seeder
         $user->save();
         $user->roles()->attach([2]);
         $user->permissions()->attach([1,2]);
+
+        $user = new User();
+        $user->first_name = 'mr course';
+        $user->last_name = 'manager';
+        $user->user_name = 'coursemanager';
+        $user->telegram_id = '1235645478';
+        // $user->role_id = 3;
+        $user->mobile_number = '01236485';
+        $user->email = 'coursemanager@gmail.com';
+        $user->password = Hash::make('12345678');
+        $user->save();
+        $user->roles()->attach([3]);
+        $user->permissions()->attach([1,2,3]);
 
         $user = new User();
         $user->first_name = 'mr';

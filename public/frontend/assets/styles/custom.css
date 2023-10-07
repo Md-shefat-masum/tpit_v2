@@ -1,3 +1,35 @@
 .swal2-popup.swal2-toast.swal2-show{
     z-index: 999999;
 }
+.student_success_history_area .student_success_history_content .student_success_video_area .success_video_area .video_button_icon {
+    border: 0px solid red;
+    width: 130px;
+    height: 130px;
+    background-color: #dc2626;
+    border-radius: 50%;
+    position: absolute;
+    z-index: 98;
+    left: 50%;
+    top: 50%;
+    transform: translateY(-50%) translateX(-50%);
+    justify-content: center;
+    display: flex;
+    align-items: center;
+}
+.my_it_service_area .my_it_service_area_content .service_area .wordpress .service_logo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.my_it_service_area .my_it_service_area_content .service_area .service {
+    width: 410px;
+    background-color: #ffffff;
+    border-radius: 16px;
+    overflow: hidden;
+}
+
+.button_all:hover {
+    background-color: #dc2626;
+    border: 1px solid transparent;
+    color: #ffffff;
+}

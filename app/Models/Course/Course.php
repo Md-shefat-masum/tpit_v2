@@ -31,15 +31,22 @@ class Course extends Model
     return $this->hasMany(CourseBatches::class, 'course_id');
   }
 
+  public function course_mile_stones()
+  {
+    return $this->hasMany(CourseMilestone::class, 'course_id');
+  }
+
+  public function class_routines()
+  {
+    return $this->hasMany(CourseModuleClassRoutines::class, 'course_id');
+  }
+
   public function course_job_works()
   {
     return $this->hasMany(CourseJobWorks::class, 'course_id');
   }
 
-  public function course_modules()
-  {
-    return $this->hasMany(CourseModule::class, 'course_id');
-  }
+  
 
   public function course_module_task_complite_by_user()
   {
