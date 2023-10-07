@@ -59,12 +59,12 @@
                     </li>
 
                     <li>
-                        <a href="" aria-current="page" class="router-link-active">
+                        <router-link :to="{ name: `CourseJobWorkAll` }" aria-current="page" class="router-link-active">
                             <i class="far fa-circle mr-1"></i>
                             <div>
                                 Course Job works
                             </div>
-                        </a>
+                        </router-link>
                     </li>
 
                     <li>

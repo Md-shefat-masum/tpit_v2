@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Validator;
 
 class CourseJobWorkController extends Controller
 {
-    public function all()
+    public function all($course_id)
     {
         $paginate = (int) request()->paginate ?? 10;
         $orderBy = request()->orderBy ?? 'id';
@@ -23,7 +23,7 @@ class CourseJobWorkController extends Controller
             $status = request()->status;
         }
 
-        $query = CourseJobWorks::where('status', $status)->orderBy($orderBy, $orderByType);
+        $query = CourseJobWorks::where('status', $status)->where('course_id', $course_id)->orderBy($orderBy, $orderByType);
 
         if (request()->has('search_key')) {
             $key = request()->search_key;

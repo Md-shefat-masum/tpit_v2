@@ -30,6 +30,14 @@ import CourseJobPositionEdit from "./views/pages/course_job_position/Edit.vue";
 import CourseJobPositionDetails from "./views/pages/course_job_position/Details.vue";
 
 
+// course job works
+import CourseJobWorkLayout from "./views/pages/course_job_works/CourseJobWorkLayout.vue";
+import CourseJobWorkAll from "./views/pages/course_job_works/All.vue";
+import CourseJobWorkCreate from "./views/pages/course_job_works/Create.vue";
+import CourseJobWorkEdit from "./views/pages/course_job_works/Edit.vue";
+import CourseJobWorkDetails from "./views/pages/course_job_works/Details.vue";
+
+
 Vue.use(VueRouter);
 window.Fire = new Vue();
 
@@ -159,6 +167,39 @@ const routes = [
                                 path: 'details/:id',
                                 name: 'CourseJobPositionDetails',
                                 component: CourseJobPositionDetails,
+                            },
+                        ]
+                    },
+
+                    // course job works
+                    {
+                        path: 'job-works',
+                        component: CourseJobWorkLayout,
+                        children: [
+                            {
+                                path: '',
+                                name: 'CourseJobWork',
+                                component: CourseJobWorkAll,
+                            },
+                            {
+                                path: 'all',
+                                name: 'CourseJobWorkAll',
+                                component: CourseJobWorkAll,
+                            },
+                            {
+                                path: 'create',
+                                name: 'CourseJobWorkCreate',
+                                component: CourseJobWorkCreate,
+                            },
+                            {
+                                path: 'edit/:id',
+                                name: 'CourseJobWorkEdit',
+                                component: CourseJobWorkEdit,
+                            },
+                            {
+                                path: 'details/:id',
+                                name: 'CourseJobWorkDetails',
+                                component: CourseJobWorkDetails,
                             },
                         ]
                     },

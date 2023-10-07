@@ -196,7 +196,7 @@ Route::group(
                 });
 
                 Route::group(['prefix' => 'course-job-work'], function () {
-                    Route::get('/all', 'Course\CourseJobWorkController@all');
+                    Route::get('/all/{course_id}', 'Course\CourseJobWorkController@all');
                     Route::post('/store', 'Course\CourseJobWorkController@store');
                     Route::post('/canvas-store', 'Course\CourseJobWorkController@canvas_store');
                     Route::post('/update', 'Course\CourseJobWorkController@update');
