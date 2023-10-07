@@ -3295,7 +3295,17 @@ var render = function render() {
     }
   }, [_c("i", {
     staticClass: "far fa-circle mr-1"
-  }), _vm._v(" "), _c("div", [_vm._v("\n                            Course what you will get\n                        ")])])], 1), _vm._v(" "), _vm._m(0), _vm._v(" "), _vm._m(1), _vm._v(" "), _vm._m(2), _vm._v(" "), _vm._m(3), _vm._v(" "), _vm._m(4)])]), _vm._v(" "), _c("div", {
+  }), _vm._v(" "), _c("div", [_vm._v("\n                            Course what you will get\n                        ")])])], 1), _vm._v(" "), _vm._m(0), _vm._v(" "), _vm._m(1), _vm._v(" "), _c("li", [_c("router-link", {
+    staticClass: "router-link-active",
+    attrs: {
+      to: {
+        name: "CourseTrainerCreate"
+      },
+      "aria-current": "page"
+    }
+  }, [_c("i", {
+    staticClass: "far fa-circle mr-1"
+  }), _vm._v(" "), _c("div", [_vm._v("\n                            Course trainer\n                        ")])])], 1), _vm._v(" "), _vm._m(2), _vm._v(" "), _vm._m(3)])]), _vm._v(" "), _c("div", {
     staticClass: "setting_body custom_scroll"
   }, [_c("router-view")], 1)])]);
 };
@@ -3323,18 +3333,6 @@ var staticRenderFns = [function () {
   }, [_c("i", {
     staticClass: "far fa-circle mr-1"
   }), _vm._v(" "), _c("div", [_vm._v("\n                            Course class modules\n                        ")])])]);
-}, function () {
-  var _vm = this,
-    _c = _vm._self._c;
-  return _c("li", [_c("a", {
-    staticClass: "router-link-active",
-    attrs: {
-      href: "",
-      "aria-current": "page"
-    }
-  }, [_c("i", {
-    staticClass: "far fa-circle mr-1"
-  }), _vm._v(" "), _c("div", [_vm._v("\n                            Course trainer\n                        ")])])]);
 }, function () {
   var _vm = this,
     _c = _vm._self._c;
@@ -6488,8 +6486,8 @@ function getAlldata() {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_40__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm.js");
-/* harmony import */ var vue_router__WEBPACK_IMPORTED_MODULE_41__ = __webpack_require__(/*! vue-router */ "./node_modules/vue-router/dist/vue-router.esm.js");
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_41__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm.js");
+/* harmony import */ var vue_router__WEBPACK_IMPORTED_MODULE_42__ = __webpack_require__(/*! vue-router */ "./node_modules/vue-router/dist/vue-router.esm.js");
 /* harmony import */ var _views_pages_Layout_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./views/pages/Layout.vue */ "./resources/js/vue/course_details_maanagement/views/pages/Layout.vue");
 /* harmony import */ var _views_Layout_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./views/Layout.vue */ "./resources/js/vue/course_details_maanagement/views/Layout.vue");
 /* harmony import */ var _views_pages_WhatIsThisCourse_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./views/pages/WhatIsThisCourse.vue */ "./resources/js/vue/course_details_maanagement/views/pages/WhatIsThisCourse.vue");
@@ -6530,6 +6528,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _views_pages_course_what_will_get_Create_vue__WEBPACK_IMPORTED_MODULE_37__ = __webpack_require__(/*! ./views/pages/course_what_will_get/Create.vue */ "./resources/js/vue/course_details_maanagement/views/pages/course_what_will_get/Create.vue");
 /* harmony import */ var _views_pages_course_what_will_get_Edit_vue__WEBPACK_IMPORTED_MODULE_38__ = __webpack_require__(/*! ./views/pages/course_what_will_get/Edit.vue */ "./resources/js/vue/course_details_maanagement/views/pages/course_what_will_get/Edit.vue");
 /* harmony import */ var _views_pages_course_what_will_get_Details_vue__WEBPACK_IMPORTED_MODULE_39__ = __webpack_require__(/*! ./views/pages/course_what_will_get/Details.vue */ "./resources/js/vue/course_details_maanagement/views/pages/course_what_will_get/Details.vue");
+Object(function webpackMissingModule() { var e = new Error("Cannot find module './views/pages/course_what_will_get/CourseTrainerLayout.vue'"); e.code = 'MODULE_NOT_FOUND'; throw e; }());
+Object(function webpackMissingModule() { var e = new Error("Cannot find module './views/pages/course_what_will_get/Trainer.vue'"); e.code = 'MODULE_NOT_FOUND'; throw e; }());
 
 
 
@@ -6586,8 +6586,12 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-vue__WEBPACK_IMPORTED_MODULE_40__["default"].use(vue_router__WEBPACK_IMPORTED_MODULE_41__["default"]);
-window.Fire = new vue__WEBPACK_IMPORTED_MODULE_40__["default"]();
+
+// course tariner
+
+
+vue__WEBPACK_IMPORTED_MODULE_41__["default"].use(vue_router__WEBPACK_IMPORTED_MODULE_42__["default"]);
+window.Fire = new vue__WEBPACK_IMPORTED_MODULE_41__["default"]();
 var routes = [{
   path: '',
   component: _views_Layout_vue__WEBPACK_IMPORTED_MODULE_1__["default"],
@@ -6792,10 +6796,20 @@ var routes = [{
         name: 'CourseWhatWillGetDetails',
         component: _views_pages_course_what_will_get_Details_vue__WEBPACK_IMPORTED_MODULE_39__["default"]
       }]
+    },
+    // couese trainer
+    {
+      path: 'course-trainer',
+      component: Object(function webpackMissingModule() { var e = new Error("Cannot find module './views/pages/course_what_will_get/CourseTrainerLayout.vue'"); e.code = 'MODULE_NOT_FOUND'; throw e; }()),
+      children: [{
+        path: 'select-trainer',
+        name: 'CourseTrainerCreate',
+        component: Object(function webpackMissingModule() { var e = new Error("Cannot find module './views/pages/course_what_will_get/Trainer.vue'"); e.code = 'MODULE_NOT_FOUND'; throw e; }())
+      }]
     }]
   }]
 }];
-var management_router = new vue_router__WEBPACK_IMPORTED_MODULE_41__["default"]({
+var management_router = new vue_router__WEBPACK_IMPORTED_MODULE_42__["default"]({
   routes: routes,
   mode: 'hash',
   linkExactActiveClass: 'active'

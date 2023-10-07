@@ -62,6 +62,10 @@ import CourseWhatWillGetEdit from "./views/pages/course_what_will_get/Edit.vue";
 import CourseWhatWillGetDetails from "./views/pages/course_what_will_get/Details.vue";
 
 
+// course tariner
+import CourseTrainerLayout from "./views/pages/course_what_will_get/CourseTrainerLayout.vue";
+import CourseTrainerCreate from "./views/pages/course_what_will_get/Trainer.vue";
+
 Vue.use(VueRouter);
 window.Fire = new Vue();
 
@@ -324,6 +328,19 @@ const routes = [
                                 path: 'details/:id',
                                 name: 'CourseWhatWillGetDetails',
                                 component: CourseWhatWillGetDetails,
+                            },
+                        ]
+                    },
+
+                    // couese trainer
+                    {
+                        path: 'course-trainer',
+                        component: CourseTrainerLayout,
+                        children: [
+                            {
+                                path: 'select-trainer',
+                                name: 'CourseTrainerCreate',
+                                component: CourseTrainerCreate,
                             },
                         ]
                     },
