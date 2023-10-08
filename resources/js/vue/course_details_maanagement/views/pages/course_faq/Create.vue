@@ -2,7 +2,7 @@
     <div class="custom_scroll">
         <div class="card list_card">
             <div class="card-header">
-                <h4>Create Course why learn from us</h4>
+                <h4>Create Course FAQ</h4>
                 <div class="btns">
                     <a @click="$router.go(-1)" class="btn rounded-pill btn-outline-warning" >
                         <i class="fa fa-arrow-left me-5px"></i>
@@ -10,7 +10,7 @@
                     </a>
                 </div>
             </div>
-            <form @keyup.enter="store_course_work($event.target)" @submit.prevent="store_course_work($event.target)" class="user_create_form">
+            <form @keyup.enter="store_course_faq($event.target)" @submit.prevent="store_course_faq($event.target)" class="user_create_form">
                 <div class="card-body">
                     <div class="row justify-content-center">
                         <div class="col-xl-10 col-12">
@@ -18,6 +18,10 @@
                                 <div class="col-md-12">
                                     <label class="form-label" for="title">Title</label>
                                     <input type="text" id="title" name="title" class="form-control" placeholder="24/7 support" />
+                                </div>
+                                <div class="col-md-12">
+                                    <label class="form-label" for="description">description</label>
+                                    <textarea id="description" name="description" class="form-control"></textarea>
                                 </div>
                             </div>
                         </div>
@@ -42,7 +46,7 @@ export default {
         }
     },
     methods: {
-        store_course_work: async function(event) {
+        store_course_faq: async function(event) {
             let formData = new FormData(event);
             let course_id = this.$route.params.id;
             formData.append('course_id', course_id);
@@ -51,9 +55,9 @@ export default {
                 formData: formData,
             }
 
-            await axios.post('/api/v1/course/course-why-you-learn-from-us/store', data.formData).then((response) => {
+            await axios.post('/api/v1/course/course-faqs/store', data.formData).then((response) => {
                 // localStorage.setItem('current_course', JSON.stringify(response?.data))
-                window.toaster("Course why learn from us added successfully!");
+                window.toaster("Course FAQ added successfully!");
                 event.reset();
             })
             .catch((e) => {

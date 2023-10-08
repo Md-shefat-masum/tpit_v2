@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Validator;
 
 class CourseFaqsController extends Controller
 {
-    public function all()
+    public function all($course_id)
     {
         $paginate = (int) request()->paginate ?? 10;
         $orderBy = request()->orderBy ?? 'id';
@@ -23,7 +23,7 @@ class CourseFaqsController extends Controller
             $status = request()->status;
         }
 
-        $query = CourseFaqs::where('status', $status)->orderBy($orderBy, $orderByType);
+        $query = CourseFaqs::where('status', $status)->where('course_id', $course_id)->orderBy($orderBy, $orderByType);
 
         if (request()->has('search_key')) {
             $key = request()->search_key;

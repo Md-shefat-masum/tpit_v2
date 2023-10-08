@@ -303,6 +303,9 @@
 .p-6{
     padding: 1.5rem
 }
+.p-1{
+    padding: 0.25rem
+}
 .px-1{
     padding-left: 0.25rem;
     padding-right: 0.25rem
@@ -359,6 +362,16 @@
 }
 .pt-8{
     padding-top: 2rem
+}
+.ps-2{
+    -webkit-padding-start: 0.5rem;
+            padding-inline-start: 0.5rem
+}
+.pl-2{
+    padding-left: 0.5rem
+}
+.pl-1{
+    padding-left: 0.25rem
 }
 .text-center{
     text-align: center

@@ -98,18 +98,18 @@
                         <a href="" aria-current="page" class="router-link-active">
                             <i class="far fa-circle mr-1"></i>
                             <div>
-                                Course outlines
+                                Course at a glance
                             </div>
                         </a>
                     </li>
 
                     <li>
-                        <a href="" aria-current="page" class="router-link-active">
+                        <router-link :to="{name: `CourseModule`}" aria-current="page" class="router-link-active">
                             <i class="far fa-circle mr-1"></i>
                             <div>
                                 Course class modules
                             </div>
-                        </a>
+                        </router-link>
                     </li>
 
                     <li>
@@ -131,12 +131,12 @@
                     </li>
 
                     <li>
-                        <a href="" aria-current="page" class="router-link-active">
+                        <router-link :to="{ name: `CourseFaqAll` }" aria-current="page" class="router-link-active">
                             <i class="far fa-circle mr-1"></i>
                             <div>
                                 Course FAQ
                             </div>
-                        </a>
+                        </router-link>
                     </li>
 
 

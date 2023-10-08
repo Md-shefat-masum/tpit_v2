@@ -34,8 +34,8 @@ class CourseModuleClassController extends Controller
                     ->orWhere('class_no', '%' . $key . '%')
                     ->orWhere('title', '%' . $key . '%')
                     ->orWhere('type', 'LIKE', '%' . $key . '%')
-                    ->orWhere('class_vedio_link', 'LIKE', '%' . $key . '%')
-                    ->orWhere('class_vedio_poster', 'LIKE', '%' . $key . '%');
+                    ->orWhere('class_video_link', 'LIKE', '%' . $key . '%')
+                    ->orWhere('class_video_poster', 'LIKE', '%' . $key . '%');
             });
         }
 
@@ -72,8 +72,8 @@ class CourseModuleClassController extends Controller
             'class_no' => ['required'],
             'title' => ['required'],
             'type' => ['required'],
-            'class_vedio_link' => ['required'],
-            'class_vedio_poster' => ['required'],
+            'class_video_link' => ['required'],
+            'class_video_poster' => ['required'],
 
         ]);
 
@@ -90,8 +90,8 @@ class CourseModuleClassController extends Controller
         $data->class_no = request()->class_no;
         $data->title = request()->title;
         $data->type = request()->type;
-        $data->class_vedio_link = request()->class_vedio_link;
-        $data->class_vedio_poster = request()->class_vedio_poster;
+        $data->class_video_link = request()->class_video_link;
+        $data->class_video_poster = request()->class_video_poster;
         $data->save();
 
         return response()->json($data, 200);
@@ -105,8 +105,8 @@ class CourseModuleClassController extends Controller
             'class_no' => ['required'],
             'title' => ['required'],
             'type' => ['required'],
-            'class_vedio_link' => ['required'],
-            'class_vedio_poster' => ['required'],
+            'class_video_link' => ['required'],
+            'class_video_poster' => ['required'],
         ]);
 
         if ($validator->fails()) {
@@ -122,8 +122,8 @@ class CourseModuleClassController extends Controller
         $data->class_no = request()->class_no;
         $data->title = request()->title;
         $data->type = request()->type;
-        $data->class_vedio_link = request()->class_vedio_link;
-        $data->class_vedio_poster = request()->class_vedio_poster;
+        $data->class_video_link = request()->class_video_link;
+        $data->class_video_poster = request()->class_video_poster;
         $data->save();
 
         return response()->json($data, 200);
@@ -145,8 +145,8 @@ class CourseModuleClassController extends Controller
             'class_no' => ['required'],
             'title' => ['required'],
             'type' => ['required'],
-            'class_vedio_link' => ['required'],
-            'class_vedio_poster' => ['required'],
+            'class_video_link' => ['required'],
+            'class_video_poster' => ['required'],
         ]);
 
         if ($validator->fails()) {
@@ -161,8 +161,8 @@ class CourseModuleClassController extends Controller
         $data->class_no = request()->class_no;
         $data->title = request()->title;
         $data->type = request()->type;
-        $data->class_vedio_link = request()->class_vedio_link;
-        $data->class_vedio_poster = request()->class_vedio_poster;
+        $data->class_video_link = request()->class_video_link;
+        $data->class_video_poster = request()->class_video_poster;
         $data->save();
 
         return response()->json($data, 200);
@@ -184,8 +184,8 @@ class CourseModuleClassController extends Controller
             'class_no' => ['required'],
             'title' => ['required'],
             'type' => ['required'],
-            'class_vedio_link' => ['required'],
-            'class_vedio_poster' => ['required'],
+            'class_video_link' => ['required'],
+            'class_video_poster' => ['required'],
         ]);
 
         if ($validator->fails()) {
@@ -199,8 +199,8 @@ class CourseModuleClassController extends Controller
         $data->class_no = request()->class_no;
         $data->title = request()->title;
         $data->type = request()->type;
-        $data->class_vedio_link = request()->class_vedio_link;
-        $data->class_vedio_poster = request()->class_vedio_poster;
+        $data->class_video_link = request()->class_video_link;
+        $data->class_video_poster = request()->class_video_poster;
         $data->save();
 
         return response()->json($data, 200);

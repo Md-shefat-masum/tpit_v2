@@ -72,6 +72,7 @@
     <!-- BEGIN: Theme JS-->
     <script src="{{ asset('backend') }}/app-assets/js/core/app.min.js"></script>
     <script src="{{ asset('backend') }}/app-assets/js/core/app-menu.min.js"></script>
+    <link rel="stylesheet" href="/css/course_manager_custom.css">
     <!-- END: Theme JS-->
 
     <!-- BEGIN: Page JS-->

@@ -161,7 +161,7 @@ Route::group(
                 });
 
                 Route::group(['prefix' => 'course-faqs'], function () {
-                    Route::get('/all', 'Course\CourseFaqsController@all');
+                    Route::get('/all/{course_id}', 'Course\CourseFaqsController@all');
                     Route::post('/store', 'Course\CourseFaqsController@store');
                     Route::post('/canvas-store', 'Course\CourseFaqsController@canvas_store');
                     Route::post('/update', 'Course\CourseFaqsController@update');
