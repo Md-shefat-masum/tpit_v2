@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use App\Models\ContactMessage;
 use App\Models\Course\Course;
+use App\Models\Course\CourseBatches;
 use App\Models\Course\CourseInstructors;
 use Illuminate\Support\Facades\DB;
 
@@ -51,15 +52,28 @@ class CourseInstructorController extends Controller
         return response()->json($course_instructors);
     }
 
+    public function current_course_teachers($course_id) {
+        // $course_instructors = course_course_instructor::where('course_id', $course_id)->whereExists()
+        $course_batch = CourseBatches::where('status', 'active')->where('course_id', $course_id)->orderBy('id', 'DESC')->first();
+
+        $course_instructor = DB::table('course_course_instructor')
+        ->where('batch_id', $course_batch->id)->where('course_id', $course_id)->first();
+
+        return response()->json($course_instructor);
+    }
+
     public function update_instructor() {
         $course_check = DB::table('course_course_instructor')
         ->where('course_id', request()->course_id)
+        ->where('batch_id', request()->batch_id)
         ->where('instructor_id', request()->instructor_id)->first();
-        if($course_check == null) {
-            $course = Course::where('id', request()->course_id)->first();
-            $course->course_instructor()->attach([request()->instructor_id]);
-            // $course->course_instructor
 
+        if($course_check == null) {
+            DB::table('course_course_instructor')->insert([
+                'course_id' => request()->course_id,
+                'instructor_id' => request()->instructor_id,
+                'batch_id' => request()->batch_id
+            ]);
             return response()->json(['message' => 'course teacher updated']);
         }
 

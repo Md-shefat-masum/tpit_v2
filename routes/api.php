@@ -119,6 +119,7 @@ Route::group(
                 Route::group(['prefix' => 'course-instructor'], function () {
                     Route::get('/all', 'Course\CourseInstructorController@all');
                     Route::get('/get-all', 'Course\CourseInstructorController@get_all');
+                    Route::get('/current-course-teacher/{course_id}', 'Course\CourseInstructorController@current_course_teachers');
                     Route::post('/store', 'Course\CourseInstructorController@store');
                     Route::post('/update-instructor', 'Course\CourseInstructorController@update_instructor');
                     Route::post('/canvas-store', 'Course\CourseInstructorController@canvas_store');
@@ -133,6 +134,7 @@ Route::group(
 
                 Route::group(['prefix' => 'course-batch'], function () {
                     Route::get('/all', 'Course\CourseBatchController@all');
+                    Route::get('/get-all/{course_id}', 'Course\CourseBatchController@get_all_bacths');
                     Route::get('/course-batches/{course_id}', 'Course\CourseBatchController@course_batches');
                     Route::post('/store', 'Course\CourseBatchController@store');
                     Route::post('/canvas-store', 'Course\CourseBatchController@canvas_store');

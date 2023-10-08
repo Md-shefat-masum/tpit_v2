@@ -1950,12 +1950,11 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
-<<<<<<< HEAD
       course_id: '',
-      course_teachers: []
-=======
-      course_id: ''
->>>>>>> 4a4977ff5ea2d56d1b3e496323ac946ea5acb790
+      course_teachers: [],
+      course_batches: [],
+      current_teacher: '',
+      current_batch: ''
     };
   },
   methods: {
@@ -1972,18 +1971,11 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 formData: formData
               };
               _context.next = 6;
-<<<<<<< HEAD
               return axios.post('/api/v1/course/course-instructor/update-instructor', data.formData).then(function (response) {
                 // localStorage.setItem('current_course', JSON.stringify(response?.data))
                 if (response) {
                   window.toaster(response.data.message, 'info');
                 }
-=======
-              return axios.post('/api/v1/course/course-why-you-learn-from-us/store', data.formData).then(function (response) {
-                // localStorage.setItem('current_course', JSON.stringify(response?.data))
-                window.toaster("Course why learn from us added successfully!");
-                event.reset();
->>>>>>> 4a4977ff5ea2d56d1b3e496323ac946ea5acb790
               })["catch"](function (e) {
                 console.log(e);
               });
@@ -1997,72 +1989,101 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         return _store_course_work.apply(this, arguments);
       }
       return store_course_work;
-<<<<<<< HEAD
     }(),
     get_all_teachers: function () {
-      var _get_all_teachers = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2(event) {
+      var _get_all_teachers = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2() {
         var _this = this;
-        var id;
         return _regeneratorRuntime().wrap(function _callee2$(_context2) {
           while (1) switch (_context2.prev = _context2.next) {
             case 0:
-              id = this.$route.params.id;
               axios.get("/api/v1/course/course-instructor/get-all").then(function (response) {
-                // console.log(response.data);
                 _this.course_teachers = response.data;
               })["catch"](function (e) {
                 console.log(e);
-                // if(e.response.status == 401) {
-                //     console.log(e.response.data);
-                //     location.href = '/';
-                // }
               });
-            case 2:
+            case 1:
             case "end":
               return _context2.stop();
           }
-        }, _callee2, this);
+        }, _callee2);
       }));
-      function get_all_teachers(_x2) {
+      function get_all_teachers() {
         return _get_all_teachers.apply(this, arguments);
       }
       return get_all_teachers;
+    }(),
+    get_current_course_teachers: function () {
+      var _get_current_course_teachers = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee3() {
+        var _this2 = this;
+        return _regeneratorRuntime().wrap(function _callee3$(_context3) {
+          while (1) switch (_context3.prev = _context3.next) {
+            case 0:
+              axios.get("/api/v1/course/course-instructor/current-course-teacher/".concat(this.course_id)).then(function (response) {
+                _this2.current_teacher = response.data.instructor_id;
+                _this2.current_batch = response.data.batch_id;
+                // console.log(this.current_teacher, this.current_batch);
+              })["catch"](function (e) {
+                console.log(e);
+              });
+            case 1:
+            case "end":
+              return _context3.stop();
+          }
+        }, _callee3, this);
+      }));
+      function get_current_course_teachers() {
+        return _get_current_course_teachers.apply(this, arguments);
+      }
+      return get_current_course_teachers;
+    }(),
+    get_all_batches: function () {
+      var _get_all_batches = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee4() {
+        var _this3 = this;
+        return _regeneratorRuntime().wrap(function _callee4$(_context4) {
+          while (1) switch (_context4.prev = _context4.next) {
+            case 0:
+              axios.get("/api/v1/course/course-batch/get-all/".concat(this.course_id)).then(function (response) {
+                _this3.course_batches = response.data;
+              })["catch"](function (e) {
+                console.log(e);
+              });
+            case 1:
+            case "end":
+              return _context4.stop();
+          }
+        }, _callee4, this);
+      }));
+      function get_all_batches() {
+        return _get_all_batches.apply(this, arguments);
+      }
+      return get_all_batches;
     }()
   },
   computed: {},
   created: function () {
-    var _created = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee3() {
-      return _regeneratorRuntime().wrap(function _callee3$(_context3) {
-        while (1) switch (_context3.prev = _context3.next) {
+    var _created = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee5() {
+      var course;
+      return _regeneratorRuntime().wrap(function _callee5$(_context5) {
+        while (1) switch (_context5.prev = _context5.next) {
           case 0:
-            this.get_all_teachers();
-          case 1:
+            course = localStorage.getItem('current_course');
+            if (course) {
+              course = JSON.parse(course);
+              this.course_id = course.id;
+            }
+            _context5.next = 4;
+            return this.get_current_course_teachers();
+          case 4:
+            _context5.next = 6;
+            return this.get_all_batches();
+          case 6:
+            _context5.next = 8;
+            return this.get_all_teachers();
+          case 8:
           case "end":
-            return _context3.stop();
+            return _context5.stop();
         }
-      }, _callee3, this);
-=======
-    }()
-    // get_course_details: async function (event) {
-    //     let whatcourse = localStorage.getItem('current_course');
-    //     if(whatcourse) {
-    //         whatcourse = JSON.parse(whatcourse);
-    //         this.course_id = whatcourse.id
-    //     }
-    // }
-  },
-
-  computed: {},
-  created: function () {
-    var _created = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2() {
-      return _regeneratorRuntime().wrap(function _callee2$(_context2) {
-        while (1) switch (_context2.prev = _context2.next) {
-          case 0:
-          case "end":
-            return _context2.stop();
-        }
-      }, _callee2);
->>>>>>> 4a4977ff5ea2d56d1b3e496323ac946ea5acb790
+      }, _callee5, this);
     }));
     function created() {
       return _created.apply(this, arguments);
@@ -5553,11 +5574,7 @@ var render = function render() {
     staticClass: "card list_card"
   }, [_c("div", {
     staticClass: "card-header"
-<<<<<<< HEAD
-  }, [_c("h4", [_vm._v("Create Job work")]), _vm._v(" "), _c("div", {
-=======
-  }, [_c("h4", [_vm._v("Create Course why learn from us")]), _vm._v(" "), _c("div", {
->>>>>>> 4a4977ff5ea2d56d1b3e496323ac946ea5acb790
+  }, [_c("h4", [_vm._v("Manage course instructor")]), _vm._v(" "), _c("div", {
     staticClass: "btns"
   }, [_c("a", {
     staticClass: "btn rounded-pill btn-outline-warning",
@@ -5580,16 +5597,7 @@ var render = function render() {
         return _vm.store_course_work($event.target);
       }
     }
-<<<<<<< HEAD
   }, [_c("div", {
-=======
-  }, [_vm._m(0), _vm._v(" "), _vm._m(1)])])]);
-};
-var staticRenderFns = [function () {
-  var _vm = this,
-    _c = _vm._self._c;
-  return _c("div", {
->>>>>>> 4a4977ff5ea2d56d1b3e496323ac946ea5acb790
     staticClass: "card-body"
   }, [_c("div", {
     staticClass: "row justify-content-center"
@@ -5597,19 +5605,72 @@ var staticRenderFns = [function () {
     staticClass: "col-xl-10 col-12"
   }, [_c("div", {
     staticClass: "row g-3"
-  }, [_c("div", {
+  }, [_vm.current_batch != "" ? _c("div", {
     staticClass: "col-md-12"
   }, [_c("label", {
     staticClass: "form-label",
     attrs: {
       "for": "title"
     }
-<<<<<<< HEAD
+  }, [_vm._v("Select Batch")]), _vm._v(" "), _c("select", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.current_batch,
+      expression: "current_batch"
+    }],
+    staticClass: "form-control",
+    attrs: {
+      name: "batch_id",
+      id: ""
+    },
+    on: {
+      change: function change($event) {
+        var $$selectedVal = Array.prototype.filter.call($event.target.options, function (o) {
+          return o.selected;
+        }).map(function (o) {
+          var val = "_value" in o ? o._value : o.value;
+          return val;
+        });
+        _vm.current_batch = $event.target.multiple ? $$selectedVal : $$selectedVal[0];
+      }
+    }
+  }, _vm._l(_vm.course_batches, function (batch, index) {
+    return _c("option", {
+      key: index,
+      domProps: {
+        value: batch.id
+      }
+    }, [_vm._v(_vm._s(batch.batch_name))]);
+  }), 0)]) : _vm._e(), _vm._v(" "), _vm.current_teacher != "" ? _c("div", {
+    staticClass: "col-md-12"
+  }, [_c("label", {
+    staticClass: "form-label",
+    attrs: {
+      "for": "title"
+    }
   }, [_vm._v("Select teacher")]), _vm._v(" "), _c("select", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.current_teacher,
+      expression: "current_teacher"
+    }],
     staticClass: "form-control",
     attrs: {
       name: "instructor_id",
       id: ""
+    },
+    on: {
+      change: function change($event) {
+        var $$selectedVal = Array.prototype.filter.call($event.target.options, function (o) {
+          return o.selected;
+        }).map(function (o) {
+          var val = "_value" in o ? o._value : o.value;
+          return val;
+        });
+        _vm.current_teacher = $event.target.multiple ? $$selectedVal : $$selectedVal[0];
+      }
     }
   }, _vm._l(_vm.course_teachers, function (teacher, index) {
     return _c("option", {
@@ -5618,21 +5679,9 @@ var staticRenderFns = [function () {
         value: teacher.id
       }
     }, [_vm._v(_vm._s(teacher.full_name))]);
-  }), 0)])])])])]), _vm._v(" "), _vm._m(0)])])]);
+  }), 0)]) : _vm._e()])])])]), _vm._v(" "), _vm._m(0)])])]);
 };
 var staticRenderFns = [function () {
-=======
-  }, [_vm._v("Title")]), _vm._v(" "), _c("input", {
-    staticClass: "form-control",
-    attrs: {
-      type: "text",
-      id: "title",
-      name: "title",
-      placeholder: "24/7 support"
-    }
-  })])])])])]);
-}, function () {
->>>>>>> 4a4977ff5ea2d56d1b3e496323ac946ea5acb790
   var _vm = this,
     _c = _vm._self._c;
   return _c("div", {
@@ -5644,11 +5693,7 @@ var staticRenderFns = [function () {
     }
   }, [_c("i", {
     staticClass: "fa fa-upload"
-<<<<<<< HEAD
   }), _vm._v("\n                    Update\n                ")])]);
-=======
-  }), _vm._v("\n                    Submit\n                ")])]);
->>>>>>> 4a4977ff5ea2d56d1b3e496323ac946ea5acb790
 }];
 render._withStripped = true;
 
