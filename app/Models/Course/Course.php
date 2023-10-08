@@ -46,7 +46,10 @@ class Course extends Model
     return $this->hasMany(CourseJobWorks::class, 'course_id');
   }
 
-  
+  public function course_modules()
+  {
+      return $this->hasMany(CourseModule::class, 'milestone_id');
+  }
 
   public function course_module_task_complite_by_user()
   {
