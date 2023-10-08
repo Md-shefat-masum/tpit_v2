@@ -202,7 +202,6 @@ class WebsiteController extends Controller
         $incompleteCourses = $userWithCourses->batchStudents->where('is_complete', 'incomplete');
         // dd($userWithCourses, $completedCourses, $incompleteCourses);
 
-        
         return view('frontend.pages.mycouse', [
             'user_course' => $userWithCourses->batchStudents,
             'complete_courses' => $completedCourses,
@@ -231,9 +230,9 @@ class WebsiteController extends Controller
     }
 
     public function myCourseDetails($slug) {
-        
+
         $data = Course::active()->where('slug', $slug)->select('id', 'title')->first();
-        
+
         $data->routines = $this->routine_details($data->id);
         // dd($data->course_mile_stones);
         $data->course_mile_stones = $data->course_mile_stones()->orderBy('milestone_no', 'ASC')->get();
@@ -241,11 +240,11 @@ class WebsiteController extends Controller
 
         foreach ($data->course_mile_stones as $key => $mileStones) {
             $modules = $mileStones->course_modules()->orderBy('module_no','ASC')->get();
-            $mileStones->course_modules = $modules; 
+            $mileStones->course_modules = $modules;
             foreach ($mileStones->course_modules as $key => $module) {
-                
+
                 $classes = $module->classes()->get();
-        
+
                 foreach ($classes as $key => $class) {
                     $class_watched_check = CourseModuleTaskCompleteByUsers::where('class_id', $class->id)
                     ->where('quiz_id', null)
@@ -258,47 +257,47 @@ class WebsiteController extends Controller
                     }
                     $class_quiz = $class->class_quiz()->with(['quiz'])->orderBy('id', 'DESC')->first();
                     $class_exam = $class->class_exam()->with(['exam'])->orderBy('id', 'DESC')->first();
-    
+
                     if($class_quiz != null) {
                         $quiz_complete_check = CourseModuleTaskCompleteByUsers::where('class_id', $class->id)
                         ->where('course_id', $data->id)
                         ->where('user_id', auth()->user()->id)
                         ->where('quiz_id', $class_quiz->quiz_id)
                         ->first();
-    
+
                         $class->class_quiz = $class_quiz;
-    
+
                         $class->class_quiz->is_complete = false;
                         if($quiz_complete_check != null) {
                             $class->class_quiz->is_complete = true;
                         }
                     }
-    
+
                     if($class_exam != null) {
                         $exam_complete_check = CourseModuleTaskCompleteByUsers::where('class_id', $class->id)
                         ->where('course_id', $data->id)
                         ->where('user_id', auth()->user()->id)
                         ->where('exam_id', $class_exam->exam_id)
                         ->first();
-    
-                        $class->class_exam = $class_exam; 
-    
+
+                        $class->class_exam = $class_exam;
+
                         $class->class_exam->is_complete = false;
                         if($exam_complete_check != null) {
                             $class->class_exam->is_complete = true;
                         }
                     }
                 }
-    
+
                 $module->classes = $classes;
                 // $data->course_module[$key] = $module;
-                
+
             }
         }
 
 
         // ddd($data->toArray());
-        
+
         return view('frontend.pages.my_course_details', ['course' => $data]);
     }
 

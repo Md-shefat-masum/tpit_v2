@@ -17,7 +17,7 @@
                         <a @click.prevent="get_courses(course_url)" href="#">সকল কোর্স</a>
                     </li>
                     <li v-for="type in types" :key="type.id" class="course_type_active">
-                        <a @click.prevent="get_course_by_type(type.id)" href="#">@{{ type.title }}</a>
+                        <a @click.prevent="get_course_by_type(type.id)" onclick="event.preventDefault();" href="#">@{{ type.title }}</a>
                     </li>
                 </ul>
             </div>
@@ -110,9 +110,9 @@
         </div>
         <!-- our_course_all_card end -->
         <script>
-            setTimeout(() => {
-                initiate_our_course_types();
-            }, 1000);
+            // setTimeout(() => {
+                // initiate_our_course_types();
+            // }, 1000);
         </script>
     </div>
 </section>

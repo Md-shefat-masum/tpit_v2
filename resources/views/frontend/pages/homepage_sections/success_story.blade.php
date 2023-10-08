@@ -24,18 +24,18 @@
             <!-- student_success_video_area start -->
             <div class="student_success_video_area">
                 @foreach ($success_stories as $story)
-                <button class="success_video_area" onclick="showVideo({{$story}})">
-                    <div class="success_video_cover_photo">
-                        <img class="img-fluid" src="{{ asset($story->thumbnail_image) }}"
-                            alt="video_img tech park it">
-                    </div>
-                    <div class="video_button_icon">
-                        <!-- <i class="fa-solid fa-circle-play"></i> -->
-                        <i class="fa-solid fa-play"></i>
-                    </div>
-                </button>
+                    <button class="success_video_area" onclick="showVideo(`{{$story->video_link}}`)">
+                        <div class="success_video_cover_photo">
+                            <img class="img-fluid" src="{{ asset($story->thumbnail_image) }}"
+                                alt="video_img tech park it">
+                        </div>
+                        <div class="video_button_icon">
+                            <!-- <i class="fa-solid fa-circle-play"></i> -->
+                            <i class="fa-solid fa-play"></i>
+                        </div>
+                    </button>
                 @endforeach
-                
+
             </div>
             <!-- student_success_video_area end -->
 
@@ -56,7 +56,6 @@
                             </h5>
                         </div> --}}
                         <div class="modal-body">
-                            <iframe id="success_video" width="100%" height="450" src="#" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                         </div>
                     </div>
                 </div>
@@ -65,11 +64,4 @@
 
         </div>
     </div>
-    <script>
-        var modal1 = new bootstrap.Modal(document.getElementById('story_modal'));
-        function showVideo(story) {
-            document.getElementById('success_video').src = story.video_link;
-            modal1.toggle();
-        }
-    </script>
 </section>

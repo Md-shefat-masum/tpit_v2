@@ -1950,8 +1950,12 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
+<<<<<<< HEAD
       course_id: '',
       course_teachers: []
+=======
+      course_id: ''
+>>>>>>> 4a4977ff5ea2d56d1b3e496323ac946ea5acb790
     };
   },
   methods: {
@@ -1968,11 +1972,18 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 formData: formData
               };
               _context.next = 6;
+<<<<<<< HEAD
               return axios.post('/api/v1/course/course-instructor/update-instructor', data.formData).then(function (response) {
                 // localStorage.setItem('current_course', JSON.stringify(response?.data))
                 if (response) {
                   window.toaster(response.data.message, 'info');
                 }
+=======
+              return axios.post('/api/v1/course/course-why-you-learn-from-us/store', data.formData).then(function (response) {
+                // localStorage.setItem('current_course', JSON.stringify(response?.data))
+                window.toaster("Course why learn from us added successfully!");
+                event.reset();
+>>>>>>> 4a4977ff5ea2d56d1b3e496323ac946ea5acb790
               })["catch"](function (e) {
                 console.log(e);
               });
@@ -1986,6 +1997,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         return _store_course_work.apply(this, arguments);
       }
       return store_course_work;
+<<<<<<< HEAD
     }(),
     get_all_teachers: function () {
       var _get_all_teachers = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2(event) {
@@ -2029,6 +2041,28 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
             return _context3.stop();
         }
       }, _callee3, this);
+=======
+    }()
+    // get_course_details: async function (event) {
+    //     let whatcourse = localStorage.getItem('current_course');
+    //     if(whatcourse) {
+    //         whatcourse = JSON.parse(whatcourse);
+    //         this.course_id = whatcourse.id
+    //     }
+    // }
+  },
+
+  computed: {},
+  created: function () {
+    var _created = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2() {
+      return _regeneratorRuntime().wrap(function _callee2$(_context2) {
+        while (1) switch (_context2.prev = _context2.next) {
+          case 0:
+          case "end":
+            return _context2.stop();
+        }
+      }, _callee2);
+>>>>>>> 4a4977ff5ea2d56d1b3e496323ac946ea5acb790
     }));
     function created() {
       return _created.apply(this, arguments);
@@ -5519,7 +5553,11 @@ var render = function render() {
     staticClass: "card list_card"
   }, [_c("div", {
     staticClass: "card-header"
+<<<<<<< HEAD
   }, [_c("h4", [_vm._v("Create Job work")]), _vm._v(" "), _c("div", {
+=======
+  }, [_c("h4", [_vm._v("Create Course why learn from us")]), _vm._v(" "), _c("div", {
+>>>>>>> 4a4977ff5ea2d56d1b3e496323ac946ea5acb790
     staticClass: "btns"
   }, [_c("a", {
     staticClass: "btn rounded-pill btn-outline-warning",
@@ -5542,7 +5580,16 @@ var render = function render() {
         return _vm.store_course_work($event.target);
       }
     }
+<<<<<<< HEAD
   }, [_c("div", {
+=======
+  }, [_vm._m(0), _vm._v(" "), _vm._m(1)])])]);
+};
+var staticRenderFns = [function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("div", {
+>>>>>>> 4a4977ff5ea2d56d1b3e496323ac946ea5acb790
     staticClass: "card-body"
   }, [_c("div", {
     staticClass: "row justify-content-center"
@@ -5557,6 +5604,7 @@ var render = function render() {
     attrs: {
       "for": "title"
     }
+<<<<<<< HEAD
   }, [_vm._v("Select teacher")]), _vm._v(" "), _c("select", {
     staticClass: "form-control",
     attrs: {
@@ -5573,6 +5621,18 @@ var render = function render() {
   }), 0)])])])])]), _vm._v(" "), _vm._m(0)])])]);
 };
 var staticRenderFns = [function () {
+=======
+  }, [_vm._v("Title")]), _vm._v(" "), _c("input", {
+    staticClass: "form-control",
+    attrs: {
+      type: "text",
+      id: "title",
+      name: "title",
+      placeholder: "24/7 support"
+    }
+  })])])])])]);
+}, function () {
+>>>>>>> 4a4977ff5ea2d56d1b3e496323ac946ea5acb790
   var _vm = this,
     _c = _vm._self._c;
   return _c("div", {
@@ -5584,7 +5644,11 @@ var staticRenderFns = [function () {
     }
   }, [_c("i", {
     staticClass: "fa fa-upload"
+<<<<<<< HEAD
   }), _vm._v("\n                    Update\n                ")])]);
+=======
+  }), _vm._v("\n                    Submit\n                ")])]);
+>>>>>>> 4a4977ff5ea2d56d1b3e496323ac946ea5acb790
 }];
 render._withStripped = true;
 

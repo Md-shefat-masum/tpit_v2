@@ -207,7 +207,6 @@
                         </div>
                     </div>
                 </div>
-
                 {{-- <div class="bootstrap_grid_quiz_part">
                     <div class="bootstrap_grid_empty_space"></div>
                     <div class="bootstrap_grid_quiz_space">
@@ -255,7 +254,7 @@
                             </div>
                             <div class="class_routine_table">
                                 @foreach ($course->routines as $month => $routine)
-                                    
+
                                     <div class="class_routine_month">{{ $month }} 2023</div>
                                     <div class="table_div">
                                         <table>
@@ -268,7 +267,7 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                @foreach ($routine as $class_routine)   
+                                                @foreach ($routine as $class_routine)
                                                     <tr>
                                                         <td>ক্লাস {{ $class_routine->class->class_no }}</td>
                                                         <td>{{ $class_routine->date->format('d F') }} - {{ $class_routine->date->format('l') }}</td>
@@ -343,7 +342,6 @@
                 };
             }
         );
-
         function getClassVideolink(link) {
             document.getElementById('class_video_link').src = link;
             document.getElementById("course_section").scrollIntoView();

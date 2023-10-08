@@ -53,7 +53,7 @@ class CourseModuleClassSeeder extends Seeder
                 'type' => $item['type'],
                 'class_vedio_link' => 'https://www.youtube.com/embed/oS1SkU2ksZM?si=2XFBVu8BME7VsrxI',
                 'class_vedio_poster' => 'uplodes/course/graphic.jpg',
-            ]);   
+            ]);
         }
 
 
@@ -94,7 +94,7 @@ class CourseModuleClassSeeder extends Seeder
                 'type' => $item['type'],
                 'class_vedio_link' => 'https://www.youtube.com/embed/oS1SkU2ksZM?si=2XFBVu8BME7VsrxI',
                 'class_vedio_poster' => 'uplodes/course/graphic.jpg',
-            ]);   
+            ]);
         }
 
         $milestone_1_module_3 = [
@@ -134,7 +134,7 @@ class CourseModuleClassSeeder extends Seeder
                 'type' => $item['type'],
                 'class_vedio_link' => 'https://www.youtube.com/embed/oS1SkU2ksZM?si=2XFBVu8BME7VsrxI',
                 'class_vedio_poster' => 'uplodes/course/graphic.jpg',
-            ]);   
+            ]);
         }
     }
 }
