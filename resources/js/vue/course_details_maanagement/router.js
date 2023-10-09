@@ -6,6 +6,7 @@ import Layout from "./views/Layout.vue";
 import WhatIsThisCourse from "./views/pages/WhatIsThisCourse.vue";
 import WhyIsThisCourse from "./views/pages/WhyIsThisCourse.vue";
 import AllCourse from "./views/AllCourse.vue";
+import Dashboard from "./views/Dashboard.vue";
 
 // course batch
 import CourseBatchLayout from "./views/pages/course_batch/CourseBatchLayout.vue";
@@ -75,6 +76,7 @@ import CourseFaqDetails from "./views/pages/course_faq/Details.vue";
 
 // course module
 import CourseModule from "./views/pages/course_module/CourseModule.vue";
+import CourseAtaGlance from "./views/pages/course_module/AtaGlance.vue";
 
 
 Vue.use(VueRouter);
@@ -395,6 +397,11 @@ const routes = [
                         path: 'modules',
                         name: `CourseModule`,
                         component: CourseModule,
+                    },
+                    {
+                        path: 'at-a-glance',
+                        name: `CourseAtaGlance`,
+                        component: CourseAtaGlance,
                     }
                 ],
             },

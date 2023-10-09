@@ -167,6 +167,16 @@ export default {
                 classes.splice(index, 1);
             }
         },
+        remove_module: function (modules, index) {
+            if (confirm('remove')) {
+                modules.splice(index, 1);
+            }
+        },
+        remove_module: function (modules, index) {
+            if (confirm('remove')) {
+                modules.splice(index, 1);
+            }
+        },
         append_new_module: function (milestone) {
             milestone.modules.push({
                 id: "",
