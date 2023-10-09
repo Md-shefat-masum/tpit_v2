@@ -271,29 +271,27 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
   methods: {
     store_batch: function () {
       var _store_batch = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee(event) {
-        var formData, course_id, data;
+        var formData, data;
         return _regeneratorRuntime().wrap(function _callee$(_context) {
           while (1) switch (_context.prev = _context.next) {
             case 0:
               formData = new FormData(event);
-              course_id = this.$route.params.id;
-              formData.append('course_id', course_id);
               data = {
                 formData: formData
               };
-              _context.next = 6;
-              return axios.post('/api/v1/course/course-batch/store', data.formData).then(function (response) {
+              _context.next = 4;
+              return axios.post('/api/v1/quiz-topics/store', data.formData).then(function (response) {
                 // localStorage.setItem('current_course', JSON.stringify(response?.data))
-                window.toaster("Course Batch created successfully!");
+                window.toaster("Quiz topic created successfully!");
                 event.reset();
               })["catch"](function (e) {
                 console.log(e);
               });
-            case 6:
+            case 4:
             case "end":
               return _context.stop();
           }
-        }, _callee, this);
+        }, _callee);
       }));
       function store_batch(_x) {
         return _store_batch.apply(this, arguments);
@@ -344,7 +342,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
-      batch_details: {}
+      quiz_topic: {}
     };
   },
   methods: {
@@ -353,17 +351,17 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     //     localStorage.setItem('current_course', current_course);
     //     this.$router.push({ name: 'CourseDetails', params: { id: course.id } })
     // },
-    get_course_batch_details: function () {
-      var _get_course_batch_details = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee(event) {
+    get_course_quiz_topic: function () {
+      var _get_course_quiz_topic = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee(event) {
         var _this = this;
         var id;
         return _regeneratorRuntime().wrap(function _callee$(_context) {
           while (1) switch (_context.prev = _context.next) {
             case 0:
               id = this.$route.params.id;
-              axios.get("/api/v1/course/course-batch/".concat(id)).then(function (response) {
+              axios.get("/api/v1/quiz-topics/".concat(id)).then(function (response) {
                 // console.log(response.data);
-                _this.batch_details = response.data;
+                _this.quiz_topic = response.data;
               })["catch"](function (e) {
                 console.log(e);
                 // if(e.response.status == 401) {
@@ -377,10 +375,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           }
         }, _callee, this);
       }));
-      function get_course_batch_details(_x) {
-        return _get_course_batch_details.apply(this, arguments);
+      function get_course_quiz_topic(_x) {
+        return _get_course_quiz_topic.apply(this, arguments);
       }
-      return get_course_batch_details;
+      return get_course_quiz_topic;
     }()
   },
   computed: {},
@@ -390,7 +388,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         while (1) switch (_context2.prev = _context2.next) {
           case 0:
             _context2.next = 2;
-            return this.get_course_batch_details();
+            return this.get_course_quiz_topic();
           case 2:
           case "end":
             return _context2.stop();
@@ -421,7 +419,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
-      batch_details: {}
+      quiz_topic: {}
     };
   },
   methods: {
@@ -430,17 +428,17 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     //     localStorage.setItem('current_course', current_course);
     //     this.$router.push({ name: 'CourseDetails', params: { id: course.id } })
     // },
-    get_course_batch_details: function () {
-      var _get_course_batch_details = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee(event) {
+    get_course_quiz_topic: function () {
+      var _get_course_quiz_topic = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee(event) {
         var _this = this;
         var id;
         return _regeneratorRuntime().wrap(function _callee$(_context) {
           while (1) switch (_context.prev = _context.next) {
             case 0:
               id = this.$route.params.id;
-              axios.get("/api/v1/course/course-batch/".concat(id)).then(function (response) {
+              axios.get("/api/v1/quiz-topics/".concat(id)).then(function (response) {
                 // console.log(response.data);
-                _this.batch_details = response.data;
+                _this.quiz_topic = response.data;
               })["catch"](function (e) {
                 console.log(e);
                 // if(e.response.status == 401) {
@@ -454,33 +452,31 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           }
         }, _callee, this);
       }));
-      function get_course_batch_details(_x) {
-        return _get_course_batch_details.apply(this, arguments);
+      function get_course_quiz_topic(_x) {
+        return _get_course_quiz_topic.apply(this, arguments);
       }
-      return get_course_batch_details;
+      return get_course_quiz_topic;
     }(),
     update_batch: function () {
       var _update_batch = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2(event) {
-        var formData, course_id, data;
+        var formData, data;
         return _regeneratorRuntime().wrap(function _callee2$(_context2) {
           while (1) switch (_context2.prev = _context2.next) {
             case 0:
               formData = new FormData(event);
-              course_id = this.batch_details.course_id;
-              formData.append('id', this.batch_details.id);
-              formData.append('course_id', course_id);
+              formData.append('id', this.quiz_topic.id);
               data = {
                 formData: formData
               };
-              _context2.next = 7;
-              return axios.post('/api/v1/course/course-batch/update', data.formData).then(function (response) {
+              _context2.next = 5;
+              return axios.post('/api/v1/quiz-topics/update', data.formData).then(function (response) {
                 // localStorage.setItem('current_course', JSON.stringify(response?.data))
-                window.toaster("Course Batch update successfully!");
+                window.toaster("Course Batch updated successfully!");
                 // event.reset();
               })["catch"](function (e) {
                 console.log(e);
               });
-            case 7:
+            case 5:
             case "end":
               return _context2.stop();
           }
@@ -499,7 +495,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         while (1) switch (_context3.prev = _context3.next) {
           case 0:
             _context3.next = 2;
-            return this.get_course_batch_details();
+            return this.get_course_quiz_topic();
           case 2:
             console.log(this.$route.params);
           case 3:
@@ -878,206 +874,35 @@ var staticRenderFns = [function () {
     staticClass: "row justify-content-center"
   }, [_c("div", {
     staticClass: "col-xl-10 col-12"
-  }, [_c("h6", [_vm._v("1. Batch Details 💡")]), _vm._v(" "), _c("div", {
+  }, [_c("h6", [_vm._v("Topic 💡")]), _vm._v(" "), _c("div", {
     staticClass: "row g-3"
   }, [_c("div", {
-    staticClass: "col-md-6"
+    staticClass: "col-md-12"
   }, [_c("label", {
     staticClass: "form-label",
     attrs: {
-      "for": "batch_name"
+      "for": "title"
     }
-  }, [_vm._v("Batch name")]), _vm._v(" "), _c("input", {
+  }, [_vm._v("Topic title")]), _vm._v(" "), _c("input", {
     staticClass: "form-control",
     attrs: {
       type: "text",
-      id: "batch_name",
-      name: "batch_name",
-      placeholder: "GD-1"
+      id: "title",
+      name: "title",
+      placeholder: "Css, Bootstrap"
     }
   })]), _vm._v(" "), _c("div", {
-    staticClass: "col-md-6"
+    staticClass: "col-md-12"
   }, [_c("label", {
     staticClass: "form-label",
     attrs: {
-      "for": "batch_student_limit"
+      "for": "description"
     }
-  }, [_vm._v("Batch Student limit")]), _vm._v(" "), _c("input", {
+  }, [_vm._v("Topic Description")]), _vm._v(" "), _c("textarea", {
     staticClass: "form-control",
     attrs: {
-      type: "number",
-      id: "batch_student_limit",
-      name: "batch_student_limit",
-      placeholder: "eg: 40,50"
-    }
-  })]), _vm._v(" "), _c("div", {
-    staticClass: "col-md-6"
-  }, [_c("label", {
-    staticClass: "form-label",
-    attrs: {
-      "for": "seat_booked"
-    }
-  }, [_vm._v("Batch Seat booked")]), _vm._v(" "), _c("input", {
-    staticClass: "form-control",
-    attrs: {
-      type: "number",
-      name: "seat_booked",
-      id: "seat_booked",
-      placeholder: "eg: 40,50"
-    }
-  })]), _vm._v(" "), _c("div", {
-    staticClass: "col-md-6"
-  }, [_c("label", {
-    staticClass: "form-label",
-    attrs: {
-      "for": "booked_percent"
-    }
-  }, [_vm._v("Batch Seat booked percent")]), _vm._v(" "), _c("input", {
-    staticClass: "form-control",
-    attrs: {
-      type: "number",
-      name: "booked_percent",
-      id: "booked_percent",
-      placeholder: "eg: 40,50"
-    }
-  })])]), _vm._v(" "), _c("hr", {
-    staticClass: "my-2 mx-n2"
-  }), _vm._v(" "), _c("h6", [_vm._v("2.Batch pricing 🏷️")]), _vm._v(" "), _c("div", {
-    staticClass: "row"
-  }, [_c("div", {
-    staticClass: "col-md-6"
-  }, [_c("label", {
-    staticClass: "form-label",
-    attrs: {
-      "for": "course_price"
-    }
-  }, [_vm._v("Course price")]), _vm._v(" "), _c("input", {
-    staticClass: "form-control",
-    attrs: {
-      type: "number",
-      name: "course_price",
-      id: "course_price",
-      placeholder: "eg: 10500, 9500"
-    }
-  })]), _vm._v(" "), _c("div", {
-    staticClass: "col-md-6"
-  }, [_c("label", {
-    staticClass: "form-label",
-    attrs: {
-      "for": "course_discount"
-    }
-  }, [_vm._v("Course Discount")]), _vm._v(" "), _c("input", {
-    staticClass: "form-control",
-    attrs: {
-      type: "number",
-      name: "course_discount",
-      id: "course_discount",
-      placeholder: "eg: 30,20"
-    }
-  })]), _vm._v(" "), _c("div", {
-    staticClass: "col-md-6"
-  }, [_c("label", {
-    staticClass: "form-label",
-    attrs: {
-      "for": "after_discount_price"
-    }
-  }, [_vm._v("Discounted Price")]), _vm._v(" "), _c("input", {
-    staticClass: "form-control",
-    attrs: {
-      type: "number",
-      name: "after_discount_price",
-      id: "after_discount_price",
-      placeholder: "eg: 9500,8200"
-    }
-  })])]), _vm._v(" "), _c("hr", {
-    staticClass: "my-2 mx-n2"
-  }), _vm._v(" "), _c("h6", [_vm._v("3.Batch Schedule and time 🗓️")]), _vm._v(" "), _c("div", {
-    staticClass: "row g-3"
-  }, [_c("div", {
-    staticClass: "col-md-6"
-  }, [_c("label", {
-    staticClass: "form-label",
-    attrs: {
-      "for": "admission_start_date"
-    }
-  }, [_vm._v("Admission Start Date")]), _vm._v(" "), _c("input", {
-    staticClass: "form-control",
-    attrs: {
-      type: "date",
-      name: "admission_start_date",
-      id: "admission_start_date"
-    }
-  })]), _vm._v(" "), _c("div", {
-    staticClass: "col-md-6"
-  }, [_c("label", {
-    staticClass: "form-label",
-    attrs: {
-      "for": "admission_end_date"
-    }
-  }, [_vm._v("Admission End Date")]), _vm._v(" "), _c("input", {
-    staticClass: "form-control",
-    attrs: {
-      type: "date",
-      name: "admission_end_date",
-      id: "admission_end_date"
-    }
-  })]), _vm._v(" "), _c("div", {
-    staticClass: "col-md-6"
-  }, [_c("label", {
-    staticClass: "form-label",
-    attrs: {
-      "for": "first_class_date"
-    }
-  }, [_vm._v("First Class Date")]), _vm._v(" "), _c("input", {
-    staticClass: "form-control",
-    attrs: {
-      type: "date",
-      name: "first_class_date",
-      id: "first_class_date"
-    }
-  })]), _vm._v(" "), _c("div", {
-    staticClass: "col-md-6"
-  }, [_c("label", {
-    staticClass: "form-label",
-    attrs: {
-      "for": "class_start_time"
-    }
-  }, [_vm._v("Class Start Time")]), _vm._v(" "), _c("input", {
-    staticClass: "form-control",
-    attrs: {
-      type: "time",
-      name: "class_start_time",
-      id: "class_start_time"
-    }
-  })]), _vm._v(" "), _c("div", {
-    staticClass: "col-md-6"
-  }, [_c("label", {
-    staticClass: "form-label",
-    attrs: {
-      "for": "class_end_time"
-    }
-  }, [_vm._v("Class End Time")]), _vm._v(" "), _c("input", {
-    staticClass: "form-control",
-    attrs: {
-      type: "time",
-      name: "class_end_time",
-      id: "class_end_time"
-    }
-  })]), _vm._v(" "), _c("div", {
-    staticClass: "col-md-6"
-  }, [_c("label", {
-    staticClass: "form-label",
-    attrs: {
-      "for": "class_days"
-    }
-  }, [_vm._v("Class Days")]), _vm._v(" "), _c("input", {
-    staticClass: "form-control",
-    attrs: {
-      type: "text",
-      id: "class_days",
-      name: "class_days",
-      placeholder: "রবিবার,মঙ্গলবার,বৃহস্পতিবার",
-      "aria-label": "রবিবার,মঙ্গলবার,বৃহস্পতিবার"
+      id: "description",
+      name: "description"
     }
   })])])])])]);
 }, function () {
@@ -1141,11 +966,7 @@ var render = function render() {
     staticClass: "col-lg-8"
   }, [_c("table", {
     staticClass: "table table-bordered details_table"
-  }, [_c("tr", [_c("td", [_vm._v("id")]), _vm._v(" "), _c("td", [_vm._v(_vm._s(_vm.batch_details.id))])]), _vm._v(" "), _c("tr", [_c("td", [_vm._v("Course name:")]), _vm._v(" "), _c("td", [_vm._v(_vm._s(_vm.batch_details.course.title))])]), _vm._v(" "), _c("tr", [_c("td", [_vm._v("Admission Start Date")]), _vm._v(" "), _c("td", [_vm._v(_vm._s(_vm.batch_details.admission_start_date))])]), _vm._v(" "), _c("tr", [_c("td", [_vm._v("Admission End Date")]), _vm._v(" "), _c("td", [_vm._v(_vm._s(_vm.batch_details.admission_end_date))])]), _vm._v(" "), _c("tr", [_c("td", [_vm._v("Student limit")]), _vm._v(" "), _c("td", [_vm._v(_vm._s(_vm.batch_details.batch_student_limit))])]), _vm._v(" "), _c("tr", [_c("td", [_vm._v("Seat booked ")]), _vm._v(" "), _c("td", [_vm._v(_vm._s(_vm.batch_details.seat_booked))])]), _vm._v(" "), _c("tr", [_c("td", [_vm._v("Seat booked percent ")]), _vm._v(" "), _c("td", [_vm._v(_vm._s(_vm.batch_details.booked_percent) + " %")])]), _vm._v(" "), _c("tr", [_c("td", [_vm._v("Price ")]), _vm._v(" "), _c("td", [_vm._v(_vm._s(_vm.batch_details.course_price))])]), _vm._v(" "), _c("tr", [_c("td", [_vm._v("Discount ")]), _vm._v(" "), _c("td", [_vm._v(_vm._s(_vm.batch_details.course_discount) + " ")])]), _vm._v(" "), _c("tr", [_c("td", [_vm._v("Discount Price ")]), _vm._v(" "), _c("td", [_vm._v(_vm._s(_vm.batch_details.after_discount_price) + " ")])]), _vm._v(" "), _c("tr", [_c("td", [_vm._v("Class Days ")]), _vm._v(" "), _c("td", [_vm._v(_vm._s(_vm.batch_details.class_days) + " ")])]), _vm._v(" "), _c("tr", [_c("td", [_vm._v("Class Start time ")]), _vm._v(" "), _c("td", [_vm._v(_vm._s(_vm.batch_details.class_start_time) + " ")])]), _vm._v(" "), _c("tr", [_c("td", [_vm._v("Class Start time ")]), _vm._v(" "), _c("td", [_vm._v(_vm._s(_vm.batch_details.class_end_time) + " ")])]), _vm._v(" "), _c("tr", [_c("td", [_vm._v("status ")]), _vm._v(" "), _c("td", [_vm.batch_details.status == "active" ? _c("span", {
-    staticClass: "badge bg-label-success me-1"
-  }, [_vm._v("active")]) : _vm._e(), _vm._v(" "), _vm.batch_details.status == "inactive" ? _c("span", {
-    staticClass: "badge bg-label-success me-1"
-  }, [_vm._v("deactive")]) : _vm._e()])])])])])])])]);
+  }, [_c("tr", [_c("td", [_vm._v("id")]), _vm._v(" "), _c("td", [_vm._v(_vm._s(_vm.quiz_topic.id))])]), _vm._v(" "), _c("tr", [_c("td", [_vm._v("Quiz topic title:")]), _vm._v(" "), _c("td", [_vm._v(_vm._s(_vm.quiz_topic.title))])]), _vm._v(" "), _c("tr", [_c("td", [_vm._v("Quiz topic description")]), _vm._v(" "), _c("td", [_vm._v(_vm._s(_vm.quiz_topic.description))])])])])])])])]);
 };
 var staticRenderFns = [];
 render._withStripped = true;
@@ -1203,245 +1024,42 @@ var render = function render() {
     staticClass: "row justify-content-center"
   }, [_c("div", {
     staticClass: "col-xl-10 col-12"
-  }, [_c("h6", [_vm._v("1. Batch Details 💡")]), _vm._v(" "), _c("div", {
+  }, [_c("h6", [_vm._v("Topic 💡")]), _vm._v(" "), _c("div", {
     staticClass: "row g-3"
   }, [_c("div", {
-    staticClass: "col-md-6"
+    staticClass: "col-md-12"
   }, [_c("label", {
     staticClass: "form-label",
     attrs: {
-      "for": "batch_name"
+      "for": "title"
     }
-  }, [_vm._v("Batch name")]), _vm._v(" "), _c("input", {
+  }, [_vm._v("Topic title")]), _vm._v(" "), _c("input", {
     staticClass: "form-control",
     attrs: {
       type: "text",
-      id: "batch_name",
-      name: "batch_name",
+      id: "title",
+      name: "title",
       placeholder: "GD-1"
     },
     domProps: {
-      value: _vm.batch_details.batch_name
+      value: _vm.quiz_topic.title
     }
   })]), _vm._v(" "), _c("div", {
-    staticClass: "col-md-6"
+    staticClass: "col-md-12"
   }, [_c("label", {
     staticClass: "form-label",
     attrs: {
-      "for": "batch_student_limit"
+      "for": "description"
     }
-  }, [_vm._v("Batch Student limit")]), _vm._v(" "), _c("input", {
+  }, [_vm._v("Topic Description")]), _vm._v(" "), _c("textarea", {
     staticClass: "form-control",
     attrs: {
       type: "number",
-      id: "batch_student_limit",
-      name: "batch_student_limit",
-      placeholder: "eg: 40,50"
+      id: "description",
+      name: "description"
     },
     domProps: {
-      value: _vm.batch_details.batch_student_limit
-    }
-  })]), _vm._v(" "), _c("div", {
-    staticClass: "col-md-6"
-  }, [_c("label", {
-    staticClass: "form-label",
-    attrs: {
-      "for": "seat_booked"
-    }
-  }, [_vm._v("Batch Seat booked")]), _vm._v(" "), _c("input", {
-    staticClass: "form-control",
-    attrs: {
-      type: "number",
-      name: "seat_booked",
-      id: "seat_booked",
-      placeholder: "eg: 40,50"
-    },
-    domProps: {
-      value: _vm.batch_details.seat_booked
-    }
-  })]), _vm._v(" "), _c("div", {
-    staticClass: "col-md-6"
-  }, [_c("label", {
-    staticClass: "form-label",
-    attrs: {
-      "for": "booked_percent"
-    }
-  }, [_vm._v("Batch Seat booked percent")]), _vm._v(" "), _c("input", {
-    staticClass: "form-control",
-    attrs: {
-      type: "number",
-      name: "booked_percent",
-      id: "booked_percent",
-      placeholder: "eg: 40,50"
-    },
-    domProps: {
-      value: _vm.batch_details.booked_percent
-    }
-  })])]), _vm._v(" "), _c("hr", {
-    staticClass: "my-2 mx-n2"
-  }), _vm._v(" "), _c("h6", [_vm._v("2.Batch pricing 🏷️")]), _vm._v(" "), _c("div", {
-    staticClass: "row"
-  }, [_c("div", {
-    staticClass: "col-md-6"
-  }, [_c("label", {
-    staticClass: "form-label",
-    attrs: {
-      "for": "course_price"
-    }
-  }, [_vm._v("Course price")]), _vm._v(" "), _c("input", {
-    staticClass: "form-control",
-    attrs: {
-      type: "number",
-      name: "course_price",
-      id: "course_price",
-      placeholder: "eg: 10500, 9500"
-    },
-    domProps: {
-      value: _vm.batch_details.course_price
-    }
-  })]), _vm._v(" "), _c("div", {
-    staticClass: "col-md-6"
-  }, [_c("label", {
-    staticClass: "form-label",
-    attrs: {
-      "for": "course_discount"
-    }
-  }, [_vm._v("Course Discount")]), _vm._v(" "), _c("input", {
-    staticClass: "form-control",
-    attrs: {
-      type: "number",
-      name: "course_discount",
-      id: "course_discount",
-      placeholder: "eg: 30,20"
-    },
-    domProps: {
-      value: _vm.batch_details.course_discount
-    }
-  })]), _vm._v(" "), _c("div", {
-    staticClass: "col-md-6"
-  }, [_c("label", {
-    staticClass: "form-label",
-    attrs: {
-      "for": "after_discount_price"
-    }
-  }, [_vm._v("Discounted Price")]), _vm._v(" "), _c("input", {
-    staticClass: "form-control",
-    attrs: {
-      type: "number",
-      name: "after_discount_price",
-      id: "after_discount_price",
-      placeholder: "eg: 9500,8200"
-    },
-    domProps: {
-      value: _vm.batch_details.after_discount_price
-    }
-  })])]), _vm._v(" "), _c("hr", {
-    staticClass: "my-2 mx-n2"
-  }), _vm._v(" "), _c("h6", [_vm._v("3.Batch Schedule and time 🗓️")]), _vm._v(" "), _c("div", {
-    staticClass: "row g-3"
-  }, [_c("div", {
-    staticClass: "col-md-6"
-  }, [_c("label", {
-    staticClass: "form-label",
-    attrs: {
-      "for": "admission_start_date"
-    }
-  }, [_vm._v("Admission Start Date")]), _vm._v(" "), _c("input", {
-    staticClass: "form-control",
-    attrs: {
-      type: "date",
-      name: "admission_start_date",
-      id: "admission_start_date"
-    },
-    domProps: {
-      value: _vm.batch_details.admission_start_date
-    }
-  })]), _vm._v(" "), _c("div", {
-    staticClass: "col-md-6"
-  }, [_c("label", {
-    staticClass: "form-label",
-    attrs: {
-      "for": "admission_end_date"
-    }
-  }, [_vm._v("Admission End Date")]), _vm._v(" "), _c("input", {
-    staticClass: "form-control",
-    attrs: {
-      type: "date",
-      name: "admission_end_date",
-      id: "admission_end_date"
-    },
-    domProps: {
-      value: _vm.batch_details.admission_end_date
-    }
-  })]), _vm._v(" "), _c("div", {
-    staticClass: "col-md-6"
-  }, [_c("label", {
-    staticClass: "form-label",
-    attrs: {
-      "for": "first_class_date"
-    }
-  }, [_vm._v("First Class Date")]), _vm._v(" "), _c("input", {
-    staticClass: "form-control",
-    attrs: {
-      type: "date",
-      name: "first_class_date",
-      id: "first_class_date"
-    },
-    domProps: {
-      value: _vm.batch_details.first_class_date
-    }
-  })]), _vm._v(" "), _c("div", {
-    staticClass: "col-md-6"
-  }, [_c("label", {
-    staticClass: "form-label",
-    attrs: {
-      "for": "class_start_time"
-    }
-  }, [_vm._v("Class Start Time")]), _vm._v(" "), _c("input", {
-    staticClass: "form-control",
-    attrs: {
-      type: "time",
-      name: "class_start_time",
-      id: "class_start_time"
-    },
-    domProps: {
-      value: _vm.batch_details.class_start_time
-    }
-  })]), _vm._v(" "), _c("div", {
-    staticClass: "col-md-6"
-  }, [_c("label", {
-    staticClass: "form-label",
-    attrs: {
-      "for": "class_end_time"
-    }
-  }, [_vm._v("Class End Time")]), _vm._v(" "), _c("input", {
-    staticClass: "form-control",
-    attrs: {
-      type: "time",
-      name: "class_end_time",
-      id: "class_end_time"
-    },
-    domProps: {
-      value: _vm.batch_details.class_end_time
-    }
-  })]), _vm._v(" "), _c("div", {
-    staticClass: "col-md-6"
-  }, [_c("label", {
-    staticClass: "form-label",
-    attrs: {
-      "for": "class_days"
-    }
-  }, [_vm._v("Class Days")]), _vm._v(" "), _c("input", {
-    staticClass: "form-control",
-    attrs: {
-      type: "text",
-      id: "class_days",
-      name: "class_days",
-      placeholder: "রবিবার,মঙ্গলবার,বৃহস্পতিবার",
-      "aria-label": "রবিবার,মঙ্গলবার,বৃহস্পতিবার"
-    },
-    domProps: {
-      value: _vm.batch_details.class_days
+      value: _vm.quiz_topic.description
     }
   })])])])])]), _vm._v(" "), _vm._m(0)])])]);
 };

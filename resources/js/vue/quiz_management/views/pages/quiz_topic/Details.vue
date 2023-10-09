@@ -18,62 +18,15 @@
                         <table class="table table-bordered details_table">
                             <tr>
                                 <td>id</td>
-                                <td>{{ batch_details.id }}</td>
+                                <td>{{ quiz_topic.id }}</td>
                             </tr>
                             <tr>
-                                <td>Course name:</td>
-                                <td>{{ batch_details.course.title }}</td>
+                                <td>Quiz topic title:</td>
+                                <td>{{ quiz_topic.title }}</td>
                             </tr>
                             <tr>
-                                <td>Admission Start Date</td>
-                                <td>{{ batch_details.admission_start_date }}</td>
-                            </tr>
-                            <tr>
-                                <td>Admission End Date</td>
-                                <td>{{ batch_details.admission_end_date }}</td>
-                            </tr>
-                            <tr>
-                                <td>Student limit</td>
-                                <td>{{ batch_details.batch_student_limit }}</td>
-                            </tr>
-                            <tr>
-                                <td>Seat booked </td>
-                                <td>{{ batch_details.seat_booked  }}</td>
-                            </tr>
-                            <tr>
-                                <td>Seat booked percent </td>
-                                <td>{{ batch_details.booked_percent  }} %</td>
-                            </tr>
-                            <tr>
-                                <td>Price </td>
-                                <td>{{ batch_details.course_price }}</td>
-                            </tr>
-                            <tr>
-                                <td>Discount </td>
-                                <td>{{ batch_details.course_discount }} </td>
-                            </tr>
-                            <tr>
-                                <td>Discount Price </td>
-                                <td>{{ batch_details.after_discount_price }} </td>
-                            </tr>
-                            <tr>
-                                <td>Class Days </td>
-                                <td>{{ batch_details.class_days }} </td>
-                            </tr>
-                            <tr>
-                                <td>Class Start time </td>
-                                <td>{{ batch_details.class_start_time }} </td>
-                            </tr>
-                            <tr>
-                                <td>Class Start time </td>
-                                <td>{{ batch_details.class_end_time }} </td>
-                            </tr>
-                            <tr>
-                                <td>status </td>
-                                <td>
-                                    <span v-if="batch_details.status == 'active'" class="badge bg-label-success me-1">active</span>
-                                    <span v-if="batch_details.status == 'inactive'" class="badge bg-label-success me-1">deactive</span>
-                                </td>
+                                <td>Quiz topic description</td>
+                                <td>{{ quiz_topic.description }}</td>
                             </tr>
                         </table>
                     </div>
@@ -87,7 +40,7 @@
 export default {
     data() {
         return {
-            batch_details: {},
+            quiz_topic: {},
         }
     },
     methods: {
@@ -96,11 +49,11 @@ export default {
         //     localStorage.setItem('current_course', current_course);
         //     this.$router.push({ name: 'CourseDetails', params: { id: course.id } })
         // },
-        get_course_batch_details: async function (event) {
+        get_course_quiz_topic: async function (event) {
             let id = this.$route.params.id
-            axios.get(`/api/v1/course/course-batch/${id}`).then((response) => {
+            axios.get(`/api/v1/quiz-topics/${id}`).then((response) => {
                 // console.log(response.data);
-                this.batch_details = response.data;
+                this.quiz_topic = response.data;
             })
             .catch((e) => {
                 console.log(e);
@@ -109,14 +62,14 @@ export default {
                 //     location.href = '/';
                 // }
             });
-        }
+        },
     },
     computed: {
 
     },
 
     created: async function () {
-        await this.get_course_batch_details();
+        await this.get_course_quiz_topic();
     },
 }
 </script>

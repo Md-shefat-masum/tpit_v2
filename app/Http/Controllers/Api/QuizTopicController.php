@@ -105,7 +105,7 @@ class QuizTopicController extends Controller
     public function destroy()
     {
         $validator = Validator::make(request()->all(), [
-            'id' => ['required', 'exists:quizes,id'],
+            'id' => ['required', 'exists:quiz_question_topics,id'],
         ]);
 
         if ($validator->fails()) {
