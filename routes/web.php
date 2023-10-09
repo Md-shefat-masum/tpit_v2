@@ -49,6 +49,7 @@ Route::group( ['prefix'=>'','namespace' => "Controllers" ],function(){
         Route::group(['prefix' => 'course-manager'], function() {
             Route::get('/', 'Auth\CourseManagerController@dashboard')->name("course_manager_dashboard");
             Route::get('/courses', 'Auth\CourseManagerController@courses')->name("course_manager_courses");
+            Route::get('/quizes', 'Auth\CourseManagerController@quizes')->name("course_manager_quizes");
         });
     });
 

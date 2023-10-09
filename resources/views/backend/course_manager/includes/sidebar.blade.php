@@ -14,7 +14,7 @@
         <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
             <li class="nav-item"><a class="d-flex align-items-center" href="{{ route('course_manager_dashboard') }}"><i data-feather="home"></i><span class="menu-title text-truncate" data-i18n="Home">Home</span></a></li>
             <li class="nav-item"><a class="d-flex align-items-center" href="{{ route('course_manager_courses') }}"><i data-feather="book-open"></i><span class="menu-title text-truncate" data-i18n="Course Management">Course Management</span></a></li>
-            <li class="nav-item"><a class="d-flex align-items-center" href="#"><i data-feather="book-open"></i><span class="menu-title text-truncate" data-i18n="Course Management">Quiz Management</span></a></li>
+            <li class="nav-item"><a class="d-flex align-items-center" href="{{ route('course_manager_quizes') }}"><i data-feather="book-open"></i><span class="menu-title text-truncate" data-i18n="Course Management">Quiz Management</span></a></li>
         </ul>
     </div>
 

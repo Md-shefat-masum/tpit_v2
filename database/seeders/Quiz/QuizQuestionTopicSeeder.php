@@ -15,6 +15,7 @@ class QuizQuestionTopicSeeder extends Seeder
     public function run()
     {
         QuizQuestionTopic::truncate();
+        
         QuizQuestionTopic::create([
             'title' => "html & css",
             'description' => 'html css is the most fundamental element of web design'

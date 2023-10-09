@@ -89,6 +89,12 @@ Route::group(
             });
         });
 
+        Route::group(['prefix' => 'quiz', 'middleware' => ['guest:api']], function () {
+            Route::get('/all-types', 'WebsiteController@all_types');
+            Route::get('/all-course', 'WebsiteController@all_course');
+            Route::get('/type-wise-course', 'WebsiteController@type_wise_course');
+        });
+
         Route::group(['prefix' => '', 'middleware' => ['guest:api']], function () {
 
             Route::group(['prefix' => 'course'], function () {
