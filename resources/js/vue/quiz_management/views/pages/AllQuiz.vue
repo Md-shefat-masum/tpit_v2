@@ -5,23 +5,22 @@
                 <h4 class="card-title">All quizes List: 🚀</h4>
             </div>
             <div class="card-body">
+                <router-link :to="{ name: 'CourseBatchCreate'}" class="btn btn-primary mb-2 float-right">
+                    <i class="fa-solid fa-plus mr-1"></i> <span>Create</span>
+                </router-link>
                 <div class="table-responsive">
                     <table class="table table-bordered table-hover">
                         <thead>
                             <tr>
                                 <td>#</td>
-                                <td>image</td>
                                 <td>Title</td>
-                                <td>Type</td>
                                 <td>Actions</td>
                             </tr>
                         </thead>
-                        <tbody v-if="all_courses.data && all_courses.data.length > 0">
-                            <tr v-for="(course, index) in all_courses.data" :key="index">
-                                <td>{{ index + 1 }}</td>
-                                <td><img height="100" :src="`/${course.image}`" alt=""></td>
-                                <td>{{ course.title }}</td>
-                                <td>{{ course.type }}</td>
+                        <tbody v-if="all_quizes.data && all_quizes.data.length > 0">
+                            <tr v-for="(quiz, index) in all_quizes.data" :key="index">
+                                <td><span class="text-primary">#{{ index + 1 }}</span></td>
+                                <td>{{ quiz.title }}</td>
                                 <td>
                                     
                                     <div class="btn-group">
@@ -30,7 +29,7 @@
                                             <i class="fa fa-gears"></i>
                                         </button>
                                         <div class="dropdown-menu">
-                                            <a class="dropdown-item" @click.prevent="course_edit(course)">
+                                            <a class="dropdown-item" @click.prevent="quiz_edit(quiz)">
                                                 <i class="fa text-warning fa-pencil mr-2"></i> <span>Edit</span>
                                             </a>
                                         </div>
@@ -51,20 +50,20 @@
 export default {
     data() {
         return {
-            all_courses: {},
+            all_quizes: {},
         }
     },
     methods: {
-        course_edit: async function(course) {
-            let current_course = JSON.stringify(course)
-            localStorage.setItem('current_course', current_course);
-            this.$router.push({ name: 'CourseDetails', params: { id: course.id } })
+        quiz_edit: async function(quiz) {
+            let current_quiz = JSON.stringify(quiz)
+            localStorage.setItem('current_quiz', current_quiz);
+            this.$router.push({ name: 'CourseDetails', params: { id: quiz.id } })
         },
-        get_all_course: async function (event) {
+        get_all_quiz: async function (event) {
             
-            axios.get('/api/v1/course/all').then((response) => {
+            axios.get('/api/v1/quiz/all').then((response) => {
                 // console.log(response.data);
-                this.all_courses = response.data;
+                this.all_quizes = response.data;
             })
                 .catch((e) => {
                     console.log(e);
@@ -80,7 +79,7 @@ export default {
     },
 
     created: async function () {
-        await this.get_all_course();
+        await this.get_all_quiz();
     },
 }
 </script>

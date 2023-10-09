@@ -1,19 +1,15 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import PageLayout from "./views/pages/Layout.vue";
-import Layout from "./views/Layout.vue";
 
-
+import QuizLayout from './views/pages/Layout.vue'
 import AllQuiz from "./views/pages/AllQuiz.vue";
-import Dashboard from "./views/Dashboard.vue";
 
 // course batch
-import CourseBatchLayout from "./views/pages/course_batch/CourseBatchLayout.vue";
-import CourseBatchALL from "./views/pages/course_batch/All.vue";
-import CourseBatchCreate from "./views/pages/course_batch/Create.vue";
-import CourseBatchEdit from "./views/pages/course_batch/Edit.vue";
-import CourseBatchDetails from "./views/pages/course_batch/Details.vue";
-
+import QuizTopicLayout from "./views/pages/quiz_topic/QuizTopicLayout.vue";
+import QuizTopicAll from "./views/pages/quiz_topic/All.vue";
+import QuizTopicCreate from "./views/pages/quiz_topic/Create.vue";
+import QuizTopicEdit from "./views/pages/quiz_topic/Edit.vue";
+import QuizTopicDetails from "./views/pages/quiz_topic/Details.vue";
 
 
 Vue.use(VueRouter);
@@ -22,67 +18,51 @@ window.Fire = new Vue();
 const routes = [
     {
         path: '',
-        component: Layout,
+        component: QuizLayout,
         children: [
             {
                 path: '',
+                component: AllQuiz,
+            },
+            {
+                path: 'quiz',
                 name: 'AllQuiz',
                 component: AllQuiz,
             },
-            // {
-            //     path: '/courses/:id',
-            //     name: "CourseDetails",
-            //     component: PageLayout,
-            //     children: [
-            //         {
-            //             path: '',
-            //             component: WhatIsThisCourse,
-            //         },
-            //         {
-            //             path: 'what-is-this-course',
-            //             name: 'WhatIsThisCourse',
-            //             component: WhatIsThisCourse,
-            //         },
-            //         {
-            //             path: 'why-is-this-course',
-            //             name: 'WhyIsThisCourse',
-            //             component: WhyIsThisCourse,
-            //         },
 
-            //         // course batch
-            //         {
-            //             path: 'batch',
-            //             component: CourseBatchLayout,
-            //             children: [
-            //                 {
-            //                     path: '',
-            //                     name: 'batch',
-            //                     component: CourseBatchALL,
-            //                 },
-            //                 {
-            //                     path: 'batch-all',
-            //                     name: 'CourseBatchALL',
-            //                     component: CourseBatchALL,
-            //                 },
-            //                 {
-            //                     path: 'batch-create',
-            //                     name: 'CourseBatchCreate',
-            //                     component: CourseBatchCreate,
-            //                 },
-            //                 {
-            //                     path: 'batch-edit/:id',
-            //                     name: 'CourseBatchEdit',
-            //                     component: CourseBatchEdit,
-            //                 },
-            //                 {
-            //                     path: 'batch-details/:id',
-            //                     name: 'CourseBatchDetails',
-            //                     component: CourseBatchDetails,
-            //                 },
-            //             ]
-            //         },
-            //     ],
-            // },
+            {
+                path: 'topic',
+                component: QuizTopicLayout,
+                children: [
+                    {
+                        path: '',
+                        name: 'QuizTopicAll',
+                        component: QuizTopicAll,
+                    },
+                    {
+                        path: 'all',
+                        name: 'QuizTopicAll',
+                        component: QuizTopicAll,
+                    },
+                    {
+                        path: 'create',
+                        name: 'QuizTopicCreate',
+                        component: QuizTopicCreate,
+                    },
+                    {
+                        path: 'edit/:topic_id',
+                        name: 'QuizTopicEdit',
+                        component: QuizTopicEdit,
+                    },
+                    {
+                        path: 'details/:topic_id',
+                        name: 'QuizTopicDetails',
+                        component: QuizTopicDetails,
+                    },
+                ]
+            },
+
+            
         ]
     },
 

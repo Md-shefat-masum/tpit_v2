@@ -1,101 +1,6 @@
 /******/ (function() { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ({
 
-/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/vue/quiz_management/views/Dashboard.vue?vue&type=script&lang=js&":
-/*!*******************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/vue/quiz_management/views/Dashboard.vue?vue&type=script&lang=js& ***!
-  \*******************************************************************************************************************************************************************************************************************/
-/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
-function _regeneratorRuntime() { "use strict"; /*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/facebook/regenerator/blob/main/LICENSE */ _regeneratorRuntime = function _regeneratorRuntime() { return exports; }; var exports = {}, Op = Object.prototype, hasOwn = Op.hasOwnProperty, defineProperty = Object.defineProperty || function (obj, key, desc) { obj[key] = desc.value; }, $Symbol = "function" == typeof Symbol ? Symbol : {}, iteratorSymbol = $Symbol.iterator || "@@iterator", asyncIteratorSymbol = $Symbol.asyncIterator || "@@asyncIterator", toStringTagSymbol = $Symbol.toStringTag || "@@toStringTag"; function define(obj, key, value) { return Object.defineProperty(obj, key, { value: value, enumerable: !0, configurable: !0, writable: !0 }), obj[key]; } try { define({}, ""); } catch (err) { define = function define(obj, key, value) { return obj[key] = value; }; } function wrap(innerFn, outerFn, self, tryLocsList) { var protoGenerator = outerFn && outerFn.prototype instanceof Generator ? outerFn : Generator, generator = Object.create(protoGenerator.prototype), context = new Context(tryLocsList || []); return defineProperty(generator, "_invoke", { value: makeInvokeMethod(innerFn, self, context) }), generator; } function tryCatch(fn, obj, arg) { try { return { type: "normal", arg: fn.call(obj, arg) }; } catch (err) { return { type: "throw", arg: err }; } } exports.wrap = wrap; var ContinueSentinel = {}; function Generator() {} function GeneratorFunction() {} function GeneratorFunctionPrototype() {} var IteratorPrototype = {}; define(IteratorPrototype, iteratorSymbol, function () { return this; }); var getProto = Object.getPrototypeOf, NativeIteratorPrototype = getProto && getProto(getProto(values([]))); NativeIteratorPrototype && NativeIteratorPrototype !== Op && hasOwn.call(NativeIteratorPrototype, iteratorSymbol) && (IteratorPrototype = NativeIteratorPrototype); var Gp = GeneratorFunctionPrototype.prototype = Generator.prototype = Object.create(IteratorPrototype); function defineIteratorMethods(prototype) { ["next", "throw", "return"].forEach(function (method) { define(prototype, method, function (arg) { return this._invoke(method, arg); }); }); } function AsyncIterator(generator, PromiseImpl) { function invoke(method, arg, resolve, reject) { var record = tryCatch(generator[method], generator, arg); if ("throw" !== record.type) { var result = record.arg, value = result.value; return value && "object" == _typeof(value) && hasOwn.call(value, "__await") ? PromiseImpl.resolve(value.__await).then(function (value) { invoke("next", value, resolve, reject); }, function (err) { invoke("throw", err, resolve, reject); }) : PromiseImpl.resolve(value).then(function (unwrapped) { result.value = unwrapped, resolve(result); }, function (error) { return invoke("throw", error, resolve, reject); }); } reject(record.arg); } var previousPromise; defineProperty(this, "_invoke", { value: function value(method, arg) { function callInvokeWithMethodAndArg() { return new PromiseImpl(function (resolve, reject) { invoke(method, arg, resolve, reject); }); } return previousPromise = previousPromise ? previousPromise.then(callInvokeWithMethodAndArg, callInvokeWithMethodAndArg) : callInvokeWithMethodAndArg(); } }); } function makeInvokeMethod(innerFn, self, context) { var state = "suspendedStart"; return function (method, arg) { if ("executing" === state) throw new Error("Generator is already running"); if ("completed" === state) { if ("throw" === method) throw arg; return { value: void 0, done: !0 }; } for (context.method = method, context.arg = arg;;) { var delegate = context.delegate; if (delegate) { var delegateResult = maybeInvokeDelegate(delegate, context); if (delegateResult) { if (delegateResult === ContinueSentinel) continue; return delegateResult; } } if ("next" === context.method) context.sent = context._sent = context.arg;else if ("throw" === context.method) { if ("suspendedStart" === state) throw state = "completed", context.arg; context.dispatchException(context.arg); } else "return" === context.method && context.abrupt("return", context.arg); state = "executing"; var record = tryCatch(innerFn, self, context); if ("normal" === record.type) { if (state = context.done ? "completed" : "suspendedYield", record.arg === ContinueSentinel) continue; return { value: record.arg, done: context.done }; } "throw" === record.type && (state = "completed", context.method = "throw", context.arg = record.arg); } }; } function maybeInvokeDelegate(delegate, context) { var methodName = context.method, method = delegate.iterator[methodName]; if (undefined === method) return context.delegate = null, "throw" === methodName && delegate.iterator["return"] && (context.method = "return", context.arg = undefined, maybeInvokeDelegate(delegate, context), "throw" === context.method) || "return" !== methodName && (context.method = "throw", context.arg = new TypeError("The iterator does not provide a '" + methodName + "' method")), ContinueSentinel; var record = tryCatch(method, delegate.iterator, context.arg); if ("throw" === record.type) return context.method = "throw", context.arg = record.arg, context.delegate = null, ContinueSentinel; var info = record.arg; return info ? info.done ? (context[delegate.resultName] = info.value, context.next = delegate.nextLoc, "return" !== context.method && (context.method = "next", context.arg = undefined), context.delegate = null, ContinueSentinel) : info : (context.method = "throw", context.arg = new TypeError("iterator result is not an object"), context.delegate = null, ContinueSentinel); } function pushTryEntry(locs) { var entry = { tryLoc: locs[0] }; 1 in locs && (entry.catchLoc = locs[1]), 2 in locs && (entry.finallyLoc = locs[2], entry.afterLoc = locs[3]), this.tryEntries.push(entry); } function resetTryEntry(entry) { var record = entry.completion || {}; record.type = "normal", delete record.arg, entry.completion = record; } function Context(tryLocsList) { this.tryEntries = [{ tryLoc: "root" }], tryLocsList.forEach(pushTryEntry, this), this.reset(!0); } function values(iterable) { if (iterable || "" === iterable) { var iteratorMethod = iterable[iteratorSymbol]; if (iteratorMethod) return iteratorMethod.call(iterable); if ("function" == typeof iterable.next) return iterable; if (!isNaN(iterable.length)) { var i = -1, next = function next() { for (; ++i < iterable.length;) if (hasOwn.call(iterable, i)) return next.value = iterable[i], next.done = !1, next; return next.value = undefined, next.done = !0, next; }; return next.next = next; } } throw new TypeError(_typeof(iterable) + " is not iterable"); } return GeneratorFunction.prototype = GeneratorFunctionPrototype, defineProperty(Gp, "constructor", { value: GeneratorFunctionPrototype, configurable: !0 }), defineProperty(GeneratorFunctionPrototype, "constructor", { value: GeneratorFunction, configurable: !0 }), GeneratorFunction.displayName = define(GeneratorFunctionPrototype, toStringTagSymbol, "GeneratorFunction"), exports.isGeneratorFunction = function (genFun) { var ctor = "function" == typeof genFun && genFun.constructor; return !!ctor && (ctor === GeneratorFunction || "GeneratorFunction" === (ctor.displayName || ctor.name)); }, exports.mark = function (genFun) { return Object.setPrototypeOf ? Object.setPrototypeOf(genFun, GeneratorFunctionPrototype) : (genFun.__proto__ = GeneratorFunctionPrototype, define(genFun, toStringTagSymbol, "GeneratorFunction")), genFun.prototype = Object.create(Gp), genFun; }, exports.awrap = function (arg) { return { __await: arg }; }, defineIteratorMethods(AsyncIterator.prototype), define(AsyncIterator.prototype, asyncIteratorSymbol, function () { return this; }), exports.AsyncIterator = AsyncIterator, exports.async = function (innerFn, outerFn, self, tryLocsList, PromiseImpl) { void 0 === PromiseImpl && (PromiseImpl = Promise); var iter = new AsyncIterator(wrap(innerFn, outerFn, self, tryLocsList), PromiseImpl); return exports.isGeneratorFunction(outerFn) ? iter : iter.next().then(function (result) { return result.done ? result.value : iter.next(); }); }, defineIteratorMethods(Gp), define(Gp, toStringTagSymbol, "Generator"), define(Gp, iteratorSymbol, function () { return this; }), define(Gp, "toString", function () { return "[object Generator]"; }), exports.keys = function (val) { var object = Object(val), keys = []; for (var key in object) keys.push(key); return keys.reverse(), function next() { for (; keys.length;) { var key = keys.pop(); if (key in object) return next.value = key, next.done = !1, next; } return next.done = !0, next; }; }, exports.values = values, Context.prototype = { constructor: Context, reset: function reset(skipTempReset) { if (this.prev = 0, this.next = 0, this.sent = this._sent = undefined, this.done = !1, this.delegate = null, this.method = "next", this.arg = undefined, this.tryEntries.forEach(resetTryEntry), !skipTempReset) for (var name in this) "t" === name.charAt(0) && hasOwn.call(this, name) && !isNaN(+name.slice(1)) && (this[name] = undefined); }, stop: function stop() { this.done = !0; var rootRecord = this.tryEntries[0].completion; if ("throw" === rootRecord.type) throw rootRecord.arg; return this.rval; }, dispatchException: function dispatchException(exception) { if (this.done) throw exception; var context = this; function handle(loc, caught) { return record.type = "throw", record.arg = exception, context.next = loc, caught && (context.method = "next", context.arg = undefined), !!caught; } for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i], record = entry.completion; if ("root" === entry.tryLoc) return handle("end"); if (entry.tryLoc <= this.prev) { var hasCatch = hasOwn.call(entry, "catchLoc"), hasFinally = hasOwn.call(entry, "finallyLoc"); if (hasCatch && hasFinally) { if (this.prev < entry.catchLoc) return handle(entry.catchLoc, !0); if (this.prev < entry.finallyLoc) return handle(entry.finallyLoc); } else if (hasCatch) { if (this.prev < entry.catchLoc) return handle(entry.catchLoc, !0); } else { if (!hasFinally) throw new Error("try statement without catch or finally"); if (this.prev < entry.finallyLoc) return handle(entry.finallyLoc); } } } }, abrupt: function abrupt(type, arg) { for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i]; if (entry.tryLoc <= this.prev && hasOwn.call(entry, "finallyLoc") && this.prev < entry.finallyLoc) { var finallyEntry = entry; break; } } finallyEntry && ("break" === type || "continue" === type) && finallyEntry.tryLoc <= arg && arg <= finallyEntry.finallyLoc && (finallyEntry = null); var record = finallyEntry ? finallyEntry.completion : {}; return record.type = type, record.arg = arg, finallyEntry ? (this.method = "next", this.next = finallyEntry.finallyLoc, ContinueSentinel) : this.complete(record); }, complete: function complete(record, afterLoc) { if ("throw" === record.type) throw record.arg; return "break" === record.type || "continue" === record.type ? this.next = record.arg : "return" === record.type ? (this.rval = this.arg = record.arg, this.method = "return", this.next = "end") : "normal" === record.type && afterLoc && (this.next = afterLoc), ContinueSentinel; }, finish: function finish(finallyLoc) { for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i]; if (entry.finallyLoc === finallyLoc) return this.complete(entry.completion, entry.afterLoc), resetTryEntry(entry), ContinueSentinel; } }, "catch": function _catch(tryLoc) { for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i]; if (entry.tryLoc === tryLoc) { var record = entry.completion; if ("throw" === record.type) { var thrown = record.arg; resetTryEntry(entry); } return thrown; } } throw new Error("illegal catch attempt"); }, delegateYield: function delegateYield(iterable, resultName, nextLoc) { return this.delegate = { iterator: values(iterable), resultName: resultName, nextLoc: nextLoc }, "next" === this.method && (this.arg = undefined), ContinueSentinel; } }, exports; }
-function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
-function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
-/* harmony default export */ __webpack_exports__["default"] = ({
-  data: function data() {
-    return {
-      all_courses: {}
-    };
-  },
-  methods: {
-    course_edit: function () {
-      var _course_edit = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee(course) {
-        var current_course;
-        return _regeneratorRuntime().wrap(function _callee$(_context) {
-          while (1) switch (_context.prev = _context.next) {
-            case 0:
-              current_course = JSON.stringify(course);
-              localStorage.setItem('current_course', current_course);
-              this.$router.push({
-                name: 'CourseDetails',
-                params: {
-                  id: course.id
-                }
-              });
-            case 3:
-            case "end":
-              return _context.stop();
-          }
-        }, _callee, this);
-      }));
-      function course_edit(_x) {
-        return _course_edit.apply(this, arguments);
-      }
-      return course_edit;
-    }(),
-    get_all_course: function () {
-      var _get_all_course = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2(event) {
-        var _this = this;
-        return _regeneratorRuntime().wrap(function _callee2$(_context2) {
-          while (1) switch (_context2.prev = _context2.next) {
-            case 0:
-              axios.get('/api/v1/course/all').then(function (response) {
-                // console.log(response.data);
-                _this.all_courses = response.data;
-              })["catch"](function (e) {
-                console.log(e);
-                // if(e.response.status == 401) {
-                //     console.log(e.response.data);
-                //     location.href = '/';
-                // }
-              });
-            case 1:
-            case "end":
-              return _context2.stop();
-          }
-        }, _callee2);
-      }));
-      function get_all_course(_x2) {
-        return _get_all_course.apply(this, arguments);
-      }
-      return get_all_course;
-    }()
-  },
-  computed: {},
-  created: function () {
-    var _created = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee3() {
-      return _regeneratorRuntime().wrap(function _callee3$(_context3) {
-        while (1) switch (_context3.prev = _context3.next) {
-          case 0:
-            _context3.next = 2;
-            return this.get_all_course();
-          case 2:
-          case "end":
-            return _context3.stop();
-        }
-      }, _callee3, this);
-    }));
-    function created() {
-      return _created.apply(this, arguments);
-    }
-    return created;
-  }()
-});
-
-/***/ }),
-
 /***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/vue/quiz_management/views/Layout.vue?vue&type=script&lang=js&":
 /*!****************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/vue/quiz_management/views/Layout.vue?vue&type=script&lang=js& ***!
@@ -123,22 +28,22 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
-      all_courses: {}
+      all_quizes: {}
     };
   },
   methods: {
-    course_edit: function () {
-      var _course_edit = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee(course) {
-        var current_course;
+    quiz_edit: function () {
+      var _quiz_edit = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee(quiz) {
+        var current_quiz;
         return _regeneratorRuntime().wrap(function _callee$(_context) {
           while (1) switch (_context.prev = _context.next) {
             case 0:
-              current_course = JSON.stringify(course);
-              localStorage.setItem('current_course', current_course);
+              current_quiz = JSON.stringify(quiz);
+              localStorage.setItem('current_quiz', current_quiz);
               this.$router.push({
                 name: 'CourseDetails',
                 params: {
-                  id: course.id
+                  id: quiz.id
                 }
               });
             case 3:
@@ -147,20 +52,20 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           }
         }, _callee, this);
       }));
-      function course_edit(_x) {
-        return _course_edit.apply(this, arguments);
+      function quiz_edit(_x) {
+        return _quiz_edit.apply(this, arguments);
       }
-      return course_edit;
+      return quiz_edit;
     }(),
-    get_all_course: function () {
-      var _get_all_course = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2(event) {
+    get_all_quiz: function () {
+      var _get_all_quiz = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2(event) {
         var _this = this;
         return _regeneratorRuntime().wrap(function _callee2$(_context2) {
           while (1) switch (_context2.prev = _context2.next) {
             case 0:
-              axios.get('/api/v1/course/all').then(function (response) {
+              axios.get('/api/v1/quiz/all').then(function (response) {
                 // console.log(response.data);
-                _this.all_courses = response.data;
+                _this.all_quizes = response.data;
               })["catch"](function (e) {
                 console.log(e);
                 // if(e.response.status == 401) {
@@ -174,10 +79,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           }
         }, _callee2);
       }));
-      function get_all_course(_x2) {
-        return _get_all_course.apply(this, arguments);
+      function get_all_quiz(_x2) {
+        return _get_all_quiz.apply(this, arguments);
       }
-      return get_all_course;
+      return get_all_quiz;
     }()
   },
   computed: {},
@@ -187,7 +92,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         while (1) switch (_context3.prev = _context3.next) {
           case 0:
             _context3.next = 2;
-            return this.get_all_course();
+            return this.get_all_quiz();
           case 2:
           case "end":
             return _context3.stop();
@@ -242,10 +147,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
 /***/ }),
 
-/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/vue/quiz_management/views/pages/course_batch/All.vue?vue&type=script&lang=js&":
-/*!********************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/vue/quiz_management/views/pages/course_batch/All.vue?vue&type=script&lang=js& ***!
-  \********************************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/vue/quiz_management/views/pages/quiz_topic/All.vue?vue&type=script&lang=js&":
+/*!******************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/vue/quiz_management/views/pages/quiz_topic/All.vue?vue&type=script&lang=js& ***!
+  \******************************************************************************************************************************************************************************************************************************/
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -257,21 +162,19 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
-      course_batches: {}
+      quiz_topics: {}
     };
   },
   methods: {
-    get_course_batches: function () {
-      var _get_course_batches = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee() {
+    get_quiz_topics: function () {
+      var _get_quiz_topics = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee() {
         var _this = this;
-        var course_id;
         return _regeneratorRuntime().wrap(function _callee$(_context) {
           while (1) switch (_context.prev = _context.next) {
             case 0:
-              course_id = this.$route.params.id;
-              axios.get("/api/v1/course/course-batch/course-batches/".concat(course_id)).then(function (response) {
+              axios.get("/api/v1/quiz-topics/all").then(function (response) {
                 // console.log(response.data);
-                _this.course_batches = response.data;
+                _this.quiz_topics = response.data;
               })["catch"](function (e) {
                 console.log(e);
                 // if(e.response.status == 401) {
@@ -279,19 +182,19 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 //     location.href = '/';
                 // }
               });
-            case 2:
+            case 1:
             case "end":
               return _context.stop();
           }
-        }, _callee, this);
+        }, _callee);
       }));
-      function get_course_batches() {
-        return _get_course_batches.apply(this, arguments);
+      function get_quiz_topics() {
+        return _get_quiz_topics.apply(this, arguments);
       }
-      return get_course_batches;
+      return get_quiz_topics;
     }(),
-    deleteCourseBatch: function () {
-      var _deleteCourseBatch = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2(id) {
+    deleteQuizTopic: function () {
+      var _deleteQuizTopic = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2(id) {
         var _this2 = this;
         var confirm;
         return _regeneratorRuntime().wrap(function _callee2$(_context2) {
@@ -302,12 +205,12 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
             case 2:
               confirm = _context2.sent;
               if (confirm) {
-                axios.post("/api/v1/course/course-batch/destroy", {
+                axios.post("/api/v1/quiz-topics/destroy", {
                   id: id
                 }).then(function (response) {
                   // console.log(response.data);
-                  window.toaster("Course Batch deleted successfully!");
-                  _this2.get_course_batches();
+                  window.toaster("Quiz topic deleted successfully!");
+                  _this2.get_quiz_topics();
                 })["catch"](function (e) {
                   console.log(e);
                 });
@@ -318,10 +221,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           }
         }, _callee2);
       }));
-      function deleteCourseBatch(_x) {
-        return _deleteCourseBatch.apply(this, arguments);
+      function deleteQuizTopic(_x) {
+        return _deleteQuizTopic.apply(this, arguments);
       }
-      return deleteCourseBatch;
+      return deleteQuizTopic;
     }()
   },
   computed: {},
@@ -331,7 +234,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         while (1) switch (_context3.prev = _context3.next) {
           case 0:
             _context3.next = 2;
-            return this.get_course_batches();
+            return this.get_quiz_topics();
           case 2:
           case "end":
             return _context3.stop();
@@ -347,22 +250,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
 /***/ }),
 
-/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/vue/quiz_management/views/pages/course_batch/CourseBatchLayout.vue?vue&type=script&lang=js&":
-/*!**********************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/vue/quiz_management/views/pages/course_batch/CourseBatchLayout.vue?vue&type=script&lang=js& ***!
-  \**********************************************************************************************************************************************************************************************************************************************/
-/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ({});
-
-/***/ }),
-
-/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/vue/quiz_management/views/pages/course_batch/Create.vue?vue&type=script&lang=js&":
-/*!***********************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/vue/quiz_management/views/pages/course_batch/Create.vue?vue&type=script&lang=js& ***!
-  \***********************************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/vue/quiz_management/views/pages/quiz_topic/Create.vue?vue&type=script&lang=js&":
+/*!*********************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/vue/quiz_management/views/pages/quiz_topic/Create.vue?vue&type=script&lang=js& ***!
+  \*********************************************************************************************************************************************************************************************************************************/
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -438,10 +329,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
 /***/ }),
 
-/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/vue/quiz_management/views/pages/course_batch/Details.vue?vue&type=script&lang=js&":
-/*!************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/vue/quiz_management/views/pages/course_batch/Details.vue?vue&type=script&lang=js& ***!
-  \************************************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/vue/quiz_management/views/pages/quiz_topic/Details.vue?vue&type=script&lang=js&":
+/*!**********************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/vue/quiz_management/views/pages/quiz_topic/Details.vue?vue&type=script&lang=js& ***!
+  \**********************************************************************************************************************************************************************************************************************************/
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -515,10 +406,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
 /***/ }),
 
-/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/vue/quiz_management/views/pages/course_batch/Edit.vue?vue&type=script&lang=js&":
-/*!*********************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/vue/quiz_management/views/pages/course_batch/Edit.vue?vue&type=script&lang=js& ***!
-  \*********************************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/vue/quiz_management/views/pages/quiz_topic/Edit.vue?vue&type=script&lang=js&":
+/*!*******************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/vue/quiz_management/views/pages/quiz_topic/Edit.vue?vue&type=script&lang=js& ***!
+  \*******************************************************************************************************************************************************************************************************************************/
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -626,172 +517,15 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
 /***/ }),
 
-/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/lib/loaders/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/vue/quiz_management/views/Dashboard.vue?vue&type=template&id=1ad770da&":
-/*!******************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/lib/loaders/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/vue/quiz_management/views/Dashboard.vue?vue&type=template&id=1ad770da& ***!
-  \******************************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/vue/quiz_management/views/pages/quiz_topic/QuizTopicLayout.vue?vue&type=script&lang=js&":
+/*!******************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/vue/quiz_management/views/pages/quiz_topic/QuizTopicLayout.vue?vue&type=script&lang=js& ***!
+  \******************************************************************************************************************************************************************************************************************************************/
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   render: function() { return /* binding */ render; },
-/* harmony export */   staticRenderFns: function() { return /* binding */ staticRenderFns; }
-/* harmony export */ });
-var render = function render() {
-  var _vm = this,
-    _c = _vm._self._c;
-  return _vm._m(0);
-};
-var staticRenderFns = [function () {
-  var _vm = this,
-    _c = _vm._self._c;
-  return _c("section", {
-    staticClass: "p-5 custom_scroll",
-    staticStyle: {
-      height: "calc(100vh - 90px)",
-      overflow: "auto"
-    }
-  }, [_c("div", {
-    staticClass: "row"
-  }, [_c("div", {
-    staticClass: "col-xl-12 mb-4 col-lg-12 col-12"
-  }, [_c("div", {
-    staticClass: "card h-100"
-  }, [_c("div", {
-    staticClass: "card-header"
-  }, [_c("div", {
-    staticClass: "d-flex justify-content-between mb-3"
-  }, [_c("h5", {
-    staticClass: "card-title mb-0"
-  }, [_vm._v("Statistics")])])]), _vm._v(" "), _c("div", {
-    staticClass: "card-body"
-  }, [_c("div", {
-    staticClass: "row gy-3"
-  }, [_c("div", {
-    staticClass: "col-md-3 col-6"
-  }, [_c("div", {
-    staticClass: "d-flex align-items-center"
-  }, [_c("div", {
-    staticClass: "badge rounded-pill bg-label-primary me-3 p-2"
-  }, [_c("i", {
-    staticClass: "fa-solid fa-chart-pie"
-  })]), _vm._v(" "), _c("div", {
-    staticClass: "card-info"
-  }, [_c("h5", {
-    staticClass: "mb-0"
-  }, [_vm._v("230k")]), _vm._v(" "), _c("small", [_vm._v("Sales")])])])]), _vm._v(" "), _c("div", {
-    staticClass: "col-md-3 col-6"
-  }, [_c("div", {
-    staticClass: "d-flex align-items-center"
-  }, [_c("div", {
-    staticClass: "badge rounded-pill bg-label-info me-3 p-2"
-  }, [_c("i", {
-    staticClass: "fa-solid fa-user-group"
-  })]), _vm._v(" "), _c("div", {
-    staticClass: "card-info"
-  }, [_c("h5", {
-    staticClass: "mb-0"
-  }, [_vm._v("8.549k")]), _vm._v(" "), _c("small", [_vm._v("Customers")])])])]), _vm._v(" "), _c("div", {
-    staticClass: "col-md-3 col-6"
-  }, [_c("div", {
-    staticClass: "d-flex align-items-center"
-  }, [_c("div", {
-    staticClass: "badge rounded-pill bg-label-danger me-3 p-2"
-  }, [_c("i", {
-    staticClass: "fa-solid fa-cart-shopping"
-  })]), _vm._v(" "), _c("div", {
-    staticClass: "card-info"
-  }, [_c("h5", {
-    staticClass: "mb-0"
-  }, [_vm._v("1.423k")]), _vm._v(" "), _c("small", [_vm._v("Products")])])])]), _vm._v(" "), _c("div", {
-    staticClass: "col-md-3 col-6"
-  }, [_c("div", {
-    staticClass: "d-flex align-items-center"
-  }, [_c("div", {
-    staticClass: "badge rounded-pill bg-label-success me-3 p-2"
-  }, [_c("i", {
-    staticClass: "fa-solid fa-money-bills"
-  })]), _vm._v(" "), _c("div", {
-    staticClass: "card-info"
-  }, [_c("h5", {
-    staticClass: "mb-0"
-  }, [_vm._v("$9745")]), _vm._v(" "), _c("small", [_vm._v("Revenue")])])])]), _vm._v(" "), _c("div", {
-    staticClass: "col-md-3 col-6"
-  }, [_c("div", {
-    staticClass: "d-flex align-items-center"
-  }, [_c("div", {
-    staticClass: "badge rounded-pill bg-label-primary me-3 p-2"
-  }, [_c("i", {
-    staticClass: "fa-solid fa-shop-lock"
-  })]), _vm._v(" "), _c("div", {
-    staticClass: "card-info"
-  }, [_c("h5", {
-    staticClass: "mb-0"
-  }, [_vm._v("230k")]), _vm._v(" "), _c("small", [_vm._v("Pending Orders")])])])]), _vm._v(" "), _c("div", {
-    staticClass: "col-md-3 col-6"
-  }, [_c("div", {
-    staticClass: "d-flex align-items-center"
-  }, [_c("div", {
-    staticClass: "badge rounded-pill bg-label-info me-3 p-2"
-  }, [_c("i", {
-    staticClass: "fa-solid fa-list"
-  })]), _vm._v(" "), _c("div", {
-    staticClass: "card-info"
-  }, [_c("h5", {
-    staticClass: "mb-0"
-  }, [_vm._v("8.549k")]), _vm._v(" "), _c("small", [_vm._v("Total Categories")])])])]), _vm._v(" "), _c("div", {
-    staticClass: "col-md-3 col-6"
-  }, [_c("div", {
-    staticClass: "d-flex align-items-center"
-  }, [_c("div", {
-    staticClass: "badge rounded-pill bg-label-danger me-3 p-2"
-  }, [_c("i", {
-    staticClass: "fa-solid fa-shop"
-  })]), _vm._v(" "), _c("div", {
-    staticClass: "card-info"
-  }, [_c("h5", {
-    staticClass: "mb-0"
-  }, [_vm._v("1.423k")]), _vm._v(" "), _c("small", [_vm._v("Total sales for this month")])])])]), _vm._v(" "), _c("div", {
-    staticClass: "col-md-3 col-6"
-  }, [_c("div", {
-    staticClass: "d-flex align-items-center"
-  }, [_c("div", {
-    staticClass: "badge rounded-pill bg-label-success me-3 p-2"
-  }, [_c("i", {
-    staticClass: "fa-solid fa-money-bills"
-  })]), _vm._v(" "), _c("div", {
-    staticClass: "card-info"
-  }, [_c("h5", {
-    staticClass: "mb-0"
-  }, [_vm._v("$9745")]), _vm._v(" "), _c("small", [_vm._v("Total sales for today")])])])]), _vm._v(" "), _c("div", {
-    staticClass: "col-md-3 col-6"
-  }, [_c("div", {
-    staticClass: "d-flex align-items-center"
-  }, [_c("div", {
-    staticClass: "badge rounded-pill bg-label-primary me-3 p-2"
-  }, [_c("i", {
-    staticClass: "fa-solid fa-boxes-packing"
-  })]), _vm._v(" "), _c("div", {
-    staticClass: "card-info"
-  }, [_c("h5", {
-    staticClass: "mb-0"
-  }, [_vm._v("230k")]), _vm._v(" "), _c("small", [_vm._v("Top Selling Products")])])])]), _vm._v(" "), _c("div", {
-    staticClass: "col-md-3 col-6"
-  }, [_c("div", {
-    staticClass: "d-flex align-items-center"
-  }, [_c("div", {
-    staticClass: "badge rounded-pill bg-label-info me-3 p-2"
-  }, [_c("i", {
-    staticClass: "fa-solid fa-box-archive"
-  })]), _vm._v(" "), _c("div", {
-    staticClass: "card-info"
-  }, [_c("h5", {
-    staticClass: "mb-0"
-  }, [_vm._v("8.549k")]), _vm._v(" "), _c("small", [_vm._v("Less selling products")])])])])])])])])])]);
-}];
-render._withStripped = true;
-
+/* harmony default export */ __webpack_exports__["default"] = ({});
 
 /***/ }),
 
@@ -837,20 +571,25 @@ var render = function render() {
     staticClass: "card"
   }, [_vm._m(0), _vm._v(" "), _c("div", {
     staticClass: "card-body"
-  }, [_c("div", {
+  }, [_c("router-link", {
+    staticClass: "btn btn-primary mb-2 float-right",
+    attrs: {
+      to: {
+        name: "CourseBatchCreate"
+      }
+    }
+  }, [_c("i", {
+    staticClass: "fa-solid fa-plus mr-1"
+  }), _vm._v(" "), _c("span", [_vm._v("Create")])]), _vm._v(" "), _c("div", {
     staticClass: "table-responsive"
   }, [_c("table", {
     staticClass: "table table-bordered table-hover"
-  }, [_vm._m(1), _vm._v(" "), _vm.all_courses.data && _vm.all_courses.data.length > 0 ? _c("tbody", _vm._l(_vm.all_courses.data, function (course, index) {
+  }, [_vm._m(1), _vm._v(" "), _vm.all_quizes.data && _vm.all_quizes.data.length > 0 ? _c("tbody", _vm._l(_vm.all_quizes.data, function (quiz, index) {
     return _c("tr", {
       key: index
-    }, [_c("td", [_vm._v(_vm._s(index + 1))]), _vm._v(" "), _c("td", [_c("img", {
-      attrs: {
-        height: "100",
-        src: "/".concat(course.image),
-        alt: ""
-      }
-    })]), _vm._v(" "), _c("td", [_vm._v(_vm._s(course.title))]), _vm._v(" "), _c("td", [_vm._v(_vm._s(course.type))]), _vm._v(" "), _c("td", [_c("div", {
+    }, [_c("td", [_c("span", {
+      staticClass: "text-primary"
+    }, [_vm._v("#" + _vm._s(index + 1))])]), _vm._v(" "), _c("td", [_vm._v(_vm._s(quiz.title))]), _vm._v(" "), _c("td", [_c("div", {
       staticClass: "btn-group"
     }, [_vm._m(2, true), _vm._v(" "), _c("div", {
       staticClass: "dropdown-menu"
@@ -859,13 +598,13 @@ var render = function render() {
       on: {
         click: function click($event) {
           $event.preventDefault();
-          return _vm.course_edit(course);
+          return _vm.quiz_edit(quiz);
         }
       }
     }, [_c("i", {
       staticClass: "fa text-warning fa-pencil mr-2"
     }), _vm._v(" "), _c("span", [_vm._v("Edit")])])])])])]);
-  }), 0) : _vm._e()])])])])]);
+  }), 0) : _vm._e()])])], 1)])]);
 };
 var staticRenderFns = [function () {
   var _vm = this,
@@ -878,7 +617,7 @@ var staticRenderFns = [function () {
 }, function () {
   var _vm = this,
     _c = _vm._self._c;
-  return _c("thead", [_c("tr", [_c("td", [_vm._v("#")]), _vm._v(" "), _c("td", [_vm._v("image")]), _vm._v(" "), _c("td", [_vm._v("Title")]), _vm._v(" "), _c("td", [_vm._v("Type")]), _vm._v(" "), _c("td", [_vm._v("Actions")])])]);
+  return _c("thead", [_c("tr", [_c("td", [_vm._v("#")]), _vm._v(" "), _c("td", [_vm._v("Title")]), _vm._v(" "), _c("td", [_vm._v("Actions")])])]);
 }, function () {
   var _vm = this,
     _c = _vm._self._c;
@@ -920,7 +659,7 @@ var render = function render() {
   }, [_c("ul", [_c("li", [_c("router-link", {
     attrs: {
       to: {
-        name: "AllCourse"
+        name: "AllQuiz"
       },
       "aria-current": "page"
     }
@@ -930,13 +669,13 @@ var render = function render() {
     staticClass: "router-link-active",
     attrs: {
       to: {
-        name: "CourseModule"
+        name: "QuizTopicAll"
       },
       "aria-current": "page"
     }
   }, [_c("i", {
     staticClass: "far fa-circle mr-1"
-  }), _vm._v(" "), _c("div", [_vm._v("\n                            Course routine\n                        ")])])], 1), _vm._v(" "), _c("li", [_c("router-link", {
+  }), _vm._v(" "), _c("div", [_vm._v("\n                            Quiz Topics\n                        ")])])], 1), _vm._v(" "), _c("li", [_c("router-link", {
     staticClass: "router-link-active",
     attrs: {
       to: {
@@ -946,7 +685,17 @@ var render = function render() {
     }
   }, [_c("i", {
     staticClass: "far fa-circle mr-1"
-  }), _vm._v(" "), _c("div", [_vm._v("\n                            Course FAQ\n                        ")])])], 1)])]), _vm._v(" "), _c("div", {
+  }), _vm._v(" "), _c("div", [_vm._v("\n                            Quiz Options\n                        ")])])], 1), _vm._v(" "), _c("li", [_c("router-link", {
+    staticClass: "router-link-active",
+    attrs: {
+      to: {
+        name: "CourseFaqAll"
+      },
+      "aria-current": "page"
+    }
+  }, [_c("i", {
+    staticClass: "far fa-circle mr-1"
+  }), _vm._v(" "), _c("div", [_vm._v("\n                            Quiz question\n                        ")])])], 1)])]), _vm._v(" "), _c("div", {
     staticClass: "setting_body custom_scroll"
   }, [_c("router-view")], 1)])]);
 };
@@ -956,10 +705,10 @@ render._withStripped = true;
 
 /***/ }),
 
-/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/lib/loaders/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/vue/quiz_management/views/pages/course_batch/All.vue?vue&type=template&id=3bd4e2fd&":
-/*!*******************************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/lib/loaders/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/vue/quiz_management/views/pages/course_batch/All.vue?vue&type=template&id=3bd4e2fd& ***!
-  \*******************************************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/lib/loaders/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/vue/quiz_management/views/pages/quiz_topic/All.vue?vue&type=template&id=1dba4828&":
+/*!*****************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/lib/loaders/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/vue/quiz_management/views/pages/quiz_topic/All.vue?vue&type=template&id=1dba4828& ***!
+  \*****************************************************************************************************************************************************************************************************************************************************************************************************************/
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -979,7 +728,7 @@ var render = function render() {
     staticClass: "btn btn-primary mb-2 float-right",
     attrs: {
       to: {
-        name: "CourseBatchCreate"
+        name: "QuizTopicCreate"
       }
     }
   }, [_c("i", {
@@ -988,18 +737,14 @@ var render = function render() {
     staticClass: "table-responsive"
   }, [_c("table", {
     staticClass: "table table-bordered table-hover"
-  }, [_vm._m(1), _vm._v(" "), _vm.course_batches.data && _vm.course_batches.data.length > 0 ? _c("tbody", _vm._l(_vm.course_batches.data, function (batch, index) {
+  }, [_vm._m(1), _vm._v(" "), _vm.quiz_topics.data && _vm.quiz_topics.data.length > 0 ? _c("tbody", _vm._l(_vm.quiz_topics.data, function (quiz, index) {
     return _c("tr", {
       key: index
     }, [_c("td", [_c("span", {
       staticClass: "text-primary"
-    }, [_vm._v("#" + _vm._s(index + 1))])]), _vm._v(" "), _c("td", [batch.course ? _c("span", [_vm._v(_vm._s(batch.course.title))]) : _vm._e()]), _vm._v(" "), _c("td", [_c("span", {
+    }, [_vm._v("#" + _vm._s(index + 1))])]), _vm._v(" "), _c("td", [_c("span", {
       staticClass: "text-warning cursor_pointer"
-    }, [_vm._v(_vm._s(batch.batch_name))])]), _vm._v(" "), _c("td", [_vm._v(_vm._s(batch.admission_start_date))]), _vm._v(" "), _c("td", [_vm._v(_vm._s(batch.admission_end_date))]), _vm._v(" "), _c("td", [_c("span", {
-      staticClass: "text-info"
-    }, [_vm._v(_vm._s(batch.course_price))])]), _vm._v(" "), _c("td", {
-      staticClass: "text-success"
-    }, [_vm._v(_vm._s(batch.after_discount_price))]), _vm._v(" "), _c("td", [_c("div", {
+    }, [_vm._v(_vm._s(quiz.title))])]), _vm._v(" "), _c("td", [_c("span", [_vm._v(_vm._s(quiz.description))])]), _vm._v(" "), _c("td", [_c("div", {
       staticClass: "btn-group"
     }, [_vm._m(2, true), _vm._v(" "), _c("div", {
       staticClass: "dropdown-menu"
@@ -1007,9 +752,9 @@ var render = function render() {
       staticClass: "dropdown-item",
       attrs: {
         to: {
-          name: "CourseBatchDetails",
+          name: "QuizTopicDetails",
           params: {
-            id: batch.id
+            id: quiz.id
           }
         }
       }
@@ -1019,9 +764,9 @@ var render = function render() {
       staticClass: "dropdown-item",
       attrs: {
         to: {
-          name: "CourseBatchEdit",
+          name: "QuizTopicEdit",
           params: {
-            id: batch.id
+            id: quiz.id
           }
         }
       }
@@ -1035,7 +780,7 @@ var render = function render() {
       on: {
         click: function click($event) {
           $event.preventDefault();
-          return _vm.deleteCourseBatch(batch.id);
+          return _vm.deleteQuizTopic(quiz.id);
         }
       }
     }, [_c("i", {
@@ -1050,11 +795,11 @@ var staticRenderFns = [function () {
     staticClass: "card-header"
   }, [_c("h4", {
     staticClass: "card-title"
-  }, [_vm._v("All Batches: 👥")])]);
+  }, [_vm._v("All Batches: 📓")])]);
 }, function () {
   var _vm = this,
     _c = _vm._self._c;
-  return _c("thead", [_c("tr", [_c("td", [_vm._v("sl")]), _vm._v(" "), _c("td", [_vm._v("Course")]), _vm._v(" "), _c("td", [_vm._v("Name")]), _vm._v(" "), _c("td", [_vm._v("Admission Start Date")]), _vm._v(" "), _c("td", [_vm._v("Admission End Date")]), _vm._v(" "), _c("td", [_vm._v("Price")]), _vm._v(" "), _c("td", [_vm._v("Sale Price")]), _vm._v(" "), _c("td", [_vm._v("Actions")])])]);
+  return _c("thead", [_c("tr", [_c("td", [_vm._v("sl")]), _vm._v(" "), _c("td", [_vm._v("Title")]), _vm._v(" "), _c("td", [_vm._v("Description")]), _vm._v(" "), _c("td", [_vm._v("Actions")])])]);
 }, function () {
   var _vm = this,
     _c = _vm._self._c;
@@ -1074,33 +819,10 @@ render._withStripped = true;
 
 /***/ }),
 
-/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/lib/loaders/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/vue/quiz_management/views/pages/course_batch/CourseBatchLayout.vue?vue&type=template&id=12552245&":
-/*!*********************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/lib/loaders/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/vue/quiz_management/views/pages/course_batch/CourseBatchLayout.vue?vue&type=template&id=12552245& ***!
-  \*********************************************************************************************************************************************************************************************************************************************************************************************************************************/
-/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   render: function() { return /* binding */ render; },
-/* harmony export */   staticRenderFns: function() { return /* binding */ staticRenderFns; }
-/* harmony export */ });
-var render = function render() {
-  var _vm = this,
-    _c = _vm._self._c;
-  return _c("div", [_c("h4", [_vm._v("Course Management")]), _vm._v(" "), _c("router-view")], 1);
-};
-var staticRenderFns = [];
-render._withStripped = true;
-
-
-/***/ }),
-
-/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/lib/loaders/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/vue/quiz_management/views/pages/course_batch/Create.vue?vue&type=template&id=8948e060&":
-/*!**********************************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/lib/loaders/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/vue/quiz_management/views/pages/course_batch/Create.vue?vue&type=template&id=8948e060& ***!
-  \**********************************************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/lib/loaders/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/vue/quiz_management/views/pages/quiz_topic/Create.vue?vue&type=template&id=58173c81&":
+/*!********************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/lib/loaders/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/vue/quiz_management/views/pages/quiz_topic/Create.vue?vue&type=template&id=58173c81& ***!
+  \********************************************************************************************************************************************************************************************************************************************************************************************************************/
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1377,10 +1099,10 @@ render._withStripped = true;
 
 /***/ }),
 
-/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/lib/loaders/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/vue/quiz_management/views/pages/course_batch/Details.vue?vue&type=template&id=56fbe11e&":
-/*!***********************************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/lib/loaders/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/vue/quiz_management/views/pages/course_batch/Details.vue?vue&type=template&id=56fbe11e& ***!
-  \***********************************************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/lib/loaders/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/vue/quiz_management/views/pages/quiz_topic/Details.vue?vue&type=template&id=51b5ca8d&":
+/*!*********************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/lib/loaders/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/vue/quiz_management/views/pages/quiz_topic/Details.vue?vue&type=template&id=51b5ca8d& ***!
+  \*********************************************************************************************************************************************************************************************************************************************************************************************************************/
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1431,10 +1153,10 @@ render._withStripped = true;
 
 /***/ }),
 
-/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/lib/loaders/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/vue/quiz_management/views/pages/course_batch/Edit.vue?vue&type=template&id=35b584de&":
-/*!********************************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/lib/loaders/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/vue/quiz_management/views/pages/course_batch/Edit.vue?vue&type=template&id=35b584de& ***!
-  \********************************************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/lib/loaders/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/vue/quiz_management/views/pages/quiz_topic/Edit.vue?vue&type=template&id=2a26a9cf&":
+/*!******************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/lib/loaders/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/vue/quiz_management/views/pages/quiz_topic/Edit.vue?vue&type=template&id=2a26a9cf& ***!
+  \******************************************************************************************************************************************************************************************************************************************************************************************************************/
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1742,6 +1464,29 @@ render._withStripped = true;
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/lib/loaders/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/vue/quiz_management/views/pages/quiz_topic/QuizTopicLayout.vue?vue&type=template&id=5b49f7ef&":
+/*!*****************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/lib/loaders/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/vue/quiz_management/views/pages/quiz_topic/QuizTopicLayout.vue?vue&type=template&id=5b49f7ef& ***!
+  \*****************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   render: function() { return /* binding */ render; },
+/* harmony export */   staticRenderFns: function() { return /* binding */ staticRenderFns; }
+/* harmony export */ });
+var render = function render() {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("div", [_c("h4", [_vm._v("Course Management")]), _vm._v(" "), _c("router-view")], 1);
+};
+var staticRenderFns = [];
+render._withStripped = true;
+
+
+/***/ }),
+
 /***/ "./resources/js/vue/quiz_management/helper.js":
 /*!****************************************************!*\
   !*** ./resources/js/vue/quiz_management/helper.js ***!
@@ -1771,19 +1516,15 @@ function getAlldata() {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm.js");
-/* harmony import */ var vue_router__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! vue-router */ "./node_modules/vue-router/dist/vue-router.esm.js");
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm.js");
+/* harmony import */ var vue_router__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! vue-router */ "./node_modules/vue-router/dist/vue-router.esm.js");
 /* harmony import */ var _views_pages_Layout_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./views/pages/Layout.vue */ "./resources/js/vue/quiz_management/views/pages/Layout.vue");
-/* harmony import */ var _views_Layout_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./views/Layout.vue */ "./resources/js/vue/quiz_management/views/Layout.vue");
-/* harmony import */ var _views_pages_AllQuiz_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./views/pages/AllQuiz.vue */ "./resources/js/vue/quiz_management/views/pages/AllQuiz.vue");
-/* harmony import */ var _views_Dashboard_vue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./views/Dashboard.vue */ "./resources/js/vue/quiz_management/views/Dashboard.vue");
-/* harmony import */ var _views_pages_course_batch_CourseBatchLayout_vue__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./views/pages/course_batch/CourseBatchLayout.vue */ "./resources/js/vue/quiz_management/views/pages/course_batch/CourseBatchLayout.vue");
-/* harmony import */ var _views_pages_course_batch_All_vue__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./views/pages/course_batch/All.vue */ "./resources/js/vue/quiz_management/views/pages/course_batch/All.vue");
-/* harmony import */ var _views_pages_course_batch_Create_vue__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./views/pages/course_batch/Create.vue */ "./resources/js/vue/quiz_management/views/pages/course_batch/Create.vue");
-/* harmony import */ var _views_pages_course_batch_Edit_vue__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./views/pages/course_batch/Edit.vue */ "./resources/js/vue/quiz_management/views/pages/course_batch/Edit.vue");
-/* harmony import */ var _views_pages_course_batch_Details_vue__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./views/pages/course_batch/Details.vue */ "./resources/js/vue/quiz_management/views/pages/course_batch/Details.vue");
-
-
+/* harmony import */ var _views_pages_AllQuiz_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./views/pages/AllQuiz.vue */ "./resources/js/vue/quiz_management/views/pages/AllQuiz.vue");
+/* harmony import */ var _views_pages_quiz_topic_QuizTopicLayout_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./views/pages/quiz_topic/QuizTopicLayout.vue */ "./resources/js/vue/quiz_management/views/pages/quiz_topic/QuizTopicLayout.vue");
+/* harmony import */ var _views_pages_quiz_topic_All_vue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./views/pages/quiz_topic/All.vue */ "./resources/js/vue/quiz_management/views/pages/quiz_topic/All.vue");
+/* harmony import */ var _views_pages_quiz_topic_Create_vue__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./views/pages/quiz_topic/Create.vue */ "./resources/js/vue/quiz_management/views/pages/quiz_topic/Create.vue");
+/* harmony import */ var _views_pages_quiz_topic_Edit_vue__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./views/pages/quiz_topic/Edit.vue */ "./resources/js/vue/quiz_management/views/pages/quiz_topic/Edit.vue");
+/* harmony import */ var _views_pages_quiz_topic_Details_vue__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./views/pages/quiz_topic/Details.vue */ "./resources/js/vue/quiz_management/views/pages/quiz_topic/Details.vue");
 
 
 
@@ -1795,74 +1536,45 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-vue__WEBPACK_IMPORTED_MODULE_9__["default"].use(vue_router__WEBPACK_IMPORTED_MODULE_10__["default"]);
-window.Fire = new vue__WEBPACK_IMPORTED_MODULE_9__["default"]();
+vue__WEBPACK_IMPORTED_MODULE_7__["default"].use(vue_router__WEBPACK_IMPORTED_MODULE_8__["default"]);
+window.Fire = new vue__WEBPACK_IMPORTED_MODULE_7__["default"]();
 var routes = [{
   path: '',
-  component: _views_Layout_vue__WEBPACK_IMPORTED_MODULE_1__["default"],
+  component: _views_pages_Layout_vue__WEBPACK_IMPORTED_MODULE_0__["default"],
   children: [{
     path: '',
+    component: _views_pages_AllQuiz_vue__WEBPACK_IMPORTED_MODULE_1__["default"]
+  }, {
+    path: 'quiz',
     name: 'AllQuiz',
-    component: _views_pages_AllQuiz_vue__WEBPACK_IMPORTED_MODULE_2__["default"]
-  }
-  // {
-  //     path: '/courses/:id',
-  //     name: "CourseDetails",
-  //     component: PageLayout,
-  //     children: [
-  //         {
-  //             path: '',
-  //             component: WhatIsThisCourse,
-  //         },
-  //         {
-  //             path: 'what-is-this-course',
-  //             name: 'WhatIsThisCourse',
-  //             component: WhatIsThisCourse,
-  //         },
-  //         {
-  //             path: 'why-is-this-course',
-  //             name: 'WhyIsThisCourse',
-  //             component: WhyIsThisCourse,
-  //         },
-
-  //         // course batch
-  //         {
-  //             path: 'batch',
-  //             component: CourseBatchLayout,
-  //             children: [
-  //                 {
-  //                     path: '',
-  //                     name: 'batch',
-  //                     component: CourseBatchALL,
-  //                 },
-  //                 {
-  //                     path: 'batch-all',
-  //                     name: 'CourseBatchALL',
-  //                     component: CourseBatchALL,
-  //                 },
-  //                 {
-  //                     path: 'batch-create',
-  //                     name: 'CourseBatchCreate',
-  //                     component: CourseBatchCreate,
-  //                 },
-  //                 {
-  //                     path: 'batch-edit/:id',
-  //                     name: 'CourseBatchEdit',
-  //                     component: CourseBatchEdit,
-  //                 },
-  //                 {
-  //                     path: 'batch-details/:id',
-  //                     name: 'CourseBatchDetails',
-  //                     component: CourseBatchDetails,
-  //                 },
-  //             ]
-  //         },
-  //     ],
-  // },
-  ]
+    component: _views_pages_AllQuiz_vue__WEBPACK_IMPORTED_MODULE_1__["default"]
+  }, {
+    path: 'topic',
+    component: _views_pages_quiz_topic_QuizTopicLayout_vue__WEBPACK_IMPORTED_MODULE_2__["default"],
+    children: [{
+      path: '',
+      name: 'QuizTopicAll',
+      component: _views_pages_quiz_topic_All_vue__WEBPACK_IMPORTED_MODULE_3__["default"]
+    }, {
+      path: 'all',
+      name: 'QuizTopicAll',
+      component: _views_pages_quiz_topic_All_vue__WEBPACK_IMPORTED_MODULE_3__["default"]
+    }, {
+      path: 'create',
+      name: 'QuizTopicCreate',
+      component: _views_pages_quiz_topic_Create_vue__WEBPACK_IMPORTED_MODULE_4__["default"]
+    }, {
+      path: 'edit/:topic_id',
+      name: 'QuizTopicEdit',
+      component: _views_pages_quiz_topic_Edit_vue__WEBPACK_IMPORTED_MODULE_5__["default"]
+    }, {
+      path: 'details/:topic_id',
+      name: 'QuizTopicDetails',
+      component: _views_pages_quiz_topic_Details_vue__WEBPACK_IMPORTED_MODULE_6__["default"]
+    }]
+  }]
 }];
-
-var management_router = new vue_router__WEBPACK_IMPORTED_MODULE_10__["default"]({
+var management_router = new vue_router__WEBPACK_IMPORTED_MODULE_8__["default"]({
   routes: routes,
   mode: 'hash',
   linkExactActiveClass: 'active'
@@ -3960,42 +3672,6 @@ module.exports = Array.isArray || function (arr) {
 
 /***/ }),
 
-/***/ "./resources/js/vue/quiz_management/views/Dashboard.vue":
-/*!**************************************************************!*\
-  !*** ./resources/js/vue/quiz_management/views/Dashboard.vue ***!
-  \**************************************************************/
-/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _Dashboard_vue_vue_type_template_id_1ad770da___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Dashboard.vue?vue&type=template&id=1ad770da& */ "./resources/js/vue/quiz_management/views/Dashboard.vue?vue&type=template&id=1ad770da&");
-/* harmony import */ var _Dashboard_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Dashboard.vue?vue&type=script&lang=js& */ "./resources/js/vue/quiz_management/views/Dashboard.vue?vue&type=script&lang=js&");
-/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! !../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
-
-
-
-
-
-/* normalize component */
-;
-var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
-  _Dashboard_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
-  _Dashboard_vue_vue_type_template_id_1ad770da___WEBPACK_IMPORTED_MODULE_0__.render,
-  _Dashboard_vue_vue_type_template_id_1ad770da___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns,
-  false,
-  null,
-  null,
-  null
-  
-)
-
-/* hot reload */
-if (false) { var api; }
-component.options.__file = "resources/js/vue/quiz_management/views/Dashboard.vue"
-/* harmony default export */ __webpack_exports__["default"] = (component.exports);
-
-/***/ }),
-
 /***/ "./resources/js/vue/quiz_management/views/Layout.vue":
 /*!***********************************************************!*\
   !*** ./resources/js/vue/quiz_management/views/Layout.vue ***!
@@ -4104,16 +3780,16 @@ component.options.__file = "resources/js/vue/quiz_management/views/pages/Layout.
 
 /***/ }),
 
-/***/ "./resources/js/vue/quiz_management/views/pages/course_batch/All.vue":
-/*!***************************************************************************!*\
-  !*** ./resources/js/vue/quiz_management/views/pages/course_batch/All.vue ***!
-  \***************************************************************************/
+/***/ "./resources/js/vue/quiz_management/views/pages/quiz_topic/All.vue":
+/*!*************************************************************************!*\
+  !*** ./resources/js/vue/quiz_management/views/pages/quiz_topic/All.vue ***!
+  \*************************************************************************/
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _All_vue_vue_type_template_id_3bd4e2fd___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./All.vue?vue&type=template&id=3bd4e2fd& */ "./resources/js/vue/quiz_management/views/pages/course_batch/All.vue?vue&type=template&id=3bd4e2fd&");
-/* harmony import */ var _All_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./All.vue?vue&type=script&lang=js& */ "./resources/js/vue/quiz_management/views/pages/course_batch/All.vue?vue&type=script&lang=js&");
+/* harmony import */ var _All_vue_vue_type_template_id_1dba4828___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./All.vue?vue&type=template&id=1dba4828& */ "./resources/js/vue/quiz_management/views/pages/quiz_topic/All.vue?vue&type=template&id=1dba4828&");
+/* harmony import */ var _All_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./All.vue?vue&type=script&lang=js& */ "./resources/js/vue/quiz_management/views/pages/quiz_topic/All.vue?vue&type=script&lang=js&");
 /* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! !../../../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
@@ -4124,8 +3800,8 @@ __webpack_require__.r(__webpack_exports__);
 ;
 var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
   _All_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
-  _All_vue_vue_type_template_id_3bd4e2fd___WEBPACK_IMPORTED_MODULE_0__.render,
-  _All_vue_vue_type_template_id_3bd4e2fd___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns,
+  _All_vue_vue_type_template_id_1dba4828___WEBPACK_IMPORTED_MODULE_0__.render,
+  _All_vue_vue_type_template_id_1dba4828___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns,
   false,
   null,
   null,
@@ -4135,57 +3811,21 @@ var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__
 
 /* hot reload */
 if (false) { var api; }
-component.options.__file = "resources/js/vue/quiz_management/views/pages/course_batch/All.vue"
+component.options.__file = "resources/js/vue/quiz_management/views/pages/quiz_topic/All.vue"
 /* harmony default export */ __webpack_exports__["default"] = (component.exports);
 
 /***/ }),
 
-/***/ "./resources/js/vue/quiz_management/views/pages/course_batch/CourseBatchLayout.vue":
-/*!*****************************************************************************************!*\
-  !*** ./resources/js/vue/quiz_management/views/pages/course_batch/CourseBatchLayout.vue ***!
-  \*****************************************************************************************/
+/***/ "./resources/js/vue/quiz_management/views/pages/quiz_topic/Create.vue":
+/*!****************************************************************************!*\
+  !*** ./resources/js/vue/quiz_management/views/pages/quiz_topic/Create.vue ***!
+  \****************************************************************************/
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _CourseBatchLayout_vue_vue_type_template_id_12552245___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./CourseBatchLayout.vue?vue&type=template&id=12552245& */ "./resources/js/vue/quiz_management/views/pages/course_batch/CourseBatchLayout.vue?vue&type=template&id=12552245&");
-/* harmony import */ var _CourseBatchLayout_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./CourseBatchLayout.vue?vue&type=script&lang=js& */ "./resources/js/vue/quiz_management/views/pages/course_batch/CourseBatchLayout.vue?vue&type=script&lang=js&");
-/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! !../../../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
-
-
-
-
-
-/* normalize component */
-;
-var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
-  _CourseBatchLayout_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
-  _CourseBatchLayout_vue_vue_type_template_id_12552245___WEBPACK_IMPORTED_MODULE_0__.render,
-  _CourseBatchLayout_vue_vue_type_template_id_12552245___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns,
-  false,
-  null,
-  null,
-  null
-  
-)
-
-/* hot reload */
-if (false) { var api; }
-component.options.__file = "resources/js/vue/quiz_management/views/pages/course_batch/CourseBatchLayout.vue"
-/* harmony default export */ __webpack_exports__["default"] = (component.exports);
-
-/***/ }),
-
-/***/ "./resources/js/vue/quiz_management/views/pages/course_batch/Create.vue":
-/*!******************************************************************************!*\
-  !*** ./resources/js/vue/quiz_management/views/pages/course_batch/Create.vue ***!
-  \******************************************************************************/
-/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _Create_vue_vue_type_template_id_8948e060___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Create.vue?vue&type=template&id=8948e060& */ "./resources/js/vue/quiz_management/views/pages/course_batch/Create.vue?vue&type=template&id=8948e060&");
-/* harmony import */ var _Create_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Create.vue?vue&type=script&lang=js& */ "./resources/js/vue/quiz_management/views/pages/course_batch/Create.vue?vue&type=script&lang=js&");
+/* harmony import */ var _Create_vue_vue_type_template_id_58173c81___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Create.vue?vue&type=template&id=58173c81& */ "./resources/js/vue/quiz_management/views/pages/quiz_topic/Create.vue?vue&type=template&id=58173c81&");
+/* harmony import */ var _Create_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Create.vue?vue&type=script&lang=js& */ "./resources/js/vue/quiz_management/views/pages/quiz_topic/Create.vue?vue&type=script&lang=js&");
 /* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! !../../../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
@@ -4196,8 +3836,8 @@ __webpack_require__.r(__webpack_exports__);
 ;
 var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
   _Create_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
-  _Create_vue_vue_type_template_id_8948e060___WEBPACK_IMPORTED_MODULE_0__.render,
-  _Create_vue_vue_type_template_id_8948e060___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns,
+  _Create_vue_vue_type_template_id_58173c81___WEBPACK_IMPORTED_MODULE_0__.render,
+  _Create_vue_vue_type_template_id_58173c81___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns,
   false,
   null,
   null,
@@ -4207,21 +3847,21 @@ var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__
 
 /* hot reload */
 if (false) { var api; }
-component.options.__file = "resources/js/vue/quiz_management/views/pages/course_batch/Create.vue"
+component.options.__file = "resources/js/vue/quiz_management/views/pages/quiz_topic/Create.vue"
 /* harmony default export */ __webpack_exports__["default"] = (component.exports);
 
 /***/ }),
 
-/***/ "./resources/js/vue/quiz_management/views/pages/course_batch/Details.vue":
-/*!*******************************************************************************!*\
-  !*** ./resources/js/vue/quiz_management/views/pages/course_batch/Details.vue ***!
-  \*******************************************************************************/
+/***/ "./resources/js/vue/quiz_management/views/pages/quiz_topic/Details.vue":
+/*!*****************************************************************************!*\
+  !*** ./resources/js/vue/quiz_management/views/pages/quiz_topic/Details.vue ***!
+  \*****************************************************************************/
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _Details_vue_vue_type_template_id_56fbe11e___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Details.vue?vue&type=template&id=56fbe11e& */ "./resources/js/vue/quiz_management/views/pages/course_batch/Details.vue?vue&type=template&id=56fbe11e&");
-/* harmony import */ var _Details_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Details.vue?vue&type=script&lang=js& */ "./resources/js/vue/quiz_management/views/pages/course_batch/Details.vue?vue&type=script&lang=js&");
+/* harmony import */ var _Details_vue_vue_type_template_id_51b5ca8d___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Details.vue?vue&type=template&id=51b5ca8d& */ "./resources/js/vue/quiz_management/views/pages/quiz_topic/Details.vue?vue&type=template&id=51b5ca8d&");
+/* harmony import */ var _Details_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Details.vue?vue&type=script&lang=js& */ "./resources/js/vue/quiz_management/views/pages/quiz_topic/Details.vue?vue&type=script&lang=js&");
 /* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! !../../../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
@@ -4232,8 +3872,8 @@ __webpack_require__.r(__webpack_exports__);
 ;
 var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
   _Details_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
-  _Details_vue_vue_type_template_id_56fbe11e___WEBPACK_IMPORTED_MODULE_0__.render,
-  _Details_vue_vue_type_template_id_56fbe11e___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns,
+  _Details_vue_vue_type_template_id_51b5ca8d___WEBPACK_IMPORTED_MODULE_0__.render,
+  _Details_vue_vue_type_template_id_51b5ca8d___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns,
   false,
   null,
   null,
@@ -4243,21 +3883,21 @@ var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__
 
 /* hot reload */
 if (false) { var api; }
-component.options.__file = "resources/js/vue/quiz_management/views/pages/course_batch/Details.vue"
+component.options.__file = "resources/js/vue/quiz_management/views/pages/quiz_topic/Details.vue"
 /* harmony default export */ __webpack_exports__["default"] = (component.exports);
 
 /***/ }),
 
-/***/ "./resources/js/vue/quiz_management/views/pages/course_batch/Edit.vue":
-/*!****************************************************************************!*\
-  !*** ./resources/js/vue/quiz_management/views/pages/course_batch/Edit.vue ***!
-  \****************************************************************************/
+/***/ "./resources/js/vue/quiz_management/views/pages/quiz_topic/Edit.vue":
+/*!**************************************************************************!*\
+  !*** ./resources/js/vue/quiz_management/views/pages/quiz_topic/Edit.vue ***!
+  \**************************************************************************/
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _Edit_vue_vue_type_template_id_35b584de___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Edit.vue?vue&type=template&id=35b584de& */ "./resources/js/vue/quiz_management/views/pages/course_batch/Edit.vue?vue&type=template&id=35b584de&");
-/* harmony import */ var _Edit_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Edit.vue?vue&type=script&lang=js& */ "./resources/js/vue/quiz_management/views/pages/course_batch/Edit.vue?vue&type=script&lang=js&");
+/* harmony import */ var _Edit_vue_vue_type_template_id_2a26a9cf___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Edit.vue?vue&type=template&id=2a26a9cf& */ "./resources/js/vue/quiz_management/views/pages/quiz_topic/Edit.vue?vue&type=template&id=2a26a9cf&");
+/* harmony import */ var _Edit_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Edit.vue?vue&type=script&lang=js& */ "./resources/js/vue/quiz_management/views/pages/quiz_topic/Edit.vue?vue&type=script&lang=js&");
 /* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! !../../../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
@@ -4268,8 +3908,8 @@ __webpack_require__.r(__webpack_exports__);
 ;
 var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
   _Edit_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
-  _Edit_vue_vue_type_template_id_35b584de___WEBPACK_IMPORTED_MODULE_0__.render,
-  _Edit_vue_vue_type_template_id_35b584de___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns,
+  _Edit_vue_vue_type_template_id_2a26a9cf___WEBPACK_IMPORTED_MODULE_0__.render,
+  _Edit_vue_vue_type_template_id_2a26a9cf___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns,
   false,
   null,
   null,
@@ -4279,21 +3919,44 @@ var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__
 
 /* hot reload */
 if (false) { var api; }
-component.options.__file = "resources/js/vue/quiz_management/views/pages/course_batch/Edit.vue"
+component.options.__file = "resources/js/vue/quiz_management/views/pages/quiz_topic/Edit.vue"
 /* harmony default export */ __webpack_exports__["default"] = (component.exports);
 
 /***/ }),
 
-/***/ "./resources/js/vue/quiz_management/views/Dashboard.vue?vue&type=script&lang=js&":
-/*!***************************************************************************************!*\
-  !*** ./resources/js/vue/quiz_management/views/Dashboard.vue?vue&type=script&lang=js& ***!
-  \***************************************************************************************/
+/***/ "./resources/js/vue/quiz_management/views/pages/quiz_topic/QuizTopicLayout.vue":
+/*!*************************************************************************************!*\
+  !*** ./resources/js/vue/quiz_management/views/pages/quiz_topic/QuizTopicLayout.vue ***!
+  \*************************************************************************************/
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Dashboard_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./Dashboard.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/vue/quiz_management/views/Dashboard.vue?vue&type=script&lang=js&");
- /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Dashboard_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+/* harmony import */ var _QuizTopicLayout_vue_vue_type_template_id_5b49f7ef___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./QuizTopicLayout.vue?vue&type=template&id=5b49f7ef& */ "./resources/js/vue/quiz_management/views/pages/quiz_topic/QuizTopicLayout.vue?vue&type=template&id=5b49f7ef&");
+/* harmony import */ var _QuizTopicLayout_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./QuizTopicLayout.vue?vue&type=script&lang=js& */ "./resources/js/vue/quiz_management/views/pages/quiz_topic/QuizTopicLayout.vue?vue&type=script&lang=js&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! !../../../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+;
+var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _QuizTopicLayout_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _QuizTopicLayout_vue_vue_type_template_id_5b49f7ef___WEBPACK_IMPORTED_MODULE_0__.render,
+  _QuizTopicLayout_vue_vue_type_template_id_5b49f7ef___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns,
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/vue/quiz_management/views/pages/quiz_topic/QuizTopicLayout.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
 
 /***/ }),
 
@@ -4336,85 +3999,68 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./resources/js/vue/quiz_management/views/pages/course_batch/All.vue?vue&type=script&lang=js&":
-/*!****************************************************************************************************!*\
-  !*** ./resources/js/vue/quiz_management/views/pages/course_batch/All.vue?vue&type=script&lang=js& ***!
-  \****************************************************************************************************/
+/***/ "./resources/js/vue/quiz_management/views/pages/quiz_topic/All.vue?vue&type=script&lang=js&":
+/*!**************************************************************************************************!*\
+  !*** ./resources/js/vue/quiz_management/views/pages/quiz_topic/All.vue?vue&type=script&lang=js& ***!
+  \**************************************************************************************************/
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_All_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./All.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/vue/quiz_management/views/pages/course_batch/All.vue?vue&type=script&lang=js&");
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_All_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./All.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/vue/quiz_management/views/pages/quiz_topic/All.vue?vue&type=script&lang=js&");
  /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_All_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
 
 /***/ }),
 
-/***/ "./resources/js/vue/quiz_management/views/pages/course_batch/CourseBatchLayout.vue?vue&type=script&lang=js&":
-/*!******************************************************************************************************************!*\
-  !*** ./resources/js/vue/quiz_management/views/pages/course_batch/CourseBatchLayout.vue?vue&type=script&lang=js& ***!
-  \******************************************************************************************************************/
-/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_CourseBatchLayout_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./CourseBatchLayout.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/vue/quiz_management/views/pages/course_batch/CourseBatchLayout.vue?vue&type=script&lang=js&");
- /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_CourseBatchLayout_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
-
-/***/ }),
-
-/***/ "./resources/js/vue/quiz_management/views/pages/course_batch/Create.vue?vue&type=script&lang=js&":
-/*!*******************************************************************************************************!*\
-  !*** ./resources/js/vue/quiz_management/views/pages/course_batch/Create.vue?vue&type=script&lang=js& ***!
-  \*******************************************************************************************************/
-/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Create_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./Create.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/vue/quiz_management/views/pages/course_batch/Create.vue?vue&type=script&lang=js&");
- /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Create_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
-
-/***/ }),
-
-/***/ "./resources/js/vue/quiz_management/views/pages/course_batch/Details.vue?vue&type=script&lang=js&":
-/*!********************************************************************************************************!*\
-  !*** ./resources/js/vue/quiz_management/views/pages/course_batch/Details.vue?vue&type=script&lang=js& ***!
-  \********************************************************************************************************/
-/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Details_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./Details.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/vue/quiz_management/views/pages/course_batch/Details.vue?vue&type=script&lang=js&");
- /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Details_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
-
-/***/ }),
-
-/***/ "./resources/js/vue/quiz_management/views/pages/course_batch/Edit.vue?vue&type=script&lang=js&":
+/***/ "./resources/js/vue/quiz_management/views/pages/quiz_topic/Create.vue?vue&type=script&lang=js&":
 /*!*****************************************************************************************************!*\
-  !*** ./resources/js/vue/quiz_management/views/pages/course_batch/Edit.vue?vue&type=script&lang=js& ***!
+  !*** ./resources/js/vue/quiz_management/views/pages/quiz_topic/Create.vue?vue&type=script&lang=js& ***!
   \*****************************************************************************************************/
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Edit_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./Edit.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/vue/quiz_management/views/pages/course_batch/Edit.vue?vue&type=script&lang=js&");
- /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Edit_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Create_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./Create.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/vue/quiz_management/views/pages/quiz_topic/Create.vue?vue&type=script&lang=js&");
+ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Create_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
 
 /***/ }),
 
-/***/ "./resources/js/vue/quiz_management/views/Dashboard.vue?vue&type=template&id=1ad770da&":
-/*!*********************************************************************************************!*\
-  !*** ./resources/js/vue/quiz_management/views/Dashboard.vue?vue&type=template&id=1ad770da& ***!
-  \*********************************************************************************************/
+/***/ "./resources/js/vue/quiz_management/views/pages/quiz_topic/Details.vue?vue&type=script&lang=js&":
+/*!******************************************************************************************************!*\
+  !*** ./resources/js/vue/quiz_management/views/pages/quiz_topic/Details.vue?vue&type=script&lang=js& ***!
+  \******************************************************************************************************/
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   render: function() { return /* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_lib_loaders_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_lib_index_js_vue_loader_options_Dashboard_vue_vue_type_template_id_1ad770da___WEBPACK_IMPORTED_MODULE_0__.render; },
-/* harmony export */   staticRenderFns: function() { return /* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_lib_loaders_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_lib_index_js_vue_loader_options_Dashboard_vue_vue_type_template_id_1ad770da___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns; }
-/* harmony export */ });
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_lib_loaders_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_lib_index_js_vue_loader_options_Dashboard_vue_vue_type_template_id_1ad770da___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??ruleSet[1].rules[2]!../../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./Dashboard.vue?vue&type=template&id=1ad770da& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/lib/loaders/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/vue/quiz_management/views/Dashboard.vue?vue&type=template&id=1ad770da&");
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Details_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./Details.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/vue/quiz_management/views/pages/quiz_topic/Details.vue?vue&type=script&lang=js&");
+ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Details_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
 
+/***/ }),
+
+/***/ "./resources/js/vue/quiz_management/views/pages/quiz_topic/Edit.vue?vue&type=script&lang=js&":
+/*!***************************************************************************************************!*\
+  !*** ./resources/js/vue/quiz_management/views/pages/quiz_topic/Edit.vue?vue&type=script&lang=js& ***!
+  \***************************************************************************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Edit_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./Edit.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/vue/quiz_management/views/pages/quiz_topic/Edit.vue?vue&type=script&lang=js&");
+ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Edit_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/vue/quiz_management/views/pages/quiz_topic/QuizTopicLayout.vue?vue&type=script&lang=js&":
+/*!**************************************************************************************************************!*\
+  !*** ./resources/js/vue/quiz_management/views/pages/quiz_topic/QuizTopicLayout.vue?vue&type=script&lang=js& ***!
+  \**************************************************************************************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_QuizTopicLayout_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./QuizTopicLayout.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/vue/quiz_management/views/pages/quiz_topic/QuizTopicLayout.vue?vue&type=script&lang=js&");
+ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_QuizTopicLayout_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
 
 /***/ }),
 
@@ -4469,87 +4115,87 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./resources/js/vue/quiz_management/views/pages/course_batch/All.vue?vue&type=template&id=3bd4e2fd&":
-/*!**********************************************************************************************************!*\
-  !*** ./resources/js/vue/quiz_management/views/pages/course_batch/All.vue?vue&type=template&id=3bd4e2fd& ***!
-  \**********************************************************************************************************/
+/***/ "./resources/js/vue/quiz_management/views/pages/quiz_topic/All.vue?vue&type=template&id=1dba4828&":
+/*!********************************************************************************************************!*\
+  !*** ./resources/js/vue/quiz_management/views/pages/quiz_topic/All.vue?vue&type=template&id=1dba4828& ***!
+  \********************************************************************************************************/
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   render: function() { return /* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_lib_loaders_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_lib_index_js_vue_loader_options_All_vue_vue_type_template_id_3bd4e2fd___WEBPACK_IMPORTED_MODULE_0__.render; },
-/* harmony export */   staticRenderFns: function() { return /* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_lib_loaders_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_lib_index_js_vue_loader_options_All_vue_vue_type_template_id_3bd4e2fd___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns; }
+/* harmony export */   render: function() { return /* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_lib_loaders_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_lib_index_js_vue_loader_options_All_vue_vue_type_template_id_1dba4828___WEBPACK_IMPORTED_MODULE_0__.render; },
+/* harmony export */   staticRenderFns: function() { return /* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_lib_loaders_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_lib_index_js_vue_loader_options_All_vue_vue_type_template_id_1dba4828___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns; }
 /* harmony export */ });
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_lib_loaders_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_lib_index_js_vue_loader_options_All_vue_vue_type_template_id_3bd4e2fd___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??ruleSet[1].rules[2]!../../../../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./All.vue?vue&type=template&id=3bd4e2fd& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/lib/loaders/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/vue/quiz_management/views/pages/course_batch/All.vue?vue&type=template&id=3bd4e2fd&");
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_lib_loaders_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_lib_index_js_vue_loader_options_All_vue_vue_type_template_id_1dba4828___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??ruleSet[1].rules[2]!../../../../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./All.vue?vue&type=template&id=1dba4828& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/lib/loaders/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/vue/quiz_management/views/pages/quiz_topic/All.vue?vue&type=template&id=1dba4828&");
 
 
 /***/ }),
 
-/***/ "./resources/js/vue/quiz_management/views/pages/course_batch/CourseBatchLayout.vue?vue&type=template&id=12552245&":
-/*!************************************************************************************************************************!*\
-  !*** ./resources/js/vue/quiz_management/views/pages/course_batch/CourseBatchLayout.vue?vue&type=template&id=12552245& ***!
-  \************************************************************************************************************************/
-/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   render: function() { return /* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_lib_loaders_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_lib_index_js_vue_loader_options_CourseBatchLayout_vue_vue_type_template_id_12552245___WEBPACK_IMPORTED_MODULE_0__.render; },
-/* harmony export */   staticRenderFns: function() { return /* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_lib_loaders_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_lib_index_js_vue_loader_options_CourseBatchLayout_vue_vue_type_template_id_12552245___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns; }
-/* harmony export */ });
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_lib_loaders_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_lib_index_js_vue_loader_options_CourseBatchLayout_vue_vue_type_template_id_12552245___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??ruleSet[1].rules[2]!../../../../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./CourseBatchLayout.vue?vue&type=template&id=12552245& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/lib/loaders/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/vue/quiz_management/views/pages/course_batch/CourseBatchLayout.vue?vue&type=template&id=12552245&");
-
-
-/***/ }),
-
-/***/ "./resources/js/vue/quiz_management/views/pages/course_batch/Create.vue?vue&type=template&id=8948e060&":
-/*!*************************************************************************************************************!*\
-  !*** ./resources/js/vue/quiz_management/views/pages/course_batch/Create.vue?vue&type=template&id=8948e060& ***!
-  \*************************************************************************************************************/
-/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   render: function() { return /* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_lib_loaders_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_lib_index_js_vue_loader_options_Create_vue_vue_type_template_id_8948e060___WEBPACK_IMPORTED_MODULE_0__.render; },
-/* harmony export */   staticRenderFns: function() { return /* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_lib_loaders_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_lib_index_js_vue_loader_options_Create_vue_vue_type_template_id_8948e060___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns; }
-/* harmony export */ });
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_lib_loaders_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_lib_index_js_vue_loader_options_Create_vue_vue_type_template_id_8948e060___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??ruleSet[1].rules[2]!../../../../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./Create.vue?vue&type=template&id=8948e060& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/lib/loaders/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/vue/quiz_management/views/pages/course_batch/Create.vue?vue&type=template&id=8948e060&");
-
-
-/***/ }),
-
-/***/ "./resources/js/vue/quiz_management/views/pages/course_batch/Details.vue?vue&type=template&id=56fbe11e&":
-/*!**************************************************************************************************************!*\
-  !*** ./resources/js/vue/quiz_management/views/pages/course_batch/Details.vue?vue&type=template&id=56fbe11e& ***!
-  \**************************************************************************************************************/
-/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   render: function() { return /* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_lib_loaders_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_lib_index_js_vue_loader_options_Details_vue_vue_type_template_id_56fbe11e___WEBPACK_IMPORTED_MODULE_0__.render; },
-/* harmony export */   staticRenderFns: function() { return /* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_lib_loaders_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_lib_index_js_vue_loader_options_Details_vue_vue_type_template_id_56fbe11e___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns; }
-/* harmony export */ });
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_lib_loaders_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_lib_index_js_vue_loader_options_Details_vue_vue_type_template_id_56fbe11e___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??ruleSet[1].rules[2]!../../../../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./Details.vue?vue&type=template&id=56fbe11e& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/lib/loaders/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/vue/quiz_management/views/pages/course_batch/Details.vue?vue&type=template&id=56fbe11e&");
-
-
-/***/ }),
-
-/***/ "./resources/js/vue/quiz_management/views/pages/course_batch/Edit.vue?vue&type=template&id=35b584de&":
+/***/ "./resources/js/vue/quiz_management/views/pages/quiz_topic/Create.vue?vue&type=template&id=58173c81&":
 /*!***********************************************************************************************************!*\
-  !*** ./resources/js/vue/quiz_management/views/pages/course_batch/Edit.vue?vue&type=template&id=35b584de& ***!
+  !*** ./resources/js/vue/quiz_management/views/pages/quiz_topic/Create.vue?vue&type=template&id=58173c81& ***!
   \***********************************************************************************************************/
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   render: function() { return /* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_lib_loaders_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_lib_index_js_vue_loader_options_Edit_vue_vue_type_template_id_35b584de___WEBPACK_IMPORTED_MODULE_0__.render; },
-/* harmony export */   staticRenderFns: function() { return /* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_lib_loaders_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_lib_index_js_vue_loader_options_Edit_vue_vue_type_template_id_35b584de___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns; }
+/* harmony export */   render: function() { return /* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_lib_loaders_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_lib_index_js_vue_loader_options_Create_vue_vue_type_template_id_58173c81___WEBPACK_IMPORTED_MODULE_0__.render; },
+/* harmony export */   staticRenderFns: function() { return /* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_lib_loaders_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_lib_index_js_vue_loader_options_Create_vue_vue_type_template_id_58173c81___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns; }
 /* harmony export */ });
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_lib_loaders_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_lib_index_js_vue_loader_options_Edit_vue_vue_type_template_id_35b584de___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??ruleSet[1].rules[2]!../../../../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./Edit.vue?vue&type=template&id=35b584de& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/lib/loaders/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/vue/quiz_management/views/pages/course_batch/Edit.vue?vue&type=template&id=35b584de&");
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_lib_loaders_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_lib_index_js_vue_loader_options_Create_vue_vue_type_template_id_58173c81___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??ruleSet[1].rules[2]!../../../../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./Create.vue?vue&type=template&id=58173c81& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/lib/loaders/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/vue/quiz_management/views/pages/quiz_topic/Create.vue?vue&type=template&id=58173c81&");
+
+
+/***/ }),
+
+/***/ "./resources/js/vue/quiz_management/views/pages/quiz_topic/Details.vue?vue&type=template&id=51b5ca8d&":
+/*!************************************************************************************************************!*\
+  !*** ./resources/js/vue/quiz_management/views/pages/quiz_topic/Details.vue?vue&type=template&id=51b5ca8d& ***!
+  \************************************************************************************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   render: function() { return /* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_lib_loaders_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_lib_index_js_vue_loader_options_Details_vue_vue_type_template_id_51b5ca8d___WEBPACK_IMPORTED_MODULE_0__.render; },
+/* harmony export */   staticRenderFns: function() { return /* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_lib_loaders_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_lib_index_js_vue_loader_options_Details_vue_vue_type_template_id_51b5ca8d___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns; }
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_lib_loaders_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_lib_index_js_vue_loader_options_Details_vue_vue_type_template_id_51b5ca8d___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??ruleSet[1].rules[2]!../../../../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./Details.vue?vue&type=template&id=51b5ca8d& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/lib/loaders/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/vue/quiz_management/views/pages/quiz_topic/Details.vue?vue&type=template&id=51b5ca8d&");
+
+
+/***/ }),
+
+/***/ "./resources/js/vue/quiz_management/views/pages/quiz_topic/Edit.vue?vue&type=template&id=2a26a9cf&":
+/*!*********************************************************************************************************!*\
+  !*** ./resources/js/vue/quiz_management/views/pages/quiz_topic/Edit.vue?vue&type=template&id=2a26a9cf& ***!
+  \*********************************************************************************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   render: function() { return /* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_lib_loaders_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_lib_index_js_vue_loader_options_Edit_vue_vue_type_template_id_2a26a9cf___WEBPACK_IMPORTED_MODULE_0__.render; },
+/* harmony export */   staticRenderFns: function() { return /* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_lib_loaders_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_lib_index_js_vue_loader_options_Edit_vue_vue_type_template_id_2a26a9cf___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns; }
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_lib_loaders_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_lib_index_js_vue_loader_options_Edit_vue_vue_type_template_id_2a26a9cf___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??ruleSet[1].rules[2]!../../../../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./Edit.vue?vue&type=template&id=2a26a9cf& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/lib/loaders/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/vue/quiz_management/views/pages/quiz_topic/Edit.vue?vue&type=template&id=2a26a9cf&");
+
+
+/***/ }),
+
+/***/ "./resources/js/vue/quiz_management/views/pages/quiz_topic/QuizTopicLayout.vue?vue&type=template&id=5b49f7ef&":
+/*!********************************************************************************************************************!*\
+  !*** ./resources/js/vue/quiz_management/views/pages/quiz_topic/QuizTopicLayout.vue?vue&type=template&id=5b49f7ef& ***!
+  \********************************************************************************************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   render: function() { return /* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_lib_loaders_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_lib_index_js_vue_loader_options_QuizTopicLayout_vue_vue_type_template_id_5b49f7ef___WEBPACK_IMPORTED_MODULE_0__.render; },
+/* harmony export */   staticRenderFns: function() { return /* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_lib_loaders_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_lib_index_js_vue_loader_options_QuizTopicLayout_vue_vue_type_template_id_5b49f7ef___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns; }
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_lib_loaders_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_lib_index_js_vue_loader_options_QuizTopicLayout_vue_vue_type_template_id_5b49f7ef___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??ruleSet[1].rules[2]!../../../../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./QuizTopicLayout.vue?vue&type=template&id=5b49f7ef& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/lib/loaders/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/vue/quiz_management/views/pages/quiz_topic/QuizTopicLayout.vue?vue&type=template&id=5b49f7ef&");
 
 
 /***/ }),

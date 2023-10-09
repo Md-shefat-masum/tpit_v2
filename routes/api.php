@@ -90,9 +90,23 @@ Route::group(
         });
 
         Route::group(['prefix' => 'quiz', 'middleware' => ['guest:api']], function () {
-            Route::get('/all-types', 'WebsiteController@all_types');
-            Route::get('/all-course', 'WebsiteController@all_course');
-            Route::get('/type-wise-course', 'WebsiteController@type_wise_course');
+            Route::get('/all', 'Api\QuizController@all');
+            Route::post('/store', 'Api\QuizController@store');
+            Route::post('/update', 'Api\QuizController@update');
+            Route::post('/soft-delete', 'Api\QuizController@soft_delete');
+            Route::post('/destroy', 'Api\QuizController@destroy');
+            Route::post('/restore', 'Api\QuizController@restore');
+            Route::get('/{id}', 'Api\QuizController@show');
+        });
+
+        Route::group(['prefix' => 'quiz-topics', 'middleware' => ['guest:api']], function () {
+            Route::get('/all', 'Api\QuizTopicController@all');
+            Route::post('/store', 'Api\QuizTopicController@store');
+            Route::post('/update', 'Api\QuizTopicController@update');
+            Route::post('/soft-delete', 'Api\QuizTopicController@soft_delete');
+            Route::post('/destroy', 'Api\QuizTopicController@destroy');
+            Route::post('/restore', 'Api\QuizTopicController@restore');
+            Route::get('/{id}', 'Api\QuizTopicController@show');
         });
 
         Route::group(['prefix' => '', 'middleware' => ['guest:api']], function () {

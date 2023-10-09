@@ -3,11 +3,11 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use App\Models\Quiz\Quiz;
+use App\Models\QuizQuestionTopic;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
-class QuizController extends Controller
+class QuizTopicController extends Controller
 {
     public function all()
     {
@@ -15,7 +15,7 @@ class QuizController extends Controller
         $orderBy = request()->orderBy ?? 'id';
         $orderByType = request()->orderByType ?? 'ASC';
 
-        $query = Quiz::orderBy($orderBy, $orderByType);
+        $query = QuizQuestionTopic::orderBy($orderBy, $orderByType);
 
         if (request()->has('search_key')) {
             $key = request()->search_key;
@@ -36,7 +36,7 @@ class QuizController extends Controller
         if (request()->has('select_all') && request()->select_all) {
             $select = "*";
         }
-        $data = Quiz::where('id', $id)
+        $data = QuizQuestionTopic::where('id', $id)
             ->select($select)
             ->first();
         if ($data) {
@@ -64,8 +64,9 @@ class QuizController extends Controller
             ], 422);
         }
 
-        $data = new Quiz();
+        $data = new QuizQuestionTopic();
         $data->title = request()->title;
+        $data->description = request()->description;
         $data->save();
 
         return response()->json($data, 200);
@@ -73,7 +74,7 @@ class QuizController extends Controller
 
     public function update()
     {
-        $data = Quiz::find(request()->id);
+        $data = QuizQuestionTopic::find(request()->id);
         if (!$data) {
             return response()->json([
                 'err_message' => 'validation error',
@@ -94,6 +95,7 @@ class QuizController extends Controller
 
 
         $data->title = request()->title;
+        $data->description = request()->description;
         
         $data->save();
 
@@ -113,7 +115,7 @@ class QuizController extends Controller
             ], 422);
         }
 
-        $data = Quiz::find(request()->id);
+        $data = QuizQuestionTopic::find(request()->id);
         $data->delete();
 
         return response()->json([
