@@ -2,10 +2,10 @@
     <div>
         <div class="card">
             <div class="card-header">
-                <h4 class="card-title">All Course Job works: 🎓</h4>
+                <h4 class="card-title">All Quiz Quesions: </h4>
             </div>
             <div class="card-body">
-                <router-link :to="{ name: 'CourseJobWorkCreate'}" class="btn btn-primary mb-2 float-right">
+                <router-link :to="{ name: 'QuizQuestionCreate'}" class="btn btn-primary mb-2 float-right">
                     <i class="fa-solid fa-plus mr-1"></i> <span>Create</span>
                 </router-link>
                 <div class="table-responsive">
@@ -73,7 +73,7 @@ export default {
     methods: {
         get_course_for_whoms: async function () {
             let course_id = this.$route.params.id
-            axios.get(`/api/v1/course/course-for-whoms/all/${course_id}`).then((response) => {
+            axios.get(`/api/v1/quiz-questions/all/${course_id}`).then((response) => {
                 // console.log(response.data);
                 this.course_for_whom = response.data;
             })

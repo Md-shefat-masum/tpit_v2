@@ -11,6 +11,11 @@ import QuizTopicCreate from "./views/pages/quiz_topic/Create.vue";
 import QuizTopicEdit from "./views/pages/quiz_topic/Edit.vue";
 import QuizTopicDetails from "./views/pages/quiz_topic/Details.vue";
 
+import QuizQuestionLayout from "./views/pages/quiz_questions/QuizQuestionLayout.vue";
+import QuizQuestionAll from "./views/pages/quiz_questions/All.vue";
+import QuizQuestionCreate from "./views/pages/quiz_questions/Question.vue";
+import QuizQuestionEdit from "./views/pages/quiz_questions/Edit.vue";
+import QuizQuestionDetails from "./views/pages/quiz_questions/Details.vue";
 
 Vue.use(VueRouter);
 window.Fire = new Vue();
@@ -62,7 +67,37 @@ const routes = [
                 ]
             },
 
-            
+            {
+                path: 'question',
+                component: QuizQuestionLayout,
+                children: [
+                    {
+                        path: '',
+                        name: 'QuizQuestionAll',
+                        component: QuizQuestionAll,
+                    },
+                    {
+                        path: 'all',
+                        name: 'QuizQuestionAll',
+                        component: QuizQuestionAll,
+                    },
+                    {
+                        path: 'create',
+                        name: 'QuizQuestionCreate',
+                        component: QuizQuestionCreate,
+                    },
+                    {
+                        path: 'edit/:question_id',
+                        name: 'QuizQuestionEdit',
+                        component: QuizQuestionEdit,
+                    },
+                    {
+                        path: 'details/:question_id',
+                        name: 'QuizQuestionDetails',
+                        component: QuizQuestionDetails,
+                    },
+                ]
+            },
         ]
     },
 

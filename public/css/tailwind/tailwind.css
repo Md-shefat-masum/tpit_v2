@@ -164,6 +164,9 @@
 .mt-8{
     margin-top: 2rem
 }
+.mt-1{
+    margin-top: 0.25rem
+}
 .flex{
     display: -webkit-box;
     display: -ms-flexbox;
@@ -302,6 +305,9 @@
 }
 .p-6{
     padding: 1.5rem
+}
+.p-1{
+    padding: 0.25rem
 }
 .px-1{
     padding-left: 0.25rem;

@@ -109,6 +109,16 @@ Route::group(
             Route::get('/{id}', 'Api\QuizTopicController@show');
         });
 
+        Route::group(['prefix' => 'quiz-questions', 'middleware' => ['guest:api']], function () {
+            Route::get('/all', 'Api\QuizTopicController@all');
+            Route::post('/store', 'Api\QuizTopicController@store');
+            Route::post('/update', 'Api\QuizTopicController@update');
+            Route::post('/soft-delete', 'Api\QuizTopicController@soft_delete');
+            Route::post('/destroy', 'Api\QuizTopicController@destroy');
+            Route::post('/restore', 'Api\QuizTopicController@restore');
+            Route::get('/{id}', 'Api\QuizTopicController@show');
+        });
+
         Route::group(['prefix' => '', 'middleware' => ['guest:api']], function () {
 
             Route::group(['prefix' => 'course'], function () {
