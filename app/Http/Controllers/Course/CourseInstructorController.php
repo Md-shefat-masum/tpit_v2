@@ -125,7 +125,8 @@ class CourseInstructorController extends Controller
         $data->course_id = request()->course_id;
         $data->full_name = request()->full_name;
         $data->designation = request()->designation;
-        $data->details = request()->details;
+        $data->short_description = request()->short_description;
+        $data->description = request()->description;
         $data->save();
 
         if(request()->hasFile('cover_photo')){
@@ -160,7 +161,8 @@ class CourseInstructorController extends Controller
         $data->course_id = request()->course_id;
         $data->full_name = request()->full_name;
         $data->designation = request()->designation;
-        $data->details = request()->details;
+        $data->short_description = request()->short_description;
+        $data->description = request()->description;
         $data->save();
 
         if(request()->hasFile('cover_photo')){
@@ -201,7 +203,8 @@ class CourseInstructorController extends Controller
         $data->course_id = request()->course_id;
         $data->full_name = request()->full_name;
         $data->designation = request()->designation;
-        $data->details = request()->details;
+        $data->short_description = request()->short_description;
+        $data->description = request()->description;
         $data->update();
 
         return response()->json($data, 200);
@@ -237,7 +240,8 @@ class CourseInstructorController extends Controller
         $data->course_id = request()->course_id;
         $data->full_name = request()->full_name;
         $data->designation = request()->designation;
-        $data->details = request()->details;
+        $data->short_description = request()->short_description;
+        $data->description = request()->description;
         $data->update();
 
         return response()->json($data, 200);

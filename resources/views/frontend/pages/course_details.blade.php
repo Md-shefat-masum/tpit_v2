@@ -336,7 +336,7 @@
                                                     </div>
                                                     <div class="trainer_descrip">
                                                         <p>
-                                                            {{ $teacher->details }}
+                                                            {{ $teacher->short_description }}
                                                         </p>
                                                         {{-- <p>
                                                             তিনি ৫০০+ স্টুডেন্টকে ট্রেনিং করিয়েছেন, যারা বর্তমানে
