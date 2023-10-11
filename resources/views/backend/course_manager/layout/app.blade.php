@@ -11,7 +11,8 @@
     <meta name="author" content="PIXINVENT">
     <title>Home - Vuexy - Bootstrap HTML admin template</title>
     <link rel="apple-touch-icon" href="{{ asset('backend') }}/app-assets/images/ico/apple-icon-120.png">
-    <link rel="shortcut icon" type="image/x-icon" href="{{ asset('backend') }}/app-assets/images/ico/favicon.ico">
+    {{-- <link rel="shortcut icon" type="image/x-icon" href="{{ asset('backend') }}/app-assets/images/ico/favicon.ico"> --}}
+    <link rel="shortcut icon" type="image/png" sizes="16x16" href="{{ setting(key:'facebook') }}">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500;1,600" rel="stylesheet">
 
     <!-- BEGIN: Vendor CSS-->

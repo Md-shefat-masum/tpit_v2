@@ -16,6 +16,10 @@ mix.js("resources/js/vue/course_details_maanagement/course_management.js", "publ
     version: 2,
 });
 
+mix.js("resources/js/vue/quiz_management/quiz_management.js", "public/js/vue").vue({
+    version: 2,
+});
+
 mix.sass("resources/scss/backend/backend.scss", "public/css", {
         sourceMap: true,
     })

@@ -16,7 +16,7 @@ class QuizQuestionSeeder extends Seeder
     {
         QuizQuestion::truncate();
         QuizQuestion::create([
-            'quiz_id' => '1',
+            'quiz_question_topic_id' => '1',
             'title' => 'Who is the father of c programing?',
             'mark' => '1',
             'is_multiple' => '0'
@@ -24,7 +24,7 @@ class QuizQuestionSeeder extends Seeder
         ]);
         QuizQuestion::create([
 
-            'quiz_id' => '1',
+            'quiz_question_topic_id' => '1',
             'title' => 'Which of the following are unary operators in C?',
             'mark' => '1',
             'is_multiple' => '1'
@@ -33,7 +33,7 @@ class QuizQuestionSeeder extends Seeder
 
         QuizQuestion::create([
 
-            'quiz_id' => '1',
+            'quiz_question_topic_id' => '1',
             'title' => 'The keyword used to transfer control from a function back to the calling function is.',
             'mark' => '1',
             'is_multiple' => '0'
@@ -47,7 +47,7 @@ class QuizQuestionSeeder extends Seeder
 
         QuizQuestion::create([
 
-            'quiz_id' => '2',
+            'quiz_question_topic_id' => '2',
             'title' => 'Who is the father of php?',
             'mark' => '1',
             'is_multiple' => '0'
@@ -56,7 +56,7 @@ class QuizQuestionSeeder extends Seeder
         ]);
         QuizQuestion::create([
 
-            'quiz_id' => '2',
+            'quiz_question_topic_id' => '2',
             'title' => 'What are the popular frameworks in PHP ?',
             'mark' => '1',
             'is_multiple' => '1'
@@ -64,7 +64,7 @@ class QuizQuestionSeeder extends Seeder
         ]);
         QuizQuestion::create([
 
-            'quiz_id' => '2',
+            'quiz_question_topic_id' => '2',
             'title' => 'What are the different types of loop in PHP ',
             'mark' => '1',
             'is_multiple' => '0'
@@ -76,7 +76,7 @@ class QuizQuestionSeeder extends Seeder
 
         QuizQuestion::create([
 
-            'quiz_id' => '3',
+            'quiz_question_topic_id' => '3',
             'title' => 'Who is the father of java programing?',
             'mark' => '1',
             'is_multiple' => '0'
@@ -85,7 +85,7 @@ class QuizQuestionSeeder extends Seeder
 
         QuizQuestion::create([
 
-            'quiz_id' => '3',
+            'quiz_question_topic_id' => '3',
             'title' => 'what is DML Commands are',
             'mark' => '1',
             'is_multiple' => '1'

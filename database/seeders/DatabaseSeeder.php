@@ -38,6 +38,7 @@ use Database\Seeders\Course\CourseModuleClassRoutinesSeeder;
 use Database\Seeders\Quiz\QuizQuestionOptionSeeder;
 use Database\Seeders\Quiz\QuizQuestionSeeder;
 use Database\Seeders\Quiz\QuizQuestionSubmissionSeeder;
+use Database\Seeders\Quiz\QuizQuestionTopicSeeder;
 use Database\Seeders\Quiz\QuizSeeder;
 use Database\Seeders\Quiz\QuizUserSeeder;
 use Database\Seeders\Setting\SettingSeeder;
@@ -104,6 +105,7 @@ class DatabaseSeeder extends Seeder
             CourseTypeSeeder::class,
 
             QuizSeeder::class,
+            QuizQuestionTopicSeeder::class,
             QuizQuestionSeeder::class,
             QuizQuestionOptionSeeder::class,
             QuizQuestionSubmissionSeeder::class,
