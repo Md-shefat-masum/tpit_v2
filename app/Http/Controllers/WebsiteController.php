@@ -163,7 +163,12 @@ class WebsiteController extends Controller
 
     public function courses()
     {
-        return view('frontend.pages.courses');
+        $courses = Course::active()->with(['course_batch' => function ($batch) {
+            $batch->orderBY('id', 'desc')->take(1);
+        }])->get();
+        return view('frontend.pages.courses', [
+            'courses' => $courses
+        ]);
     }
 
     public function gallery()

@@ -130,7 +130,7 @@ class UserSeeder extends Seeder
         $user->email = 'user@gmail.com';
         $user->password = Hash::make('12345678');
         $user->save();
-        $user->roles()->attach([3]);
+        $user->roles()->attach([6]);
         $user->permissions()->attach([1]);
 
 

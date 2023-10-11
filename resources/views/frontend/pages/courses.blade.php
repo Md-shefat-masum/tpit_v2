@@ -9,7 +9,7 @@ $meta = [
 @extends('frontend.layouts.layout',$meta)
 @section('contents')
     <!-- our_course area start -->
-    <section class="our_course_area our_course_area_copy">
+    {{-- <section class="our_course_area our_course_area_copy">
         <div class="container">
             <div class="our_course_area_content our_course_area_content_copy">
 
@@ -736,7 +736,8 @@ $meta = [
             <!-- our_course_all_card end -->
         </div>
         </div>
-    </section>
+    </section> --}}
+    @include('frontend.pages.homepage_sections.course_section')
     <!-- our_course area end -->
 @endsection
 
