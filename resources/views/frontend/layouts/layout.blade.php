@@ -52,7 +52,7 @@
             window.toaster("{{session()->get('warning')}}", 'warning');
         </script>
     @endif
-   
+
     <!-- header_area start -->
     <header class="header_area">
         <div class="container">

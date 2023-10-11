@@ -1,6 +1,5 @@
 
 function initiate_our_course_types() {
-    console.log('our_course_types');
     let our_course_types = document.getElementById('our_course_types');
 
     if (our_course_types) {
@@ -20,7 +19,6 @@ function initiate_our_course_types() {
                 this.types = response.data;
 
                 this.get_courses(this.course_url);
-
             },
             methods: {
                 get_courses: async function (url) {

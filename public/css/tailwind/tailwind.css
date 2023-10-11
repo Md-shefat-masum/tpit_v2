@@ -152,6 +152,9 @@
     -webkit-margin-start: auto;
             margin-inline-start: auto
 }
+.mt-1{
+    margin-top: 0.25rem
+}
 .mt-2{
     margin-top: 0.5rem
 }
@@ -291,6 +294,9 @@
 .p-0{
     padding: 0px
 }
+.p-1{
+    padding: 0.25rem
+}
 .p-2{
     padding: 0.5rem
 }
@@ -362,9 +368,6 @@
 }
 .text-center{
     text-align: center
-}
-.align-middle{
-    vertical-align: middle
 }
 .text-lg{
     font-size: 1.125rem;

@@ -89,6 +89,38 @@ Route::group(
             });
         });
 
+        Route::group(['prefix' => 'quiz', 'middleware' => ['guest:api']], function () {
+            Route::get('/all', 'Api\QuizController@all');
+            Route::post('/store', 'Api\QuizController@store');
+            Route::post('/update', 'Api\QuizController@update');
+            Route::post('/soft-delete', 'Api\QuizController@soft_delete');
+            Route::post('/destroy', 'Api\QuizController@destroy');
+            Route::post('/restore', 'Api\QuizController@restore');
+            Route::get('/{id}', 'Api\QuizController@show');
+        });
+
+        Route::group(['prefix' => 'quiz-topics', 'middleware' => ['guest:api']], function () {
+            Route::get('/all', 'Api\QuizTopicController@all');
+            Route::get('/all-topic', 'Api\QuizTopicController@all_topic');
+            Route::post('/store', 'Api\QuizTopicController@store');
+            Route::post('/update', 'Api\QuizTopicController@update');
+            Route::post('/soft-delete', 'Api\QuizTopicController@soft_delete');
+            Route::post('/destroy', 'Api\QuizTopicController@destroy');
+            Route::post('/restore', 'Api\QuizTopicController@restore');
+            Route::get('/{id}', 'Api\QuizTopicController@show');
+        });
+
+        Route::group(['prefix' => 'quiz-questions', 'middleware' => ['guest:api']], function () {
+            Route::get('/all', 'Api\QuizQuestionController@all');
+            Route::get('/all_data', 'Api\QuizQuestionController@all_data');
+            Route::post('/store', 'Api\QuizQuestionController@store');
+            Route::post('/update', 'Api\QuizQuestionController@update');
+            Route::post('/soft-delete', 'Api\QuizQuestionController@soft_delete');
+            Route::post('/destroy', 'Api\QuizQuestionController@destroy');
+            Route::post('/restore', 'Api\QuizQuestionController@restore');
+            Route::get('/{id}', 'Api\QuizQuestionController@show');
+        });
+
         Route::group(['prefix' => '', 'middleware' => ['guest:api']], function () {
 
             Route::group(['prefix' => 'course'], function () {
@@ -118,7 +150,10 @@ Route::group(
 
                 Route::group(['prefix' => 'course-instructor'], function () {
                     Route::get('/all', 'Course\CourseInstructorController@all');
+                    Route::get('/get-all', 'Course\CourseInstructorController@get_all');
+                    Route::get('/current-course-teacher/{course_id}', 'Course\CourseInstructorController@current_course_teachers');
                     Route::post('/store', 'Course\CourseInstructorController@store');
+                    Route::post('/update-instructor', 'Course\CourseInstructorController@update_instructor');
                     Route::post('/canvas-store', 'Course\CourseInstructorController@canvas_store');
                     Route::post('/update', 'Course\CourseInstructorController@update');
                     Route::post('/canvas-update', 'Course\CourseInstructorController@canvas_update');
@@ -131,6 +166,7 @@ Route::group(
 
                 Route::group(['prefix' => 'course-batch'], function () {
                     Route::get('/all', 'Course\CourseBatchController@all');
+                    Route::get('/get-all/{course_id}', 'Course\CourseBatchController@get_all_bacths');
                     Route::get('/course-batches/{course_id}', 'Course\CourseBatchController@course_batches');
                     Route::post('/store', 'Course\CourseBatchController@store');
                     Route::post('/canvas-store', 'Course\CourseBatchController@canvas_store');
@@ -157,7 +193,7 @@ Route::group(
                 });
 
                 Route::group(['prefix' => 'course-faqs'], function () {
-                    Route::get('/all', 'Course\CourseFaqsController@all');
+                    Route::get('/all/{course_id}', 'Course\CourseFaqsController@all');
                     Route::post('/store', 'Course\CourseFaqsController@store');
                     Route::post('/canvas-store', 'Course\CourseFaqsController@canvas_store');
                     Route::post('/update', 'Course\CourseFaqsController@update');

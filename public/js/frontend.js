@@ -1,8 +1,8 @@
 function error_response(data) {
-    
+
     $('.loader_body').removeClass('active');
-    $('form button').prop('disabled',false);
-    $('#backend_body .main_content').css({overflowY:'scroll'});
+    $('form button').prop('disabled', false);
+    $('#backend_body .main_content').css({ overflowY: 'scroll' });
     // whatever you want to do with the error
     // console.log(error.response.data.errors);
     let object = data.errors;
@@ -66,24 +66,35 @@ function error_response(data) {
     window.toaster(data.err_message, 'error')
     throw data;
 }
+
 document.addEventListener("DOMContentLoaded", () => {
     Turbolinks.start()
-    document.addEventListener("turbolinks:load", function (event) {
-
-        if(location.pathname == '/'){
-            setTimeout(() => {
-                initiate_our_course_types();
-            }, 1000);
-        }
-
-        document.querySelector(`nav a[href="${location.pathname}"]`)?.classList.add('active_button');
-    });
-
-    document.addEventListener("turbolinks:before-render", function (event) {
-        // console.log("page before render");
-    });
-
-    document.addEventListener("turbolinks:render", function (event) {
-        // console.log("page before render");
-    });
 });
+
+document.addEventListener("turbolinks:load", function (event) {
+
+    console.log('loaded');
+    if (location.pathname == '/') {
+        setTimeout(() => {
+            initiate_our_course_types();
+        }, 1000);
+    }
+
+    document.querySelector(`nav a[href="${location.pathname}"]`)?.classList.add('active_button');
+});
+
+document.addEventListener("turbolinks:before-render", function (event) {
+    // console.log("page before render");
+});
+
+document.addEventListener("turbolinks:render", function (event) {
+    // console.log("page before render");
+});
+
+function showVideo(video_link) {
+    document.querySelector("#story_modal .modal-body").innerHTML = `
+        <iframe width="100%" height="450" src="${video_link}" frameborder="0" allow="autoplay" allowfullscreen></iframe>
+    `;
+    var modal1 = new bootstrap.Modal(document.getElementById('story_modal'));
+    modal1.toggle();
+}

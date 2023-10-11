@@ -10,4 +10,12 @@ class CourseManagerController extends Controller
     public function dashboard() {
         return view('backend.course_manager.dashboard');
     }
+
+    public function courses() {
+        return view('backend.course_manager.courses');
+    }
+
+    public function quizes() {
+        return view('backend.course_manager.quiz');
+    }
 }

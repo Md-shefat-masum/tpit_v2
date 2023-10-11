@@ -88,6 +88,12 @@ class CourseBatchController extends Controller
         return response()->json($datas);
     }
 
+    public function get_all_bacths($course_id)
+    {
+        $course_batches = CourseBatches::where('status', 'active')->where('course_id', $course_id)->orderBy('id', 'DESC')->get();
+        return response()->json($course_batches);
+    }
+
     public function show($id)
     {
 

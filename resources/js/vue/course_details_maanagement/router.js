@@ -6,6 +6,7 @@ import Layout from "./views/Layout.vue";
 import WhatIsThisCourse from "./views/pages/WhatIsThisCourse.vue";
 import WhyIsThisCourse from "./views/pages/WhyIsThisCourse.vue";
 import AllCourse from "./views/AllCourse.vue";
+import Dashboard from "./views/Dashboard.vue";
 
 // course batch
 import CourseBatchLayout from "./views/pages/course_batch/CourseBatchLayout.vue";
@@ -63,8 +64,20 @@ import CourseWhatWillGetDetails from "./views/pages/course_what_will_get/Details
 
 
 // course tariner
-import CourseTrainerLayout from "./views/pages/course_what_will_get/CourseTrainerLayout.vue";
-import CourseTrainerCreate from "./views/pages/course_what_will_get/Trainer.vue";
+import CourseTrainerLayout from "./views/pages/course_trainer/CourseTrainerLayout.vue";
+import CourseTrainerCreate from "./views/pages/course_trainer/Trainer.vue";
+
+// course faq
+import CourseFaqLayout from "./views/pages/course_faq/CourseFaqLayout.vue";
+import CourseFaqAll from "./views/pages/course_faq/All.vue";
+import CourseFaqCreate from "./views/pages/course_faq/Create.vue";
+import CourseFaqEdit from "./views/pages/course_faq/Edit.vue";
+import CourseFaqDetails from "./views/pages/course_faq/Details.vue";
+
+// course module
+import CourseModule from "./views/pages/course_module/CourseModule.vue";
+import CourseAtaGlance from "./views/pages/course_module/AtaGlance.vue";
+
 
 Vue.use(VueRouter);
 window.Fire = new Vue();
@@ -344,6 +357,52 @@ const routes = [
                             },
                         ]
                     },
+
+
+                    // couese Faq
+                    {
+                        path: 'course-faq',
+                        component: CourseFaqLayout,
+                        children: [
+                            {
+                                path: '',
+                                name: 'CourseFaqAll',
+                                component: CourseFaqAll,
+                            },
+                            {
+                                path: 'all',
+                                name: 'CourseFaqAll',
+                                component: CourseFaqAll,
+                            },
+                            {
+                                path: 'create',
+                                name: 'CourseFaqCreate',
+                                component: CourseFaqCreate,
+                            },
+                            {
+                                path: 'edit/:id',
+                                name: 'CourseFaqEdit',
+                                component: CourseFaqEdit,
+                            },
+                            {
+                                path: 'details/:id',
+                                name: 'CourseFaqDetails',
+                                component: CourseFaqDetails,
+                            },
+                        ]
+                    },
+
+                    // course moudle
+                    {
+                        path: 'modules',
+                        name: `CourseModule`,
+                        component: CourseModule,
+                    },
+                    {
+                        path: 'at-a-glance',
+                        name: `CourseAtaGlance`,
+                        component: CourseAtaGlance,
+                    }
                 ],
             },
         ]

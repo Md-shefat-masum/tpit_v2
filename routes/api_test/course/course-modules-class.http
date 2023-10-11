@@ -34,8 +34,8 @@ content-type: application/json
     "class_no": "1",
     "title": "{{title}}",
     "type": "live",
-    "class_vedio_link": "https://www.youtube.com/",
-    "class_vedio_poster": "tewb rte yh",
+    "class_video_link": "https://www.youtube.com/",
+    "class_video_poster": "tewb rte yh",
     "created_at": "{{createdAt}}"
 }
 
@@ -52,8 +52,8 @@ content-type: application/json
     "class_no": "1",
     "title": "{{title}}",
     "type": "live",
-    "class_vedio_link": "https://www.youtube.com/",
-    "class_vedio_poster": "tewb rte yh",
+    "class_video_link": "https://www.youtube.com/",
+    "class_video_poster": "tewb rte yh",
     "created_at": "{{createdAt}}"
 }
 
@@ -70,8 +70,8 @@ content-type: application/json
     "class_no": "1",
     "title": "this is update",
     "type": "live",
-    "class_vedio_link": "https://www.youtube.com/",
-    "class_vedio_poster": "tewb rte yh",
+    "class_video_link": "https://www.youtube.com/",
+    "class_video_poster": "tewb rte yh",
     "created_at": "{{createdAt}}"
 }
 
@@ -88,8 +88,8 @@ content-type: application/json
     "class_no": "1",
     "title": "this is canvous update",
     "type": "live",
-    "class_vedio_link": "https://www.youtube.com/",
-    "class_vedio_poster": "tewb rte yh",
+    "class_video_link": "https://www.youtube.com/",
+    "class_video_poster": "tewb rte yh",
     "created_at": "{{createdAt}}"
 }
 
