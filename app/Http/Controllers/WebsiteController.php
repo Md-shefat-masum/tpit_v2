@@ -184,7 +184,10 @@ class WebsiteController extends Controller
 
     public function it_solution_services()
     {
-        return view('frontend.pages.it_solution_services');
+        $it_services = ItServices::get();
+        return view('frontend.pages.it_solution_services', [
+            'it_services' => $it_services
+        ]);
     }
     public function myCourse(){
         $user = User::find(auth()->user()->id);

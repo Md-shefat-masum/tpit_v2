@@ -17,15 +17,35 @@
     align-items: center;
 }
 .my_it_service_area .my_it_service_area_content .service_area .wordpress .service_logo img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+}
+.our_it_services_area .my_it_service_area_content .service_area .wordpress .service_logo img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+}
+.our_it_services_area .my_it_service_area_content .service_area .service {
+    width: 410px;
+    background-color: #ffffff;
+    border-radius: 16px;
+    overflow: hidden;
 }
 .my_it_service_area .my_it_service_area_content .service_area .service {
     width: 410px;
     background-color: #ffffff;
     border-radius: 16px;
     overflow: hidden;
+}
+
+.student_success_history_area .student_success_history_content .student_success_video_area .success_video_area {
+    border: 0px solid red;
+    position: relative;
+    background-color: transparent;
+    padding: 0px;
+    position: relative;
+    max-width: 400px;
 }
 
 .button_all:hover {
