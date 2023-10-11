@@ -454,16 +454,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       course_id: '',
       questions: [],
       topic_id: '',
-      topics: [{
-        id: 1,
-        title: "Html"
-      }, {
-        id: 2,
-        title: "CSS"
-      }, {
-        id: 3,
-        title: "Javascript"
-      }]
+      topics: []
     };
   },
   methods: {
@@ -520,6 +511,29 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       }
       return get_quiz_data;
     }(),
+    get_all_topics: function () {
+      var _get_all_topics = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee3() {
+        var _this = this;
+        return _regeneratorRuntime().wrap(function _callee3$(_context3) {
+          while (1) switch (_context3.prev = _context3.next) {
+            case 0:
+              _context3.next = 2;
+              return axios.get('/api/v1/quiz-topics/all-topic').then(function (response) {
+                _this.topics = response.data;
+              })["catch"](function (e) {
+                console.log(e);
+              });
+            case 2:
+            case "end":
+              return _context3.stop();
+          }
+        }, _callee3);
+      }));
+      function get_all_topics() {
+        return _get_all_topics.apply(this, arguments);
+      }
+      return get_all_topics;
+    }(),
     remove_question: function remove_question(questions, index) {
       if (confirm('remove')) {
         questions.splice(index, 1);
@@ -571,20 +585,23 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
   },
   computed: {},
   created: function () {
-    var _created = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee3() {
-      return _regeneratorRuntime().wrap(function _callee3$(_context3) {
-        while (1) switch (_context3.prev = _context3.next) {
+    var _created = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee4() {
+      return _regeneratorRuntime().wrap(function _callee4$(_context4) {
+        while (1) switch (_context4.prev = _context4.next) {
           case 0:
-            _context3.next = 2;
-            return this.append_new_question();
+            _context4.next = 2;
+            return this.get_all_topics();
           case 2:
-            _context3.next = 4;
-            return this.get_quiz_data();
+            _context4.next = 4;
+            return this.append_new_question();
           case 4:
+            _context4.next = 6;
+            return this.get_quiz_data();
+          case 6:
           case "end":
-            return _context3.stop();
+            return _context4.stop();
         }
-      }, _callee3, this);
+      }, _callee4, this);
     }));
     function created() {
       return _created.apply(this, arguments);

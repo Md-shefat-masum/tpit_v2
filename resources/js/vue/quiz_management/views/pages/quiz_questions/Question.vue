@@ -101,18 +101,7 @@ export default {
             questions: [],
             topic_id: '',
             topics: [
-                {
-                    id: 1,
-                    title: "Html",
-                },
-                {
-                    id: 2,
-                    title: "CSS",
-                },
-                {
-                    id: 3,
-                    title: "Javascript",
-                }
+                
             ]
         }
     },
@@ -138,6 +127,15 @@ export default {
         get_quiz_data: async function (event) {
             await axios.get('/api/v1/quiz-questions/all_data').then((response) => {
                 console.log(response.data);
+            })
+            .catch((e) => {
+                console.log(e);
+            });
+        },
+
+        get_all_topics: async function() {
+            await axios.get('/api/v1/quiz-topics/all-topic').then((response) => {
+                this.topics = response.data;
             })
             .catch((e) => {
                 console.log(e);
@@ -207,6 +205,7 @@ export default {
     },
 
     created: async function () {
+        await this.get_all_topics();
         await this.append_new_question();
         await this.get_quiz_data();
     },

@@ -13,4 +13,6 @@ class QuizQuestion extends Model
     public function topic() {
         return $this->belongsTo(QuizQuestionTopic::class, 'quiz_question_topic_id');
     }
+
+    
 }
