@@ -53,3 +53,16 @@
     border: 1px solid transparent;
     color: #ffffff;
 }
+
+.my_courses_area .my_contunued_courses .my_contunued_all_courses .c_card .card_title_area .card_title .batch_text {
+    border: 0px solid red;
+    font-size: 16px;
+    line-height: 16px;
+    font-family: "SemiBold";
+    color: #1c1c1c;
+    transition-duration: 0.4s;
+}
+
+.my_courses_area .my_contunued_courses .my_contunued_all_courses .c_card .card_title_area .card_title .batch_text:hover {
+    color: #dc2626;
+}
