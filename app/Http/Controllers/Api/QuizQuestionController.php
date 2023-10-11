@@ -29,6 +29,13 @@ class QuizQuestionController extends Controller
         return response()->json($datas);
     }
 
+    public function all_data()
+    {
+        $quiz_data = QuizQuestion::select('*')->with(['topic'])->get();
+
+        return response()->json($quiz_data);
+    }
+
     public function show($id)
     {
 

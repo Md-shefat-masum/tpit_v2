@@ -2,7 +2,7 @@
     <div class="custom_scroll">
         <div class="card list_card">
             <div class="card-header">
-                <h4>Create Job work</h4>
+                <h4>Create Quiz</h4>
                 <div class="btns">
                     <a @click="$router.go(-1)" class="btn rounded-pill btn-outline-warning" >
                         <i class="fa fa-arrow-left me-5px"></i>
@@ -16,90 +16,63 @@
                         <div class="col-xl-10 col-12">
                             <div class="row">
                                 <div class="col-md-12">
-                                    <div class="border boder-primary p-1">
+                                    <div class="form-group mb-2">
+                                        <label class="form-label" for="topic">Topic</label>
+                                        <select name="topic" class="form-control" id="topic">
+                                            <option v-for="(topic, index) in topics" :key="index" :value="topic.id">{{ topic.title }}</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div v-for="(question, index) in questions" :key="index" class="border boder-primary p-1">
                                         <div class="form-group mb-2">
-                                            <label class="form-label" for="topic">Topic</label>
-                                            <select name="topic" class="form-control" id="topic">
-                                                <option value="">topic 1</option>
-                                                <option value="">topic 2</option>
-                                                <option value="">topic 3</option>
-                                            </select>
-                                        </div>
-
-                                        <div class="form-group mb-2">
-                                            <label for="">Question</label>
+                                            <label for="">Question {{ index+1 }}</label>
                                             <div class="input">
-                                                <input type="text" class="form-control">
+                                                <input type="text" :value="question.title" class="form-control">
                                             </div>
                                         </div>
 
+                                        
                                         <div class="form_group border boder-primary p-1 mb-2">
                                             <h4>Options</h4><hr>
                                             <div class="form-row">
-                                                
-                                                <div class="form-group col-md-6">
-                                                    <label for="">Option 1</label>
+
+                                                <div v-for="(option, serial) in question.options" :key="serial" class="form-group col-md-6">
+                                                    <label for="">Option {{  serial+1  }}</label>
                                                     <div class="form-inline">
                                                         <div class="form-group">
                                                             <div class="input">
-                                                                <input class="form-check-input" type="checkbox" id="gridCheck1">
-                                                                <input type="text" class="form-control">
-                                                                <button class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></button>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="form-group col-md-6">
-                                                    <label for="">Option 2</label>
-                                                    <div class="form-inline">
-                                                        <div class="form-group">
-                                                            <div class="input">
-                                                                <input class="form-check-input" type="checkbox" id="gridCheck1">
-                                                                <input type="text" class="form-control">
-                                                                <button class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></button>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="form-group col-md-6">
-                                                    <label for="">Option 3</label>
-                                                    <div class="form-inline">
-                                                        <div class="form-group">
-                                                            <div class="input">
-                                                                <input class="form-check-input" type="checkbox" id="gridCheck1">
-                                                                <input type="text" class="form-control">
-                                                                <button class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></button>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="form-group col-md-6">
-                                                    <label for="">Option 4</label>
-                                                    <div class="form-inline">
-                                                        <div class="form-group">
-                                                            <div class="input">
-                                                                <input class="form-check-input" type="checkbox" id="gridCheck1">
-                                                                <input type="text" class="form-control">
-                                                                <button class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></button>
+                                                                <input v-if="option.is_correct == 1" checked class="form-check-input" type="checkbox" id="gridCheck1">
+                                                                <input v-else class="form-check-input" type="checkbox" id="gridCheck1">
+                                                                <input type="text" :value="option.title" class="form-control">
+                                                                <button v-if="question.options.length > 1" @click.prevent="remove_option(question.options, index)" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></button>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                                 
-                                                <div class="action_btns mt-1">
+                                            </div>
+                                            <div class="action_btns mt-1">
+                                                <div class="row">
                                                     <div class="col-md-12">
                                                         <div class="float-right">
-                                                            <button class="btn btn-primary btn-sm mr-1"><i class="fa fa-plus mr-1"></i>Add new option</button>
+                                                            <button @click.prevent="append_new_option(question)" class="btn btn-primary btn-sm mr-1"><i class="fa fa-plus mr-1"></i>Add new option</button>
                                                         </div>
                                                     </div>
-                                                </div>
-                                                
+                                                </div>    
                                             </div>
                                         </div>
 
                                         <div class="action_btns mt-1">
-                                            <div class="col-md-12">
-                                                <button class="btn btn-primary btn-sm mr-1"><i class="fa fa-plus mr-1"></i>Add new Question</button>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="float-right">
+                                                        <button @click.prevent="append_new_question()" class="btn btn-primary btn-sm mr-1"><i class="fa fa-plus mr-1"></i>Add new Question</button>
+                                                    </div>
+                                                    <div class="float-right">
+                                                        <button v-if="questions.length > 1" @click.prevent="remove_question(questions, index)" class="btn btn-danger btn-sm mr-1"><i class="fa fa-trash mr-1"></i>Remove Question</button>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -125,11 +98,26 @@ export default {
     data() {
         return {
             course_id: '',
-            milestones: []
+            questions: [],
+            topic_id: '',
+            topics: [
+                {
+                    id: 1,
+                    title: "Html",
+                },
+                {
+                    id: 2,
+                    title: "CSS",
+                },
+                {
+                    id: 3,
+                    title: "Javascript",
+                }
+            ]
         }
     },
     methods: {
-        store_course_work: async function(event) {
+        store_question: async function(event) {
             let formData = new FormData(event);
             let course_id = this.$route.params.id;
             formData.append('course_id', course_id);
@@ -138,7 +126,7 @@ export default {
                 formData: formData,
             }
 
-            await axios.post('/api/v1/course/course-job-work/store', data.formData).then((response) => {
+            await axios.post('/api/v1/quiz-questions/store', data.formData).then((response) => {
                 // localStorage.setItem('current_course', JSON.stringify(response?.data))
                 window.toaster("Course Job position added successfully!");
                 event.reset();
@@ -147,63 +135,68 @@ export default {
                 console.log(e);
             });
         },
-        // get_course_details: async function (event) {
-        //     let whatcourse = localStorage.getItem('current_course');
-        //     if(whatcourse) {
-        //         whatcourse = JSON.parse(whatcourse);
-        //         this.course_id = whatcourse.id
-        //     }
-        // }
-        remove_question: function (modules, index) {
+        get_quiz_data: async function (event) {
+            await axios.get('/api/v1/quiz-questions/all_data').then((response) => {
+                console.log(response.data);
+            })
+            .catch((e) => {
+                console.log(e);
+            });
+        },
+        remove_question: function (questions, index) {
             if (confirm('remove')) {
-                modules.splice(index, 1);
+                questions.splice(index, 1);
             }
         },
-        append_new_option: function() {
 
+        remove_option: function(options, index) {
+            if (confirm('remove')) {
+                options.splice(index, 1);
+            }
         },
-        append_new_question: function (milestone) {
-            milestone.questions.push({
+
+        append_new_option: function (question) {
+            question.options.push(
+                {
+                    id: "",
+                    question_id: '',
+                    title: "",
+                    is_correct: 0,
+                }
+            );
+        },
+        
+        append_new_question: function () {
+            this.questions.push({
                 id: "",
-                module_no: "",
-                title: "Question 1",
+                topic_id: "1",
+                title: "What is C",
+                mark: 1,
+                is_multiple: 1,
                 options: [
                     {
                         id: "",
-                        class_no: "",
-                        title: "a programming language",
-                        
-                    }, 
+                        question_id: '',
+                        title: "A programming language",
+                        is_correct: 1,
+                    },
                     {
                         id: "",
-                        class_no: "",
-                        title: "a markup",
-                    }
-                ]
-            })
-        },
-        append_new_milstone: function () {
-            this.milestones.push({
-                id: "",
-                title: "Topic 1",
-                questions: [
+                        question_id: '',
+                        title: "A Markup language",
+                        is_correct: 0,
+                    },
                     {
                         id: "",
-                        module_no: "",
-                        title: "Question 1",
-                        options: [
-                            {
-                                id: "",
-                                class_no: "",
-                                title: "a programming language",
-                                
-                            }, 
-                            {
-                                id: "",
-                                class_no: "",
-                                title: "a markup",
-                            }
-                        ]
+                        question_id: '',
+                        title: "A Styling language",
+                        is_correct: 0,
+                    },
+                    {
+                        id: "",
+                        question_id: '',
+                        title: "A compiler",
+                        is_correct: 0,
                     },
                 ]
             })
@@ -214,7 +207,8 @@ export default {
     },
 
     created: async function () {
-        this.append_new_milstone();
+        await this.append_new_question();
+        await this.get_quiz_data();
     },
 }
 </script>

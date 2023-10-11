@@ -452,12 +452,23 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
   data: function data() {
     return {
       course_id: '',
-      milestones: []
+      questions: [],
+      topic_id: '',
+      topics: [{
+        id: 1,
+        title: "Html"
+      }, {
+        id: 2,
+        title: "CSS"
+      }, {
+        id: 3,
+        title: "Javascript"
+      }]
     };
   },
   methods: {
-    store_course_work: function () {
-      var _store_course_work = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee(event) {
+    store_question: function () {
+      var _store_question = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee(event) {
         var formData, course_id, data;
         return _regeneratorRuntime().wrap(function _callee$(_context) {
           while (1) switch (_context.prev = _context.next) {
@@ -469,7 +480,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 formData: formData
               };
               _context.next = 6;
-              return axios.post('/api/v1/course/course-job-work/store', data.formData).then(function (response) {
+              return axios.post('/api/v1/quiz-questions/store', data.formData).then(function (response) {
                 // localStorage.setItem('current_course', JSON.stringify(response?.data))
                 window.toaster("Course Job position added successfully!");
                 event.reset();
@@ -482,73 +493,98 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           }
         }, _callee, this);
       }));
-      function store_course_work(_x) {
-        return _store_course_work.apply(this, arguments);
+      function store_question(_x) {
+        return _store_question.apply(this, arguments);
       }
-      return store_course_work;
+      return store_question;
     }(),
-    // get_course_details: async function (event) {
-    //     let whatcourse = localStorage.getItem('current_course');
-    //     if(whatcourse) {
-    //         whatcourse = JSON.parse(whatcourse);
-    //         this.course_id = whatcourse.id
-    //     }
-    // }
-    remove_question: function remove_question(modules, index) {
+    get_quiz_data: function () {
+      var _get_quiz_data = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2(event) {
+        return _regeneratorRuntime().wrap(function _callee2$(_context2) {
+          while (1) switch (_context2.prev = _context2.next) {
+            case 0:
+              _context2.next = 2;
+              return axios.get('/api/v1/quiz-questions/all_data').then(function (response) {
+                console.log(response.data);
+              })["catch"](function (e) {
+                console.log(e);
+              });
+            case 2:
+            case "end":
+              return _context2.stop();
+          }
+        }, _callee2);
+      }));
+      function get_quiz_data(_x2) {
+        return _get_quiz_data.apply(this, arguments);
+      }
+      return get_quiz_data;
+    }(),
+    remove_question: function remove_question(questions, index) {
       if (confirm('remove')) {
-        modules.splice(index, 1);
+        questions.splice(index, 1);
       }
     },
-    append_new_option: function append_new_option() {},
-    append_new_question: function append_new_question(milestone) {
-      milestone.questions.push({
+    remove_option: function remove_option(options, index) {
+      if (confirm('remove')) {
+        options.splice(index, 1);
+      }
+    },
+    append_new_option: function append_new_option(question) {
+      question.options.push({
         id: "",
-        module_no: "",
-        title: "Question 1",
-        options: [{
-          id: "",
-          class_no: "",
-          title: "a programming language"
-        }, {
-          id: "",
-          class_no: "",
-          title: "a markup"
-        }]
+        question_id: '',
+        title: "",
+        is_correct: 0
       });
     },
-    append_new_milstone: function append_new_milstone() {
-      this.milestones.push({
+    append_new_question: function append_new_question() {
+      this.questions.push({
         id: "",
-        title: "Topic 1",
-        questions: [{
+        topic_id: "1",
+        title: "What is C",
+        mark: 1,
+        is_multiple: 1,
+        options: [{
           id: "",
-          module_no: "",
-          title: "Question 1",
-          options: [{
-            id: "",
-            class_no: "",
-            title: "a programming language"
-          }, {
-            id: "",
-            class_no: "",
-            title: "a markup"
-          }]
+          question_id: '',
+          title: "A programming language",
+          is_correct: 1
+        }, {
+          id: "",
+          question_id: '',
+          title: "A Markup language",
+          is_correct: 0
+        }, {
+          id: "",
+          question_id: '',
+          title: "A Styling language",
+          is_correct: 0
+        }, {
+          id: "",
+          question_id: '',
+          title: "A compiler",
+          is_correct: 0
         }]
       });
     }
   },
   computed: {},
   created: function () {
-    var _created = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2() {
-      return _regeneratorRuntime().wrap(function _callee2$(_context2) {
-        while (1) switch (_context2.prev = _context2.next) {
+    var _created = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee3() {
+      return _regeneratorRuntime().wrap(function _callee3$(_context3) {
+        while (1) switch (_context3.prev = _context3.next) {
           case 0:
-            this.append_new_milstone();
-          case 1:
+            _context3.next = 2;
+            return this.append_new_question();
+          case 2:
+            _context3.next = 4;
+            return this.get_quiz_data();
+          case 4:
           case "end":
-            return _context2.stop();
+            return _context3.stop();
         }
-      }, _callee2, this);
+      }, _callee3, this);
     }));
     function created() {
       return _created.apply(this, arguments);
@@ -1388,7 +1424,7 @@ var render = function render() {
     staticClass: "card list_card"
   }, [_c("div", {
     staticClass: "card-header"
-  }, [_c("h4", [_vm._v("Create Job work")]), _vm._v(" "), _c("div", {
+  }, [_c("h4", [_vm._v("Create Quiz")]), _vm._v(" "), _c("div", {
     staticClass: "btns"
   }, [_c("a", {
     staticClass: "btn rounded-pill btn-outline-warning",
@@ -1411,12 +1447,7 @@ var render = function render() {
         return _vm.store_course_work($event.target);
       }
     }
-  }, [_vm._m(0), _vm._v(" "), _vm._m(1)])])]);
-};
-var staticRenderFns = [function () {
-  var _vm = this,
-    _c = _vm._self._c;
-  return _c("div", {
+  }, [_c("div", {
     staticClass: "card-body"
   }, [_c("div", {
     staticClass: "row justify-content-center"
@@ -1426,8 +1457,6 @@ var staticRenderFns = [function () {
     staticClass: "row"
   }, [_c("div", {
     staticClass: "col-md-12"
-  }, [_c("div", {
-    staticClass: "border boder-primary p-1"
   }, [_c("div", {
     staticClass: "form-group mb-2"
   }, [_c("label", {
@@ -1441,163 +1470,137 @@ var staticRenderFns = [function () {
       name: "topic",
       id: "topic"
     }
-  }, [_c("option", {
-    attrs: {
-      value: ""
-    }
-  }, [_vm._v("topic 1")]), _vm._v(" "), _c("option", {
-    attrs: {
-      value: ""
-    }
-  }, [_vm._v("topic 2")]), _vm._v(" "), _c("option", {
-    attrs: {
-      value: ""
-    }
-  }, [_vm._v("topic 3")])])]), _vm._v(" "), _c("div", {
-    staticClass: "form-group mb-2"
-  }, [_c("label", {
-    attrs: {
-      "for": ""
-    }
-  }, [_vm._v("Question")]), _vm._v(" "), _c("div", {
-    staticClass: "input"
-  }, [_c("input", {
-    staticClass: "form-control",
-    attrs: {
-      type: "text"
-    }
-  })])]), _vm._v(" "), _c("div", {
-    staticClass: "form_group border boder-primary p-1 mb-2"
-  }, [_c("h4", [_vm._v("Options")]), _c("hr"), _vm._v(" "), _c("div", {
-    staticClass: "form-row"
-  }, [_c("div", {
-    staticClass: "form-group col-md-6"
-  }, [_c("label", {
-    attrs: {
-      "for": ""
-    }
-  }, [_vm._v("Option 1")]), _vm._v(" "), _c("div", {
-    staticClass: "form-inline"
-  }, [_c("div", {
-    staticClass: "form-group"
-  }, [_c("div", {
-    staticClass: "input"
-  }, [_c("input", {
-    staticClass: "form-check-input",
-    attrs: {
-      type: "checkbox",
-      id: "gridCheck1"
-    }
-  }), _vm._v(" "), _c("input", {
-    staticClass: "form-control",
-    attrs: {
-      type: "text"
-    }
-  }), _vm._v(" "), _c("button", {
-    staticClass: "btn btn-danger btn-sm"
-  }, [_c("i", {
-    staticClass: "fa fa-trash"
-  })])])])])]), _vm._v(" "), _c("div", {
-    staticClass: "form-group col-md-6"
-  }, [_c("label", {
-    attrs: {
-      "for": ""
-    }
-  }, [_vm._v("Option 2")]), _vm._v(" "), _c("div", {
-    staticClass: "form-inline"
-  }, [_c("div", {
-    staticClass: "form-group"
-  }, [_c("div", {
-    staticClass: "input"
-  }, [_c("input", {
-    staticClass: "form-check-input",
-    attrs: {
-      type: "checkbox",
-      id: "gridCheck1"
-    }
-  }), _vm._v(" "), _c("input", {
-    staticClass: "form-control",
-    attrs: {
-      type: "text"
-    }
-  }), _vm._v(" "), _c("button", {
-    staticClass: "btn btn-danger btn-sm"
-  }, [_c("i", {
-    staticClass: "fa fa-trash"
-  })])])])])]), _vm._v(" "), _c("div", {
-    staticClass: "form-group col-md-6"
-  }, [_c("label", {
-    attrs: {
-      "for": ""
-    }
-  }, [_vm._v("Option 3")]), _vm._v(" "), _c("div", {
-    staticClass: "form-inline"
-  }, [_c("div", {
-    staticClass: "form-group"
-  }, [_c("div", {
-    staticClass: "input"
-  }, [_c("input", {
-    staticClass: "form-check-input",
-    attrs: {
-      type: "checkbox",
-      id: "gridCheck1"
-    }
-  }), _vm._v(" "), _c("input", {
-    staticClass: "form-control",
-    attrs: {
-      type: "text"
-    }
-  }), _vm._v(" "), _c("button", {
-    staticClass: "btn btn-danger btn-sm"
-  }, [_c("i", {
-    staticClass: "fa fa-trash"
-  })])])])])]), _vm._v(" "), _c("div", {
-    staticClass: "form-group col-md-6"
-  }, [_c("label", {
-    attrs: {
-      "for": ""
-    }
-  }, [_vm._v("Option 4")]), _vm._v(" "), _c("div", {
-    staticClass: "form-inline"
-  }, [_c("div", {
-    staticClass: "form-group"
-  }, [_c("div", {
-    staticClass: "input"
-  }, [_c("input", {
-    staticClass: "form-check-input",
-    attrs: {
-      type: "checkbox",
-      id: "gridCheck1"
-    }
-  }), _vm._v(" "), _c("input", {
-    staticClass: "form-control",
-    attrs: {
-      type: "text"
-    }
-  }), _vm._v(" "), _c("button", {
-    staticClass: "btn btn-danger btn-sm"
-  }, [_c("i", {
-    staticClass: "fa fa-trash"
-  })])])])])]), _vm._v(" "), _c("div", {
-    staticClass: "action_btns mt-1"
-  }, [_c("div", {
+  }, _vm._l(_vm.topics, function (topic, index) {
+    return _c("option", {
+      key: index,
+      domProps: {
+        value: topic.id
+      }
+    }, [_vm._v(_vm._s(topic.title))]);
+  }), 0)])]), _vm._v(" "), _c("div", {
     staticClass: "col-md-12"
-  }, [_c("div", {
-    staticClass: "float-right"
-  }, [_c("button", {
-    staticClass: "btn btn-primary btn-sm mr-1"
-  }, [_c("i", {
-    staticClass: "fa fa-plus mr-1"
-  }), _vm._v("Add new option")])])])])])]), _vm._v(" "), _c("div", {
-    staticClass: "action_btns mt-1"
-  }, [_c("div", {
-    staticClass: "col-md-12"
-  }, [_c("button", {
-    staticClass: "btn btn-primary btn-sm mr-1"
-  }, [_c("i", {
-    staticClass: "fa fa-plus mr-1"
-  }), _vm._v("Add new Question")])])])])])])])])]);
-}, function () {
+  }, _vm._l(_vm.questions, function (question, index) {
+    return _c("div", {
+      key: index,
+      staticClass: "border boder-primary p-1"
+    }, [_c("div", {
+      staticClass: "form-group mb-2"
+    }, [_c("label", {
+      attrs: {
+        "for": ""
+      }
+    }, [_vm._v("Question " + _vm._s(index + 1))]), _vm._v(" "), _c("div", {
+      staticClass: "input"
+    }, [_c("input", {
+      staticClass: "form-control",
+      attrs: {
+        type: "text"
+      },
+      domProps: {
+        value: question.title
+      }
+    })])]), _vm._v(" "), _c("div", {
+      staticClass: "form_group border boder-primary p-1 mb-2"
+    }, [_c("h4", [_vm._v("Options")]), _c("hr"), _vm._v(" "), _c("div", {
+      staticClass: "form-row"
+    }, _vm._l(question.options, function (option, serial) {
+      return _c("div", {
+        key: serial,
+        staticClass: "form-group col-md-6"
+      }, [_c("label", {
+        attrs: {
+          "for": ""
+        }
+      }, [_vm._v("Option " + _vm._s(serial + 1))]), _vm._v(" "), _c("div", {
+        staticClass: "form-inline"
+      }, [_c("div", {
+        staticClass: "form-group"
+      }, [_c("div", {
+        staticClass: "input"
+      }, [option.is_correct == 1 ? _c("input", {
+        staticClass: "form-check-input",
+        attrs: {
+          checked: "",
+          type: "checkbox",
+          id: "gridCheck1"
+        }
+      }) : _c("input", {
+        staticClass: "form-check-input",
+        attrs: {
+          type: "checkbox",
+          id: "gridCheck1"
+        }
+      }), _vm._v(" "), _c("input", {
+        staticClass: "form-control",
+        attrs: {
+          type: "text"
+        },
+        domProps: {
+          value: option.title
+        }
+      }), _vm._v(" "), question.options.length > 1 ? _c("button", {
+        staticClass: "btn btn-danger btn-sm",
+        on: {
+          click: function click($event) {
+            $event.preventDefault();
+            return _vm.remove_option(question.options, index);
+          }
+        }
+      }, [_c("i", {
+        staticClass: "fa fa-trash"
+      })]) : _vm._e()])])])]);
+    }), 0), _vm._v(" "), _c("div", {
+      staticClass: "action_btns mt-1"
+    }, [_c("div", {
+      staticClass: "row"
+    }, [_c("div", {
+      staticClass: "col-md-12"
+    }, [_c("div", {
+      staticClass: "float-right"
+    }, [_c("button", {
+      staticClass: "btn btn-primary btn-sm mr-1",
+      on: {
+        click: function click($event) {
+          $event.preventDefault();
+          return _vm.append_new_option(question);
+        }
+      }
+    }, [_c("i", {
+      staticClass: "fa fa-plus mr-1"
+    }), _vm._v("Add new option")])])])])])]), _vm._v(" "), _c("div", {
+      staticClass: "action_btns mt-1"
+    }, [_c("div", {
+      staticClass: "row"
+    }, [_c("div", {
+      staticClass: "col-md-12"
+    }, [_c("div", {
+      staticClass: "float-right"
+    }, [_c("button", {
+      staticClass: "btn btn-primary btn-sm mr-1",
+      on: {
+        click: function click($event) {
+          $event.preventDefault();
+          return _vm.append_new_question();
+        }
+      }
+    }, [_c("i", {
+      staticClass: "fa fa-plus mr-1"
+    }), _vm._v("Add new Question")])]), _vm._v(" "), _c("div", {
+      staticClass: "float-right"
+    }, [_vm.questions.length > 1 ? _c("button", {
+      staticClass: "btn btn-danger btn-sm mr-1",
+      on: {
+        click: function click($event) {
+          $event.preventDefault();
+          return _vm.remove_question(_vm.questions, index);
+        }
+      }
+    }, [_c("i", {
+      staticClass: "fa fa-trash mr-1"
+    }), _vm._v("Remove Question")]) : _vm._e()])])])])]);
+  }), 0)])])])]), _vm._v(" "), _vm._m(0)])])]);
+};
+var staticRenderFns = [function () {
   var _vm = this,
     _c = _vm._self._c;
   return _c("div", {

@@ -111,6 +111,7 @@ Route::group(
 
         Route::group(['prefix' => 'quiz-questions', 'middleware' => ['guest:api']], function () {
             Route::get('/all', 'Api\QuizTopicController@all');
+            Route::get('/all_data', 'Api\QuizTopicController@all_data');
             Route::post('/store', 'Api\QuizTopicController@store');
             Route::post('/update', 'Api\QuizTopicController@update');
             Route::post('/soft-delete', 'Api\QuizTopicController@soft_delete');
