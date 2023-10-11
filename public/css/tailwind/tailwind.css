@@ -167,6 +167,12 @@
 .mt-8{
     margin-top: 2rem
 }
+.mb-5{
+    margin-bottom: 1.25rem
+}
+.mt-0{
+    margin-top: 0px
+}
 .flex{
     display: -webkit-box;
     display: -ms-flexbox;
@@ -368,6 +374,9 @@
 }
 .text-center{
     text-align: center
+}
+.align-middle{
+    vertical-align: middle
 }
 .text-lg{
     font-size: 1.125rem;
