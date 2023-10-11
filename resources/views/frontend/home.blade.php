@@ -179,7 +179,7 @@
                                     </div>
 
                                     <div class="join_button">
-                                        <button class="button_all">
+                                        <button class="button_all" onclick="showSeminarModel({{ $item }})">
                                             <span class="btn_text"> জয়েন</span>
                                         </button>
                                     </div>
@@ -216,6 +216,48 @@
             </div>
         </div>
     </section>
+
+    {{-- free seminar modal --}}
+    <div id="seminar_modal" class="modal fade modal-lg" tabindex="-1">
+        <div class="modal-dialog">
+
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel"><b>সেমিনারের জন্য রেজিস্ট্রেশন করুন</b></h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="col-md-8 mx-auto">
+                        <form class="mb-3" id="seminar_form" onsubmit="registerSeminar(event)">
+                            <div class="mb-3">
+                                <label for="name" class="col-form-label">নামঃ </label>
+                                <input type="text" name="full_name" class="form-control" id="name">
+                            </div>
+                            <div class="mb-3">
+                                <label for="phone_number" class="col-form-label">মোবাইল নাম্বারঃ</label>
+                                <input type="number" name="phone_number" class="form-control"
+                                    id="phone_number"></textarea>
+                            </div>
+                            <div class="mb-3">
+                                <label for="email" class="col-form-label">ই-মেইলঃ</label>
+                                <input type="email" name="email" class="form-control" id="email"></textarea>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="address" class="col-form-label">ঠিকানাঃ </label>
+                                <textarea name="address" class="form-control" id="address"></textarea>
+                            </div>
+
+                            <button type="submit" class="button_all me-2">সাবমিট</button>
+                            {{-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button> --}}
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    {{-- end of free seminar modal --}}
     <!-- free_seminar_area_end -->
 
     <!-- job_career_area start-->
@@ -373,4 +415,45 @@
         </div>
     </section>
     <!-- working_company_name area end -->
+
+    <script>
+        var seminar_modal = new bootstrap.Modal(document.getElementById('seminar_modal'));
+    
+        function showSeminarModel(seminar) {
+            window.seminar_id = seminar.id;
+            document.getElementById('seminar_form').reset();
+            seminar_modal.toggle();
+            // console.log(seminar);
+        }
+    
+        function registerSeminar(event) {
+            event.preventDefault();
+            let formData = new FormData(event.target);
+            formData.append("seminar_id", window.seminar_id);
+            // console.log('form submitting!');
+            fetch("/seminar-registration", {
+                method: "POST",
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                body: formData
+            }).then(async res => {
+                let response = {}
+                response.status = res.status
+                response.data = await res.json();
+                return response;
+            }).then(res => {
+                if (res.status === 422) {
+                    error_response(res.data)
+                }
+                if (res.status === 200) {
+                    
+                    window.toaster("Registration for the seminar submitted!");
+                    seminar_modal.toggle();
+                    document.getElementById('seminar_form').reset();
+                    // location.href = "/order-complete";
+                }
+            })
+        }
+    </script>
 @endsection
