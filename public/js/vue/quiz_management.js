@@ -454,72 +454,67 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       course_id: '',
       questions: [],
       topic_id: '',
+      topic_title: '',
       topics: []
     };
   },
   methods: {
-    store_question: function () {
-      var _store_question = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee(event) {
-        var formData, course_id, data;
+    setTopicTitle: function () {
+      var _setTopicTitle = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee(topic) {
         return _regeneratorRuntime().wrap(function _callee$(_context) {
           while (1) switch (_context.prev = _context.next) {
             case 0:
-              formData = new FormData(event);
-              course_id = this.$route.params.id;
-              formData.append('course_id', course_id);
-              data = {
-                formData: formData
-              };
-              _context.next = 6;
-              return axios.post('/api/v1/quiz-questions/store', data.formData).then(function (response) {
-                // localStorage.setItem('current_course', JSON.stringify(response?.data))
-                window.toaster("Course Job position added successfully!");
-                event.reset();
-              })["catch"](function (e) {
-                console.log(e);
-              });
-            case 6:
+              this.topic_title = topic.title;
+            case 1:
             case "end":
               return _context.stop();
           }
         }, _callee, this);
       }));
-      function store_question(_x) {
+      function setTopicTitle(_x) {
+        return _setTopicTitle.apply(this, arguments);
+      }
+      return setTopicTitle;
+    }(),
+    store_question: function () {
+      var _store_question = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2() {
+        var question_data, data;
+        return _regeneratorRuntime().wrap(function _callee2$(_context2) {
+          while (1) switch (_context2.prev = _context2.next) {
+            case 0:
+              question_data = JSON.stringify(this.questions);
+              data = {
+                topic_id: this.topic_id,
+                topic_title: this.topic_title,
+                question: question_data
+              };
+              _context2.next = 4;
+              return axios.post('/api/v1/quiz-questions/store', data).then(function (response) {
+                // localStorage.setItem('current_course', JSON.stringify(response?.data))
+                window.toaster(response === null || response === void 0 ? void 0 : response.data.message);
+              })["catch"](function (e) {
+                console.log(e);
+              });
+            case 4:
+            case "end":
+              return _context2.stop();
+          }
+        }, _callee2, this);
+      }));
+      function store_question() {
         return _store_question.apply(this, arguments);
       }
       return store_question;
     }(),
     get_quiz_data: function () {
-      var _get_quiz_data = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2(event) {
-        return _regeneratorRuntime().wrap(function _callee2$(_context2) {
-          while (1) switch (_context2.prev = _context2.next) {
-            case 0:
-              _context2.next = 2;
-              return axios.get('/api/v1/quiz-questions/all_data').then(function (response) {
-                console.log(response.data);
-              })["catch"](function (e) {
-                console.log(e);
-              });
-            case 2:
-            case "end":
-              return _context2.stop();
-          }
-        }, _callee2);
-      }));
-      function get_quiz_data(_x2) {
-        return _get_quiz_data.apply(this, arguments);
-      }
-      return get_quiz_data;
-    }(),
-    get_all_topics: function () {
-      var _get_all_topics = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee3() {
+      var _get_quiz_data = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee3(event) {
         var _this = this;
         return _regeneratorRuntime().wrap(function _callee3$(_context3) {
           while (1) switch (_context3.prev = _context3.next) {
             case 0:
               _context3.next = 2;
-              return axios.get('/api/v1/quiz-topics/all-topic').then(function (response) {
-                _this.topics = response.data;
+              return axios.get('/api/v1/quiz-questions/all_data').then(function (response) {
+                _this.questions = response.data;
               })["catch"](function (e) {
                 console.log(e);
               });
@@ -528,6 +523,29 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               return _context3.stop();
           }
         }, _callee3);
+      }));
+      function get_quiz_data(_x2) {
+        return _get_quiz_data.apply(this, arguments);
+      }
+      return get_quiz_data;
+    }(),
+    get_all_topics: function () {
+      var _get_all_topics = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee4() {
+        var _this2 = this;
+        return _regeneratorRuntime().wrap(function _callee4$(_context4) {
+          while (1) switch (_context4.prev = _context4.next) {
+            case 0:
+              _context4.next = 2;
+              return axios.get('/api/v1/quiz-topics/all-topic').then(function (response) {
+                _this2.topics = response.data;
+              })["catch"](function (e) {
+                console.log(e);
+              });
+            case 2:
+            case "end":
+              return _context4.stop();
+          }
+        }, _callee4);
       }));
       function get_all_topics() {
         return _get_all_topics.apply(this, arguments);
@@ -549,13 +567,13 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         id: "",
         question_id: '',
         title: "",
-        is_correct: 0
+        is_correct: false
       });
     },
     append_new_question: function append_new_question() {
       this.questions.push({
         id: "",
-        topic_id: "1",
+        quiz_question_topic_id: "1",
         title: "What is C",
         mark: 1,
         is_multiple: 1,
@@ -563,45 +581,45 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           id: "",
           question_id: '',
           title: "A programming language",
-          is_correct: 1
+          is_correct: true
         }, {
           id: "",
           question_id: '',
           title: "A Markup language",
-          is_correct: 0
+          is_correct: false
         }, {
           id: "",
           question_id: '',
           title: "A Styling language",
-          is_correct: 0
+          is_correct: false
         }, {
           id: "",
           question_id: '',
           title: "A compiler",
-          is_correct: 0
+          is_correct: false
         }]
       });
     }
   },
   computed: {},
   created: function () {
-    var _created = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee4() {
-      return _regeneratorRuntime().wrap(function _callee4$(_context4) {
-        while (1) switch (_context4.prev = _context4.next) {
+    var _created = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee5() {
+      return _regeneratorRuntime().wrap(function _callee5$(_context5) {
+        while (1) switch (_context5.prev = _context5.next) {
           case 0:
-            _context4.next = 2;
+            _context5.next = 2;
             return this.get_all_topics();
           case 2:
-            _context4.next = 4;
+            _context5.next = 4;
             return this.append_new_question();
           case 4:
-            _context4.next = 6;
+            _context5.next = 6;
             return this.get_quiz_data();
           case 6:
           case "end":
-            return _context4.stop();
+            return _context5.stop();
         }
-      }, _callee4, this);
+      }, _callee5, this);
     }));
     function created() {
       return _created.apply(this, arguments);
@@ -1457,11 +1475,11 @@ var render = function render() {
     on: {
       keyup: function keyup($event) {
         if (!$event.type.indexOf("key") && _vm._k($event.keyCode, "enter", 13, $event.key, "Enter")) return null;
-        return _vm.store_course_work($event.target);
+        return _vm.store_question($event.target);
       },
       submit: function submit($event) {
         $event.preventDefault();
-        return _vm.store_course_work($event.target);
+        return _vm.store_question($event.target);
       }
     }
   }, [_c("div", {
@@ -1482,10 +1500,29 @@ var render = function render() {
       "for": "topic"
     }
   }, [_vm._v("Topic")]), _vm._v(" "), _c("select", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.topic_id,
+      expression: "topic_id"
+    }],
     staticClass: "form-control",
     attrs: {
       name: "topic",
       id: "topic"
+    },
+    on: {
+      change: [function ($event) {
+        var $$selectedVal = Array.prototype.filter.call($event.target.options, function (o) {
+          return o.selected;
+        }).map(function (o) {
+          var val = "_value" in o ? o._value : o.value;
+          return val;
+        });
+        _vm.topic_id = $event.target.multiple ? $$selectedVal : $$selectedVal[0];
+      }, function ($event) {
+        return _vm.setTopicTitle(_vm.topic);
+      }]
     }
   }, _vm._l(_vm.topics, function (topic, index) {
     return _c("option", {
@@ -1502,23 +1539,117 @@ var render = function render() {
       staticClass: "border boder-primary p-1"
     }, [_c("div", {
       staticClass: "form-group mb-2"
-    }, [_c("label", {
+    }, [_c("h4", [_vm._v("Question " + _vm._s(index + 1))]), _vm._v(" "), _c("label", {
       attrs: {
-        "for": ""
+        "for": "question_title"
       }
-    }, [_vm._v("Question " + _vm._s(index + 1))]), _vm._v(" "), _c("div", {
-      staticClass: "input"
+    }, [_vm._v("title")]), _vm._v(" "), _c("div", {
+      staticClass: "input mb-2"
     }, [_c("input", {
+      directives: [{
+        name: "model",
+        rawName: "v-model",
+        value: question.title,
+        expression: "question.title"
+      }],
       staticClass: "form-control",
       attrs: {
-        type: "text"
+        type: "text",
+        id: "question_title"
       },
       domProps: {
         value: question.title
+      },
+      on: {
+        input: function input($event) {
+          if ($event.target.composing) return;
+          _vm.$set(question, "title", $event.target.value);
+        }
+      }
+    })]), _vm._v(" "), _c("div", {
+      staticClass: "form-row"
+    }, [_c("div", {
+      staticClass: "form-group col-md-6"
+    }, [_c("div", {
+      staticClass: "input"
+    }, [_c("label", {
+      attrs: {
+        "for": "mark"
+      }
+    }, [_vm._v("Mark")]), _vm._v(" "), _c("input", {
+      directives: [{
+        name: "model",
+        rawName: "v-model",
+        value: question.mark,
+        expression: "question.mark"
+      }],
+      staticClass: "form-control",
+      attrs: {
+        type: "text",
+        id: "mark"
+      },
+      domProps: {
+        value: question.mark
+      },
+      on: {
+        input: function input($event) {
+          if ($event.target.composing) return;
+          _vm.$set(question, "mark", $event.target.value);
+        }
       }
     })])]), _vm._v(" "), _c("div", {
+      staticClass: "form-group col-md-6"
+    }, [_c("div", {
+      staticClass: "input"
+    }, [_c("label", {
+      attrs: {
+        "for": "mark"
+      }
+    }, [_vm._v("Question type")]), _vm._v(" "), _c("div", {
+      staticClass: "form-check"
+    }, [_c("input", {
+      directives: [{
+        name: "model",
+        rawName: "v-model",
+        value: question.is_multiple,
+        expression: "question.is_multiple"
+      }],
+      staticClass: "form-check-input",
+      attrs: {
+        type: "checkbox",
+        value: "1",
+        name: "question_type",
+        id: "question_type1"
+      },
+      domProps: {
+        checked: Array.isArray(question.is_multiple) ? _vm._i(question.is_multiple, "1") > -1 : question.is_multiple
+      },
+      on: {
+        change: function change($event) {
+          var $$a = question.is_multiple,
+            $$el = $event.target,
+            $$c = $$el.checked ? true : false;
+          if (Array.isArray($$a)) {
+            var $$v = "1",
+              $$i = _vm._i($$a, $$v);
+            if ($$el.checked) {
+              $$i < 0 && _vm.$set(question, "is_multiple", $$a.concat([$$v]));
+            } else {
+              $$i > -1 && _vm.$set(question, "is_multiple", $$a.slice(0, $$i).concat($$a.slice($$i + 1)));
+            }
+          } else {
+            _vm.$set(question, "is_multiple", $$c);
+          }
+        }
+      }
+    }), _vm._v(" "), _c("label", {
+      staticClass: "form-check-label",
+      attrs: {
+        "for": "question_type1"
+      }
+    }, [_vm._v("\n                                                            Multiple\n                                                        ")])])])])])]), _vm._v(" "), _c("div", {
       staticClass: "form_group border boder-primary p-1 mb-2"
-    }, [_c("h4", [_vm._v("Options")]), _c("hr"), _vm._v(" "), _c("div", {
+    }, [_c("h4", [_vm._v("Options")]), _vm._v(" "), _c("hr"), _vm._v(" "), _c("div", {
       staticClass: "form-row"
     }, _vm._l(question.options, function (option, serial) {
       return _c("div", {
@@ -1534,33 +1665,66 @@ var render = function render() {
         staticClass: "form-group"
       }, [_c("div", {
         staticClass: "input"
-      }, [option.is_correct == 1 ? _c("input", {
+      }, [_c("input", {
+        directives: [{
+          name: "model",
+          rawName: "v-model",
+          value: option.is_correct,
+          expression: "option.is_correct"
+        }],
         staticClass: "form-check-input",
         attrs: {
-          checked: "",
+          value: "1",
           type: "checkbox",
           id: "gridCheck1"
-        }
-      }) : _c("input", {
-        staticClass: "form-check-input",
-        attrs: {
-          type: "checkbox",
-          id: "gridCheck1"
+        },
+        domProps: {
+          checked: Array.isArray(option.is_correct) ? _vm._i(option.is_correct, "1") > -1 : option.is_correct
+        },
+        on: {
+          change: function change($event) {
+            var $$a = option.is_correct,
+              $$el = $event.target,
+              $$c = $$el.checked ? true : false;
+            if (Array.isArray($$a)) {
+              var $$v = "1",
+                $$i = _vm._i($$a, $$v);
+              if ($$el.checked) {
+                $$i < 0 && _vm.$set(option, "is_correct", $$a.concat([$$v]));
+              } else {
+                $$i > -1 && _vm.$set(option, "is_correct", $$a.slice(0, $$i).concat($$a.slice($$i + 1)));
+              }
+            } else {
+              _vm.$set(option, "is_correct", $$c);
+            }
+          }
         }
       }), _vm._v(" "), _c("input", {
+        directives: [{
+          name: "model",
+          rawName: "v-model",
+          value: option.title,
+          expression: "option.title"
+        }],
         staticClass: "form-control",
         attrs: {
           type: "text"
         },
         domProps: {
           value: option.title
+        },
+        on: {
+          input: function input($event) {
+            if ($event.target.composing) return;
+            _vm.$set(option, "title", $event.target.value);
+          }
         }
       }), _vm._v(" "), question.options.length > 1 ? _c("button", {
         staticClass: "btn btn-danger btn-sm",
         on: {
           click: function click($event) {
             $event.preventDefault();
-            return _vm.remove_option(question.options, index);
+            return _vm.remove_option(question.options, serial);
           }
         }
       }, [_c("i", {
