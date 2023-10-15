@@ -33,7 +33,7 @@
                                             <!-- <router-link :to="{ name: 'CourseWhatquestionCreate', params: { id: question.id }}" class="dropdown-item">
                                                 <i class="fa text-info fa-eye mr-2"></i> <span>Details</span>
                                             </router-link> -->
-                                            <router-link :to="{ name: 'CourseForWhomEdit', params: { id: question.id }}" class="dropdown-item">
+                                            <router-link :to="{ name: 'QuizQuestionEdit', params: { question_id: question.id }}" class="dropdown-item">
                                                 <i class="fa text-warning fa-pencil mr-2"></i> <span>Edit</span>
                                             </router-link>
                                             <a href="javascript:void(0)" @click.prevent="deleteCourseForWhom(question.id)" class="dropdown-item">

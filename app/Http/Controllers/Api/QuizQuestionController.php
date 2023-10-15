@@ -45,7 +45,7 @@ class QuizQuestionController extends Controller
             $select = "*";
         }
         $data = QuizQuestion::where('id', $id)
-            ->select($select)
+            ->select($select)->with(['options'])
             ->first();
         if ($data) {
             return response()->json($data, 200);
@@ -73,30 +73,10 @@ class QuizQuestionController extends Controller
             ], 422);
         }
 
-        // dd($questions);
-        foreach ($questions as $key => $item) {
-            $question = QuizQuestion::where('title', $item->title)->first();
-
-            if($question != null) {
-                $question->quiz_question_topic_id = request()->topic_id;
-                $question->title = $item->title;
-                $question->topic_title = request()->topic_title;
-                $question->mark = $item->mark;
-                $question->is_multiple = $item->is_multiple;
-                $question->save();
-
-                QuizQuestionOption::where('question_id', $item->id)->delete();
-                foreach($item->options as $option) {
-                    $quiz_option = new QuizQuestionOption();
-                    $quiz_option->question_id = $question->id;
-                    $quiz_option->title = $option->title;
-                    $quiz_option->is_correct = $option->is_correct;
-                    $quiz_option->save();
-                }
-
-                return response()->json(['message' => 'question updated successfully']);
-
-            }else {
+        // for update
+        if(is_array($questions)) {
+            foreach ($questions as $key => $item) {
+                
                 $new_question = new QuizQuestion();
                 $new_question->quiz_question_topic_id = request()->topic_id;
                 $new_question->title = $item->title;
@@ -113,10 +93,32 @@ class QuizQuestionController extends Controller
                         $quiz_option->save();
                     }
                 }
+                
+            }
+            return response()->json(['message' => 'new question created successfully']);
+        }else {
+            $question = QuizQuestion::where('title', $questions->title)->first();
 
-                return response()->json(['message' => 'new question created successfully']);
+            if($question != null) {
+                $question->quiz_question_topic_id = request()->topic_id;
+                $question->title = $questions->title;
+                $question->topic_title = request()->topic_title;
+                $question->mark = $questions->mark;
+                $question->is_multiple = $questions->is_multiple;
+                $question->save();
+
+                QuizQuestionOption::where('question_id', $questions->id)->delete();
+                foreach($questions->options as $option) {
+                    $quiz_option = new QuizQuestionOption();
+                    $quiz_option->question_id = $question->id;
+                    $quiz_option->title = $option->title;
+                    $quiz_option->is_correct = $option->is_correct;
+                    $quiz_option->save();
+                }
+                return response()->json(['message' => 'question updated successfully']);
             }
         }
+        
         
 
         $data = new QuizQuestion();
