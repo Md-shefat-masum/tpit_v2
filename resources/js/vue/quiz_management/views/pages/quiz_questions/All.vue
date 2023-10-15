@@ -14,7 +14,8 @@
                             <tr>
                                 <td>sl</td>
                                 <td>Title</td>
-                                <td>Status</td>
+                                <td>Mark</td>
+                                <td>Question Type</td>
                                 <td>Actions</td>
                             </tr>
                         </thead>
@@ -22,7 +23,11 @@
                             <tr v-for="(question, index) in quiz_question.data" :key="index">
                                 <td><span class="text-primary">#{{ index + 1 }}</span></td>
                                 <td><span class="text-warning cursor_pointer">{{ question.title }}</span></td>
-                                <td><span class="badge">{{ question.status }}</span></td>
+                                <td><span class="badge">{{ question.mark }}</span></td>
+                                <td>
+                                    <span class="badge" v-if="question.is_multiple == 1">Multiple</span>
+                                    <span class="badge" v-else>Single</span>
+                                </td>
                                 <td>
                                     <div class="btn-group">
                                         <button class="btn btn-sm btn-outline-secondary dropdown-toggle" type="button"

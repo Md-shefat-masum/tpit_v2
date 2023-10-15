@@ -1262,7 +1262,11 @@ var render = function render() {
       staticClass: "text-warning cursor_pointer"
     }, [_vm._v(_vm._s(question.title))])]), _vm._v(" "), _c("td", [_c("span", {
       staticClass: "badge"
-    }, [_vm._v(_vm._s(question.status))])]), _vm._v(" "), _c("td", [_c("div", {
+    }, [_vm._v(_vm._s(question.mark))])]), _vm._v(" "), _c("td", [question.is_multiple == 1 ? _c("span", {
+      staticClass: "badge"
+    }, [_vm._v("Multiple")]) : _c("span", {
+      staticClass: "badge"
+    }, [_vm._v("Single")])]), _vm._v(" "), _c("td", [_c("div", {
       staticClass: "btn-group"
     }, [_vm._m(2, true), _vm._v(" "), _c("div", {
       staticClass: "dropdown-menu"
@@ -1305,7 +1309,7 @@ var staticRenderFns = [function () {
 }, function () {
   var _vm = this,
     _c = _vm._self._c;
-  return _c("thead", [_c("tr", [_c("td", [_vm._v("sl")]), _vm._v(" "), _c("td", [_vm._v("Title")]), _vm._v(" "), _c("td", [_vm._v("Status")]), _vm._v(" "), _c("td", [_vm._v("Actions")])])]);
+  return _c("thead", [_c("tr", [_c("td", [_vm._v("sl")]), _vm._v(" "), _c("td", [_vm._v("Title")]), _vm._v(" "), _c("td", [_vm._v("Mark")]), _vm._v(" "), _c("td", [_vm._v("Question Type")]), _vm._v(" "), _c("td", [_vm._v("Actions")])])]);
 }, function () {
   var _vm = this,
     _c = _vm._self._c;
