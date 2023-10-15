@@ -13,7 +13,7 @@ import QuizTopicDetails from "./views/pages/quiz_topic/Details.vue";
 
 import QuizQuestionLayout from "./views/pages/quiz_questions/QuizQuestionLayout.vue";
 import QuizQuestionAll from "./views/pages/quiz_questions/All.vue";
-import QuizQuestionCreate from "./views/pages/quiz_questions/Question.vue";
+import QuizQuestionCreate from "./views/pages/quiz_questions/Create.vue";
 import QuizQuestionEdit from "./views/pages/quiz_questions/Edit.vue";
 import QuizQuestionDetails from "./views/pages/quiz_questions/Details.vue";
 

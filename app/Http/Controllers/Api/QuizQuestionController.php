@@ -65,7 +65,7 @@ class QuizQuestionController extends Controller
             'topic_id' => ['required'],
         ]);
         $questions = json_decode(request()->question);
-
+        // dd($questions);
         if ($validator->fails()) {
             return response()->json([
                 'err_message' => 'validation error',
