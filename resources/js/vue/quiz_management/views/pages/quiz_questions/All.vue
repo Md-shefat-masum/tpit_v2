@@ -13,8 +13,10 @@
                         <thead>
                             <tr>
                                 <td>sl</td>
+                                <td>Topic Title</td>
                                 <td>Title</td>
                                 <td>Mark</td>
+                                <td>Right Answer</td>
                                 <td>Question Type</td>
                                 <td>Actions</td>
                             </tr>
@@ -22,8 +24,18 @@
                         <tbody v-if="quiz_question.data && quiz_question.data.length > 0">
                             <tr v-for="(question, index) in quiz_question.data" :key="index">
                                 <td><span class="text-primary">#{{ index + 1 }}</span></td>
+                                <td><span class="text-info cursor_pointer">{{ question.topic_title }}</span></td>
                                 <td><span class="text-warning cursor_pointer">{{ question.title }}</span></td>
                                 <td><span class="badge">{{ question.mark }}</span></td>
+                                <td>
+                                    <ul class="list-group list-group-flush">
+                                        <template v-for="(option, index) in question.options">
+                                            <li v-if="option.is_correct == 1" :key="index">
+                                                <span>{{ option.title }}</span>
+                                            </li>
+                                        </template>
+                                    </ul>
+                                </td>
                                 <td>
                                     <span class="badge" v-if="question.is_multiple == 1">Multiple</span>
                                     <span class="badge" v-else>Single</span>
@@ -93,9 +105,9 @@ export default {
         deleteCourseForWhom: async function(id) {
             let confirm = await window.s_confirm("Are you sure?");
             if (confirm) {
-                axios.post(`/api/v1/course/course-job-work/destroy`, {id: id}).then((response) => {
+                axios.post(`/api/v1/quiz-questions/destroy`, {id: id}).then((response) => {
                     // console.log(response.data);
-                    window.toaster("Course Job Work deleted successfully!");
+                    window.toaster("Quiz question deleted successfully!");
                     this.get_quiz_questions();
                 })
                 .catch((e) => {

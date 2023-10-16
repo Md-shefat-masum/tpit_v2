@@ -19,7 +19,7 @@
                                 <div class="col-md-12">
                                     <div class="form-group mb-2">
                                         <label class="form-label" for="topic">Topic</label>
-                                        <select name="topic" class="form-control" v-model="topic_id" @change="setTopicTitle(topic)" id="topic">
+                                        <select name="topic" class="form-control" v-model="topic_id" id="topic">
                                             <option v-for="(topic, index) in topics" :key="index" :value="topic.id">{{
                                                 topic.title }}</option>
                                         </select>
@@ -80,9 +80,9 @@
                                                     <div class="form-inline">
                                                         <div class="form-group">
                                                             <div class="input">
-                                                                <input class="form-check-input" value="1"
-                                                                    v-model="option.is_correct" type="checkbox"
-                                                                    id="gridCheck1">
+                                                                
+                                                                <input v-if="question.is_multiple == 1" class="form-check-input" value="1" v-model="option.is_correct" type="checkbox" id="gridCheck1">
+                                                                <input v-else class="form-check-input" value="1" v-model="option.is_correct" type="radio" id="gridCheck1">
                                                                 <!-- <input v-else class="form-check-input" type="checkbox" id="gridCheck1"> -->
                                                                 <input type="text" v-model="option.title"
                                                                     class="form-control">
@@ -151,21 +151,16 @@ export default {
             course_id: '',
             questions: [],
             topic_id: '',
-            topic_title: '',
             topics: [
 
             ]
         }
     },
     methods: {
-        setTopicTitle: async function(topic) {
-            this.topic_title = topic.title;
-        },
         store_question: async function () {
             let question_data = JSON.stringify(this.questions);
             let data = {
                 topic_id: this.topic_id,
-                topic_title: this.topic_title,
                 question: question_data
             }
 

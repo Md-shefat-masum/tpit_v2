@@ -2,7 +2,7 @@
     <div>
         <div class="card">
             <div class="card-header">
-                <h4 class="card-title">All Batches: 📓</h4>
+                <h4 class="card-title">All Quiz topic: 📓</h4>
             </div>
             <div class="card-body">
                 <router-link :to="{ name: 'QuizTopicCreate'}" class="btn btn-primary mb-2 float-right">

@@ -207,11 +207,11 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
             case 2:
               confirm = _context2.sent;
               if (confirm) {
-                axios.post("/api/v1/course/course-job-work/destroy", {
+                axios.post("/api/v1/quiz-questions/destroy", {
                   id: id
                 }).then(function (response) {
                   // console.log(response.data);
-                  window.toaster("Course Job Work deleted successfully!");
+                  window.toaster("Quiz question deleted successfully!");
                   _this2.get_quiz_questions();
                 })["catch"](function (e) {
                   console.log(e);
@@ -270,41 +270,22 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       course_id: '',
       questions: [],
       topic_id: '',
-      topic_title: '',
       topics: []
     };
   },
   methods: {
-    setTopicTitle: function () {
-      var _setTopicTitle = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee(topic) {
+    store_question: function () {
+      var _store_question = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee() {
+        var question_data, data;
         return _regeneratorRuntime().wrap(function _callee$(_context) {
           while (1) switch (_context.prev = _context.next) {
-            case 0:
-              this.topic_title = topic.title;
-            case 1:
-            case "end":
-              return _context.stop();
-          }
-        }, _callee, this);
-      }));
-      function setTopicTitle(_x) {
-        return _setTopicTitle.apply(this, arguments);
-      }
-      return setTopicTitle;
-    }(),
-    store_question: function () {
-      var _store_question = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2() {
-        var question_data, data;
-        return _regeneratorRuntime().wrap(function _callee2$(_context2) {
-          while (1) switch (_context2.prev = _context2.next) {
             case 0:
               question_data = JSON.stringify(this.questions);
               data = {
                 topic_id: this.topic_id,
-                topic_title: this.topic_title,
                 question: question_data
               };
-              _context2.next = 4;
+              _context.next = 4;
               return axios.post('/api/v1/quiz-questions/store', data).then(function (response) {
                 // localStorage.setItem('current_course', JSON.stringify(response?.data))
                 window.toaster(response === null || response === void 0 ? void 0 : response.data.message);
@@ -313,9 +294,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               });
             case 4:
             case "end":
-              return _context2.stop();
+              return _context.stop();
           }
-        }, _callee2, this);
+        }, _callee, this);
       }));
       function store_question() {
         return _store_question.apply(this, arguments);
@@ -323,12 +304,12 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       return store_question;
     }(),
     get_all_topics: function () {
-      var _get_all_topics = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee3() {
+      var _get_all_topics = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2() {
         var _this = this;
-        return _regeneratorRuntime().wrap(function _callee3$(_context3) {
-          while (1) switch (_context3.prev = _context3.next) {
+        return _regeneratorRuntime().wrap(function _callee2$(_context2) {
+          while (1) switch (_context2.prev = _context2.next) {
             case 0:
-              _context3.next = 2;
+              _context2.next = 2;
               return axios.get('/api/v1/quiz-topics/all-topic').then(function (response) {
                 _this.topics = response.data;
               })["catch"](function (e) {
@@ -336,9 +317,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               });
             case 2:
             case "end":
-              return _context3.stop();
+              return _context2.stop();
           }
-        }, _callee3);
+        }, _callee2);
       }));
       function get_all_topics() {
         return _get_all_topics.apply(this, arguments);
@@ -396,20 +377,20 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
   },
   computed: {},
   created: function () {
-    var _created = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee4() {
-      return _regeneratorRuntime().wrap(function _callee4$(_context4) {
-        while (1) switch (_context4.prev = _context4.next) {
+    var _created = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee3() {
+      return _regeneratorRuntime().wrap(function _callee3$(_context3) {
+        while (1) switch (_context3.prev = _context3.next) {
           case 0:
-            _context4.next = 2;
+            _context3.next = 2;
             return this.get_all_topics();
           case 2:
-            _context4.next = 4;
+            _context3.next = 4;
             return this.append_new_question();
           case 4:
           case "end":
-            return _context4.stop();
+            return _context3.stop();
         }
-      }, _callee4, this);
+      }, _callee3, this);
     }));
     function created() {
       return _created.apply(this, arguments);
@@ -1096,7 +1077,16 @@ var render = function render() {
     staticClass: "card"
   }, [_vm._m(0), _vm._v(" "), _c("div", {
     staticClass: "card-body"
-  }, [_c("div", {
+  }, [_c("router-link", {
+    staticClass: "btn btn-primary mb-2 float-right",
+    attrs: {
+      to: {
+        name: "CourseBatchCreate"
+      }
+    }
+  }, [_c("i", {
+    staticClass: "fa-solid fa-plus mr-1"
+  }), _vm._v(" "), _c("span", [_vm._v("Create")])]), _vm._v(" "), _c("div", {
     staticClass: "table-responsive"
   }, [_c("table", {
     staticClass: "table table-bordered table-hover"
@@ -1120,7 +1110,7 @@ var render = function render() {
     }, [_c("i", {
       staticClass: "fa text-warning fa-pencil mr-2"
     }), _vm._v(" "), _c("span", [_vm._v("Edit")])])])])])]);
-  }), 0) : _vm._e()])])])])]);
+  }), 0) : _vm._e()])])], 1)])]);
 };
 var staticRenderFns = [function () {
   var _vm = this,
@@ -1259,10 +1249,18 @@ var render = function render() {
     }, [_c("td", [_c("span", {
       staticClass: "text-primary"
     }, [_vm._v("#" + _vm._s(index + 1))])]), _vm._v(" "), _c("td", [_c("span", {
+      staticClass: "text-info cursor_pointer"
+    }, [_vm._v(_vm._s(question.topic_title))])]), _vm._v(" "), _c("td", [_c("span", {
       staticClass: "text-warning cursor_pointer"
     }, [_vm._v(_vm._s(question.title))])]), _vm._v(" "), _c("td", [_c("span", {
       staticClass: "badge"
-    }, [_vm._v(_vm._s(question.mark))])]), _vm._v(" "), _c("td", [question.is_multiple == 1 ? _c("span", {
+    }, [_vm._v(_vm._s(question.mark))])]), _vm._v(" "), _c("td", [_c("ul", {
+      staticClass: "list-group list-group-flush"
+    }, [_vm._l(question.options, function (option, index) {
+      return [option.is_correct == 1 ? _c("li", {
+        key: index
+      }, [_c("span", [_vm._v(_vm._s(option.title))])]) : _vm._e()];
+    })], 2)]), _vm._v(" "), _c("td", [question.is_multiple == 1 ? _c("span", {
       staticClass: "badge"
     }, [_vm._v("Multiple")]) : _c("span", {
       staticClass: "badge"
@@ -1309,7 +1307,7 @@ var staticRenderFns = [function () {
 }, function () {
   var _vm = this,
     _c = _vm._self._c;
-  return _c("thead", [_c("tr", [_c("td", [_vm._v("sl")]), _vm._v(" "), _c("td", [_vm._v("Title")]), _vm._v(" "), _c("td", [_vm._v("Mark")]), _vm._v(" "), _c("td", [_vm._v("Question Type")]), _vm._v(" "), _c("td", [_vm._v("Actions")])])]);
+  return _c("thead", [_c("tr", [_c("td", [_vm._v("sl")]), _vm._v(" "), _c("td", [_vm._v("Topic Title")]), _vm._v(" "), _c("td", [_vm._v("Title")]), _vm._v(" "), _c("td", [_vm._v("Mark")]), _vm._v(" "), _c("td", [_vm._v("Right Answer")]), _vm._v(" "), _c("td", [_vm._v("Question Type")]), _vm._v(" "), _c("td", [_vm._v("Actions")])])]);
 }, function () {
   var _vm = this,
     _c = _vm._self._c;
@@ -1403,7 +1401,7 @@ var render = function render() {
       id: "topic"
     },
     on: {
-      change: [function ($event) {
+      change: function change($event) {
         var $$selectedVal = Array.prototype.filter.call($event.target.options, function (o) {
           return o.selected;
         }).map(function (o) {
@@ -1411,9 +1409,7 @@ var render = function render() {
           return val;
         });
         _vm.topic_id = $event.target.multiple ? $$selectedVal : $$selectedVal[0];
-      }, function ($event) {
-        return _vm.setTopicTitle(_vm.topic);
-      }]
+      }
     }
   }, _vm._l(_vm.topics, function (topic, index) {
     return _c("option", {
@@ -1556,7 +1552,7 @@ var render = function render() {
         staticClass: "form-group"
       }, [_c("div", {
         staticClass: "input"
-      }, [_c("input", {
+      }, [question.is_multiple == 1 ? _c("input", {
         directives: [{
           name: "model",
           rawName: "v-model",
@@ -1588,6 +1584,27 @@ var render = function render() {
             } else {
               _vm.$set(option, "is_correct", $$c);
             }
+          }
+        }
+      }) : _c("input", {
+        directives: [{
+          name: "model",
+          rawName: "v-model",
+          value: option.is_correct,
+          expression: "option.is_correct"
+        }],
+        staticClass: "form-check-input",
+        attrs: {
+          value: "1",
+          type: "radio",
+          id: "gridCheck1"
+        },
+        domProps: {
+          checked: _vm._q(option.is_correct, "1")
+        },
+        on: {
+          change: function change($event) {
+            return _vm.$set(option, "is_correct", "1");
           }
         }
       }), _vm._v(" "), _c("input", {
@@ -1972,7 +1989,7 @@ var render = function render() {
       staticClass: "form-group"
     }, [_c("div", {
       staticClass: "input"
-    }, [_c("input", {
+    }, [_vm.question.is_multiple == 1 ? _c("input", {
       directives: [{
         name: "model",
         rawName: "v-model",
@@ -2004,6 +2021,27 @@ var render = function render() {
           } else {
             _vm.$set(option, "is_correct", $$c);
           }
+        }
+      }
+    }) : _c("input", {
+      directives: [{
+        name: "model",
+        rawName: "v-model",
+        value: option.is_correct,
+        expression: "option.is_correct"
+      }],
+      staticClass: "form-check-input",
+      attrs: {
+        value: "1",
+        type: "radio",
+        id: "gridCheck1"
+      },
+      domProps: {
+        checked: _vm._q(option.is_correct, "1")
+      },
+      on: {
+        change: function change($event) {
+          return _vm.$set(option, "is_correct", "1");
         }
       }
     }), _vm._v(" "), _c("input", {
@@ -2189,7 +2227,7 @@ var staticRenderFns = [function () {
     staticClass: "card-header"
   }, [_c("h4", {
     staticClass: "card-title"
-  }, [_vm._v("All Batches: 📓")])]);
+  }, [_vm._v("All Quiz topic: 📓")])]);
 }, function () {
   var _vm = this,
     _c = _vm._self._c;

@@ -5,9 +5,9 @@
                 <h4 class="card-title">All quizes List: 🚀</h4>
             </div>
             <div class="card-body">
-                <!-- <router-link :to="{ name: 'CourseBatchCreate'}" class="btn btn-primary mb-2 float-right">
+                <router-link :to="{ name: 'CourseBatchCreate'}" class="btn btn-primary mb-2 float-right">
                     <i class="fa-solid fa-plus mr-1"></i> <span>Create</span>
-                </router-link> -->
+                </router-link>
                 <div class="table-responsive">
                     <table class="table table-bordered table-hover">
                         <thead>
