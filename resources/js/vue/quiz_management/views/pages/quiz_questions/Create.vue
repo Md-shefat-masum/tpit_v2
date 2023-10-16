@@ -2,7 +2,7 @@
     <div class="custom_scroll">
         <div class="card list_card">
             <div class="card-header">
-                <h4>Create Quiz</h4>
+                <h4>Create Quiz Question</h4>
                 <div class="btns">
                     <a @click="$router.go(-1)" class="btn rounded-pill btn-outline-warning">
                         <i class="fa fa-arrow-left me-5px"></i>

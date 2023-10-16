@@ -2,7 +2,10 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 
 import QuizLayout from './views/pages/Layout.vue'
-import AllQuiz from "./views/pages/AllQuiz.vue";
+import AllQuiz from "./views/pages/quiz/AllQuiz.vue";
+import CreateQuiz from "./views/pages/quiz/Create.vue";
+import EditQuiz from "./views/pages/quiz/Edit.vue";
+import DetailsQuiz from "./views/pages/quiz/Details.vue";
 
 // course batch
 import QuizTopicLayout from "./views/pages/quiz_topic/QuizTopicLayout.vue";
@@ -33,6 +36,11 @@ const routes = [
                 path: 'quiz',
                 name: 'AllQuiz',
                 component: AllQuiz,
+            },
+            {
+                path: 'create',
+                name: 'CreateQuiz',
+                component: CreateQuiz,
             },
 
             {
