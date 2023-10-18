@@ -14,13 +14,10 @@ class QuizQuestion extends Model
         return $this->belongsTo(QuizQuestionTopic::class, 'quiz_question_topic_id');
     }
 
-    public function options() {
-        return $this->hasMany(QuizQuestionOption::class,'question_id');
-    }
 
     public function quiz() {
         return $this->belongsToMany(Quiz::class);
     }
 
-    
+
 }

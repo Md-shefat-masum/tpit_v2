@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Models\Quiz\Quiz;
-use App\Models\Quiz\QuizQuestion;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
@@ -39,7 +38,6 @@ class QuizController extends Controller
         }
         $data = Quiz::where('id', $id)
             ->select($select)
-            ->with(['questions'])
             ->first();
         if ($data) {
             return response()->json($data, 200);
@@ -55,7 +53,6 @@ class QuizController extends Controller
 
     public function store()
     {
-        // dd(request()->all());
         $validator = Validator::make(request()->all(), [
             'title' => ['required'],
         ]);
@@ -73,7 +70,7 @@ class QuizController extends Controller
         $data->title = request()->title;
         $data->save();
         $data->questions()->attach($question_ids);
-        
+
         // foreach ($question_ids as $key => $question_id) {
         //     $quiz_question = QuizQuestion::where('id', $question_id)->first();
         //     // dd($quiz_question);
@@ -107,7 +104,7 @@ class QuizController extends Controller
 
 
         $data->title = request()->title;
-        
+
         $data->save();
 
         return response()->json($data, 200);

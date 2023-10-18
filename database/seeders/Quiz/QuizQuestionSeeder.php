@@ -17,7 +17,7 @@ class QuizQuestionSeeder extends Seeder
         QuizQuestion::truncate();
 
         $data = new QuizQuestion();
-        
+
         $data->quiz_id = '1';
         $data->quiz_question_topic_id = '1';
         $data->title = 'Who is the father of C programming?';
@@ -26,7 +26,7 @@ class QuizQuestionSeeder extends Seeder
         $data->is_multiple = '0';
         $data->save();
         $data->quiz()->attach([1]);
-    
+
         $data = new QuizQuestion();
         $data->quiz_id = '1';
         $data->quiz_question_topic_id = '1';
@@ -36,7 +36,7 @@ class QuizQuestionSeeder extends Seeder
         $data->is_multiple = '1';
         $data->save();
         $data->quiz()->attach([1]);
-    
+
         $data = new QuizQuestion();
         $data->quiz_id = '1';
         $data->quiz_question_topic_id = '1';
@@ -46,7 +46,7 @@ class QuizQuestionSeeder extends Seeder
         $data->is_multiple = '0';
         $data->save();
         $data->quiz()->attach([1]);
-    
+
         $data = new QuizQuestion();
         $data->quiz_id = '2';
         $data->quiz_question_topic_id = '2';
@@ -56,7 +56,7 @@ class QuizQuestionSeeder extends Seeder
         $data->is_multiple = '0';
         $data->save();
         $data->quiz()->attach([2]);
-    
+
         $data = new QuizQuestion();
         $data->quiz_id = '2';
         $data->quiz_question_topic_id = '2';
@@ -66,7 +66,7 @@ class QuizQuestionSeeder extends Seeder
         $data->is_multiple = '1';
         $data->save();
         $data->quiz()->attach([2]);
-    
+
         $data = new QuizQuestion();
         $data->quiz_id = '2';
         $data->quiz_question_topic_id = '2';
@@ -76,7 +76,7 @@ class QuizQuestionSeeder extends Seeder
         $data->is_multiple = '0';
         $data->save();
         $data->quiz()->attach([2]);
-    
+
         $data = new QuizQuestion();
         $data->quiz_id = '3';
         $data->quiz_question_topic_id = '3';
@@ -86,7 +86,7 @@ class QuizQuestionSeeder extends Seeder
         $data->is_multiple = '0';
         $data->save();
         $data->quiz()->attach([3]);
-    
+
         $data = new QuizQuestion();
         $data->quiz_id = '3';
         $data->quiz_question_topic_id = '3';

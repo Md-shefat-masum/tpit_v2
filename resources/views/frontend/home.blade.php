@@ -418,14 +418,14 @@
 
     <script>
         var seminar_modal = new bootstrap.Modal(document.getElementById('seminar_modal'));
-    
+
         function showSeminarModel(seminar) {
             window.seminar_id = seminar.id;
             document.getElementById('seminar_form').reset();
             seminar_modal.toggle();
             // console.log(seminar);
         }
-    
+
         function registerSeminar(event) {
             event.preventDefault();
             let formData = new FormData(event.target);
@@ -447,7 +447,7 @@
                     error_response(res.data)
                 }
                 if (res.status === 200) {
-                    
+
                     window.toaster("Registration for the seminar submitted!");
                     seminar_modal.toggle();
                     document.getElementById('seminar_form').reset();
