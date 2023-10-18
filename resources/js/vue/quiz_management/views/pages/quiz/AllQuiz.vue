@@ -31,6 +31,9 @@
                                             <a class="dropdown-item" @click.prevent="quiz_edit(quiz)">
                                                 <i class="fa text-warning fa-pencil mr-2"></i> <span>Edit</span>
                                             </a>
+                                            <router-link :to="{ name: 'DetailsQuiz' , params: { quiz_id: quiz.id }}" class="dropdown-item">
+                                                <i class="fa text-info fa-eye mr-2"></i> <span>Details</span>
+                                            </router-link>
                                         </div>
                                     </div>
                                     

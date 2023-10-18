@@ -42,6 +42,11 @@ const routes = [
                 name: 'CreateQuiz',
                 component: CreateQuiz,
             },
+            {
+                path: 'details/:quiz_id',
+                name: 'DetailsQuiz',
+                component: DetailsQuiz,
+            },
 
             {
                 path: 'topic',

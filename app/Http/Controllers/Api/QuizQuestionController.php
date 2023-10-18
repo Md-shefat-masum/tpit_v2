@@ -13,18 +13,29 @@ class QuizQuestionController extends Controller
 {
     public function all()
     {
-        $paginate = (int) request()->paginate ?? 10;
+        // dd(request()->all());
+        if(request()->has('paginate')) {
+            $paginate = (int) request()->paginate;
+        }else {
+            $paginate = 10;
+        }
+        
         $orderBy = request()->orderBy ?? 'id';
         $orderByType = request()->orderByType ?? 'ASC';
-
         $query = QuizQuestion::orderBy($orderBy, $orderByType);
 
         if (request()->has('search_key')) {
             $key = request()->search_key;
             $query->where(function ($q) use ($key) {
                 return $q->where('id', '%' . $key . '%')
-                    ->orWhere('title', '%' . $key . '%');
+                    ->orWhere('title', 'LIKE', '%' . $key . '%')
+                    ->orWhere('topic_title', 'LIKE', '%' . $key . '%');
             });
+        }
+
+        if(request()->has('topicID')) {
+            $topic_id = (int) request()->topicID;
+            $query->where('quiz_question_topic_id', $topic_id);
         }
 
         $datas = $query->with(['options'])->paginate($paginate);

@@ -19,7 +19,7 @@
                                 <div class="col-md-12">
                                     <div class="form-group mb-2">
                                         <label class="form-label" for="topic">Quiz title</label>
-                                        <input type="text" name="quiz_title" id="quiz_title" class="form-control">
+                                        <input v-model="quiz_title" type="text" name="quiz_title" id="quiz_title" class="form-control">
                                     </div>
                                 </div>
                                 <div class="col-md-12">
@@ -28,7 +28,7 @@
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label class="form-label" for="topic">Select Topic</label>
-                                                    <select name="topic" class="form-control" v-model="topic_id" id="topic">
+                                                    <select name="topic" @change.prevent="filterBytopic($event)" class="form-control" v-model="topic_id" id="topic">
                                                         <option v-for="(topic, index) in topics" :key="index"
                                                             :value="topic.id">{{
                                                                 topic.title }}</option>
@@ -38,7 +38,7 @@
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label class="form-label" for="topic">Search</label>
-                                                    <input type="text" name="search" id="search" class="form-control">
+                                                    <input @keyup.prevent="filterBySearch($event)" type="text" name="search" id="search" class="form-control">
                                                 </div>
                                             </div>
                                         </div>
@@ -55,7 +55,7 @@
                                                 <tr v-for="(question, index) in questions.data" :key="index">
                                                     <td>
                                                         <div class="custom-control custom-checkbox">
-                                                            <input type="checkbox" class="custom-control-input"
+                                                            <input type="checkbox" @click="SetQuestionIds(question)" class="custom-control-input"
                                                                 :id="`question_${question.id}`">
                                                             <label class="custom-control-label"
                                                                 :for="`question_${question.id}`"></label>
@@ -79,6 +79,7 @@
                                                 </tr>
                                             </tbody>
                                         </table>
+                                        <pagination class="mt-2" v-if="questions" :data="questions" :method="get_all_questions" />
                                     </div>
                                 </div>
                             </div>
@@ -105,26 +106,47 @@ export default {
             topic_id: '',
             topics: [
 
-            ]
+            ],
+            search_key: '',
+            question_ids: [
+
+            ],
+            quiz_title: ''
         }
     },
     methods: {
         store_quiz: async function () {
-            let quiz_data = JSON.stringify(this.questions);
+            let question_ids = JSON.stringify(this.question_ids);
             let data = {
-                topic_id: this.topic_id,
-                quiz: quiz_data
+                question_ids: question_ids,
+                title: this.quiz_title
             }
 
             await axios.post('/api/v1/quiz/store', data).then((response) => {
                 // localStorage.setItem('current_course', JSON.stringify(response?.data))
                 window.toaster(response?.data.message);
-
-
             })
-                .catch((e) => {
-                    console.log(e);
-                });
+            .catch((e) => {
+                console.log(e);
+            });
+        },
+        SetQuestionIds: async function(question) {
+            console.log(this.question_ids);
+            if(!this.question_ids.includes(question.id)) {
+                this.question_ids.push(question.id)
+            }else {
+                let index = this.question_ids.indexOf(question.id);
+                this.question_ids.splice(index, 1);
+            }
+        },
+        filterBytopic: async function(event) {
+            this.topic_id = event.target.value;
+            this.get_all_questions();
+        },
+
+        filterBySearch: async function(event) {
+            this.search_key = event.target.value;
+            this.get_all_questions();
         },
 
         get_all_topics: async function () {
@@ -136,13 +158,27 @@ export default {
                 });
         },
 
-        get_all_questions: async function () {
-            await axios.get('/api/v1/quiz-questions/all').then((response) => {
+        get_all_questions: async function (url) {
+            // console.log(page);
+            if(!url) {
+                url = "/api/v1/quiz-questions/all?";
+            }
+
+            if (this.search_key && this.search_key != '') {
+                url += `search_key=${this.search_key}`;
+            }
+
+            if (this.topic_id && this.topic_id != '') {
+                url += `&topicID=${this.topic_id}`;
+            }
+            
+            await axios.get(url).then((response) => {
+                // '/asset/index?page='+page
                 this.questions = response.data;
             })
-                .catch((e) => {
-                    console.log(e);
-                });
+            .catch((e) => {
+                console.log(e);
+            });
         },
     },
     computed: {
