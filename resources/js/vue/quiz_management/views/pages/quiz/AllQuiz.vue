@@ -2,7 +2,7 @@
     <div>
         <div class="card">
             <div class="card-header">
-                <h4 class="card-title">All quizes List: 🚀</h4>
+                <h4 class="card-title">All quiz: 🚀</h4>
             </div>
             <div class="card-body">
                 <router-link :to="{ name: 'CreateQuiz'}" class="btn btn-primary mb-2 float-right">
@@ -34,6 +34,9 @@
                                             <router-link :to="{ name: 'DetailsQuiz' , params: { quiz_id: quiz.id }}" class="dropdown-item">
                                                 <i class="fa text-info fa-eye mr-2"></i> <span>Details</span>
                                             </router-link>
+                                            <a class="dropdown-item" @click.prevent="deleteQuiz(quiz.id)">
+                                                <i class="fa text-danger fa-trash mr-2"></i> <span>Delete</span>
+                                            </a>
                                         </div>
                                     </div>
                                     
@@ -75,6 +78,20 @@ export default {
                     //     location.href = '/';
                     // }
                 });
+        },
+        deleteQuiz: async function(id) {
+            let confirm = await window.s_confirm("Are you sure?");
+            if (confirm) {
+                axios.post(`/api/v1/quiz/destroy`, {id: id}).then((response) => {
+                    // console.log(response.data);
+                    window.toaster("Quiz deleted successfully!");
+                    this.get_all_quiz();
+                })
+                .catch((e) => {
+                    console.log(e);
+                });
+            }
+            
         }
     },
     computed: {

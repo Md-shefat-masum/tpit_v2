@@ -10,6 +10,6 @@ class Quiz extends Model
     use HasFactory;
 
     public function questions() {
-        return $this->hasMany(QuizQuestion::class,'quiz_id');
+        return $this->belongsToMany(QuizQuestion::class);
     }
 }

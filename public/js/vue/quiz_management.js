@@ -83,21 +83,54 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         return _get_all_quiz.apply(this, arguments);
       }
       return get_all_quiz;
+    }(),
+    deleteQuiz: function () {
+      var _deleteQuiz = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee3(id) {
+        var _this2 = this;
+        var confirm;
+        return _regeneratorRuntime().wrap(function _callee3$(_context3) {
+          while (1) switch (_context3.prev = _context3.next) {
+            case 0:
+              _context3.next = 2;
+              return window.s_confirm("Are you sure?");
+            case 2:
+              confirm = _context3.sent;
+              if (confirm) {
+                axios.post("/api/v1/quiz/destroy", {
+                  id: id
+                }).then(function (response) {
+                  // console.log(response.data);
+                  window.toaster("Quiz deleted successfully!");
+                  _this2.get_all_quiz();
+                })["catch"](function (e) {
+                  console.log(e);
+                });
+              }
+            case 4:
+            case "end":
+              return _context3.stop();
+          }
+        }, _callee3);
+      }));
+      function deleteQuiz(_x3) {
+        return _deleteQuiz.apply(this, arguments);
+      }
+      return deleteQuiz;
     }()
   },
   computed: {},
   created: function () {
-    var _created = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee3() {
-      return _regeneratorRuntime().wrap(function _callee3$(_context3) {
-        while (1) switch (_context3.prev = _context3.next) {
+    var _created = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee4() {
+      return _regeneratorRuntime().wrap(function _callee4$(_context4) {
+        while (1) switch (_context4.prev = _context4.next) {
           case 0:
-            _context3.next = 2;
+            _context4.next = 2;
             return this.get_all_quiz();
           case 2:
           case "end":
-            return _context3.stop();
+            return _context4.stop();
         }
-      }, _callee3, this);
+      }, _callee4, this);
     }));
     function created() {
       return _created.apply(this, arguments);
@@ -454,7 +487,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       course_id: '',
       questions: [],
       topic_id: '',
-      topics: []
+      topic_title: '',
+      question_id: '',
+      topics: [],
+      quiz_edit: ''
     };
   },
   methods: {
@@ -1238,8 +1274,8 @@ var render = function render() {
         }
       }
     }, [_c("i", {
-      staticClass: "fa text-danger fa-trash mr-2"
-    }), _vm._v(" "), _c("span", [_vm._v("Delete")])])], 1)])])]);
+      staticClass: "fa text-info fa-eye mr-2"
+    }), _vm._v(" "), _c("span", [_vm._v("Details")])])], 1)])])]);
   }), 0) : _vm._e()])])], 1)])]);
 };
 var staticRenderFns = [function () {
@@ -1249,7 +1285,7 @@ var staticRenderFns = [function () {
     staticClass: "card-header"
   }, [_c("h4", {
     staticClass: "card-title"
-  }, [_vm._v("All Quiz Quesions: ")])]);
+  }, [_vm._v("All quizes List: 🚀")])]);
 }, function () {
   var _vm = this,
     _c = _vm._self._c;
@@ -1616,6 +1652,412 @@ var render = function render() {
       staticClass: "fa fa-trash mr-1"
     }), _vm._v("Remove Question")]) : _vm._e()])])])])]);
   }), 0)])])])]), _vm._v(" "), _vm._m(0)])])]);
+};
+var staticRenderFns = [function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("div", {
+    staticClass: "card-footer text-center"
+  }, [_c("button", {
+    staticClass: "btn btn-outline-info",
+    attrs: {
+      type: "submit"
+    }
+  }, [_c("i", {
+    staticClass: "fa fa-upload"
+  }), _vm._v("\n                    Submit\n                ")])]);
+}];
+render._withStripped = true;
+
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/lib/loaders/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/vue/quiz_management/views/pages/quiz_questions/Details.vue?vue&type=template&id=1989f02b&":
+/*!*************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/lib/loaders/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/vue/quiz_management/views/pages/quiz_questions/Details.vue?vue&type=template&id=1989f02b& ***!
+  \*************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   render: function() { return /* binding */ render; },
+/* harmony export */   staticRenderFns: function() { return /* binding */ staticRenderFns; }
+/* harmony export */ });
+var render = function render() {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("div", [_c("div", {
+    staticClass: "card list_card"
+  }, [_c("div", {
+    staticClass: "card-header"
+  }, [_c("h4", [_vm._v("Course Details")]), _vm._v(" "), _c("div", {
+    staticClass: "btns"
+  }, [_c("a", {
+    staticClass: "btn rounded-pill btn-outline-warning",
+    attrs: {
+      href: ""
+    },
+    on: {
+      click: function click($event) {
+        $event.preventDefault();
+        return _vm.$router.push({
+          name: "CourseBatchALL"
+        });
+      }
+    }
+  }, [_c("i", {
+    staticClass: "fa fa-arrow-left me-5px"
+  }), _vm._v(" "), _c("span", [_vm._v("\n                        Back\n                    ")])])])]), _vm._v(" "), _c("div", {
+    staticClass: "card-body pb-5"
+  }, [_c("div", {
+    staticClass: "row justify-content-center"
+  }, [_c("div", {
+    staticClass: "col-lg-8"
+  }, [_c("table", {
+    staticClass: "table table-bordered details_table"
+  }, [_c("tr", [_c("td", [_vm._v("id")]), _vm._v(" "), _c("td", [_vm._v(_vm._s(_vm.batch_details.id))])]), _vm._v(" "), _c("tr", [_c("td", [_vm._v("Course name:")]), _vm._v(" "), _c("td", [_vm._v(_vm._s(_vm.batch_details.course.title))])]), _vm._v(" "), _c("tr", [_c("td", [_vm._v("Admission Start Date")]), _vm._v(" "), _c("td", [_vm._v(_vm._s(_vm.batch_details.admission_start_date))])]), _vm._v(" "), _c("tr", [_c("td", [_vm._v("Admission End Date")]), _vm._v(" "), _c("td", [_vm._v(_vm._s(_vm.batch_details.admission_end_date))])]), _vm._v(" "), _c("tr", [_c("td", [_vm._v("Student limit")]), _vm._v(" "), _c("td", [_vm._v(_vm._s(_vm.batch_details.batch_student_limit))])]), _vm._v(" "), _c("tr", [_c("td", [_vm._v("Seat booked ")]), _vm._v(" "), _c("td", [_vm._v(_vm._s(_vm.batch_details.seat_booked))])]), _vm._v(" "), _c("tr", [_c("td", [_vm._v("Seat booked percent ")]), _vm._v(" "), _c("td", [_vm._v(_vm._s(_vm.batch_details.booked_percent) + " %")])]), _vm._v(" "), _c("tr", [_c("td", [_vm._v("Price ")]), _vm._v(" "), _c("td", [_vm._v(_vm._s(_vm.batch_details.course_price))])]), _vm._v(" "), _c("tr", [_c("td", [_vm._v("Discount ")]), _vm._v(" "), _c("td", [_vm._v(_vm._s(_vm.batch_details.course_discount) + " ")])]), _vm._v(" "), _c("tr", [_c("td", [_vm._v("Discount Price ")]), _vm._v(" "), _c("td", [_vm._v(_vm._s(_vm.batch_details.after_discount_price) + " ")])]), _vm._v(" "), _c("tr", [_c("td", [_vm._v("Class Days ")]), _vm._v(" "), _c("td", [_vm._v(_vm._s(_vm.batch_details.class_days) + " ")])]), _vm._v(" "), _c("tr", [_c("td", [_vm._v("Class Start time ")]), _vm._v(" "), _c("td", [_vm._v(_vm._s(_vm.batch_details.class_start_time) + " ")])]), _vm._v(" "), _c("tr", [_c("td", [_vm._v("Class Start time ")]), _vm._v(" "), _c("td", [_vm._v(_vm._s(_vm.batch_details.class_end_time) + " ")])]), _vm._v(" "), _c("tr", [_c("td", [_vm._v("status ")]), _vm._v(" "), _c("td", [_vm.batch_details.status == "active" ? _c("span", {
+    staticClass: "badge bg-label-success me-1"
+  }, [_vm._v("active")]) : _vm._e(), _vm._v(" "), _vm.batch_details.status == "inactive" ? _c("span", {
+    staticClass: "badge bg-label-success me-1"
+  }, [_vm._v("deactive")]) : _vm._e()])])])])])])])]);
+};
+var staticRenderFns = [];
+render._withStripped = true;
+
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/lib/loaders/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/vue/quiz_management/views/pages/quiz_questions/Edit.vue?vue&type=template&id=b9f0ce1e&":
+/*!**********************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/lib/loaders/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/vue/quiz_management/views/pages/quiz_questions/Edit.vue?vue&type=template&id=b9f0ce1e& ***!
+  \**********************************************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   render: function() { return /* binding */ render; },
+/* harmony export */   staticRenderFns: function() { return /* binding */ staticRenderFns; }
+/* harmony export */ });
+var render = function render() {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("div", {
+    staticClass: "custom_scroll"
+  }, [_c("div", {
+    staticClass: "card list_card"
+  }, [_c("div", {
+    staticClass: "card-header"
+  }, [_c("h4", [_vm._v("Edit Quiz")]), _vm._v(" "), _c("div", {
+    staticClass: "btns"
+  }, [_c("a", {
+    staticClass: "btn rounded-pill btn-outline-warning",
+    on: {
+      click: function click($event) {
+        return _vm.$router.go(-1);
+      }
+    }
+  }, [_c("i", {
+    staticClass: "fa fa-arrow-left me-5px"
+  }), _vm._v("\n                    Back\n                ")])])]), _vm._v(" "), _c("form", {
+    staticClass: "user_create_form",
+    on: {
+      keyup: function keyup($event) {
+        if (!$event.type.indexOf("key") && _vm._k($event.keyCode, "enter", 13, $event.key, "Enter")) return null;
+        return _vm.store_question($event.target);
+      },
+      submit: function submit($event) {
+        $event.preventDefault();
+        return _vm.store_question($event.target);
+      }
+    }
+  }, [_c("div", {
+    staticClass: "card-body"
+  }, [_c("div", {
+    staticClass: "row justify-content-center"
+  }, [_c("div", {
+    staticClass: "col-xl-10 col-12"
+  }, [_c("div", {
+    staticClass: "row"
+  }, [_c("div", {
+    staticClass: "col-md-12"
+  }, [_c("div", {
+    staticClass: "form-group mb-2"
+  }, [_c("label", {
+    staticClass: "form-label",
+    attrs: {
+      "for": "topic"
+    }
+  }, [_vm._v("Topic")]), _vm._v(" "), _c("select", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.topic_id,
+      expression: "topic_id"
+    }],
+    staticClass: "form-control",
+    attrs: {
+      name: "topic",
+      id: "topic"
+    },
+    on: {
+      change: [function ($event) {
+        var $$selectedVal = Array.prototype.filter.call($event.target.options, function (o) {
+          return o.selected;
+        }).map(function (o) {
+          var val = "_value" in o ? o._value : o.value;
+          return val;
+        });
+        _vm.topic_id = $event.target.multiple ? $$selectedVal : $$selectedVal[0];
+      }, function ($event) {
+        return _vm.setTopicTitle(_vm.topic);
+      }]
+    }
+  }, _vm._l(_vm.topics, function (topic, index) {
+    return _c("option", {
+      key: index,
+      domProps: {
+        value: topic.id
+      }
+    }, [_vm._v(_vm._s(topic.title))]);
+  }), 0)])]), _vm._v(" "), _c("div", {
+    staticClass: "col-md-12"
+  }, [_c("div", {
+    staticClass: "border boder-primary p-1"
+  }, [_c("div", {
+    staticClass: "form-group mb-2"
+  }, [_c("h4", [_vm._v("Question " + _vm._s(_vm.question.id))]), _vm._v(" "), _c("label", {
+    attrs: {
+      "for": "question_title"
+    }
+  }, [_vm._v("title")]), _vm._v(" "), _c("div", {
+    staticClass: "input mb-2"
+  }, [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.question.title,
+      expression: "question.title"
+    }],
+    staticClass: "form-control",
+    attrs: {
+      type: "text",
+      id: "question_title"
+    },
+    domProps: {
+      value: _vm.question.title
+    },
+    on: {
+      input: function input($event) {
+        if ($event.target.composing) return;
+        _vm.$set(_vm.question, "title", $event.target.value);
+      }
+    }
+  })]), _vm._v(" "), _c("div", {
+    staticClass: "form-row"
+  }, [_c("div", {
+    staticClass: "form-group col-md-6"
+  }, [_c("div", {
+    staticClass: "input"
+  }, [_c("label", {
+    attrs: {
+      "for": "mark"
+    }
+  }, [_vm._v("Mark")]), _vm._v(" "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.question.mark,
+      expression: "question.mark"
+    }],
+    staticClass: "form-control",
+    attrs: {
+      type: "text",
+      id: "mark"
+    },
+    domProps: {
+      value: _vm.question.mark
+    },
+    on: {
+      input: function input($event) {
+        if ($event.target.composing) return;
+        _vm.$set(_vm.question, "mark", $event.target.value);
+      }
+    }
+  })])]), _vm._v(" "), _c("div", {
+    staticClass: "form-group col-md-6"
+  }, [_c("div", {
+    staticClass: "input"
+  }, [_c("label", {
+    attrs: {
+      "for": "mark"
+    }
+  }, [_vm._v("Question type")]), _vm._v(" "), _c("div", {
+    staticClass: "form-check"
+  }, [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.question.is_multiple,
+      expression: "question.is_multiple"
+    }],
+    staticClass: "form-check-input",
+    attrs: {
+      type: "checkbox",
+      value: "1",
+      name: "question_type",
+      id: "question_type1"
+    },
+    domProps: {
+      checked: Array.isArray(_vm.question.is_multiple) ? _vm._i(_vm.question.is_multiple, "1") > -1 : _vm.question.is_multiple
+    },
+    on: {
+      change: function change($event) {
+        var $$a = _vm.question.is_multiple,
+          $$el = $event.target,
+          $$c = $$el.checked ? true : false;
+        if (Array.isArray($$a)) {
+          var $$v = "1",
+            $$i = _vm._i($$a, $$v);
+          if ($$el.checked) {
+            $$i < 0 && _vm.$set(_vm.question, "is_multiple", $$a.concat([$$v]));
+          } else {
+            $$i > -1 && _vm.$set(_vm.question, "is_multiple", $$a.slice(0, $$i).concat($$a.slice($$i + 1)));
+          }
+        } else {
+          _vm.$set(_vm.question, "is_multiple", $$c);
+        }
+      }
+    }
+  }), _vm._v(" "), _c("label", {
+    staticClass: "form-check-label",
+    attrs: {
+      "for": "question_type1"
+    }
+  }, [_vm._v("\n                                                            Multiple\n                                                        ")])])])])])]), _vm._v(" "), _c("div", {
+    staticClass: "form_group border boder-primary p-1 mb-2"
+  }, [_c("h4", [_vm._v("Options")]), _vm._v(" "), _c("hr"), _vm._v(" "), _c("div", {
+    staticClass: "form-row"
+  }, _vm._l(_vm.question.options, function (option, serial) {
+    return _c("div", {
+      key: serial,
+      staticClass: "form-group col-md-6"
+    }, [_c("label", {
+      attrs: {
+        "for": ""
+      }
+    }, [_vm._v("Option " + _vm._s(serial + 1))]), _vm._v(" "), _c("div", {
+      staticClass: "form-inline"
+    }, [_c("div", {
+      staticClass: "form-group"
+    }, [_c("div", {
+      staticClass: "input"
+    }, [_vm.question.is_multiple == 1 ? _c("input", {
+      directives: [{
+        name: "model",
+        rawName: "v-model",
+        value: option.is_correct,
+        expression: "option.is_correct"
+      }],
+      staticClass: "form-check-input",
+      attrs: {
+        value: "1",
+        type: "checkbox",
+        id: "gridCheck1"
+      },
+      domProps: {
+        checked: Array.isArray(option.is_correct) ? _vm._i(option.is_correct, "1") > -1 : option.is_correct
+      },
+      on: {
+        change: function change($event) {
+          var $$a = option.is_correct,
+            $$el = $event.target,
+            $$c = $$el.checked ? true : false;
+          if (Array.isArray($$a)) {
+            var $$v = "1",
+              $$i = _vm._i($$a, $$v);
+            if ($$el.checked) {
+              $$i < 0 && _vm.$set(option, "is_correct", $$a.concat([$$v]));
+            } else {
+              $$i > -1 && _vm.$set(option, "is_correct", $$a.slice(0, $$i).concat($$a.slice($$i + 1)));
+            }
+          } else {
+            _vm.$set(option, "is_correct", $$c);
+          }
+        }
+      }
+    }) : _c("input", {
+      directives: [{
+        name: "model",
+        rawName: "v-model",
+        value: option.is_correct,
+        expression: "option.is_correct"
+      }],
+      staticClass: "form-check-input",
+      attrs: {
+        value: "1",
+        type: "radio",
+        id: "gridCheck1"
+      },
+      domProps: {
+        checked: _vm._q(option.is_correct, "1")
+      },
+      on: {
+        change: function change($event) {
+          return _vm.$set(option, "is_correct", "1");
+        }
+      }
+    }), _vm._v(" "), _c("input", {
+      directives: [{
+        name: "model",
+        rawName: "v-model",
+        value: option.title,
+        expression: "option.title"
+      }],
+      staticClass: "form-control",
+      attrs: {
+        type: "text"
+      },
+      domProps: {
+        value: option.title
+      },
+      on: {
+        input: function input($event) {
+          if ($event.target.composing) return;
+          _vm.$set(option, "title", $event.target.value);
+        }
+      }
+    }), _vm._v(" "), _vm.question.options.length > 1 ? _c("button", {
+      staticClass: "btn btn-danger btn-sm",
+      on: {
+        click: function click($event) {
+          $event.preventDefault();
+          return _vm.remove_option(_vm.question.options, serial);
+        }
+      }
+    }, [_c("i", {
+      staticClass: "fa fa-trash"
+    })]) : _vm._e()])])])]);
+  }), 0), _vm._v(" "), _c("div", {
+    staticClass: "action_btns mt-1"
+  }, [_c("div", {
+    staticClass: "row"
+  }, [_c("div", {
+    staticClass: "col-md-12"
+  }, [_c("div", {
+    staticClass: "float-right"
+  }, [_c("button", {
+    staticClass: "btn btn-primary btn-sm mr-1",
+    on: {
+      click: function click($event) {
+        $event.preventDefault();
+        return _vm.append_new_option(_vm.question);
+      }
+    }
+  }, [_c("i", {
+    staticClass: "fa fa-plus mr-1"
+  }), _vm._v("Add new option")])])])])])])])])])])])]), _vm._v(" "), _vm._m(0)])])]);
 };
 var staticRenderFns = [function () {
   var _vm = this,
