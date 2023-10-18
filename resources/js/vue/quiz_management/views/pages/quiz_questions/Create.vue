@@ -80,7 +80,7 @@
                                                     <div class="form-inline">
                                                         <div class="form-group">
                                                             <div class="input">
-                                                                
+
                                                                 <input v-if="question.is_multiple == 1" class="form-check-input" value="1" v-model="option.is_correct" type="checkbox" id="gridCheck1">
                                                                 <input v-else class="form-check-input" value="1" v-model="option.is_correct" type="radio" id="gridCheck1">
                                                                 <!-- <input v-else class="form-check-input" type="checkbox" id="gridCheck1"> -->

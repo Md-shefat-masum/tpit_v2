@@ -74,7 +74,7 @@ document.addEventListener("DOMContentLoaded", () => {
 document.addEventListener("turbolinks:load", function (event) {
 
     console.log('loaded');
-    if (location.pathname == '/' || location.pathname == '/courses') {
+    if (location.pathname == '/') {
         setTimeout(() => {
             initiate_our_course_types();
         }, 1000);

@@ -24,7 +24,7 @@
                                 <td><span class="text-warning cursor_pointer">{{ quiz.title }}</span></td>
                                 <td><span>{{ quiz.description }}</span></td>
                                 <td>
-                                    
+
                                     <div class="btn-group">
                                         <button class="btn btn-sm btn-outline-secondary dropdown-toggle" type="button"
                                             data-toggle="dropdown" aria-expanded="false">
@@ -42,7 +42,7 @@
                                             </a>
                                         </div>
                                     </div>
-                                    
+
                                 </td>
                             </tr>
                         </tbody>
@@ -98,7 +98,7 @@ export default {
                     console.log(e);
                 });
             }
-            
+
         }
     },
     computed: {
