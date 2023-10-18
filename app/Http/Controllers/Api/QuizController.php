@@ -68,17 +68,18 @@ class QuizController extends Controller
         }
 
         $question_ids = json_decode(request()->question_ids);
+        // dd($question_ids);
         $data = new Quiz();
         $data->title = request()->title;
         $data->save();
-
+        $data->questions()->attach($question_ids);
         
-        foreach ($question_ids as $key => $question_id) {
-            $quiz_question = QuizQuestion::where('id', $question_id)->first();
-            // dd($quiz_question);
-            $quiz_question->quiz_id = $data->id;
-            $quiz_question->save();
-        }
+        // foreach ($question_ids as $key => $question_id) {
+        //     $quiz_question = QuizQuestion::where('id', $question_id)->first();
+        //     // dd($quiz_question);
+        //     $quiz_question->quiz_id = $data->id;
+        //     $quiz_question->save();
+        // }
 
         return response()->json(["data" => $data, "message" => 'Quiz created successfully!'], 200);
     }
@@ -115,7 +116,7 @@ class QuizController extends Controller
     public function destroy()
     {
         $validator = Validator::make(request()->all(), [
-            'id' => ['required', 'exists:quizes,id'],
+            'id' => ['required', 'exists:quizzes,id'],
         ]);
 
         if ($validator->fails()) {
@@ -126,6 +127,7 @@ class QuizController extends Controller
         }
 
         $data = Quiz::find(request()->id);
+        $data->questions()->detach();
         $data->delete();
 
         return response()->json([

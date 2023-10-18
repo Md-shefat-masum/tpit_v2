@@ -122,21 +122,54 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         return _get_all_quiz.apply(this, arguments);
       }
       return get_all_quiz;
+    }(),
+    deleteQuiz: function () {
+      var _deleteQuiz = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee3(id) {
+        var _this2 = this;
+        var confirm;
+        return _regeneratorRuntime().wrap(function _callee3$(_context3) {
+          while (1) switch (_context3.prev = _context3.next) {
+            case 0:
+              _context3.next = 2;
+              return window.s_confirm("Are you sure?");
+            case 2:
+              confirm = _context3.sent;
+              if (confirm) {
+                axios.post("/api/v1/quiz/destroy", {
+                  id: id
+                }).then(function (response) {
+                  // console.log(response.data);
+                  window.toaster("Quiz deleted successfully!");
+                  _this2.get_all_quiz();
+                })["catch"](function (e) {
+                  console.log(e);
+                });
+              }
+            case 4:
+            case "end":
+              return _context3.stop();
+          }
+        }, _callee3);
+      }));
+      function deleteQuiz(_x3) {
+        return _deleteQuiz.apply(this, arguments);
+      }
+      return deleteQuiz;
     }()
   },
   computed: {},
   created: function () {
-    var _created = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee3() {
-      return _regeneratorRuntime().wrap(function _callee3$(_context3) {
-        while (1) switch (_context3.prev = _context3.next) {
+    var _created = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee4() {
+      return _regeneratorRuntime().wrap(function _callee4$(_context4) {
+        while (1) switch (_context4.prev = _context4.next) {
           case 0:
-            _context3.next = 2;
+            _context4.next = 2;
             return this.get_all_quiz();
           case 2:
           case "end":
-            return _context3.stop();
+            return _context4.stop();
         }
-      }, _callee3, this);
+      }, _callee4, this);
     }));
     function created() {
       return _created.apply(this, arguments);
@@ -1648,7 +1681,17 @@ var render = function render() {
       }
     }, [_c("i", {
       staticClass: "fa text-info fa-eye mr-2"
-    }), _vm._v(" "), _c("span", [_vm._v("Details")])])], 1)])])]);
+    }), _vm._v(" "), _c("span", [_vm._v("Details")])]), _vm._v(" "), _c("a", {
+      staticClass: "dropdown-item",
+      on: {
+        click: function click($event) {
+          $event.preventDefault();
+          return _vm.deleteQuiz(quiz.id);
+        }
+      }
+    }, [_c("i", {
+      staticClass: "fa text-danger fa-trash mr-2"
+    }), _vm._v(" "), _c("span", [_vm._v("Delete")])])], 1)])])]);
   }), 0) : _vm._e()])])], 1)])]);
 };
 var staticRenderFns = [function () {
