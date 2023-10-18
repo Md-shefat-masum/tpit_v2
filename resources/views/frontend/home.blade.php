@@ -179,7 +179,7 @@
                                     </div>
 
                                     <div class="join_button">
-                                        <button class="button_all">
+                                        <button class="button_all" onclick="showSeminarModel({{ $item }})">
                                             <span class="btn_text"> জয়েন</span>
                                         </button>
                                     </div>
@@ -216,6 +216,48 @@
             </div>
         </div>
     </section>
+
+    {{-- free seminar modal --}}
+    <div id="seminar_modal" class="modal fade modal-lg" tabindex="-1">
+        <div class="modal-dialog">
+
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel"><b>সেমিনারের জন্য রেজিস্ট্রেশন করুন</b></h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="col-md-8 mx-auto">
+                        <form class="mb-3" id="seminar_form" onsubmit="registerSeminar(event)">
+                            <div class="mb-3">
+                                <label for="name" class="col-form-label">নামঃ </label>
+                                <input type="text" name="full_name" class="form-control" id="name">
+                            </div>
+                            <div class="mb-3">
+                                <label for="phone_number" class="col-form-label">মোবাইল নাম্বারঃ</label>
+                                <input type="number" name="phone_number" class="form-control"
+                                    id="phone_number"></textarea>
+                            </div>
+                            <div class="mb-3">
+                                <label for="email" class="col-form-label">ই-মেইলঃ</label>
+                                <input type="email" name="email" class="form-control" id="email"></textarea>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="address" class="col-form-label">ঠিকানাঃ </label>
+                                <textarea name="address" class="form-control" id="address"></textarea>
+                            </div>
+
+                            <button type="submit" class="button_all me-2">সাবমিট</button>
+                            {{-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button> --}}
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    {{-- end of free seminar modal --}}
     <!-- free_seminar_area_end -->
 
     <!-- job_career_area start-->
@@ -305,130 +347,9 @@
 
                 <!-- service_area start -->
                 <div class="service_area">
-
-
-                    <div class="service wordpress">
-                        <div class="service_logo">
-                            <img src="{{ asset('frontend') }}/assets/images/home_page_image/ti_service/wordpress.png"
-                                alt="service techpark it">
-                        </div>
-                        <div class="service_title_and_description">
-                            <div class="title">
-                                <p class="title_text">
-                                    ওয়ার্ডপ্রেস ডেভোলাপমেন্ট
-                                </p>
-                            </div>
-                            <div class="description">
-                                <p class="description_text">
-                                    ওয়ার্ডপ্রেস ইন্সটলেশন, থিম কাস্টমাইজেশন,
-                                    রেসপনসিভ ডিজাইন, ওয়ার্ডপ্রেস ডেভেলপমেন্ট,
-                                    ওয়ার্ডপ্রেস প্লাগইন ইন্টিগ্রেশন এবং ওয়ার্ডপ্রেস এসইও।
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-
-
-                    <div class="service  react ">
-                        <div class="service_logo">
-                            <img src="{{ asset('frontend') }}/assets/images/home_page_image/ti_service/react.png"
-                                alt="service techpark it">
-                        </div>
-                        <div class="service_title_and_description">
-                            <div class="title">
-                                <p class="title_text">
-                                    React ডেভোলাপমেন্ট
-                                </p>
-                            </div>
-                            <div class="description">
-                                <p class="description_text">
-                                    আমরা React ফ্রন্টএন্ড ডেভোলাপমেন্ট এবং
-
-                                    আপনার সিঙ্গেল পেজ React ওয়েবসাইট (SPA) তৈরি করুন
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-
-
-                    <div class="service e_commers">
-                        <div class="service_logo">
-                            <img src="{{ asset('frontend') }}/assets/images/home_page_image/ti_service/e_comarce.png"
-                                alt="service techpark it">
-                        </div>
-                        <div class="service_title_and_description">
-                            <div class="title">
-                                <p class="title_text">
-                                    Laravel ই-কমার্স
-                                </p>
-                            </div>
-                            <div class="description">
-                                <p class="description_text">
-                                    আমরা ফুলস্ট্যাক Laravel ই-কমার্স সাইট ডেভোলাপমেন্ট সার্ভিস প্রদান করি
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-
-
-                    <div class="service psd">
-                        <div class="service_logo">
-                            <img src="{{ asset('frontend') }}/assets/images/home_page_image/ti_service/phd.png"
-                                alt="service techpark it">
-                        </div>
-                        <div class="service_title_and_description">
-                            <div class="title">
-                                <p class="title_text">
-                                    PSD to HTML
-                                </p>
-                            </div>
-                            <div class="description">
-                                <p class="description_text">
-                                    PSD/Figma/Adobe XD ডিজাইন HTML-এ কনভার্ট করি
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-
-
-                    <div class="service vue">
-                        <div class="service_logo">
-                            <img src="{{ asset('frontend') }}/assets/images/home_page_image/ti_service/vuejs-ar21 1.png"
-                                alt="service techpark it">
-                        </div>
-                        <div class="service_title_and_description">
-                            <div class="title">
-                                <p class="title_text">
-                                    Vue ডেভোলাপমেন্ট
-                                </p>
-                            </div>
-                            <div class="description">
-                                <p class="description_text">
-                                    Laravel+VueJS এর মাধ্যমে আপনার ওয়েবসাইট তৈরি করুন আমাদের থেকে আপনি VueJS এর মাধ্যমে
-                                    SPA Application বানাতে পারবেন
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="service server">
-                        <div class="service_logo">
-                            <img src="{{ asset('frontend') }}/assets/images/home_page_image/ti_service/server.png"
-                                alt="service techpark it">
-                        </div>
-                        <div class="service_title_and_description">
-                            <div class="title">
-                                <p class="title_text">
-                                    সাইভার সিকিউরিটি
-                                </p>
-                            </div>
-                            <div class="description">
-                                <p class="description_text">
-                                    আমরা সকল ধরনের সাইবার সিকিউরিটি সার্ভিস প্রদান করি
-                                </p>
-                            </div>
-                        </div>
-                    </div>
+                    @include('frontend.pages.homepage_sections.it_services', [
+                        'it_services' => $it_services,
+                    ])
                 </div>
                 <!-- service_area end-->
             </div>
@@ -494,4 +415,45 @@
         </div>
     </section>
     <!-- working_company_name area end -->
+
+    <script>
+        var seminar_modal = new bootstrap.Modal(document.getElementById('seminar_modal'));
+
+        function showSeminarModel(seminar) {
+            window.seminar_id = seminar.id;
+            document.getElementById('seminar_form').reset();
+            seminar_modal.toggle();
+            // console.log(seminar);
+        }
+
+        function registerSeminar(event) {
+            event.preventDefault();
+            let formData = new FormData(event.target);
+            formData.append("seminar_id", window.seminar_id);
+            // console.log('form submitting!');
+            fetch("/seminar-registration", {
+                method: "POST",
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                body: formData
+            }).then(async res => {
+                let response = {}
+                response.status = res.status
+                response.data = await res.json();
+                return response;
+            }).then(res => {
+                if (res.status === 422) {
+                    error_response(res.data)
+                }
+                if (res.status === 200) {
+
+                    window.toaster("Registration for the seminar submitted!");
+                    seminar_modal.toggle();
+                    document.getElementById('seminar_form').reset();
+                    // location.href = "/order-complete";
+                }
+            })
+        }
+    </script>
 @endsection

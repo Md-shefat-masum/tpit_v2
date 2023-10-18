@@ -2,7 +2,10 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 
 import QuizLayout from './views/pages/Layout.vue'
-import AllQuiz from "./views/pages/AllQuiz.vue";
+import AllQuiz from "./views/pages/quiz/AllQuiz.vue";
+import CreateQuiz from "./views/pages/quiz/Create.vue";
+import EditQuiz from "./views/pages/quiz/Edit.vue";
+import DetailsQuiz from "./views/pages/quiz/Details.vue";
 
 // course batch
 import QuizTopicLayout from "./views/pages/quiz_topic/QuizTopicLayout.vue";
@@ -13,7 +16,7 @@ import QuizTopicDetails from "./views/pages/quiz_topic/Details.vue";
 
 import QuizQuestionLayout from "./views/pages/quiz_questions/QuizQuestionLayout.vue";
 import QuizQuestionAll from "./views/pages/quiz_questions/All.vue";
-import QuizQuestionCreate from "./views/pages/quiz_questions/Question.vue";
+import QuizQuestionCreate from "./views/pages/quiz_questions/Create.vue";
 import QuizQuestionEdit from "./views/pages/quiz_questions/Edit.vue";
 import QuizQuestionDetails from "./views/pages/quiz_questions/Details.vue";
 
@@ -33,6 +36,16 @@ const routes = [
                 path: 'quiz',
                 name: 'AllQuiz',
                 component: AllQuiz,
+            },
+            {
+                path: 'create',
+                name: 'CreateQuiz',
+                component: CreateQuiz,
+            },
+            {
+                path: 'details/:quiz_id',
+                name: 'DetailsQuiz',
+                component: DetailsQuiz,
             },
 
             {

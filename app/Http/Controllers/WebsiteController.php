@@ -163,7 +163,12 @@ class WebsiteController extends Controller
 
     public function courses()
     {
-        return view('frontend.pages.courses');
+        $courses = Course::active()->with(['course_batch' => function ($batch) {
+            $batch->orderBY('id', 'desc')->take(1);
+        }])->get();
+        return view('frontend.pages.courses', [
+            'courses' => $courses
+        ]);
     }
 
     public function gallery()
@@ -184,7 +189,10 @@ class WebsiteController extends Controller
 
     public function it_solution_services()
     {
-        return view('frontend.pages.it_solution_services');
+        $it_services = ItServices::get();
+        return view('frontend.pages.it_solution_services', [
+            'it_services' => $it_services
+        ]);
     }
     public function myCourse(){
         $user = User::find(auth()->user()->id);
@@ -195,6 +203,9 @@ class WebsiteController extends Controller
             'batchStudents.course' => function ($query) {
                 $query->select('id', 'title', 'image', 'slug');
             },
+            'batchStudents.batch' => function ($q2) {
+                $q2->select('id', 'batch_name', 'class_days', 'class_start_time', 'class_end_time');
+            }
         ]);
 
         // Use collection methods to split courses based on 'is_complete'
@@ -246,15 +257,22 @@ class WebsiteController extends Controller
                 $classes = $module->classes()->get();
 
                 foreach ($classes as $key => $class) {
+                    
                     $class_watched_check = CourseModuleTaskCompleteByUsers::where('class_id', $class->id)
                     ->where('quiz_id', null)
                     ->where('exam_id', null)
                     ->where('course_id', $data->id)
                     ->first();
-                    $class->is_complete = false;
-                    if($class_watched_check != null) {
+
+                    if($key == 0) {
                         $class->is_complete = true;
+                    }else{
+                        $class->is_complete = false;
+                        if($class_watched_check != null) {
+                            $class->is_complete = true;
+                        }
                     }
+                    
                     $class_quiz = $class->class_quiz()->with(['quiz'])->orderBy('id', 'DESC')->first();
                     $class_exam = $class->class_exam()->with(['exam'])->orderBy('id', 'DESC')->first();
 

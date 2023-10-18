@@ -28,7 +28,7 @@
                 <template>
                     <div class="c_card graphic_designer" v-for="course in courses.data" :key="course.id">
                         <!-- card_img start -->
-                        <a href="#" class="card_img_area">
+                        <a :href="`/course/${course.slug}`" class="card_img_area">
                             <div class="card_img">
                                 <img :src="course.image" alt="graphic_designer, tech park it" />
                             </div>
@@ -38,7 +38,7 @@
                         <!-- card_title_area start -->
                         <div class="card_title_area">
                             <!-- card_title start -->
-                            <a href="#" class="card_title">
+                            <a :href="`/course/${course.slug}`" class="card_title">
                                 <p class="title_text">@{{ course.title }}</p>
                             </a>
                             <!-- card_title end -->

@@ -105,7 +105,7 @@
                                                                     data-link="`{{ $class->link }}`"
                                                                     class="live_class_and_topic"
                                                                     style="cursor: {{ $class->is_complete ? 'pointer;' : 'not-allowed;' }};"
-                                                                    @if ($class->is_complete) onclick="getClassVideolink(`{{ $class->link }}`)" @endif>
+                                                                    @if ($class->is_complete) onclick="getClassVideolink(`{{ $class->class_video_link }}`)" @endif>
                                                                     @if ($class->is_complete)
                                                                         <div class="live_class_icon">
                                                                             <i
@@ -343,6 +343,7 @@
             }
         );
         function getClassVideolink(link) {
+            console.log(link);
             document.getElementById('class_video_link').src = link;
             document.getElementById("course_section").scrollIntoView();
         }

@@ -12,7 +12,7 @@ class CourseBatchStudent extends Model
     use HasFactory;
 
     public function batch(){
-        return $this->belongsTo(Batch::class);
+        return $this->belongsTo(CourseBatches::class, 'batch_id');
     }
 
     public function course(){

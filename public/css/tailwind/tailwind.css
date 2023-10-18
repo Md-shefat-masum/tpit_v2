@@ -96,6 +96,9 @@
 .mb-4{
     margin-bottom: 1rem
 }
+.mb-5{
+    margin-bottom: 1.25rem
+}
 .me-1{
     -webkit-margin-end: 0.25rem;
             margin-inline-end: 0.25rem
@@ -152,6 +155,12 @@
     -webkit-margin-start: auto;
             margin-inline-start: auto
 }
+<<<<<<< HEAD
+=======
+.mt-0{
+    margin-top: 0px
+}
+>>>>>>> b861dca290acb27699ba888454bcd973892c62c4
 .mt-1{
     margin-top: 0.25rem
 }

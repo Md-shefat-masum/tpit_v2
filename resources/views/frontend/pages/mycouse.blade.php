@@ -45,7 +45,7 @@ $meta = [
                     @foreach ($incomplete_courses as $item)
                         <div class="c_card graphic_designer">
                             <!-- card_img start -->
-                            <a href="#" class="card_img_area">
+                            <a href="{{ route('mycourse_details', $item->course->slug) }}" class="card_img_area">
                                 <div class="card_img">
                                     <img src="{{ asset($item->course->image) }}"
                                         alt="graphic_designer, tech park it">
@@ -58,6 +58,10 @@ $meta = [
                                 <!-- card_title start -->
                                 <a href="#" class="card_title">
                                     <p class="title_text">{{ $item->course->title }}</p>
+                                </a><br>
+                                <a href="#" class="card_title">
+                                    {{-- <p class="title_text">{{ $item->course->title }}</p> --}}
+                                    <p class="batch_text">ব্যাচঃ  {{ $item->batch->batch_name }}</p>
                                 </a>
                                 <!-- card_title end -->
 

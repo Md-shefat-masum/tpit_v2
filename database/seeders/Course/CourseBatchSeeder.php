@@ -16,6 +16,7 @@ class CourseBatchSeeder extends Seeder
     public function run()
     {
         CourseBatches::truncate();
+        CourseBatchStudent::truncate();
         $batch = CourseBatches::create([
             'course_id' => 1,
             'batch_name' => 'WD-1',

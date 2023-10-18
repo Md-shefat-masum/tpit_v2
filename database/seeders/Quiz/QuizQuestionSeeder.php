@@ -15,81 +15,87 @@ class QuizQuestionSeeder extends Seeder
     public function run()
     {
         QuizQuestion::truncate();
-        QuizQuestion::create([
-            'quiz_question_topic_id' => '1',
-            'title' => 'Who is the father of c programing?',
-            'mark' => '1',
-            'is_multiple' => '0'
 
-        ]);
-        QuizQuestion::create([
+        $data = new QuizQuestion();
 
-            'quiz_question_topic_id' => '1',
-            'title' => 'Which of the following are unary operators in C?',
-            'mark' => '1',
-            'is_multiple' => '1'
+        $data->quiz_id = '1';
+        $data->quiz_question_topic_id = '1';
+        $data->title = 'Who is the father of C programming?';
+        $data->topic_title = 'html & css';
+        $data->mark = '1';
+        $data->is_multiple = '0';
+        $data->save();
+        $data->quiz()->attach([1]);
 
-        ]);
+        $data = new QuizQuestion();
+        $data->quiz_id = '1';
+        $data->quiz_question_topic_id = '1';
+        $data->title = 'Which of the following are unary operators in C?';
+        $data->topic_title = 'html & css';
+        $data->mark = '1';
+        $data->is_multiple = '1';
+        $data->save();
+        $data->quiz()->attach([1]);
 
-        QuizQuestion::create([
+        $data = new QuizQuestion();
+        $data->quiz_id = '1';
+        $data->quiz_question_topic_id = '1';
+        $data->title = 'The keyword used to transfer control from a function back to the calling function is.';
+        $data->topic_title = 'html & css';
+        $data->mark = '1';
+        $data->is_multiple = '0';
+        $data->save();
+        $data->quiz()->attach([1]);
 
-            'quiz_question_topic_id' => '1',
-            'title' => 'The keyword used to transfer control from a function back to the calling function is.',
-            'mark' => '1',
-            'is_multiple' => '0'
+        $data = new QuizQuestion();
+        $data->quiz_id = '2';
+        $data->quiz_question_topic_id = '2';
+        $data->title = 'Who is the father of PHP?';
+        $data->topic_title = 'Javascript';
+        $data->mark = '1';
+        $data->is_multiple = '0';
+        $data->save();
+        $data->quiz()->attach([2]);
 
-        ]);
+        $data = new QuizQuestion();
+        $data->quiz_id = '2';
+        $data->quiz_question_topic_id = '2';
+        $data->title = 'What are the popular frameworks in PHP?';
+        $data->topic_title = 'Javascript';
+        $data->mark = '1';
+        $data->is_multiple = '1';
+        $data->save();
+        $data->quiz()->attach([2]);
 
+        $data = new QuizQuestion();
+        $data->quiz_id = '2';
+        $data->quiz_question_topic_id = '2';
+        $data->title = 'What are the different types of loops in PHP';
+        $data->topic_title = 'Javascript';
+        $data->mark = '1';
+        $data->is_multiple = '0';
+        $data->save();
+        $data->quiz()->attach([2]);
 
+        $data = new QuizQuestion();
+        $data->quiz_id = '3';
+        $data->quiz_question_topic_id = '3';
+        $data->title = 'Who is the father of Java programming?';
+        $data->topic_title = 'Responsive';
+        $data->mark = '1';
+        $data->is_multiple = '0';
+        $data->save();
+        $data->quiz()->attach([3]);
 
+        $data = new QuizQuestion();
+        $data->quiz_id = '3';
+        $data->quiz_question_topic_id = '3';
+        $data->title = 'What are DML Commands?';
+        $data->topic_title = 'Responsive';
+        $data->mark = '1';
+        $data->is_multiple = '1';
+        $data->save();
+        $data->quiz()->attach([3]);
 
-
-
-        QuizQuestion::create([
-
-            'quiz_question_topic_id' => '2',
-            'title' => 'Who is the father of php?',
-            'mark' => '1',
-            'is_multiple' => '0'
-
-
-        ]);
-        QuizQuestion::create([
-
-            'quiz_question_topic_id' => '2',
-            'title' => 'What are the popular frameworks in PHP ?',
-            'mark' => '1',
-            'is_multiple' => '1'
-
-        ]);
-        QuizQuestion::create([
-
-            'quiz_question_topic_id' => '2',
-            'title' => 'What are the different types of loop in PHP ',
-            'mark' => '1',
-            'is_multiple' => '0'
-
-        ]);
-
-
-
-
-        QuizQuestion::create([
-
-            'quiz_question_topic_id' => '3',
-            'title' => 'Who is the father of java programing?',
-            'mark' => '1',
-            'is_multiple' => '0'
-
-        ]);
-
-        QuizQuestion::create([
-
-            'quiz_question_topic_id' => '3',
-            'title' => 'what is DML Commands are',
-            'mark' => '1',
-            'is_multiple' => '1'
-
-        ]);
     }
 }

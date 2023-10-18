@@ -5,6 +5,7 @@ import router from './router';
 import helper from './helper'
 window.axios = axios;
 Vue.component('quiz-management', require('./views/Layout.vue').default);
+Vue.component('pagination', require('./views/pagination.vue').default);
 Vue.use( helper );
 
 if (document.getElementById('quiz-management')) {

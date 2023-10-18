@@ -18,6 +18,13 @@ class CreateQuizzesTable extends Migration
             $table->string('title', 200)->nullable();
             $table->timestamps();
         });
+
+        Schema::create('quiz_quiz_question', function (Blueprint $table) {
+            $table->id();
+            $table->bigInteger('quiz_id')->nullable();
+            $table->bigInteger('quiz_question_id')->nullable();
+            $table->timestamps();
+        });
     }
 
     /**

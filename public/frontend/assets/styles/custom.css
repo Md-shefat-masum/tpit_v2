@@ -17,9 +17,20 @@
     align-items: center;
 }
 .my_it_service_area .my_it_service_area_content .service_area .wordpress .service_logo img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+}
+.our_it_services_area .my_it_service_area_content .service_area .wordpress .service_logo img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+}
+.our_it_services_area .my_it_service_area_content .service_area .service {
+    width: 410px;
+    background-color: #ffffff;
+    border-radius: 16px;
+    overflow: hidden;
 }
 .my_it_service_area .my_it_service_area_content .service_area .service {
     width: 410px;
@@ -28,8 +39,30 @@
     overflow: hidden;
 }
 
+.student_success_history_area .student_success_history_content .student_success_video_area .success_video_area {
+    border: 0px solid red;
+    position: relative;
+    background-color: transparent;
+    padding: 0px;
+    position: relative;
+    max-width: 400px;
+}
+
 .button_all:hover {
     background-color: #dc2626;
     border: 1px solid transparent;
     color: #ffffff;
+}
+
+.my_courses_area .my_contunued_courses .my_contunued_all_courses .c_card .card_title_area .card_title .batch_text {
+    border: 0px solid red;
+    font-size: 16px;
+    line-height: 16px;
+    font-family: "SemiBold";
+    color: #1c1c1c;
+    transition-duration: 0.4s;
+}
+
+.my_courses_area .my_contunued_courses .my_contunued_all_courses .c_card .card_title_area .card_title .batch_text:hover {
+    color: #dc2626;
 }
