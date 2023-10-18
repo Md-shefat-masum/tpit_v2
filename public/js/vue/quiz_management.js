@@ -973,7 +973,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       topic_id: '',
       topic_title: '',
       question_id: '',
-      topics: []
+      topics: [],
+      quiz_edit: ''
     };
   },
   methods: {
@@ -1701,7 +1702,7 @@ var staticRenderFns = [function () {
     staticClass: "card-header"
   }, [_c("h4", {
     staticClass: "card-title"
-  }, [_vm._v("All quizes List: 🚀")])]);
+  }, [_vm._v("All quiz: 🚀")])]);
 }, function () {
   var _vm = this,
     _c = _vm._self._c;
@@ -2932,7 +2933,7 @@ var render = function render() {
     staticClass: "card list_card"
   }, [_c("div", {
     staticClass: "card-header"
-  }, [_c("h4", [_vm._v("Edit Quiz")]), _vm._v(" "), _c("div", {
+  }, [_c("h4", [_vm._v("Edit Quiz Question:")]), _vm._v(" "), _c("div", {
     staticClass: "btns"
   }, [_c("a", {
     staticClass: "btn rounded-pill btn-outline-warning",

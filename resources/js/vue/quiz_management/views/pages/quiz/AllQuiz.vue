@@ -2,7 +2,7 @@
     <div>
         <div class="card">
             <div class="card-header">
-                <h4 class="card-title">All quizes List: 🚀</h4>
+                <h4 class="card-title">All quiz: 🚀</h4>
             </div>
             <div class="card-body">
                 <router-link :to="{ name: 'CreateQuiz'}" class="btn btn-primary mb-2 float-right">
