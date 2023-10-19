@@ -93,6 +93,7 @@ Route::group(
             Route::get('/all', 'Api\QuizController@all');
             Route::post('/store', 'Api\QuizController@store');
             Route::post('/update', 'Api\QuizController@update');
+            Route::post('/add-question', 'Api\QuizController@add_question');
             Route::post('/soft-delete', 'Api\QuizController@soft_delete');
             Route::post('/destroy', 'Api\QuizController@destroy');
             Route::post('/restore', 'Api\QuizController@restore');

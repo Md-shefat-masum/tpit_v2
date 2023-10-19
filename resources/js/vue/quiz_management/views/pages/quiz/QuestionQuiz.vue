@@ -2,7 +2,7 @@
     <div class="custom_scroll">
         <div class="card list_card">
             <div class="card-header">
-                <h4>Create Quiz</h4>
+                <h4>Add new question to Quiz</h4>
                 <div class="btns">
                     <a @click="$router.go(-1)" class="btn rounded-pill btn-outline-warning">
                         <i class="fa fa-arrow-left me-5px"></i>
@@ -19,14 +19,29 @@
                                 <div class="col-md-12">
                                     <div class="form-group mb-2">
                                         <label class="form-label" for="topic">Quiz title</label>
-                                        <input v-model="quiz_details.title" type="text" name="quiz_title" id="quiz_title" class="form-control">
+                                        <input disabled v-model="quiz_details.title" type="text" name="quiz_title" id="quiz_title" class="form-control">
                                     </div>
                                 </div>
                                 <div class="col-md-12">
                                     <div class="table-responsive">
-                                        <router-link :to="{ name: 'AddQuestionQuiz', params: {quiz_id: quiz_details.id} }" class="btn btn-sm btn-primary mb-2 float-right">
-                                            <i class="fa-solid fa-plus mr-1"></i> <span>Add new question</span>
-                                        </router-link>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label class="form-label" for="topic">Select Topic</label>
+                                                    <select name="topic" @change.prevent="filterBytopic($event)" class="form-control" v-model="topic_id" id="topic">
+                                                        <option v-for="(topic, index) in topics" :key="index"
+                                                            :value="topic.id">{{
+                                                                topic.title }}</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label class="form-label" for="topic">Search</label>
+                                                    <input @keyup.prevent="filterBySearch($event)" type="text" name="search" id="search" class="form-control">
+                                                </div>
+                                            </div>
+                                        </div>
                                         <table class="table table-bordered table-hover">
                                             <thead>
                                                 <tr>
@@ -36,12 +51,12 @@
                                                     <!-- <td>Actions</td> -->
                                                 </tr>
                                             </thead>
-                                            <tbody v-if="questions && questions.length > 0">
-                                                <tr v-for="(question, index) in questions" :key="index">
+                                            <tbody v-if="questions.data && questions.data.length > 0">
+                                                <tr v-for="(question, index) in questions.data" :key="index">
                                                     <td>
                                                         <div class="custom-control custom-checkbox">
                                                             <input type="checkbox" @click="SetQuestionIds(question)" class="custom-control-input"
-                                                                :id="`question_${question.id}`" checked>
+                                                                :id="`question_${question.id}`">
                                                             <label class="custom-control-label"
                                                                 :for="`question_${question.id}`"></label>
                                                         </div>
@@ -64,6 +79,7 @@
                                                 </tr>
                                             </tbody>
                                         </table>
+                                        <pagination class="mt-2" v-if="questions" :data="questions" :method="get_all_questions" />
                                     </div>
                                 </div>
                             </div>
@@ -85,39 +101,21 @@
 export default {
     data() {
         return {
-            questions: [],
+            course_id: '',
+            questions: '',
+            topic_id: '',
             topics: [
 
             ],
+            search_key: '',
             question_ids: [
 
             ],
-            quiz_id: '',
+            quiz_title: '',
             quiz_details: ''
         }
     },
-    watch: {
-        questions: {
-            handler: function (newv, oldv) {
-                newv.forEach(element => {
-                    this.question_ids.push(element.id)
-                });
-            },
-            deep: true,
-        },
-    },
     methods: {
-        get_quiz_details: async function (event) {
-            let id = this.$route.params.quiz_id
-            
-            axios.get(`/api/v1/quiz/${id}`).then((response) => {
-                this.quiz_details = response.data;
-                this.questions = response?.data?.questions;
-            })
-            .catch((e) => {
-                console.log(e);
-            });
-        },
         store_quiz: async function () {
             let question_ids = JSON.stringify(this.question_ids);
             let data = {
@@ -126,16 +124,26 @@ export default {
                 id: this.quiz_details.id
             }
 
-            await axios.post('/api/v1/quiz/update', data).then((response) => {
+            await axios.post('/api/v1/quiz/add-question', data).then((response) => {
                 // localStorage.setItem('current_course', JSON.stringify(response?.data))
                 window.toaster(response?.data.message);
-                this.get_quiz_details();
+            })
+            .catch((e) => {
+                console.log(e);
+            });
+        },
+        get_quiz_details: async function (event) {
+            let id = this.$route.params.quiz_id
+            
+            axios.get(`/api/v1/quiz/${id}`).then((response) => {
+                this.quiz_details = response.data;
             })
             .catch((e) => {
                 console.log(e);
             });
         },
         SetQuestionIds: async function(question) {
+            console.log(this.question_ids);
             if(!this.question_ids.includes(question.id)) {
                 this.question_ids.push(question.id)
             }else {
@@ -143,14 +151,56 @@ export default {
                 this.question_ids.splice(index, 1);
             }
         },
+        filterBytopic: async function(event) {
+            this.topic_id = event.target.value;
+            this.get_all_questions();
+        },
+
+        filterBySearch: async function(event) {
+            this.search_key = event.target.value;
+            this.get_all_questions();
+        },
+
+        get_all_topics: async function () {
+            await axios.get('/api/v1/quiz-topics/all-topic').then((response) => {
+                this.topics = response.data;
+            })
+                .catch((e) => {
+                    console.log(e);
+                });
+        },
+
+        get_all_questions: async function (url) {
+            // console.log(page);
+            if(!url) {
+                url = "/api/v1/quiz-questions/all?";
+            }
+
+            if (this.search_key && this.search_key != '') {
+                url += `search_key=${this.search_key}`;
+            }
+
+            if (this.topic_id && this.topic_id != '') {
+                url += `&topicID=${this.topic_id}`;
+            }
+            
+            await axios.get(url).then((response) => {
+                // '/asset/index?page='+page
+                this.questions = response.data;
+            })
+            .catch((e) => {
+                console.log(e);
+            });
+        },
     },
     computed: {
 
     },
 
     created: async function () {
-        this.quiz_id = this.$route.params.quiz_id
         await this.get_quiz_details();
+        await this.get_all_topics();
+        await this.get_all_questions();
     },
 }
 </script>

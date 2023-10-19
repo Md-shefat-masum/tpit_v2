@@ -17,12 +17,22 @@
                     <div class="col-md-12">
                         <label for=""><b>Quiz title:</b></label>
                         
-                        <h3>{{ quiz_details.title }}</h3>
+                        <h3 class="mb-2">{{ quiz_details.title }}</h3>
 
-                        <label for=""><b>Questions: </b></label>
-                        <ul class="list-group list-group-flush">
-                            <li v-for="(question, serial) in quiz_details.questions" :key="serial" class="list-group-item"><b>{{ serial+1 }}: {{  question.title  }}</b></li>
-                        </ul>
+                        <label for="" class="mb-2"><b>Questions: </b></label>
+                        <!-- <ul class="list-group list-group-flush"> -->
+                            <div v-for="(question, serial) in quiz_details.questions" :key="serial">
+                                <h4><b>{{ serial+1 }}: {{  question.title  }}</b></h4>
+
+                                <div class="row mt-1 mb-2">
+                                    <div class="col-md-6">
+                                        <h5 v-for="(option, index) in question.options" :key="index">
+                                            <span :class="[option.is_correct == 1 ? rightAns : '']">{{ index+1 }}. {{ option.title }}</span>
+                                        </h5>
+                                    </div>
+                                </div>
+                            </div>
+                        <!-- </ul> -->
                     </div>
                     
                     
@@ -37,6 +47,7 @@ export default {
     data() {
         return {
             quiz_details: {},
+            rightAns: 'text-success'
         }
     },
     methods: {
