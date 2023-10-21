@@ -8,7 +8,10 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use App\Models\ContactMessage;
+use App\Models\Course\CourseMilestone;
 use App\Models\Course\CourseModule;
+use App\Models\Course\CourseModuleClasses;
+use App\Models\Course\CourseModuleClassRoutines;
 
 class CourseModulesController extends Controller
 {
@@ -62,10 +65,9 @@ class CourseModulesController extends Controller
     }
     public function store()
     {
+        // dd(request()->all());
         $validator = Validator::make(request()->all(), [
-            'course_id' => ['required'],
-            'module_no' => ['required'],
-            'title' => ['required'],
+            'modules' => ['required'],
         ]);
 
         if ($validator->fails()) {
@@ -75,13 +77,39 @@ class CourseModulesController extends Controller
             ], 422);
         }
 
-        $data = new CourseModule();
-        $data->course_id = request()->course_id;
-        $data->module_no = request()->module_no;
-        $data->title = request()->title;
-        $data->save();
+        foreach(request()->modules as $course_data) {
+            $course_data = (object) $course_data;
+            $milestone = new CourseMilestone();
+            $milestone->title = $course_data->title;
+            $milestone->save();
+            foreach ($course_data->modules as $key => $module) {
+                $module = (object) $module;
+                $data = new CourseModule();
+                $data->module_no = $module->module_no;
+                $data->title = $module->title;
+                $data->save();
 
-        return response()->json($data, 200);
+                foreach($module->classes as $key => $class) {
+                    $class = (object) $class;
+                    $course_class = new CourseModuleClasses();
+                    $course_class->class_no = $class->class_no;
+                    $course_class->title = $class->title;
+                    $course_class->type = $class->type;
+                    $course_class->class_video_link = $class->class_video_link;
+                    $course_class->class_video_poster = $class->class_video_poster;
+                    $course_class->save();
+
+                    $routine = new CourseModuleClassRoutines();
+                    $class_routines = (object) $class->routine;
+                    $routine->date = $class_routines->date;
+                    $routine->time = $class_routines->time;
+                    $routine->topic = $class_routines->topic;
+                    $routine->save();
+                }
+            }
+        }
+
+        return response()->json(['message' => 'module updated successfully!'], 200);
     }
 
     public function canvas_store()

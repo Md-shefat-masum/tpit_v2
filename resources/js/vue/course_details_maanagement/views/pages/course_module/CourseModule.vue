@@ -28,7 +28,7 @@
                             Module No
                         </label>
                         <div class="input">
-                            <input type="text" class="form-control" v-model="module.module_no">
+                            <input type="number" class="form-control" v-model="module.module_no">
                         </div>
                     </div>
                     <div class="form_group">
@@ -61,7 +61,7 @@
                     <div class="form_group">
                         <label for="">Class No</label>
                         <div class="input">
-                            <input type="text" class="form-control" v-model="classs.class_no">
+                            <input type="number" class="form-control" v-model="classs.class_no">
                         </div>
                     </div>
                     <div class="form_group">
@@ -129,6 +129,12 @@
                 Create New Milstone
             </button>
         </div>
+
+
+        <hr>    
+        <div class="d-flex justify-content-center">
+            <button type="button" class="btn btn-primary" @click.prevent="submit_course_module()">Submit</button>
+        </div>
     </div>
 </template>
 
@@ -141,8 +147,22 @@ export default {
         this.append_new_milstone();
     },
     methods: {
+        submit_course_module: async function() {
+            var course_data = this.milestones;
+
+            await axios.post('/api/v1/course/course-modules/store', {modules: course_data}).then((response) => {
+                // localStorage.setItem('current_course', JSON.stringify(response?.data))
+                window.toaster(response?.data.message);
+
+
+            })
+            .catch((e) => {
+                console.log(e);
+            });
+        },
         append_new_class: function (module) {
             module.classes.push({
+                course_id: this.$route.params.id,
                 id: "",
                 class_no: "",
                 title: "class 1",
@@ -210,32 +230,6 @@ export default {
                 id: "",
                 title: "milestone 1",
                 modules: [
-                    {
-                        id: "",
-                        module_no: "",
-                        title: "module 1",
-                        classes: [
-                            {
-                                id: "",
-                                class_no: "",
-                                title: "class 1",
-                                type: "recorded",
-                                class_video_link: "https://www.youtube.com/embed/oS1SkU2ksZM?si=2XFBVu8BME7VsrxI",
-                                class_video_poster: "uplodes/course/graphic.jpg",
-                                resource: {
-                                    resourse_content: "",
-                                    resourse_link: "",
-                                },
-                                routine: {
-                                    date: new Date().toISOString().substr(0, 10),
-                                    time: "18:45",
-                                    topic: "",
-                                },
-                                quiz_id: '',
-                                exam_id: '',
-                            }
-                        ]
-                    },
                     {
                         id: "",
                         module_no: "",
