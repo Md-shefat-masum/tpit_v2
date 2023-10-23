@@ -12,6 +12,7 @@ use App\Models\Course\CourseMilestone;
 use App\Models\Course\CourseModule;
 use App\Models\Course\CourseModuleClasses;
 use App\Models\Course\CourseModuleClassRoutines;
+use Intervention\Image\Facades\Image;
 
 class CourseModulesController extends Controller
 {
@@ -66,6 +67,7 @@ class CourseModulesController extends Controller
     public function store()
     {
         // dd(request()->all());
+        $modules = json_decode(request()->modules);
         $validator = Validator::make(request()->all(), [
             'modules' => ['required'],
         ]);
@@ -76,31 +78,61 @@ class CourseModulesController extends Controller
                 'errors' => $validator->errors(),
             ], 422);
         }
+        
 
-        foreach(request()->modules as $course_data) {
+        foreach($modules as $course_data) {
+            // dd($course_data);
             $course_data = (object) $course_data;
             $milestone = new CourseMilestone();
             $milestone->title = $course_data->title;
+            $milestone->course_id = $course_data->course_id;
+            $milestone->milestone_no = $course_data->milestone_no;
             $milestone->save();
             foreach ($course_data->modules as $key => $module) {
                 $module = (object) $module;
                 $data = new CourseModule();
+                $data->course_id = $course_data->course_id;
                 $data->module_no = $module->module_no;
+                $data->milestone_id = $milestone->id;
                 $data->title = $module->title;
                 $data->save();
 
                 foreach($module->classes as $key => $class) {
                     $class = (object) $class;
                     $course_class = new CourseModuleClasses();
+                    $course_class->course_id = $course_data->course_id;
+                    $course_class->milestone_id = $milestone->id;
+                    $course_class->course_modules_id = $data->id;
                     $course_class->class_no = $class->class_no;
                     $course_class->title = $class->title;
                     $course_class->type = $class->type;
                     $course_class->class_video_link = $class->class_video_link;
-                    $course_class->class_video_poster = $class->class_video_poster;
                     $course_class->save();
+
+
+                    if(request()->has('class_video_poster')) {
+                        if(isset(request()->class_video_poster[$class->title])) {
+                            $poster = request()->class_video_poster[$class->title];
+                            try {
+                                $path = 'uploads/class_video_thumbs/cp-' . $course_class->id . rand(1000, 9999) . '.';
+                                
+                                $path .= $poster->getClientOriginalExtension();
+
+                                // dd($path, $poster);
+                                Image::make($poster)->fit(720, 450)->save(public_path($path));
+                                $course_class->class_video_poster = $path;
+                                $course_class->save();
+                            } catch (\Throwable $th) {
+                                return response()->json("data created without image uploding-" . $th->getMessage(), 500);
+                            }
+                        }
+                    }
 
                     $routine = new CourseModuleClassRoutines();
                     $class_routines = (object) $class->routine;
+                    $routine->course_id = $course_data->course_id;
+                    $routine->module_id = $data->id;
+                    $routine->class_id = $course_class->id;
                     $routine->date = $class_routines->date;
                     $routine->time = $class_routines->time;
                     $routine->topic = $class_routines->topic;
