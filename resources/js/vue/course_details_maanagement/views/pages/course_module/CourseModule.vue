@@ -1,6 +1,10 @@
 <template>
-    <div>
+    <div class="custom_scroll">
+        
         <form class="course_module_form" @submit.prevent="submit_course_module($event)">
+            <router-link :to="{ name: 'CourseModuleCSV'}" class="btn btn-sm btn-primary mb-2">
+                <i class="fa-solid fa-plus mr-1"></i> <span>Upload CSV</span>
+            </router-link>
             <div v-for="(milestone, index) in milestones" :key="index" class="milestones group">
                 
                 <div class="top">
@@ -203,6 +207,7 @@ export default {
                 quiz_id: '',
                 exam_id: '',
             });
+          
         },
         remove_class: function (classes, index) {
             if (confirm('remove')) {

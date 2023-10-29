@@ -2559,6 +2559,60 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/vue/course_details_maanagement/views/pages/course_module/CsvUpload.vue?vue&type=script&lang=js&":
+/*!**************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/vue/course_details_maanagement/views/pages/course_module/CsvUpload.vue?vue&type=script&lang=js& ***!
+  \**************************************************************************************************************************************************************************************************************************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  created: function created() {},
+  data: function data() {
+    return {
+      data: [],
+      object_data: []
+    };
+  },
+  methods: {
+    load_csv: function load_csv() {
+      var input = event.target.files[0];
+      var reader = new FileReader();
+      var that = this;
+      reader.onload = function (e) {
+        var text = e.target.result;
+        that.data = text.csvToArray();
+        // console.log(that.data);
+        that.make_object_data();
+      };
+      reader.readAsText(input);
+    },
+    make_object_data: function make_object_data() {
+      this.object_data = [];
+      var keys = this.data[0];
+      for (var index = 1; index < this.data.length; index++) {
+        var temp = {};
+        var arr = this.data[index];
+        for (var j = 0; j < arr.length; j++) {
+          var item = arr[j];
+          temp[keys[j]] = item;
+        }
+        this.object_data.push(temp);
+      }
+      // console.log(this.object_data);
+    },
+
+    call_store: function call_store(name) {
+      var params = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
+      this[name](params);
+    }
+  }
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/vue/course_details_maanagement/views/pages/course_trainer/CourseTrainerLayout.vue?vue&type=script&lang=js&":
 /*!*************************************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/vue/course_details_maanagement/views/pages/course_trainer/CourseTrainerLayout.vue?vue&type=script&lang=js& ***!
@@ -6763,7 +6817,9 @@ __webpack_require__.r(__webpack_exports__);
 var render = function render() {
   var _vm = this,
     _c = _vm._self._c;
-  return _c("div", [_c("form", {
+  return _c("div", {
+    staticClass: "custom_scroll"
+  }, [_c("form", {
     staticClass: "course_module_form",
     on: {
       submit: function submit($event) {
@@ -6771,7 +6827,16 @@ var render = function render() {
         return _vm.submit_course_module($event);
       }
     }
-  }, [_vm._l(_vm.milestones, function (milestone, index) {
+  }, [_c("router-link", {
+    staticClass: "btn btn-sm btn-primary mb-2",
+    attrs: {
+      to: {
+        name: "CourseModuleCSV"
+      }
+    }
+  }, [_c("i", {
+    staticClass: "fa-solid fa-plus mr-1"
+  }), _vm._v(" "), _c("span", [_vm._v("Upload CSV")])]), _vm._v(" "), _vm._l(_vm.milestones, function (milestone, index) {
     return _c("div", {
       key: index,
       staticClass: "milestones group"
@@ -7238,6 +7303,100 @@ var staticRenderFns = [function () {
     }
   }, [_vm._v("Submit")])]);
 }];
+render._withStripped = true;
+
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/lib/loaders/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/vue/course_details_maanagement/views/pages/course_module/CsvUpload.vue?vue&type=template&id=7f07788f&":
+/*!*************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/lib/loaders/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/vue/course_details_maanagement/views/pages/course_module/CsvUpload.vue?vue&type=template&id=7f07788f& ***!
+  \*************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   render: function() { return /* binding */ render; },
+/* harmony export */   staticRenderFns: function() { return /* binding */ staticRenderFns; }
+/* harmony export */ });
+var render = function render() {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("div", {
+    staticClass: "conatiner"
+  }, [_c("div", {
+    staticClass: "card"
+  }, [_c("div", {
+    staticClass: "card-header"
+  }, [_c("h4", [_vm._v("\n                Import\n            ")]), _vm._v(" "), _c("div", {
+    staticClass: "btns"
+  }, [_c("a", {
+    staticClass: "btn rounded-pill btn-outline-warning",
+    on: {
+      click: function click($event) {
+        return _vm.$router.go(-1);
+      }
+    }
+  }, [_c("i", {
+    staticClass: "fa fa-arrow-left me-5px"
+  }), _vm._v("\n                    Back\n                ")])])]), _vm._v(" "), _c("div", {
+    staticClass: "card-body text-nowrap pb-0"
+  }, [_c("div", {
+    staticClass: "row justify-content-center"
+  }, [_c("div", {
+    staticClass: "col-lg-6"
+  }, [_c("form", [_c("div", {
+    staticClass: "form-group d-grid gap-1 mb-2"
+  }, [_c("label", {
+    staticClass: "text-capitalize",
+    attrs: {
+      "for": ""
+    }
+  }, [_vm._v("Import CSV file")]), _vm._v(" "), _c("input", {
+    staticClass: "form-control",
+    attrs: {
+      type: "file",
+      name: "csv_file",
+      accept: ".csv"
+    },
+    on: {
+      change: _vm.load_csv
+    }
+  })])])])])]), _vm._v(" "), _c("div", {
+    staticClass: "card-footer text-center py-1"
+  }, [_c("button", {
+    staticClass: "btn btn-sm btn-outline-info",
+    on: {
+      click: function click($event) {
+        $event.preventDefault();
+        return _vm.call_store("bulk_import_".concat(_vm.store_prefix), _vm.object_data);
+      }
+    }
+  }, [_c("i", {
+    staticClass: "fa fa-upload"
+  }), _vm._v("\n                Upload\n            ")])])]), _vm._v(" "), _c("div", {
+    staticClass: "card list_card"
+  }, [_c("div", {
+    staticClass: "card-header"
+  }), _vm._v(" "), _c("div", {
+    staticClass: "table-responsive card-body text-nowrap",
+    staticStyle: {
+      "max-height": "calc(100vh - 455px)"
+    }
+  }, [_c("table", {
+    staticClass: "table table-hover table-bordered"
+  }, [_c("tbody", _vm._l(_vm.data, function (row, index) {
+    return _c("tr", {
+      key: index
+    }, _vm._l(row, function (col, col_index) {
+      return _c("td", {
+        key: col_index
+      }, [_vm._v("\n                            " + _vm._s(col) + "\n                        ")]);
+    }), 0);
+  }), 0)])])])]);
+};
+var staticRenderFns = [];
 render._withStripped = true;
 
 
@@ -8540,8 +8699,8 @@ function getAlldata() {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_50__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm.js");
-/* harmony import */ var vue_router__WEBPACK_IMPORTED_MODULE_51__ = __webpack_require__(/*! vue-router */ "./node_modules/vue-router/dist/vue-router.esm.js");
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_51__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm.js");
+/* harmony import */ var vue_router__WEBPACK_IMPORTED_MODULE_52__ = __webpack_require__(/*! vue-router */ "./node_modules/vue-router/dist/vue-router.esm.js");
 /* harmony import */ var _views_pages_Layout_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./views/pages/Layout.vue */ "./resources/js/vue/course_details_maanagement/views/pages/Layout.vue");
 /* harmony import */ var _views_Layout_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./views/Layout.vue */ "./resources/js/vue/course_details_maanagement/views/Layout.vue");
 /* harmony import */ var _views_pages_WhatIsThisCourse_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./views/pages/WhatIsThisCourse.vue */ "./resources/js/vue/course_details_maanagement/views/pages/WhatIsThisCourse.vue");
@@ -8591,7 +8750,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _views_pages_course_faq_Edit_vue__WEBPACK_IMPORTED_MODULE_46__ = __webpack_require__(/*! ./views/pages/course_faq/Edit.vue */ "./resources/js/vue/course_details_maanagement/views/pages/course_faq/Edit.vue");
 /* harmony import */ var _views_pages_course_faq_Details_vue__WEBPACK_IMPORTED_MODULE_47__ = __webpack_require__(/*! ./views/pages/course_faq/Details.vue */ "./resources/js/vue/course_details_maanagement/views/pages/course_faq/Details.vue");
 /* harmony import */ var _views_pages_course_module_CourseModule_vue__WEBPACK_IMPORTED_MODULE_48__ = __webpack_require__(/*! ./views/pages/course_module/CourseModule.vue */ "./resources/js/vue/course_details_maanagement/views/pages/course_module/CourseModule.vue");
-/* harmony import */ var _views_pages_course_module_AtaGlance_vue__WEBPACK_IMPORTED_MODULE_49__ = __webpack_require__(/*! ./views/pages/course_module/AtaGlance.vue */ "./resources/js/vue/course_details_maanagement/views/pages/course_module/AtaGlance.vue");
+/* harmony import */ var _views_pages_course_module_CsvUpload_vue__WEBPACK_IMPORTED_MODULE_49__ = __webpack_require__(/*! ./views/pages/course_module/CsvUpload.vue */ "./resources/js/vue/course_details_maanagement/views/pages/course_module/CsvUpload.vue");
+/* harmony import */ var _views_pages_course_module_AtaGlance_vue__WEBPACK_IMPORTED_MODULE_50__ = __webpack_require__(/*! ./views/pages/course_module/AtaGlance.vue */ "./resources/js/vue/course_details_maanagement/views/pages/course_module/AtaGlance.vue");
 
 
 
@@ -8664,8 +8824,9 @@ __webpack_require__.r(__webpack_exports__);
 // course module
 
 
-vue__WEBPACK_IMPORTED_MODULE_50__["default"].use(vue_router__WEBPACK_IMPORTED_MODULE_51__["default"]);
-window.Fire = new vue__WEBPACK_IMPORTED_MODULE_50__["default"]();
+
+vue__WEBPACK_IMPORTED_MODULE_51__["default"].use(vue_router__WEBPACK_IMPORTED_MODULE_52__["default"]);
+window.Fire = new vue__WEBPACK_IMPORTED_MODULE_51__["default"]();
 var routes = [{
   path: '',
   component: _views_Layout_vue__WEBPACK_IMPORTED_MODULE_1__["default"],
@@ -8915,11 +9076,15 @@ var routes = [{
     }, {
       path: 'at-a-glance',
       name: "CourseAtaGlance",
-      component: _views_pages_course_module_AtaGlance_vue__WEBPACK_IMPORTED_MODULE_49__["default"]
+      component: _views_pages_course_module_AtaGlance_vue__WEBPACK_IMPORTED_MODULE_50__["default"]
+    }, {
+      path: 'csv-upload',
+      name: "CourseModuleCSV",
+      component: _views_pages_course_module_CsvUpload_vue__WEBPACK_IMPORTED_MODULE_49__["default"]
     }]
   }]
 }];
-var management_router = new vue_router__WEBPACK_IMPORTED_MODULE_51__["default"]({
+var management_router = new vue_router__WEBPACK_IMPORTED_MODULE_52__["default"]({
   routes: routes,
   mode: 'hash',
   linkExactActiveClass: 'active'
@@ -12659,6 +12824,42 @@ component.options.__file = "resources/js/vue/course_details_maanagement/views/pa
 
 /***/ }),
 
+/***/ "./resources/js/vue/course_details_maanagement/views/pages/course_module/CsvUpload.vue":
+/*!*********************************************************************************************!*\
+  !*** ./resources/js/vue/course_details_maanagement/views/pages/course_module/CsvUpload.vue ***!
+  \*********************************************************************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _CsvUpload_vue_vue_type_template_id_7f07788f___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./CsvUpload.vue?vue&type=template&id=7f07788f& */ "./resources/js/vue/course_details_maanagement/views/pages/course_module/CsvUpload.vue?vue&type=template&id=7f07788f&");
+/* harmony import */ var _CsvUpload_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./CsvUpload.vue?vue&type=script&lang=js& */ "./resources/js/vue/course_details_maanagement/views/pages/course_module/CsvUpload.vue?vue&type=script&lang=js&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! !../../../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+;
+var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _CsvUpload_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _CsvUpload_vue_vue_type_template_id_7f07788f___WEBPACK_IMPORTED_MODULE_0__.render,
+  _CsvUpload_vue_vue_type_template_id_7f07788f___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns,
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/vue/course_details_maanagement/views/pages/course_module/CsvUpload.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
 /***/ "./resources/js/vue/course_details_maanagement/views/pages/course_trainer/CourseTrainerLayout.vue":
 /*!********************************************************************************************************!*\
   !*** ./resources/js/vue/course_details_maanagement/views/pages/course_trainer/CourseTrainerLayout.vue ***!
@@ -13700,6 +13901,19 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/vue/course_details_maanagement/views/pages/course_module/CsvUpload.vue?vue&type=script&lang=js&":
+/*!**********************************************************************************************************************!*\
+  !*** ./resources/js/vue/course_details_maanagement/views/pages/course_module/CsvUpload.vue?vue&type=script&lang=js& ***!
+  \**********************************************************************************************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_CsvUpload_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./CsvUpload.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/vue/course_details_maanagement/views/pages/course_module/CsvUpload.vue?vue&type=script&lang=js&");
+ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_CsvUpload_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
 /***/ "./resources/js/vue/course_details_maanagement/views/pages/course_trainer/CourseTrainerLayout.vue?vue&type=script&lang=js&":
 /*!*********************************************************************************************************************************!*\
   !*** ./resources/js/vue/course_details_maanagement/views/pages/course_trainer/CourseTrainerLayout.vue?vue&type=script&lang=js& ***!
@@ -14478,6 +14692,23 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   staticRenderFns: function() { return /* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_lib_loaders_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_lib_index_js_vue_loader_options_CourseModule_vue_vue_type_template_id_ead594a2___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns; }
 /* harmony export */ });
 /* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_lib_loaders_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_lib_index_js_vue_loader_options_CourseModule_vue_vue_type_template_id_ead594a2___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??ruleSet[1].rules[2]!../../../../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./CourseModule.vue?vue&type=template&id=ead594a2& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/lib/loaders/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/vue/course_details_maanagement/views/pages/course_module/CourseModule.vue?vue&type=template&id=ead594a2&");
+
+
+/***/ }),
+
+/***/ "./resources/js/vue/course_details_maanagement/views/pages/course_module/CsvUpload.vue?vue&type=template&id=7f07788f&":
+/*!****************************************************************************************************************************!*\
+  !*** ./resources/js/vue/course_details_maanagement/views/pages/course_module/CsvUpload.vue?vue&type=template&id=7f07788f& ***!
+  \****************************************************************************************************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   render: function() { return /* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_lib_loaders_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_lib_index_js_vue_loader_options_CsvUpload_vue_vue_type_template_id_7f07788f___WEBPACK_IMPORTED_MODULE_0__.render; },
+/* harmony export */   staticRenderFns: function() { return /* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_lib_loaders_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_lib_index_js_vue_loader_options_CsvUpload_vue_vue_type_template_id_7f07788f___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns; }
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_lib_loaders_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_lib_index_js_vue_loader_options_CsvUpload_vue_vue_type_template_id_7f07788f___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??ruleSet[1].rules[2]!../../../../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./CsvUpload.vue?vue&type=template&id=7f07788f& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/lib/loaders/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/vue/course_details_maanagement/views/pages/course_module/CsvUpload.vue?vue&type=template&id=7f07788f&");
 
 
 /***/ }),

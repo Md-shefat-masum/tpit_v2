@@ -76,6 +76,7 @@ import CourseFaqDetails from "./views/pages/course_faq/Details.vue";
 
 // course module
 import CourseModule from "./views/pages/course_module/CourseModule.vue";
+import CourseModuleCSV from "./views/pages/course_module/CsvUpload.vue";
 import CourseAtaGlance from "./views/pages/course_module/AtaGlance.vue";
 
 
@@ -402,6 +403,11 @@ const routes = [
                         path: 'at-a-glance',
                         name: `CourseAtaGlance`,
                         component: CourseAtaGlance,
+                    },
+                    {
+                        path: 'csv-upload',
+                        name: `CourseModuleCSV`,
+                        component: CourseModuleCSV,
                     }
                 ],
             },
