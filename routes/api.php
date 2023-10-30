@@ -206,6 +206,19 @@ Route::group(
                     Route::get('/{id}', 'Course\CourseFaqsController@show');
                 });
 
+                Route::group(['prefix' => 'course-routines'], function () {
+                    Route::get('/all/{course_id}', 'Course\CourseModuleClassRoutinesController@all');
+                    Route::post('/store', 'Course\CourseModuleClassRoutinesController@store');
+                    Route::post('/canvas-store', 'Course\CourseModuleClassRoutinesController@canvas_store');
+                    Route::post('/update', 'Course\CourseModuleClassRoutinesController@update');
+                    Route::post('/canvas-update', 'Course\CourseModuleClassRoutinesController@canvas_update');
+                    Route::post('/soft-delete', 'Course\CourseModuleClassRoutinesController@soft_delete');
+                    Route::post('/destroy', 'Course\CourseModuleClassRoutinesController@destroy');
+                    Route::post('/restore', 'Course\CourseModuleClassRoutinesController@restore');
+                    Route::post('/bulk-import', 'Course\CourseModuleClassRoutinesController@bulk_import');
+                    Route::get('/{id}', 'Course\CourseModuleClassRoutinesController@show');
+                });
+
                 Route::group(['prefix' => 'course-for-whoms'], function () {
                     Route::get('/all/{course_id}', 'Course\CourseForWhomsController@all');
                     Route::post('/store', 'Course\CourseForWhomsController@store');

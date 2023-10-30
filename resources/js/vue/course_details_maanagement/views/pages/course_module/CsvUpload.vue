@@ -26,9 +26,13 @@
                 </div>
             </div>
             <div class="card-footer text-center py-1">
-                <button @click.prevent="call_store(`bulk_import_${store_prefix}`,object_data)" class="btn btn-sm btn-outline-info">
+                <button @click.prevent="bulk_import_course_modules(object_data)" class="btn btn-sm btn-outline-info mr-1">
                     <i class="fa fa-upload"></i>
                     Upload
+                </button>
+                <button @click.prevent="download_csv(object_data)" class="btn btn-sm btn-outline-info">
+                    <i class="fa fa-download"></i>
+                    Download demo csv
                 </button>
             </div>
         </div>
@@ -90,8 +94,24 @@ export default {
             }
             // console.log(this.object_data);
         },
-        call_store: function(name, params=null){
-            this[name](params)
+
+        download_csv: async function() {
+            // let confirm = await window.s_confirm("upload");
+            // if(confirm) {
+            window.location.href = "/csv/course_upload_sheet.csv";
+            // }
+        },
+
+        [`bulk_import_course_modules`]: async function (data) {
+            
+            let cconfirm = await window.s_confirm("upload");
+            if (cconfirm) {
+                axios
+                    .post(`/api/v1/course/course-modules/bulk-import`, { data })
+                    .then(({ data }) => {
+                        window.s_alert(`data imported`);
+                    });
+            }
         },
     }
 }

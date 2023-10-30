@@ -1,4 +1,5 @@
 // require('../backend/plugins/axios_setup');
+require('../backend/plugins/csv_to_array');
 import axios from "axios";
 import Vue from 'vue'
 import router from './router';

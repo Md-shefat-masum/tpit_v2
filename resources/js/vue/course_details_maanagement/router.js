@@ -79,6 +79,9 @@ import CourseModule from "./views/pages/course_module/CourseModule.vue";
 import CourseModuleCSV from "./views/pages/course_module/CsvUpload.vue";
 import CourseAtaGlance from "./views/pages/course_module/AtaGlance.vue";
 
+// course routines
+import CourseRoutines from "./views/pages/course_routine/CourseRoutine.vue";
+
 
 Vue.use(VueRouter);
 window.Fire = new Vue();
@@ -408,7 +411,14 @@ const routes = [
                         path: 'csv-upload',
                         name: `CourseModuleCSV`,
                         component: CourseModuleCSV,
-                    }
+                    },
+
+                    // course routines
+                    {
+                        path: 'routines',
+                        name: `CourseRoutines`,
+                        component: CourseRoutines,
+                    },
                 ],
             },
         ]
