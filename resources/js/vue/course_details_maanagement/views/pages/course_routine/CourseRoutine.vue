@@ -17,33 +17,35 @@
                                 <td>time</td>
                             </tr>
                         </thead>
-                        <tbody v-if="course_routine.data && course_routine.data.length > 0">
-                            <tr v-for="(routine, index) in course_routine.data" :key="index">
-                                <td><span class="text-primary">#{{ index + 1 }}</span></td>
-                                <td>
-                                    <span v-if="routine.class" class="text-warning cursor_pointer">{{ routine.class.title }}</span>
-                                </td>
-                                <!-- <td><span class="cursor_pointer">{{ routine.description }}</span></td> -->
-                                <td><span v-if="routine.class" class="badge">{{ routine.class.class_no }}</span></td>
-                                <td>
-                                    <input type="text" class="form-control" :value="routine.topic" name="topic">
-                                </td>
-                                <td>
-                                    <input type="date" class="form-control" :value="routine.date" name="date">
-                                </td>
-                                
-                                <td>
-                                    <input type="time" class="form-control" :value="routine.time" name="time">
-                                </td>
-                                
-                            </tr>
+                        <tbody v-if="course_routine && course_routine.length > 0">
+                            <!-- <form action="#" @submit.prevent="CourseRoutineSubmit()"> -->
+                                <tr v-for="(routine, index) in course_routine" :key="index">
+                                    <td><span class="text-primary">#{{ index + 1 }}</span></td>
+                                    <td>
+                                        <span v-if="routine.class" class="text-warning cursor_pointer">{{ routine.class.title }}</span>
+                                    </td>
+                                    <!-- <td><span class="cursor_pointer">{{ routine.description }}</span></td> -->
+                                    <td><span v-if="routine.class" class="badge">{{ routine.class.class_no }}</span></td>
+                                    <td>
+                                        <input type="text" class="form-control" v-model="routine.topic" name="topic">
+                                    </td>
+                                    <td>
+                                        <input type="date" class="form-control" v-model="routine.date" name="date">
+                                    </td>
+                                    
+                                    <td>
+                                        <input type="time" class="form-control" v-model="routine.time" name="time">
+                                    </td>
+                                    
+                                </tr>
+                            <!-- </form> -->
                         </tbody>
                         
                     </table>
                 </div>
             </div>
             <div class="card-footer text-center">
-                <button type="submit" class="btn btn-outline-info">
+                <button type="button" @click="CourseRoutineSubmit()" class="btn btn-outline-info">
                     <i class="fa fa-upload"></i>
                     Update
                 </button>
@@ -75,19 +77,20 @@ export default {
         get_course_routines: async function () {
             let course_id = this.$route.params.id
             axios.get(`/api/v1/course/course-routines/all/${course_id}`).then((response) => {
-                // console.log(response.data);
-                this.course_routine = response.data;
+                this.course_routine = response.data.data;
+                // console.log(this.course_routine);
             })
             .catch((e) => {
                 console.log(e);
             });
         },
-        deleteCourseFaq: async function(id) {
+        CourseRoutineSubmit: async function() {
+            // console.log('hello');
             let confirm = await window.s_confirm("Are you sure?");
             if (confirm) {
-                axios.post(`/api/v1/course/course-routines/destroy`, {id: id}).then((response) => {
+                axios.post(`/api/v1/course/course-routines/store-all`, {data: this.course_routine}).then((response) => {
                     // console.log(response.data);
-                    window.toaster("Course Job Work deleted successfully!");
+                    window.toaster("Course routine updated successfully!");
                     this.get_course_routines();
                 })
                 .catch((e) => {

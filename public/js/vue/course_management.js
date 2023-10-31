@@ -2692,8 +2692,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
             case 0:
               course_id = this.$route.params.id;
               axios.get("/api/v1/course/course-routines/all/".concat(course_id)).then(function (response) {
-                // console.log(response.data);
-                _this.course_routine = response.data;
+                _this.course_routine = response.data.data;
+                // console.log(this.course_routine);
               })["catch"](function (e) {
                 console.log(e);
               });
@@ -2708,8 +2708,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       }
       return get_course_routines;
     }(),
-    deleteCourseFaq: function () {
-      var _deleteCourseFaq = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2(id) {
+    CourseRoutineSubmit: function () {
+      var _CourseRoutineSubmit = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2() {
         var _this2 = this;
         var confirm;
         return _regeneratorRuntime().wrap(function _callee2$(_context2) {
@@ -2720,11 +2720,11 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
             case 2:
               confirm = _context2.sent;
               if (confirm) {
-                axios.post("/api/v1/course/course-routines/destroy", {
-                  id: id
+                axios.post("/api/v1/course/course-routines/store-all", {
+                  data: this.course_routine
                 }).then(function (response) {
                   // console.log(response.data);
-                  window.toaster("Course Job Work deleted successfully!");
+                  window.toaster("Course routine updated successfully!");
                   _this2.get_course_routines();
                 })["catch"](function (e) {
                   console.log(e);
@@ -2734,12 +2734,12 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
             case "end":
               return _context2.stop();
           }
-        }, _callee2);
+        }, _callee2, this);
       }));
-      function deleteCourseFaq(_x) {
-        return _deleteCourseFaq.apply(this, arguments);
+      function CourseRoutineSubmit() {
+        return _CourseRoutineSubmit.apply(this, arguments);
       }
-      return deleteCourseFaq;
+      return CourseRoutineSubmit;
     }()
   },
   computed: {},
@@ -7600,7 +7600,7 @@ var render = function render() {
     staticClass: "table-responsive"
   }, [_c("table", {
     staticClass: "table table-bordered table-hover"
-  }, [_vm._m(1), _vm._v(" "), _vm.course_routine.data && _vm.course_routine.data.length > 0 ? _c("tbody", _vm._l(_vm.course_routine.data, function (routine, index) {
+  }, [_vm._m(1), _vm._v(" "), _vm.course_routine && _vm.course_routine.length > 0 ? _c("tbody", _vm._l(_vm.course_routine, function (routine, index) {
     return _c("tr", {
       key: index
     }, [_c("td", [_c("span", {
@@ -7610,6 +7610,12 @@ var render = function render() {
     }, [_vm._v(_vm._s(routine["class"].title))]) : _vm._e()]), _vm._v(" "), _c("td", [routine["class"] ? _c("span", {
       staticClass: "badge"
     }, [_vm._v(_vm._s(routine["class"].class_no))]) : _vm._e()]), _vm._v(" "), _c("td", [_c("input", {
+      directives: [{
+        name: "model",
+        rawName: "v-model",
+        value: routine.topic,
+        expression: "routine.topic"
+      }],
       staticClass: "form-control",
       attrs: {
         type: "text",
@@ -7617,8 +7623,20 @@ var render = function render() {
       },
       domProps: {
         value: routine.topic
+      },
+      on: {
+        input: function input($event) {
+          if ($event.target.composing) return;
+          _vm.$set(routine, "topic", $event.target.value);
+        }
       }
     })]), _vm._v(" "), _c("td", [_c("input", {
+      directives: [{
+        name: "model",
+        rawName: "v-model",
+        value: routine.date,
+        expression: "routine.date"
+      }],
       staticClass: "form-control",
       attrs: {
         type: "date",
@@ -7626,8 +7644,20 @@ var render = function render() {
       },
       domProps: {
         value: routine.date
+      },
+      on: {
+        input: function input($event) {
+          if ($event.target.composing) return;
+          _vm.$set(routine, "date", $event.target.value);
+        }
       }
     })]), _vm._v(" "), _c("td", [_c("input", {
+      directives: [{
+        name: "model",
+        rawName: "v-model",
+        value: routine.time,
+        expression: "routine.time"
+      }],
       staticClass: "form-control",
       attrs: {
         type: "time",
@@ -7635,9 +7665,29 @@ var render = function render() {
       },
       domProps: {
         value: routine.time
+      },
+      on: {
+        input: function input($event) {
+          if ($event.target.composing) return;
+          _vm.$set(routine, "time", $event.target.value);
+        }
       }
     })])]);
-  }), 0) : _vm._e()])])]), _vm._v(" "), _vm._m(2)])]);
+  }), 0) : _vm._e()])])]), _vm._v(" "), _c("div", {
+    staticClass: "card-footer text-center"
+  }, [_c("button", {
+    staticClass: "btn btn-outline-info",
+    attrs: {
+      type: "button"
+    },
+    on: {
+      click: function click($event) {
+        return _vm.CourseRoutineSubmit();
+      }
+    }
+  }, [_c("i", {
+    staticClass: "fa fa-upload"
+  }), _vm._v("\n                Update\n            ")])])])]);
 };
 var staticRenderFns = [function () {
   var _vm = this,
@@ -7651,19 +7701,6 @@ var staticRenderFns = [function () {
   var _vm = this,
     _c = _vm._self._c;
   return _c("thead", [_c("tr", [_c("td", [_vm._v("sl")]), _vm._v(" "), _c("td", [_vm._v("class title")]), _vm._v(" "), _c("td", [_vm._v("class no")]), _vm._v(" "), _c("td", [_vm._v("topic")]), _vm._v(" "), _c("td", [_vm._v("date")]), _vm._v(" "), _c("td", [_vm._v("time")])])]);
-}, function () {
-  var _vm = this,
-    _c = _vm._self._c;
-  return _c("div", {
-    staticClass: "card-footer text-center"
-  }, [_c("button", {
-    staticClass: "btn btn-outline-info",
-    attrs: {
-      type: "submit"
-    }
-  }, [_c("i", {
-    staticClass: "fa fa-upload"
-  }), _vm._v("\n                Update\n            ")])]);
 }];
 render._withStripped = true;
 
