@@ -71,6 +71,10 @@ import CourseTrainerCreate from "./views/pages/course_trainer/Trainer.vue";
 import CourseMileStoneLayout from "./views/pages/course_milestone/CourseMileStoneLayout.vue";
 import CourseMileStone from "./views/pages/course_milestone/Milestones.vue";
 
+// course module classes
+import CourseClassLayout from "./views/pages/course_module_class/CourseClassLayout.vue";
+import CourseClassAll from "./views/pages/course_module_class/CourseClasses.vue";
+
 // course faq
 import CourseFaqLayout from "./views/pages/course_faq/CourseFaqLayout.vue";
 import CourseFaqAll from "./views/pages/course_faq/All.vue";
@@ -376,6 +380,18 @@ const routes = [
                                 path: '',
                                 name: 'CourseMileStone',
                                 component: CourseMileStone,
+                            },
+                        ]
+                    },
+
+                    {
+                        path: 'classes',
+                        component: CourseClassLayout,
+                        children: [
+                            {
+                                path: '',
+                                name: 'CourseClassAll',
+                                component: CourseClassAll,
                             },
                         ]
                     },

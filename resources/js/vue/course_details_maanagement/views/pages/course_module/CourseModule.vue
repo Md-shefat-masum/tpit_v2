@@ -14,7 +14,7 @@
                 <i class="fa-solid"></i> <span>Modules</span>
             </router-link>
 
-            <router-link :to="{ name: 'CourseModuleCSV'}" class="btn btn-sm btn-primary mb-2 mr-1">
+            <router-link :to="{ name: 'CourseClassAll'}" class="btn btn-sm btn-primary mb-2 mr-1">
                 <i class="fa-solid"></i> <span>Classes</span>
             </router-link>
 

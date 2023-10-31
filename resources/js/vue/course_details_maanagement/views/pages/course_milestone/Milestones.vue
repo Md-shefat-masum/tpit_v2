@@ -14,6 +14,7 @@
                             <tr>
                                 <td>sl</td>
                                 <td>Milestone title</td>
+                                <td>Milestone No</td>
                                 <td>Status</td>
                                 <td>Actions</td>
                             </tr>
@@ -22,6 +23,7 @@
                             <tr v-for="(milestone, index) in milestones" :key="index">
                                 <td><span class="text-primary">#{{ index + 1 }}</span></td>
                                 <td><span class="text-warning cursor_pointer">{{ milestone.title }}</span></td>
+                                <td><span class="text-info cursor_pointer">{{ milestone.milestone_no }}</span></td>
                                 <td><span class="badge">{{ milestone.status }}</span></td>
                                 <td>
                                     <div class="btn-group">

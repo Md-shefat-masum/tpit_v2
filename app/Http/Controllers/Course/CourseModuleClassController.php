@@ -44,7 +44,7 @@ class CourseModuleClassController extends Controller
     }
 
     public function all_module_classes($course_id) {
-        $course_classes = CourseModuleClasses::where('status', 'active')->where('course_id', $course_id)->orderBy('id', 'DESC')->get();
+        $course_classes = CourseModuleClasses::where('status', 'active')->where('course_id', $course_id)->orderBy('id', 'DESC')->paginate(10);
         return response()->json($course_classes);
     }
 
