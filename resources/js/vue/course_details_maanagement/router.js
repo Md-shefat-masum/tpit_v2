@@ -67,6 +67,10 @@ import CourseWhatWillGetDetails from "./views/pages/course_what_will_get/Details
 import CourseTrainerLayout from "./views/pages/course_trainer/CourseTrainerLayout.vue";
 import CourseTrainerCreate from "./views/pages/course_trainer/Trainer.vue";
 
+// course milestones
+import CourseMileStoneLayout from "./views/pages/course_milestone/CourseMileStoneLayout.vue";
+import CourseMileStone from "./views/pages/course_milestone/Milestones.vue";
+
 // course faq
 import CourseFaqLayout from "./views/pages/course_faq/CourseFaqLayout.vue";
 import CourseFaqAll from "./views/pages/course_faq/All.vue";
@@ -76,6 +80,7 @@ import CourseFaqDetails from "./views/pages/course_faq/Details.vue";
 
 // course module
 import CourseModule from "./views/pages/course_module/CourseModule.vue";
+import CourseModuleAll from "./views/pages/course_module/Modules.vue";
 import CourseModuleCSV from "./views/pages/course_module/CsvUpload.vue";
 import CourseAtaGlance from "./views/pages/course_module/AtaGlance.vue";
 
@@ -362,6 +367,19 @@ const routes = [
                         ]
                     },
 
+                    // couese milestones
+                    {
+                        path: 'milestones',
+                        component: CourseMileStoneLayout,
+                        children: [
+                            {
+                                path: '',
+                                name: 'CourseMileStone',
+                                component: CourseMileStone,
+                            },
+                        ]
+                    },
+
 
                     // couese Faq
                     {
@@ -401,6 +419,11 @@ const routes = [
                         path: 'modules',
                         name: `CourseModule`,
                         component: CourseModule,
+                    },
+                    {
+                        path: 'all-modules',
+                        name: `CourseModuleAll`,
+                        component: CourseModuleAll,
                     },
                     {
                         path: 'at-a-glance',

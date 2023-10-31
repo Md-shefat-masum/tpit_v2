@@ -44,6 +44,11 @@ class CourseModulesController extends Controller
         return response()->json($datas);
     }
 
+    public function all_modules($course_id) {
+        $course_batches = CourseModule::where('status', 'active')->where('course_id', $course_id)->orderBy('id', 'DESC')->get();
+        return response()->json($course_batches);
+    }
+
     public function show($id)
     {
 

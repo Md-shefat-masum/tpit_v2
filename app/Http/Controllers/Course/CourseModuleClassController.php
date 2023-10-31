@@ -43,6 +43,11 @@ class CourseModuleClassController extends Controller
         return response()->json($datas);
     }
 
+    public function all_module_classes($course_id) {
+        $course_classes = CourseModuleClasses::where('status', 'active')->where('course_id', $course_id)->orderBy('id', 'DESC')->get();
+        return response()->json($course_classes);
+    }
+
     public function show($id)
     {
 

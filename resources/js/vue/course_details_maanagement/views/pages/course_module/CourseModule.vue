@@ -2,9 +2,22 @@
     <div class="custom_scroll">
         
         <form class="course_module_form" @submit.prevent="submit_course_module($event)">
-            <router-link :to="{ name: 'CourseModuleCSV'}" class="btn btn-sm btn-primary mb-2">
+            <router-link :to="{ name: 'CourseModuleCSV'}" class="btn btn-sm btn-primary mb-2 mr-1">
                 <i class="fa-solid fa-plus mr-1"></i> <span>Upload CSV</span>
             </router-link>
+
+            <router-link :to="{ name: 'CourseMileStone'}" class="btn btn-sm btn-primary mb-2 mr-1">
+                <i class="fa-solid"></i> <span>Milestones</span>
+            </router-link>
+
+            <router-link :to="{ name: 'CourseModuleAll'}" class="btn btn-sm btn-primary mb-2 mr-1">
+                <i class="fa-solid"></i> <span>Modules</span>
+            </router-link>
+
+            <router-link :to="{ name: 'CourseModuleCSV'}" class="btn btn-sm btn-primary mb-2 mr-1">
+                <i class="fa-solid"></i> <span>Classes</span>
+            </router-link>
+
             <div v-for="(milestone, index) in milestones" :key="index" class="milestones group">
                 
                 <div class="top">

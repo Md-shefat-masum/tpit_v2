@@ -3,14 +3,12 @@
 namespace App\Http\Controllers\Course;
 
 use App\Http\Controllers\Controller;
-use App\Models\ContactMessage;
-use App\Models\Course\CourseBatches;
-use App\Models\Course\CourseCategory;
+use App\Models\Course\CourseMilestone;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
-class CourseBatchController extends Controller
+class CourseMileStoneController extends Controller
 {
     public function all()
     {
@@ -23,26 +21,15 @@ class CourseBatchController extends Controller
             $status = request()->status;
         }
 
-        $query = CourseBatches::where('status', $status)->orderBy($orderBy, $orderByType);
+        $query = CourseMilestone::where('status', $status)->orderBy($orderBy, $orderByType);
 
         if (request()->has('search_key')) {
             $key = request()->search_key;
             $query->where(function ($q) use ($key) {
                 return $q->where('id', '%' . $key . '%')
                     ->orWhere('course_id', '%' . $key . '%')
-                    ->orWhere('batch_name', '%' . $key . '%')
-                    ->orWhere('admission_start_date', '%' . $key . '%')
-                    ->orWhere('admission_end_date', '%' . $key . '%')
-                    ->orWhere('batch_student_limit', 'LIKE', '%' . $key . '%')
-                    ->orWhere('seat_booked', 'LIKE', '%' . $key . '%')
-                    ->orWhere('course_price', 'LIKE', '%' . $key . '%')
-                    ->orWhere('course_discount', 'LIKE', '%' . $key . '%')
-                    ->orWhere('after_discount_price', 'LIKE', '%' . $key . '%')
-                    ->orWhere('first_class_date', 'LIKE', '%' . $key . '%')
-                    ->orWhere('class_days', 'LIKE', '%' . $key . '%')
-                    ->orWhere('class_start_time', 'LIKE', '%' . $key . '%')
-                    ->orWhere('class_end_time', 'LIKE', '%' . $key . '%');
-
+                    ->orWhere('milestone_no', '%' . $key . '%')
+                    ->orWhere('title', 'LIKE', '%' . $key . '%');
             });
         }
 
@@ -50,47 +37,10 @@ class CourseBatchController extends Controller
         return response()->json($datas);
     }
 
-    public function course_batches($course_id)
+
+    public function get_all_milestones($course_id)
     {
-        $paginate = (int) request()->paginate ?? 10;
-        $orderBy = request()->orderBy ?? 'id';
-        $orderByType = request()->orderByType ?? 'ASC';
-
-        $status = 'active';
-        if (request()->has('status')) {
-            $status = request()->status;
-        }
-
-        $query = CourseBatches::where('status', $status)->where('course_id', $course_id)->orderBy($orderBy, $orderByType);
-
-        if (request()->has('search_key')) {
-            $key = request()->search_key;
-            $query->where(function ($q) use ($key) {
-                return $q->where('id', '%' . $key . '%')
-                    ->orWhere('course_id', '%' . $key . '%')
-                    ->orWhere('batch_name', '%' . $key . '%')
-                    ->orWhere('admission_start_date', '%' . $key . '%')
-                    ->orWhere('admission_end_date', '%' . $key . '%')
-                    ->orWhere('batch_student_limit', 'LIKE', '%' . $key . '%')
-                    ->orWhere('seat_booked', 'LIKE', '%' . $key . '%')
-                    ->orWhere('course_price', 'LIKE', '%' . $key . '%')
-                    ->orWhere('course_discount', 'LIKE', '%' . $key . '%')
-                    ->orWhere('after_discount_price', 'LIKE', '%' . $key . '%')
-                    ->orWhere('first_class_date', 'LIKE', '%' . $key . '%')
-                    ->orWhere('class_days', 'LIKE', '%' . $key . '%')
-                    ->orWhere('class_start_time', 'LIKE', '%' . $key . '%')
-                    ->orWhere('class_end_time', 'LIKE', '%' . $key . '%');
-
-            });
-        }
-
-        $datas = $query->with(['course'])->paginate($paginate);
-        return response()->json($datas);
-    }
-
-    public function get_all_bacths($course_id)
-    {
-        $course_batches = CourseBatches::where('status', 'active')->where('course_id', $course_id)->orderBy('id', 'DESC')->get();
+        $course_batches = CourseMilestone::where('status', 'active')->where('course_id', $course_id)->orderBy('id', 'DESC')->get();
         return response()->json($course_batches);
     }
 
@@ -101,7 +51,7 @@ class CourseBatchController extends Controller
         if (request()->has('select_all') && request()->select_all) {
             $select = "*";
         }
-        $data = CourseBatches::where('id', $id)
+        $data = CourseMilestone::where('id', $id)
             ->select($select)
             ->with(['course'])
             ->first();
@@ -143,7 +93,7 @@ class CourseBatchController extends Controller
             ], 422);
         }
 
-        $data = new CourseBatches();
+        $data = new CourseMilestone();
         $data->course_id = request()->course_id;
         $data->batch_name = request()->batch_name;
         $data->admission_start_date = request()->admission_start_date;
@@ -189,7 +139,7 @@ class CourseBatchController extends Controller
             ], 422);
         }
 
-        $data = new CourseBatches();
+        $data = new CourseMilestone();
         $data->course_id = request()->course_id;
         $data->batch_name = request()->batch_name;
         $data->admission_start_date = request()->admission_start_date;
@@ -210,7 +160,7 @@ class CourseBatchController extends Controller
 
     public function update()
     {
-        $data = CourseBatches::find(request()->id);
+        $data = CourseMilestone::find(request()->id);
         if(!$data){
             return response()->json([
                 'err_message' => 'validation error',
@@ -262,7 +212,7 @@ class CourseBatchController extends Controller
 
     public function canvas_update()
     {
-        $data = CourseBatches::find(request()->id);
+        $data = CourseMilestone::find(request()->id);
         if(!$data){
             return response()->json([
                 'err_message' => 'validation error',
@@ -324,7 +274,7 @@ class CourseBatchController extends Controller
             ], 422);
         }
 
-        $data = CourseBatches::find(request()->id);
+        $data = CourseMilestone::find(request()->id);
         $data->status = 'inactive';
         $data->save();
 
@@ -347,7 +297,7 @@ class CourseBatchController extends Controller
             ], 422);
         }
 
-        $data = CourseBatches::find(request()->id);
+        $data = CourseMilestone::find(request()->id);
         $data->delete();
 
         return response()->json([
@@ -368,7 +318,7 @@ class CourseBatchController extends Controller
             ], 422);
         }
 
-        $data = CourseBatches::find(request()->id);
+        $data = CourseMilestone::find(request()->id);
         $data->status = 1;
         $data->save();
 
@@ -394,10 +344,10 @@ class CourseBatchController extends Controller
             $item['created_at'] = $item['created_at'] ? Carbon::parse($item['created_at']): Carbon::now()->toDateTimeString();
             $item['updated_at'] = $item['updated_at'] ? Carbon::parse($item['updated_at']): Carbon::now()->toDateTimeString();
             $item = (object) $item;
-            $check = CourseBatches::where('id',$item->id)->first();
+            $check = CourseMilestone::where('id',$item->id)->first();
             if(!$check){
                 try {
-                    CourseBatches::create((array) $item);
+                    CourseMilestone::create((array) $item);
                 } catch (\Throwable $th) {
                     return response()->json([
                         'err_message' => 'validation error',
