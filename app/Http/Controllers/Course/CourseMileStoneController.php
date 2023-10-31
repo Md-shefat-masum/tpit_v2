@@ -114,6 +114,20 @@ class CourseMileStoneController extends Controller
         return response()->json($data, 200);
     }
 
+    public function store_all() {
+        foreach (request()->data as $key => $milestone) {
+            $milestone = (object) $milestone;
+            $milestone_check = CourseMilestone::where('course_id', $milestone->course_id)->where('id', $milestone->id)->first();
+
+            if($milestone_check != null) {
+                $milestone_check->title = $milestone->title;
+                $milestone_check->milestone_no = $milestone->milestone_no;
+                $milestone_check->save();
+            }
+        }
+        return response()->json(["message" => "Course uploaded successfully!"], 200);
+    }
+
     public function canvas_store()
     {
         $validator = Validator::make(request()->all(), [

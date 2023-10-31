@@ -2447,10 +2447,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 _this.milestones = response.data;
               })["catch"](function (e) {
                 console.log(e);
-                // if(e.response.status == 401) {
-                //     console.log(e.response.data);
-                //     location.href = '/';
-                // }
               });
             case 2:
             case "end":
@@ -2462,21 +2458,54 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         return _get_course_milestones.apply(this, arguments);
       }
       return get_course_milestones;
+    }(),
+    update_course_milestone: function () {
+      var _update_course_milestone = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2() {
+        var _this2 = this;
+        var confirm;
+        return _regeneratorRuntime().wrap(function _callee2$(_context2) {
+          while (1) switch (_context2.prev = _context2.next) {
+            case 0:
+              _context2.next = 2;
+              return window.s_confirm("Are you sure?");
+            case 2:
+              confirm = _context2.sent;
+              if (confirm) {
+                axios.post("/api/v1/course/course-milestones/store-all", {
+                  data: this.milestones
+                }).then(function (response) {
+                  // console.log(response.data);
+                  window.toaster("Course milestones updated successfully!");
+                  _this2.get_course_milestones();
+                })["catch"](function (e) {
+                  console.log(e);
+                });
+              }
+            case 4:
+            case "end":
+              return _context2.stop();
+          }
+        }, _callee2, this);
+      }));
+      function update_course_milestone() {
+        return _update_course_milestone.apply(this, arguments);
+      }
+      return update_course_milestone;
     }()
   },
   computed: {},
   created: function () {
-    var _created = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2() {
-      return _regeneratorRuntime().wrap(function _callee2$(_context2) {
-        while (1) switch (_context2.prev = _context2.next) {
+    var _created = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee3() {
+      return _regeneratorRuntime().wrap(function _callee3$(_context3) {
+        while (1) switch (_context3.prev = _context3.next) {
           case 0:
-            _context2.next = 2;
+            _context3.next = 2;
             return this.get_course_milestones();
           case 2:
           case "end":
-            return _context2.stop();
+            return _context3.stop();
         }
-      }, _callee2, this);
+      }, _callee3, this);
     }));
     function created() {
       return _created.apply(this, arguments);
@@ -7279,43 +7308,64 @@ var render = function render() {
       key: index
     }, [_c("td", [_c("span", {
       staticClass: "text-primary"
-    }, [_vm._v("#" + _vm._s(index + 1))])]), _vm._v(" "), _c("td", [_c("span", {
-      staticClass: "text-warning cursor_pointer"
-    }, [_vm._v(_vm._s(milestone.title))])]), _vm._v(" "), _c("td", [_c("span", {
-      staticClass: "text-info cursor_pointer"
-    }, [_vm._v(_vm._s(milestone.milestone_no))])]), _vm._v(" "), _c("td", [_c("span", {
-      staticClass: "badge"
-    }, [_vm._v(_vm._s(milestone.status))])]), _vm._v(" "), _c("td", [_c("div", {
-      staticClass: "btn-group"
-    }, [_vm._m(2, true), _vm._v(" "), _c("div", {
-      staticClass: "dropdown-menu"
-    }, [_c("router-link", {
-      staticClass: "dropdown-item",
+    }, [_vm._v("#" + _vm._s(index + 1))])]), _vm._v(" "), _c("td", [_c("input", {
+      directives: [{
+        name: "model",
+        rawName: "v-model",
+        value: milestone.title,
+        expression: "milestone.title"
+      }],
+      staticClass: "form-control",
       attrs: {
-        to: {
-          name: "CourseJobWorkEdit",
-          params: {
-            id: milestone.id
-          }
-        }
-      }
-    }, [_c("i", {
-      staticClass: "fa text-warning fa-pencil mr-2"
-    }), _vm._v(" "), _c("span", [_vm._v("Edit")])]), _vm._v(" "), _c("a", {
-      staticClass: "dropdown-item",
-      attrs: {
-        href: "javascript:void(0)"
+        type: "text"
+      },
+      domProps: {
+        value: milestone.title
       },
       on: {
-        click: function click($event) {
-          $event.preventDefault();
-          return _vm.deleteCoursejobWork(milestone.id);
+        input: function input($event) {
+          if ($event.target.composing) return;
+          _vm.$set(milestone, "title", $event.target.value);
         }
       }
-    }, [_c("i", {
-      staticClass: "fa text-danger fa-trash mr-2"
-    }), _vm._v(" "), _c("span", [_vm._v("Delete")])])], 1)])])]);
-  }), 0) : _vm._e()])])], 1)])]);
+    })]), _vm._v(" "), _c("td", [_c("input", {
+      directives: [{
+        name: "model",
+        rawName: "v-model",
+        value: milestone.milestone_no,
+        expression: "milestone.milestone_no"
+      }],
+      staticClass: "form-control",
+      attrs: {
+        type: "number"
+      },
+      domProps: {
+        value: milestone.milestone_no
+      },
+      on: {
+        input: function input($event) {
+          if ($event.target.composing) return;
+          _vm.$set(milestone, "milestone_no", $event.target.value);
+        }
+      }
+    })]), _vm._v(" "), _c("td", [_c("span", {
+      staticClass: "badge"
+    }, [_vm._v(_vm._s(milestone.status))])])]);
+  }), 0) : _vm._e()])])], 1), _vm._v(" "), _c("div", {
+    staticClass: "card-footer text-center"
+  }, [_c("button", {
+    staticClass: "btn btn-outline-info",
+    attrs: {
+      type: "button"
+    },
+    on: {
+      click: function click($event) {
+        return _vm.update_course_milestone();
+      }
+    }
+  }, [_c("i", {
+    staticClass: "fa fa-upload"
+  }), _vm._v("\n                Update\n            ")])])])]);
 };
 var staticRenderFns = [function () {
   var _vm = this,
@@ -7328,20 +7378,7 @@ var staticRenderFns = [function () {
 }, function () {
   var _vm = this,
     _c = _vm._self._c;
-  return _c("thead", [_c("tr", [_c("td", [_vm._v("sl")]), _vm._v(" "), _c("td", [_vm._v("Milestone title")]), _vm._v(" "), _c("td", [_vm._v("Milestone No")]), _vm._v(" "), _c("td", [_vm._v("Status")]), _vm._v(" "), _c("td", [_vm._v("Actions")])])]);
-}, function () {
-  var _vm = this,
-    _c = _vm._self._c;
-  return _c("button", {
-    staticClass: "btn btn-sm btn-outline-secondary dropdown-toggle",
-    attrs: {
-      type: "button",
-      "data-toggle": "dropdown",
-      "aria-expanded": "false"
-    }
-  }, [_c("i", {
-    staticClass: "fa fa-gears"
-  })]);
+  return _c("thead", [_c("tr", [_c("td", [_vm._v("sl")]), _vm._v(" "), _c("td", [_vm._v("Milestone title")]), _vm._v(" "), _c("td", [_vm._v("Milestone No")]), _vm._v(" "), _c("td", [_vm._v("Status")])])]);
 }];
 render._withStripped = true;
 

@@ -16,38 +16,30 @@
                                 <td>Milestone title</td>
                                 <td>Milestone No</td>
                                 <td>Status</td>
-                                <td>Actions</td>
                             </tr>
                         </thead>
                         <tbody v-if="milestones && milestones.length > 0">
                             <tr v-for="(milestone, index) in milestones" :key="index">
                                 <td><span class="text-primary">#{{ index + 1 }}</span></td>
-                                <td><span class="text-warning cursor_pointer">{{ milestone.title }}</span></td>
-                                <td><span class="text-info cursor_pointer">{{ milestone.milestone_no }}</span></td>
-                                <td><span class="badge">{{ milestone.status }}</span></td>
                                 <td>
-                                    <div class="btn-group">
-                                        <button class="btn btn-sm btn-outline-secondary dropdown-toggle" type="button"
-                                            data-toggle="dropdown" aria-expanded="false">
-                                            <i class="fa fa-gears"></i>
-                                        </button>
-                                        <div class="dropdown-menu">
-                                            <!-- <router-link :to="{ name: 'CourseWhatmilestoneCreate', params: { id: milestone.id }}" class="dropdown-item">
-                                                <i class="fa text-info fa-eye mr-2"></i> <span>Details</span>
-                                            </router-link> -->
-                                            <router-link :to="{ name: 'CourseJobWorkEdit', params: { id: milestone.id }}" class="dropdown-item">
-                                                <i class="fa text-warning fa-pencil mr-2"></i> <span>Edit</span>
-                                            </router-link>
-                                            <a href="javascript:void(0)" @click.prevent="deleteCoursejobWork(milestone.id)" class="dropdown-item">
-                                                <i class="fa text-danger fa-trash mr-2"></i> <span>Delete</span>
-                                            </a>
-                                        </div>
-                                    </div>
+                                    <!-- <span class="text-warning cursor_pointer">{{ milestone.title }}</span> -->
+                                    <input type="text" class="form-control" v-model="milestone.title">
                                 </td>
+                                <td>
+                                    <!-- <span class="text-info cursor_pointer">{{ milestone.milestone_no }}</span> -->
+                                    <input type="number" class="form-control" v-model="milestone.milestone_no">
+                                </td>
+                                <td><span class="badge">{{ milestone.status }}</span></td>
                             </tr>
                         </tbody>
                     </table>
                 </div>
+            </div>
+            <div class="card-footer text-center">
+                <button type="button" @click="update_course_milestone()" class="btn btn-outline-info">
+                    <i class="fa fa-upload"></i>
+                    Update
+                </button>
             </div>
         </div>
     </div>
@@ -74,11 +66,20 @@ export default {
             })
             .catch((e) => {
                 console.log(e);
-                // if(e.response.status == 401) {
-                //     console.log(e.response.data);
-                //     location.href = '/';
-                // }
             });
+        },
+        update_course_milestone: async function() {
+            let confirm = await window.s_confirm("Are you sure?");
+            if (confirm) {
+                axios.post(`/api/v1/course/course-milestones/store-all`, {data: this.milestones}).then((response) => {
+                    // console.log(response.data);
+                    window.toaster("Course milestones updated successfully!");
+                    this.get_course_milestones();
+                })
+                .catch((e) => {
+                    console.log(e);
+                });
+            }
         }
     },
     computed: {
