@@ -21,7 +21,7 @@
                                 </div>
                                 <div class="col-md-12">
                                     <label class="form-label" for="description">Module No</label>
-                                    <input type="text" id="milestone_no" name="milestone_no" class="form-control" placeholder="1,2" />
+                                    <input type="text" id="module_no" name="module_no" class="form-control" placeholder="1,2" />
                                 </div>
                             </div>
                         </div>
@@ -55,7 +55,7 @@ export default {
                 formData: formData,
             }
 
-            await axios.post('/api/v1/course/course-milestones/store', data.formData).then((response) => {
+            await axios.post('/api/v1/course/course-modules/item-store', data.formData).then((response) => {
                 // localStorage.setItem('current_course', JSON.stringify(response?.data))
                 window.toaster("Course Milestone added successfully!");
                 event.reset();
@@ -64,13 +64,6 @@ export default {
                 console.log(e);
             });
         },
-        // get_course_details: async function (event) {
-        //     let whatcourse = localStorage.getItem('current_course');
-        //     if(whatcourse) {
-        //         whatcourse = JSON.parse(whatcourse);
-        //         this.course_id = whatcourse.id
-        //     }
-        // }
     },
     computed: {
 

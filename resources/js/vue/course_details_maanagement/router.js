@@ -75,6 +75,7 @@ import CourseMileStoneCreate from "./views/pages/course_milestone/MilestoneCreat
 // course module classes
 import CourseClassLayout from "./views/pages/course_module_class/CourseClassLayout.vue";
 import CourseClassAll from "./views/pages/course_module_class/CourseClasses.vue";
+import CourseClassCreate from "./views/pages/course_module_class/CourseClassCreate.vue";
 
 // course faq
 import CourseFaqLayout from "./views/pages/course_faq/CourseFaqLayout.vue";
@@ -399,6 +400,11 @@ const routes = [
                                 path: '',
                                 name: 'CourseClassAll',
                                 component: CourseClassAll,
+                            },
+                            {
+                                path: '/create',
+                                name: 'CourseClassCreate',
+                                component: CourseClassCreate,
                             },
                         ]
                     },

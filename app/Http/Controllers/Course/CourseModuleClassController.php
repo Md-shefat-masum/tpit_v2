@@ -121,7 +121,6 @@ class CourseModuleClassController extends Controller
             'title' => ['required'],
             'type' => ['required'],
             'class_video_link' => ['required'],
-            'class_video_poster' => ['required'],
 
         ]);
 
@@ -139,7 +138,16 @@ class CourseModuleClassController extends Controller
         $data->title = request()->title;
         $data->type = request()->type;
         $data->class_video_link = request()->class_video_link;
-        $data->class_video_poster = request()->class_video_poster;
+        $data->save();
+        if(request()->hasFile('class_video_poster')) {
+            $file = request()->file('class_video_poster');
+            $path = 'uploads/class_video_thumbs/cp-' . $data->id . rand(1000, 9999) . '.';
+            
+            $path .= $file->getClientOriginalExtension();
+            Image::make($file)->fit(720, 450)->save(public_path($path));
+            $data->class_video_poster = $path;
+            $data->save();
+        }
         $data->save();
 
         return response()->json($data, 200);

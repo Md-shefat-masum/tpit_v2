@@ -317,6 +317,7 @@ Route::group(
                     Route::get('/all', 'Course\CourseModulesController@all');
                     Route::get('/all-modules/{course_id}', 'Course\CourseModulesController@all_modules');
                     Route::post('/store', 'Course\CourseModulesController@store');
+                    Route::post('/item-store', 'Course\CourseModulesController@store_item');
                     Route::post('/store-all', 'Course\CourseModulesController@update_modules');
                     Route::post('/canvas-store', 'Course\CourseModulesController@canvas_store');
                     Route::post('/update', 'Course\CourseModulesController@update');

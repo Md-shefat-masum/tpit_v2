@@ -70,6 +70,30 @@ class CourseModulesController extends Controller
             ], 404);
         }
     }
+
+    public function store_item() {
+        $validator = Validator::make(request()->all(), [
+            'course_id' => ['required'],
+            'module_no' => ['required'],
+            'title' => ['required'],
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json([
+                'err_message' => 'validation error',
+                'errors' => $validator->errors(),
+            ], 422);
+        }
+
+        $data = new CourseModule();
+        $data->course_id = request()->course_id;
+        $data->module_no = request()->module_no;
+        $data->title = request()->title;
+        $data->save();
+
+        return response()->json($data, 200);
+    }
+
     public function store()
     {
         // dd(request()->all());
