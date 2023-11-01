@@ -5,7 +5,7 @@
                 <h4 class="card-title">All Course Milestones: 🎓</h4>
             </div>
             <div class="card-body">
-                <router-link :to="{ name: ''}" class="btn btn-primary mb-2 float-right">
+                <router-link :to="{ name: 'CourseMileStoneCreate'}" class="btn btn-primary mb-2 float-right">
                     <i class="fa-solid fa-plus mr-1"></i> <span>Create</span>
                 </router-link>
                 <div class="table-responsive">

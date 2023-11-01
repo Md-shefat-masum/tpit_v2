@@ -150,6 +150,20 @@ class CourseModulesController extends Controller
         return response()->json(['message' => 'module updated successfully!'], 200);
     }
 
+    public function update_modules() {
+        foreach (request()->data as $key => $module) {
+            $module = (object) $module;
+            $module_check = CourseModule::where('course_id', $module->course_id)->where('id', $module->id)->first();
+
+            if($module_check != null) {
+                $module_check->title = $module->title;
+                $module_check->module_no = $module->module_no;
+                $module_check->save();
+            }
+        }
+        return response()->json(["message" => "Course Module updated successfully!"], 200);
+    }
+
     public function canvas_store()
     {
         $validator = Validator::make(request()->all(), [

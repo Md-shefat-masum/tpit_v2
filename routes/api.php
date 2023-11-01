@@ -317,6 +317,7 @@ Route::group(
                     Route::get('/all', 'Course\CourseModulesController@all');
                     Route::get('/all-modules/{course_id}', 'Course\CourseModulesController@all_modules');
                     Route::post('/store', 'Course\CourseModulesController@store');
+                    Route::post('/store-all', 'Course\CourseModulesController@update_modules');
                     Route::post('/canvas-store', 'Course\CourseModulesController@canvas_store');
                     Route::post('/update', 'Course\CourseModulesController@update');
                     Route::post('/canvas-update', 'Course\CourseModulesController@canvas_update');
@@ -383,8 +384,10 @@ Route::group(
                     Route::get('/all', 'Course\CourseModuleClassController@all');
                     Route::get('/all-classes/{course_id}', 'Course\CourseModuleClassController@all_module_classes');
                     Route::post('/store', 'Course\CourseModuleClassController@store');
+                    Route::post('/store-all', 'Course\CourseModuleClassController@update_class_module');
                     Route::post('/canvas-store', 'Course\CourseModuleClassController@canvas_store');
                     Route::post('/update', 'Course\CourseModuleClassController@update');
+                    Route::post('/update-image', 'Course\CourseModuleClassController@update_image');
                     Route::post('/canvas-update', 'Course\CourseModuleClassController@canvas_update');
                     Route::post('/soft-delete', 'Course\CourseModuleClassController@soft_delete');
                     Route::post('/destroy', 'Course\CourseModuleClassController@destroy');

@@ -71,19 +71,8 @@ class CourseMileStoneController extends Controller
     {
         $validator = Validator::make(request()->all(), [
             'course_id' => ['required'],
-            'batch_name' => ['required'],
-            'admission_start_date' => ['required'],
-            'admission_end_date' => ['required'],
-            'batch_student_limit' => ['required'],
-            'seat_booked' => ['required'],
-            'course_price' => ['required'],
-            'course_discount' => ['required'],
-            'after_discount_price' => ['required'],
-            'first_class_date' => ['required'],
-            'class_days' => ['required'],
-            'class_start_time' => ['required'],
-            'class_end_time' => ['required'],
-
+            'title' => ['required'],
+            'milestone_no' => ['required']
         ]);
 
         if ($validator->fails()) {
@@ -95,20 +84,8 @@ class CourseMileStoneController extends Controller
 
         $data = new CourseMilestone();
         $data->course_id = request()->course_id;
-        $data->batch_name = request()->batch_name;
-        $data->admission_start_date = request()->admission_start_date;
-        $data->admission_end_date = request()->admission_end_date;
-        $data->batch_student_limit = request()->batch_student_limit;
-        $data->seat_booked = request()->seat_booked;
-        $data->booked_percent = request()->booked_percent;
-        $data->course_price = request()->course_price;
-        $data->course_discount = request()->course_discount;
-        $data->after_discount_price = request()->after_discount_price;
-        $data->first_class_date = request()->first_class_date;
-        $data->class_days = request()->class_days;
-        $data->class_start_time = request()->class_start_time;
-        $data->class_end_time = request()->class_end_time;
-
+        $data->title = request()->title;
+        $data->milestone_no = request()->milestone_no;
         $data->save();
 
         return response()->json($data, 200);

@@ -13,7 +13,8 @@
                         <thead>
                             <tr>
                                 <td>sl</td>
-                                <td>Milestone title</td>
+                                <td>Module title</td>
+                                <td>Module No</td>
                                 <td>Status</td>
                                 <td>Actions</td>
                             </tr>
@@ -21,7 +22,14 @@
                         <tbody v-if="modules && modules.length > 0">
                             <tr v-for="(module, index) in modules" :key="index">
                                 <td><span class="text-primary">#{{ index + 1 }}</span></td>
-                                <td><span class="text-warning cursor_pointer">{{ module.title }}</span></td>
+                                <td>
+                                    <input type="text" class="form-control" v-model="module.title">
+                                    <!-- <span class="text-warning cursor_pointer">{{ module.title }}</span> -->
+                                </td>
+                                <td>
+                                    <!-- <span class="cursor_pointer">{{ module.module_no }}</span> -->
+                                    <input type="text" class="form-control" v-model="module.module_no">    
+                                </td>
                                 <td><span class="badge">{{ module.status }}</span></td>
                                 <td>
                                     <div class="btn-group">
@@ -46,6 +54,12 @@
                         </tbody>
                     </table>
                 </div>
+            </div>
+            <div class="card-footer text-center">
+                <button type="button" @click="update_course_modules()" class="btn btn-outline-info">
+                    <i class="fa fa-upload"></i>
+                    Update
+                </button>
             </div>
         </div>
     </div>
@@ -77,6 +91,19 @@ export default {
                 //     location.href = '/';
                 // }
             });
+        },
+        update_course_modules: async function() {
+            let confirm = await window.s_confirm("Are you sure?");
+            if (confirm) {
+                axios.post(`/api/v1/course/course-modules/store-all`, {data: this.modules}).then((response) => {
+                    // console.log(response.data);
+                    window.toaster("Course modules updated successfully!");
+                    this.get_course_modules();
+                })
+                .catch((e) => {
+                    console.log(e);
+                });
+            }        
         }
     },
     computed: {

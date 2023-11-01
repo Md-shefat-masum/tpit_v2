@@ -70,6 +70,7 @@ import CourseTrainerCreate from "./views/pages/course_trainer/Trainer.vue";
 // course milestones
 import CourseMileStoneLayout from "./views/pages/course_milestone/CourseMileStoneLayout.vue";
 import CourseMileStone from "./views/pages/course_milestone/Milestones.vue";
+import CourseMileStoneCreate from "./views/pages/course_milestone/MilestoneCreate.vue";
 
 // course module classes
 import CourseClassLayout from "./views/pages/course_module_class/CourseClassLayout.vue";
@@ -85,6 +86,7 @@ import CourseFaqDetails from "./views/pages/course_faq/Details.vue";
 // course module
 import CourseModule from "./views/pages/course_module/CourseModule.vue";
 import CourseModuleAll from "./views/pages/course_module/Modules.vue";
+import CourseModuleCreate from "./views/pages/course_module/CreateModules.vue";
 import CourseModuleCSV from "./views/pages/course_module/CsvUpload.vue";
 import CourseAtaGlance from "./views/pages/course_module/AtaGlance.vue";
 
@@ -381,6 +383,11 @@ const routes = [
                                 name: 'CourseMileStone',
                                 component: CourseMileStone,
                             },
+                            {
+                                path: 'create',
+                                name: 'CourseMileStoneCreate',
+                                component: CourseMileStoneCreate,
+                            },
                         ]
                     },
 
@@ -440,6 +447,11 @@ const routes = [
                         path: 'all-modules',
                         name: `CourseModuleAll`,
                         component: CourseModuleAll,
+                    },
+                    {
+                        path: 'modules/create',
+                        name: `CourseModuleCreate`,
+                        component: CourseModuleCreate,
                     },
                     {
                         path: 'at-a-glance',
