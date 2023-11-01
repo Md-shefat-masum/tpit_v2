@@ -402,7 +402,7 @@ const routes = [
                                 component: CourseClassAll,
                             },
                             {
-                                path: '/create',
+                                path: 'create',
                                 name: 'CourseClassCreate',
                                 component: CourseClassCreate,
                             },

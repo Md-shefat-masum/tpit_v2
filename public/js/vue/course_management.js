@@ -3057,12 +3057,14 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
-      course_id: ''
+      course_id: '',
+      course_modules: '',
+      course_milestones: ''
     };
   },
   methods: {
-    store_course_faq: function () {
-      var _store_course_faq = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee(event) {
+    store_course_class: function () {
+      var _store_course_class = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee(event) {
         var formData, course_id, data;
         return _regeneratorRuntime().wrap(function _callee$(_context) {
           while (1) switch (_context.prev = _context.next) {
@@ -3074,9 +3076,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 formData: formData
               };
               _context.next = 6;
-              return axios.post('/api/v1/course/course-milestones/store', data.formData).then(function (response) {
+              return axios.post('/api/v1/course/course-modules-class/store', data.formData).then(function (response) {
                 // localStorage.setItem('current_course', JSON.stringify(response?.data))
-                window.toaster("Course Milestone added successfully!");
+                window.toaster("Course module class added successfully!");
                 event.reset();
               })["catch"](function (e) {
                 console.log(e);
@@ -3087,10 +3089,56 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           }
         }, _callee, this);
       }));
-      function store_course_faq(_x) {
-        return _store_course_faq.apply(this, arguments);
+      function store_course_class(_x) {
+        return _store_course_class.apply(this, arguments);
       }
-      return store_course_faq;
+      return store_course_class;
+    }(),
+    get_course_modules: function () {
+      var _get_course_modules = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2() {
+        var _this = this;
+        return _regeneratorRuntime().wrap(function _callee2$(_context2) {
+          while (1) switch (_context2.prev = _context2.next) {
+            case 0:
+              _context2.next = 2;
+              return axios.get('/api/v1/course/course-modules/all-modules/' + this.course_id).then(function (response) {
+                _this.course_modules = response.data;
+              })["catch"](function (e) {
+                console.log(e);
+              });
+            case 2:
+            case "end":
+              return _context2.stop();
+          }
+        }, _callee2, this);
+      }));
+      function get_course_modules() {
+        return _get_course_modules.apply(this, arguments);
+      }
+      return get_course_modules;
+    }(),
+    get_course_milestones: function () {
+      var _get_course_milestones = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee3() {
+        var _this2 = this;
+        return _regeneratorRuntime().wrap(function _callee3$(_context3) {
+          while (1) switch (_context3.prev = _context3.next) {
+            case 0:
+              _context3.next = 2;
+              return axios.get('/api/v1/course/course-milestones/all-milestones/' + this.course_id).then(function (response) {
+                _this2.course_milestones = response.data;
+              })["catch"](function (e) {
+                console.log(e);
+              });
+            case 2:
+            case "end":
+              return _context3.stop();
+          }
+        }, _callee3, this);
+      }));
+      function get_course_milestones() {
+        return _get_course_milestones.apply(this, arguments);
+      }
+      return get_course_milestones;
     }()
     // get_course_details: async function (event) {
     //     let whatcourse = localStorage.getItem('current_course');
@@ -3103,14 +3151,21 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
   computed: {},
   created: function () {
-    var _created = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2() {
-      return _regeneratorRuntime().wrap(function _callee2$(_context2) {
-        while (1) switch (_context2.prev = _context2.next) {
+    var _created = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee4() {
+      return _regeneratorRuntime().wrap(function _callee4$(_context4) {
+        while (1) switch (_context4.prev = _context4.next) {
           case 0:
+            this.course_id = this.$route.params.id;
+            _context4.next = 3;
+            return this.get_course_modules();
+          case 3:
+            _context4.next = 5;
+            return this.get_course_milestones();
+          case 5:
           case "end":
-            return _context2.stop();
+            return _context4.stop();
         }
-      }, _callee2);
+      }, _callee4, this);
     }));
     function created() {
       return _created.apply(this, arguments);
@@ -8776,19 +8831,14 @@ var render = function render() {
     on: {
       keyup: function keyup($event) {
         if (!$event.type.indexOf("key") && _vm._k($event.keyCode, "enter", 13, $event.key, "Enter")) return null;
-        return _vm.store_course_faq($event.target);
+        return _vm.store_course_class($event.target);
       },
       submit: function submit($event) {
         $event.preventDefault();
-        return _vm.store_course_faq($event.target);
+        return _vm.store_course_class($event.target);
       }
     }
-  }, [_vm._m(0), _vm._v(" "), _vm._m(1)])])]);
-};
-var staticRenderFns = [function () {
-  var _vm = this,
-    _c = _vm._self._c;
-  return _c("div", {
+  }, [_c("div", {
     staticClass: "card-body"
   }, [_c("div", {
     staticClass: "row justify-content-center"
@@ -8796,7 +8846,52 @@ var staticRenderFns = [function () {
     staticClass: "col-xl-10 col-12"
   }, [_c("div", {
     staticClass: "row g-3"
-  }, [_c("div", {
+  }, [_vm._m(0), _vm._v(" "), _vm._m(1), _vm._v(" "), _c("div", {
+    staticClass: "col-md-12"
+  }, [_c("label", {
+    staticClass: "form-label",
+    attrs: {
+      "for": "milestone"
+    }
+  }, [_vm._v("Milestones")]), _vm._v(" "), _c("select", {
+    staticClass: "form-control",
+    attrs: {
+      name: "milestone_id",
+      id: "milestone"
+    }
+  }, _vm._l(_vm.course_milestones, function (milestone, index) {
+    return _c("option", {
+      key: index,
+      domProps: {
+        value: milestone.id
+      }
+    }, [_vm._v(_vm._s(milestone.title))]);
+  }), 0)]), _vm._v(" "), _c("div", {
+    staticClass: "col-md-12"
+  }, [_c("label", {
+    staticClass: "form-label",
+    attrs: {
+      "for": "module"
+    }
+  }, [_vm._v("Module")]), _vm._v(" "), _c("select", {
+    staticClass: "form-control",
+    attrs: {
+      name: "course_modules_id",
+      id: "module"
+    }
+  }, _vm._l(_vm.course_modules, function (module, index) {
+    return _c("option", {
+      key: index,
+      domProps: {
+        value: module.id
+      }
+    }, [_vm._v(_vm._s(module.title))]);
+  }), 0)]), _vm._v(" "), _vm._m(2), _vm._v(" "), _vm._m(3), _vm._v(" "), _vm._m(4), _vm._v(" "), _vm._m(5)])])])]), _vm._v(" "), _vm._m(6)])])]);
+};
+var staticRenderFns = [function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("div", {
     staticClass: "col-md-12"
   }, [_c("label", {
     staticClass: "form-label",
@@ -8811,41 +8906,30 @@ var staticRenderFns = [function () {
       name: "title",
       placeholder: "Js advance work"
     }
-  })]), _vm._v(" "), _c("div", {
+  })]);
+}, function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("div", {
     staticClass: "col-md-12"
   }, [_c("label", {
     staticClass: "form-label",
     attrs: {
-      "for": "milestone"
+      "for": "title"
     }
-  }, [_vm._v("Milestone")]), _vm._v(" "), _c("select", {
+  }, [_vm._v("Class no")]), _vm._v(" "), _c("input", {
     staticClass: "form-control",
     attrs: {
-      name: "milestone_id",
-      id: "milestone"
+      type: "text",
+      id: "class_no",
+      name: "class_no",
+      placeholder: "1,2"
     }
-  }, [_c("option", {
-    attrs: {
-      value: "recorded"
-    }
-  }, [_vm._v("recorded")])])]), _vm._v(" "), _c("div", {
-    staticClass: "col-md-12"
-  }, [_c("label", {
-    staticClass: "form-label",
-    attrs: {
-      "for": "module"
-    }
-  }, [_vm._v("Module")]), _vm._v(" "), _c("select", {
-    staticClass: "form-control",
-    attrs: {
-      name: "course_modules_id",
-      id: "module"
-    }
-  }, [_c("option", {
-    attrs: {
-      value: "recorded"
-    }
-  }, [_vm._v("recorded")])])]), _vm._v(" "), _c("div", {
+  })]);
+}, function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("div", {
     staticClass: "col-md-12"
   }, [_c("label", {
     staticClass: "form-label",
@@ -8860,7 +8944,11 @@ var staticRenderFns = [function () {
       name: "milestone_no",
       placeholder: "1,2"
     }
-  })]), _vm._v(" "), _c("div", {
+  })]);
+}, function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("div", {
     staticClass: "col-md-12"
   }, [_c("label", {
     staticClass: "form-label",
@@ -8881,7 +8969,11 @@ var staticRenderFns = [function () {
     attrs: {
       value: "live"
     }
-  }, [_vm._v("live")])])]), _vm._v(" "), _c("div", {
+  }, [_vm._v("live")])])]);
+}, function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("div", {
     staticClass: "col-md-12"
   }, [_c("label", {
     staticClass: "form-label",
@@ -8896,7 +8988,11 @@ var staticRenderFns = [function () {
       name: "class_video_link",
       placeholder: "youtube.com"
     }
-  })]), _vm._v(" "), _c("div", {
+  })]);
+}, function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("div", {
     staticClass: "col-md-12"
   }, [_c("label", {
     attrs: {
@@ -8909,7 +9005,7 @@ var staticRenderFns = [function () {
       accept: "image/*",
       type: "file"
     }
-  })])])])])]);
+  })]);
 }, function () {
   var _vm = this,
     _c = _vm._self._c;
@@ -11089,7 +11185,7 @@ var routes = [{
         name: 'CourseClassAll',
         component: _views_pages_course_module_class_CourseClasses_vue__WEBPACK_IMPORTED_MODULE_47__["default"]
       }, {
-        path: '/create',
+        path: 'create',
         name: 'CourseClassCreate',
         component: _views_pages_course_module_class_CourseClassCreate_vue__WEBPACK_IMPORTED_MODULE_48__["default"]
       }]

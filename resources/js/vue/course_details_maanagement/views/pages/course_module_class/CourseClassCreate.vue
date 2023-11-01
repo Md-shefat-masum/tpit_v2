@@ -10,7 +10,7 @@
                     </a>
                 </div>
             </div>
-            <form @keyup.enter="store_course_faq($event.target)" @submit.prevent="store_course_faq($event.target)" class="user_create_form">
+            <form @keyup.enter="store_course_class($event.target)" @submit.prevent="store_course_class($event.target)" class="user_create_form">
                 <div class="card-body">
                     <div class="row justify-content-center">
                         <div class="col-xl-10 col-12">
@@ -20,15 +20,19 @@
                                     <input type="text" id="title" name="title" class="form-control" placeholder="Js advance work" />
                                 </div>
                                 <div class="col-md-12">
-                                    <label class="form-label" for="milestone">Milestone</label>
+                                    <label class="form-label" for="title">Class no</label>
+                                    <input type="text" id="class_no" name="class_no" class="form-control" placeholder="1,2" />
+                                </div>
+                                <div class="col-md-12">
+                                    <label class="form-label" for="milestone">Milestones</label>
                                     <select name="milestone_id" class="form-control" id="milestone">
-                                        <option value="recorded">recorded</option>
+                                        <option v-for="(milestone, index) in course_milestones" :key="index" :value="milestone.id">{{ milestone.title }}</option>
                                     </select>
                                 </div>
                                 <div class="col-md-12">
                                     <label class="form-label" for="module">Module</label>
                                     <select name="course_modules_id" class="form-control" id="module">
-                                        <option value="recorded">recorded</option>
+                                        <option v-for="(module, index) in course_modules" :key="index" :value="module.id">{{ module.title }}</option>
                                     </select>
                                 </div>
                                 <div class="col-md-12">
@@ -70,11 +74,13 @@
 export default {
     data() {
         return {
-            course_id: ''
+            course_id: '',
+            course_modules: '',
+            course_milestones: ''
         }
     },
     methods: {
-        store_course_faq: async function(event) {
+        store_course_class: async function(event) {
             let formData = new FormData(event);
             let course_id = this.$route.params.id;
             formData.append('course_id', course_id);
@@ -83,10 +89,26 @@ export default {
                 formData: formData,
             }
 
-            await axios.post('/api/v1/course/course-milestones/store', data.formData).then((response) => {
+            await axios.post('/api/v1/course/course-modules-class/store', data.formData).then((response) => {
                 // localStorage.setItem('current_course', JSON.stringify(response?.data))
-                window.toaster("Course Milestone added successfully!");
+                window.toaster("Course module class added successfully!");
                 event.reset();
+            })
+            .catch((e) => {
+                console.log(e);
+            });
+        },
+        get_course_modules: async function() {
+            await axios.get('/api/v1/course/course-modules/all-modules/'+this.course_id).then((response) => {
+                this.course_modules = response.data;
+            })
+            .catch((e) => {
+                console.log(e);
+            });
+        },
+        get_course_milestones: async function() {
+            await axios.get('/api/v1/course/course-milestones/all-milestones/'+this.course_id).then((response) => {
+                this.course_milestones = response.data;
             })
             .catch((e) => {
                 console.log(e);
@@ -101,11 +123,13 @@ export default {
         // }
     },
     computed: {
-        
+
     },
 
     created: async function () {
-        
+        this.course_id = this.$route.params.id;
+        await this.get_course_modules();
+        await this.get_course_milestones();
     },
 }
 </script>
