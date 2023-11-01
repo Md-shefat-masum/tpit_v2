@@ -13,8 +13,8 @@
             <form @keyup.enter="store_quiz($event.target)" @submit.prevent="store_quiz($event.target)"
                 class="user_create_form">
                 <div class="card-body">
-                    <div class="row justify-content-center">
-                        <div class="col-xl-10 col-12">
+                    <div class="row">
+                        <div class="col-xl-12 col-12">
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group mb-2">
@@ -22,7 +22,7 @@
                                         <input v-model="quiz_title" type="text" name="quiz_title" id="quiz_title" class="form-control">
                                     </div>
                                 </div>
-                                <div class="col-md-12">
+                                <div class="col-xl-8">
                                     <div class="table-responsive">
                                         <div class="row">
                                             <div class="col-md-6">
@@ -82,6 +82,26 @@
                                         <pagination class="mt-2" v-if="questions" :data="questions" :method="get_all_questions" />
                                     </div>
                                 </div>
+                                <div class="col-xl-4">
+                                    <div class="table-responsive">
+                                        
+                                        <table class="table table-bordered table-hover">
+                                            <thead>
+                                                <tr>
+                                                    <td>Title</td>
+                                                </tr>
+                                            </thead>
+                                            <tbody v-if="selected_questions && selected_questions.length > 0">
+                                                <tr v-for="(selected_ques, index) in selected_questions" :key="index">
+                                                    <td>
+                                                        <button type="button" @click.prevent="remove_selected_question(selected_ques)" class="btn btn-sm btn-danger mr-1"><i class="fa fa-trash"></i></button>
+                                                        {{ selected_ques.title }}
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -111,7 +131,10 @@ export default {
             question_ids: [
 
             ],
-            quiz_title: ''
+            quiz_title: '',
+            selected_questions: [
+
+            ]
         }
     },
     methods: {
@@ -130,8 +153,21 @@ export default {
                 console.log(e);
             });
         },
+        remove_selected_question: async function(question) {
+            
+            var check_question = this.selected_questions.find((element) => element.id == question.id);
+            if(check_question) {
+                var serial = this.selected_questions.findIndex((element) => element.id == question.id);
+                this.selected_questions.splice(serial, 1);
+            }
+
+            if(this.question_ids.includes(question.id)) {
+                let index = this.question_ids.indexOf(question.id);
+                this.question_ids.splice(index, 1);
+            }
+        },
         SetQuestionIds: async function(question) {
-            console.log(this.question_ids);
+            this.selected_questions.push(question);
             if(!this.question_ids.includes(question.id)) {
                 this.question_ids.push(question.id)
             }else {

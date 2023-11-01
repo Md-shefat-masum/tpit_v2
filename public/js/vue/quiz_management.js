@@ -176,7 +176,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       topics: [],
       search_key: '',
       question_ids: [],
-      quiz_title: ''
+      quiz_title: '',
+      selected_questions: []
     };
   },
   methods: {
@@ -209,13 +210,43 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       }
       return store_quiz;
     }(),
-    SetQuestionIds: function () {
-      var _SetQuestionIds = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2(question) {
-        var index;
+    remove_selected_question: function () {
+      var _remove_selected_question = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2(question) {
+        var check_question, serial, index;
         return _regeneratorRuntime().wrap(function _callee2$(_context2) {
           while (1) switch (_context2.prev = _context2.next) {
             case 0:
-              console.log(this.question_ids);
+              check_question = this.selected_questions.find(function (element) {
+                return element.id == question.id;
+              });
+              if (check_question) {
+                serial = this.selected_questions.findIndex(function (element) {
+                  return element.id == question.id;
+                });
+                this.selected_questions.splice(serial, 1);
+              }
+              if (this.question_ids.includes(question.id)) {
+                index = this.question_ids.indexOf(question.id);
+                this.question_ids.splice(index, 1);
+              }
+            case 3:
+            case "end":
+              return _context2.stop();
+          }
+        }, _callee2, this);
+      }));
+      function remove_selected_question(_x) {
+        return _remove_selected_question.apply(this, arguments);
+      }
+      return remove_selected_question;
+    }(),
+    SetQuestionIds: function () {
+      var _SetQuestionIds = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee3(question) {
+        var index;
+        return _regeneratorRuntime().wrap(function _callee3$(_context3) {
+          while (1) switch (_context3.prev = _context3.next) {
+            case 0:
+              this.selected_questions.push(question);
               if (!this.question_ids.includes(question.id)) {
                 this.question_ids.push(question.id);
               } else {
@@ -224,39 +255,21 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               }
             case 2:
             case "end":
-              return _context2.stop();
+              return _context3.stop();
           }
-        }, _callee2, this);
+        }, _callee3, this);
       }));
-      function SetQuestionIds(_x) {
+      function SetQuestionIds(_x2) {
         return _SetQuestionIds.apply(this, arguments);
       }
       return SetQuestionIds;
     }(),
     filterBytopic: function () {
-      var _filterBytopic = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee3(event) {
-        return _regeneratorRuntime().wrap(function _callee3$(_context3) {
-          while (1) switch (_context3.prev = _context3.next) {
-            case 0:
-              this.topic_id = event.target.value;
-              this.get_all_questions();
-            case 2:
-            case "end":
-              return _context3.stop();
-          }
-        }, _callee3, this);
-      }));
-      function filterBytopic(_x2) {
-        return _filterBytopic.apply(this, arguments);
-      }
-      return filterBytopic;
-    }(),
-    filterBySearch: function () {
-      var _filterBySearch = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee4(event) {
+      var _filterBytopic = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee4(event) {
         return _regeneratorRuntime().wrap(function _callee4$(_context4) {
           while (1) switch (_context4.prev = _context4.next) {
             case 0:
-              this.search_key = event.target.value;
+              this.topic_id = event.target.value;
               this.get_all_questions();
             case 2:
             case "end":
@@ -264,18 +277,36 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           }
         }, _callee4, this);
       }));
-      function filterBySearch(_x3) {
+      function filterBytopic(_x3) {
+        return _filterBytopic.apply(this, arguments);
+      }
+      return filterBytopic;
+    }(),
+    filterBySearch: function () {
+      var _filterBySearch = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee5(event) {
+        return _regeneratorRuntime().wrap(function _callee5$(_context5) {
+          while (1) switch (_context5.prev = _context5.next) {
+            case 0:
+              this.search_key = event.target.value;
+              this.get_all_questions();
+            case 2:
+            case "end":
+              return _context5.stop();
+          }
+        }, _callee5, this);
+      }));
+      function filterBySearch(_x4) {
         return _filterBySearch.apply(this, arguments);
       }
       return filterBySearch;
     }(),
     get_all_topics: function () {
-      var _get_all_topics = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee5() {
+      var _get_all_topics = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee6() {
         var _this = this;
-        return _regeneratorRuntime().wrap(function _callee5$(_context5) {
-          while (1) switch (_context5.prev = _context5.next) {
+        return _regeneratorRuntime().wrap(function _callee6$(_context6) {
+          while (1) switch (_context6.prev = _context6.next) {
             case 0:
-              _context5.next = 2;
+              _context6.next = 2;
               return axios.get('/api/v1/quiz-topics/all-topic').then(function (response) {
                 _this.topics = response.data;
               })["catch"](function (e) {
@@ -283,9 +314,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               });
             case 2:
             case "end":
-              return _context5.stop();
+              return _context6.stop();
           }
-        }, _callee5);
+        }, _callee6);
       }));
       function get_all_topics() {
         return _get_all_topics.apply(this, arguments);
@@ -293,10 +324,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       return get_all_topics;
     }(),
     get_all_questions: function () {
-      var _get_all_questions = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee6(url) {
+      var _get_all_questions = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee7(url) {
         var _this2 = this;
-        return _regeneratorRuntime().wrap(function _callee6$(_context6) {
-          while (1) switch (_context6.prev = _context6.next) {
+        return _regeneratorRuntime().wrap(function _callee7$(_context7) {
+          while (1) switch (_context7.prev = _context7.next) {
             case 0:
               // console.log(page);
               if (!url) {
@@ -308,7 +339,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               if (this.topic_id && this.topic_id != '') {
                 url += "&topicID=".concat(this.topic_id);
               }
-              _context6.next = 5;
+              _context7.next = 5;
               return axios.get(url).then(function (response) {
                 // '/asset/index?page='+page
                 _this2.questions = response.data;
@@ -317,11 +348,11 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               });
             case 5:
             case "end":
-              return _context6.stop();
+              return _context7.stop();
           }
-        }, _callee6, this);
+        }, _callee7, this);
       }));
-      function get_all_questions(_x4) {
+      function get_all_questions(_x5) {
         return _get_all_questions.apply(this, arguments);
       }
       return get_all_questions;
@@ -329,20 +360,20 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
   },
   computed: {},
   created: function () {
-    var _created = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee7() {
-      return _regeneratorRuntime().wrap(function _callee7$(_context7) {
-        while (1) switch (_context7.prev = _context7.next) {
+    var _created = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee8() {
+      return _regeneratorRuntime().wrap(function _callee8$(_context8) {
+        while (1) switch (_context8.prev = _context8.next) {
           case 0:
-            _context7.next = 2;
+            _context8.next = 2;
             return this.get_all_topics();
           case 2:
-            _context7.next = 4;
+            _context8.next = 4;
             return this.get_all_questions();
           case 4:
           case "end":
-            return _context7.stop();
+            return _context8.stop();
         }
-      }, _callee7, this);
+      }, _callee8, this);
     }));
     function created() {
       return _created.apply(this, arguments);
@@ -927,6 +958,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
   methods: {
     store_question: function () {
       var _store_question = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee() {
+        var _this = this;
         var question_data, data;
         return _regeneratorRuntime().wrap(function _callee$(_context) {
           while (1) switch (_context.prev = _context.next) {
@@ -940,6 +972,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               return axios.post('/api/v1/quiz-questions/store', data).then(function (response) {
                 // localStorage.setItem('current_course', JSON.stringify(response?.data))
                 window.toaster(response === null || response === void 0 ? void 0 : response.data.message);
+                _this.questions = [];
+                _this.append_new_question();
               })["catch"](function (e) {
                 console.log(e);
               });
@@ -956,13 +990,13 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     }(),
     get_all_topics: function () {
       var _get_all_topics = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2() {
-        var _this = this;
+        var _this2 = this;
         return _regeneratorRuntime().wrap(function _callee2$(_context2) {
           while (1) switch (_context2.prev = _context2.next) {
             case 0:
               _context2.next = 2;
               return axios.get('/api/v1/quiz-topics/all-topic').then(function (response) {
-                _this.topics = response.data;
+                _this2.topics = response.data;
               })["catch"](function (e) {
                 console.log(e);
               });
@@ -1947,9 +1981,9 @@ var render = function render() {
   }, [_c("div", {
     staticClass: "card-body"
   }, [_c("div", {
-    staticClass: "row justify-content-center"
+    staticClass: "row"
   }, [_c("div", {
-    staticClass: "col-xl-10 col-12"
+    staticClass: "col-xl-12 col-12"
   }, [_c("div", {
     staticClass: "row"
   }, [_c("div", {
@@ -1984,7 +2018,7 @@ var render = function render() {
       }
     }
   })])]), _vm._v(" "), _c("div", {
-    staticClass: "col-md-12"
+    staticClass: "col-xl-8"
   }, [_c("div", {
     staticClass: "table-responsive"
   }, [_c("div", {
@@ -2085,12 +2119,39 @@ var render = function render() {
       data: _vm.questions,
       method: _vm.get_all_questions
     }
-  }) : _vm._e()], 1)])])])])]), _vm._v(" "), _vm._m(1)])])]);
+  }) : _vm._e()], 1)]), _vm._v(" "), _c("div", {
+    staticClass: "col-xl-4"
+  }, [_c("div", {
+    staticClass: "table-responsive"
+  }, [_c("table", {
+    staticClass: "table table-bordered table-hover"
+  }, [_vm._m(1), _vm._v(" "), _vm.selected_questions && _vm.selected_questions.length > 0 ? _c("tbody", _vm._l(_vm.selected_questions, function (selected_ques, index) {
+    return _c("tr", {
+      key: index
+    }, [_c("td", [_c("button", {
+      staticClass: "btn btn-sm btn-danger mr-1",
+      attrs: {
+        type: "button"
+      },
+      on: {
+        click: function click($event) {
+          $event.preventDefault();
+          return _vm.remove_selected_question(selected_ques);
+        }
+      }
+    }, [_c("i", {
+      staticClass: "fa fa-trash"
+    })]), _vm._v("\n                                                    " + _vm._s(selected_ques.title) + "\n                                                ")])]);
+  }), 0) : _vm._e()])])])])])])]), _vm._v(" "), _vm._m(2)])])]);
 };
 var staticRenderFns = [function () {
   var _vm = this,
     _c = _vm._self._c;
   return _c("thead", [_c("tr", [_c("td", [_vm._v("Select")]), _vm._v(" "), _c("td", [_vm._v("#")]), _vm._v(" "), _c("td", [_vm._v("Title")])])]);
+}, function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("thead", [_c("tr", [_c("td", [_vm._v("Title")])])]);
 }, function () {
   var _vm = this,
     _c = _vm._self._c;
