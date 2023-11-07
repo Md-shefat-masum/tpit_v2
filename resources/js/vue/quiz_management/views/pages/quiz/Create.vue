@@ -55,9 +55,13 @@
                                                 <tr v-for="(question, index) in questions.data" :key="index">
                                                     <td>
                                                         <div class="custom-control custom-checkbox">
-                                                            <input type="checkbox" @click="SetQuestionIds(question)" class="custom-control-input"
+                                                            <input v-if="is_selected == true" type="checkbox" @click="SetQuestionIds(question)" class="custom-control-input"
+                                                                :id="`question_${question.id}`" checked>
+                                                            <input v-else type="checkbox" @click="SetQuestionIds(question)" class="custom-control-input"
                                                                 :id="`question_${question.id}`">
-                                                            <label class="custom-control-label"
+                                                            <label v-if="is_selected == true" class="custom-control-label"
+                                                                :for="`question_${question.id}`"></label>
+                                                            <label v-else class="custom-control-label"
                                                                 :for="`question_${question.id}`"></label>
                                                         </div>
                                                     </td>
@@ -139,7 +143,7 @@ export default {
     },
     methods: {
         store_quiz: async function () {
-            let question_ids = JSON.stringify(this.question_ids);
+            let question_ids = JSON.stringify(this.selected_questions);
             let data = {
                 question_ids: question_ids,
                 title: this.quiz_title
@@ -152,6 +156,14 @@ export default {
             .catch((e) => {
                 console.log(e);
             });
+        },
+        is_selected: async function(question) {
+            var check_question = this.selected_questions.find((element) => element.id == question.id);
+            if(check_question) {
+                return true;
+            }else {
+                return false;
+            }
         },
         remove_selected_question: async function(question) {
             
