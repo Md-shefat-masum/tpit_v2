@@ -3,9 +3,10 @@ import VueRouter from 'vue-router'
 import PageLayout from "./views/pages/Layout.vue";
 import Layout from "./views/Layout.vue";
 
+import AllCourse from "./views/AllCourse.vue";
 import WhatIsThisCourse from "./views/pages/WhatIsThisCourse.vue";
 import WhyIsThisCourse from "./views/pages/WhyIsThisCourse.vue";
-import AllCourse from "./views/AllCourse.vue";
+import CourseBanner from "./views/pages/CourseBanner.vue";
 import Dashboard from "./views/Dashboard.vue";
 
 // course batch
@@ -121,6 +122,11 @@ const routes = [
                         path: 'what-is-this-course',
                         name: 'WhatIsThisCourse',
                         component: WhatIsThisCourse,
+                    },
+                    {
+                        path: 'course-banner',
+                        name: 'CourseBanner',
+                        component: CourseBanner,
                     },
                     {
                         path: 'why-is-this-course',

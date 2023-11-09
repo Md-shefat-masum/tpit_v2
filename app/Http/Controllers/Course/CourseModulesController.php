@@ -361,6 +361,7 @@ class CourseModulesController extends Controller
             
             // $check = CourseModule::where('id',$item->id)->first();
             if($course_check != null){
+                
                 try {
                     // checking if milestone exist
                     $check_milstone = CourseMilestone::where('title', $course_data->milestone_title)->first();
@@ -376,9 +377,10 @@ class CourseModulesController extends Controller
                     
                     $check_module = CourseModule::where('title', $course_data->module_title)->first();
     
+                    // dd($check_module, $course_check);
                     if($check_module == null) {
                         $data = new CourseModule();
-                        $data->course_id = $course_check->course_id;
+                        $data->course_id = $course_check->id;
                         $data->module_no = $course_data->module_no;
                         $data->milestone_id = $check_milstone == null ? $milestone->id : $check_milstone->id;
                         $data->title = $course_data->module_title;
@@ -388,7 +390,7 @@ class CourseModulesController extends Controller
                     $class_check = CourseModuleClasses::where('title', $course_data->class_title)->first();
                     if($class_check == null) {
                         $course_class = new CourseModuleClasses();
-                        $course_class->course_id = $course_check->course_id;
+                        $course_class->course_id = $course_check->id;
                         $course_class->milestone_id = $check_milstone == null ? $milestone->id : $check_milstone->id;
                         $course_class->course_modules_id = $check_module == null ? $data->id : $check_module->id;
                         $course_class->class_no = $course_data->class_no;
@@ -432,6 +434,16 @@ class CourseModulesController extends Controller
                         'errors' => $th->getMessage(),
                     ], 400);
                 }
+            }else {
+                Course::create([
+                    'title' => $course_data->title,
+                    'image' =>'',
+                    "type" => "online",
+                    'intro_video' => '',
+                    'what_is_this_course' => '',
+                    'why_is_this_course' => '',
+                    'published_at' => Carbon::today()
+                ]);
             }
         }
 

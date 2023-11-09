@@ -9,6 +9,7 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use App\Models\ContactMessage;
+use Intervention\Image\Facades\Image;
 
 class CourseController extends Controller
 {
@@ -81,11 +82,18 @@ class CourseController extends Controller
         $data->intro_video = request()->intro_video;
         $data->what_is_this_course = request()->what_is_this_course;
         $data->why_is_this_course = request()->why_is_this_course;
+        
         $data->save();
-
-        if (request()->hasFile('image')) {
-            // 
+        if(request()->hasFile('image')) {
+            $file = request()->file('image');
+            $path = 'uploads/course/cp-' . $data->id . rand(1000, 9999) . '.';
+            
+            $path .= $file->getClientOriginalExtension();
+            Image::make($file)->fit(720, 450)->save(public_path($path));
+            $data->image = $path;
+            $data->save();
         }
+        
 
         return response()->json($data, 200);
     }
@@ -157,7 +165,18 @@ class CourseController extends Controller
         if(request()->has('why_is_this_course')) {
             $data->why_is_this_course = request()->why_is_this_course;
         }
+        
         $data->save();
+
+        if(request()->hasFile('image')) {
+            $file = request()->file('image');
+            $path = 'uploads/course/cp-' . $data->id . rand(1000, 9999) . '.';
+            
+            $path .= $file->getClientOriginalExtension();
+            Image::make($file)->fit(720, 450)->save(public_path($path));
+            $data->image = $path;
+            $data->save();
+        }
 
         return response()->json($data, 200);
     }

@@ -109,7 +109,7 @@ export default {
                 axios
                     .post(`/api/v1/course/course-modules/bulk-import`, { data })
                     .then(({ data }) => {
-                        window.s_alert(`data imported`);
+                        window.toaster("Course data imported successfully!");
                     });
             }
         },
