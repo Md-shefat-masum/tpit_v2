@@ -52,17 +52,20 @@
                                                 </tr>
                                             </thead>
                                             <tbody v-if="questions.data && questions.data.length > 0">
-                                                <tr v-for="(question, index) in questions.data" :key="index">
+                                                <tr v-for="(question, index) in questions.data" :key="question.id">
                                                     <td>
                                                         <div class="custom-control custom-checkbox">
-                                                            <input v-if="is_selected == true" type="checkbox" @click="SetQuestionIds(question)" class="custom-control-input"
+                                                            <!-- <label v-if="is_selected() == true" class="custom-control-label"
+                                                                :for="`question_${question.id}`"> -->
+                                                                <input class="form-control-input" type="checkbox" v-if="is_selected() == true" @click="SetQuestionIds(question)"
                                                                 :id="`question_${question.id}`" checked>
-                                                            <input v-else type="checkbox" @click="SetQuestionIds(question)" class="custom-control-input"
+                                                                <input class="form-control-input" type="checkbox" v-else @click="SetQuestionIds(question)"
                                                                 :id="`question_${question.id}`">
-                                                            <label v-if="is_selected == true" class="custom-control-label"
-                                                                :for="`question_${question.id}`"></label>
-                                                            <label v-else class="custom-control-label"
-                                                                :for="`question_${question.id}`"></label>
+                                                            <!-- </label> -->
+                                                            <!-- <label v-else class="custom-control-label"
+                                                                :for="`question_${question.id}`"> -->
+                                                                
+                                                            <!-- </label> -->
                                                         </div>
                                                     </td>
                                                     <td><span class="text-primary">#{{ index + 1 }}</span></td>

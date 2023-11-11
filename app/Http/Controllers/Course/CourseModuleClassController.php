@@ -40,12 +40,13 @@ class CourseModuleClassController extends Controller
             });
         }
 
-        $datas = $query->paginate($paginate);
+        $datas = $query->with(['module'])->paginate($paginate);
         return response()->json($datas);
     }
 
     public function all_module_classes($course_id) {
-        $course_classes = CourseModuleClasses::where('status', 'active')->where('course_id', $course_id)->orderBy('id', 'DESC')->paginate(10);
+        $course_classes = CourseModuleClasses::where('status', 'active')
+        ->where('course_id', $course_id)->orderBy('id', 'DESC')->with(['module'])->paginate(10);
         return response()->json($course_classes);
     }
 

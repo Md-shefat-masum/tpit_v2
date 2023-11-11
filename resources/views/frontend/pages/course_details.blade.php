@@ -359,9 +359,9 @@
                         $batch_info = $data->course_batch()->first();
                     @endphp
                     <div class="course_info_div">
-                        <div class="course_info_thubnail_and_icon">
+                        <div onclick="showCourseVideo(`{{$data->intro_video}}`)" class="course_info_thubnail_and_icon">
                             <div class="course_info_thubnail">
-                                <img class="img-fluid" src="{{ asset($data->image) }}"
+                                <img class="img-fluid course_main_img" src="{{ asset($data->image) }}"
                                     alt="">
                             </div>
                             <div class="course_info_icon">
@@ -504,6 +504,20 @@
                             </div>
                         @endforeach
                     </ul>
+                </div>
+            </div>
+        </div>
+
+        <div id="story_modal" class="modal fade modal-xl" tabindex="-1">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    {{-- <div class="modal-header">
+                        <h5 class="modal-title">
+                            GeeksforGeeks
+                        </h5>
+                    </div> --}}
+                    <div class="modal-body">
+                    </div>
                 </div>
             </div>
         </div>

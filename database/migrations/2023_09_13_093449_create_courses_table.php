@@ -19,6 +19,7 @@ class CreateCoursesTable extends Migration
             $table->string("image", 200)->nullable();
             $table->string("intro_video", 200)->nullable();
             $table->date('published_at')->nullable();
+            $table->tinyInteger('is_published')->default(0)->nullable();
             $table->text("what_is_this_course")->nullable();
             $table->text("why_is_this_course")->nullable();
             $table->enum("type",['online','offline','daycare'])->nullable();

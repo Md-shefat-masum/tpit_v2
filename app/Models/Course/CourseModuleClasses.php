@@ -23,6 +23,11 @@ class CourseModuleClasses extends Model
         return $this->hasOne(CourseModuleClassQuizes::class, 'course_module_class_id', 'id');
     }
 
+    public function module()
+    {
+        return $this->belongsTo(CourseModule::class, 'course_modules_id', 'id');
+    }
+
     public function class_exam()
     {
         return $this->hasOne(CourseModuleClassExams::class, 'course_module_class_id', 'id');

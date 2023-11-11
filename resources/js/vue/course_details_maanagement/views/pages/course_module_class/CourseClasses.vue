@@ -14,8 +14,11 @@
                             <tr>
                                 <td>sl</td>
                                 <td>Banner</td>
+                                <td>Module name</td>
                                 <td>Title</td>
                                 <td>Class No</td>
+                                <td>Start time</td>
+                                <td>End time</td>
                                 <td>type</td>
                                 <td>Video link</td>
                                 <td>Status</td>
@@ -32,6 +35,9 @@
                                     <input type="file" @change="updateImage($event, course_class)" :id="`classData${index}`" class="form-control d-none" accept=".jpg,.png,.jpeg,.webp">
                                 </td>
                                 <td>
+                                    {{  course_class.module.title  }}
+                                </td>
+                                <td>
                                     <input type="text" name="title" id="title" class="form-control" v-model="course_class.title">
                                     <!-- <span class="text-warning cursor_pointer">{{ course_class.title }}</span> -->
                                 </td>
@@ -39,6 +45,16 @@
                                     <input type="number" name="title" id="title" class="form-control" v-model="course_class.class_no">
                                     <!-- <span class="text-warning cursor_pointer">{{ course_class.title }}</span> -->
                                 </td>
+                                <td>
+                                    <input type="time" name="start_time" id="start_time" class="form-control">
+                                    <!-- <span class="text-warning cursor_pointer">{{ course_class.title }}</span> -->
+                                </td>
+                                <td>
+                                    <input type="time" name="end_time" id="end_time" class="form-control">
+                                    <!-- <span class="text-warning cursor_pointer">{{ course_class.title }}</span> -->
+                                </td>
+
+                               
                                 <td>
                                     <select v-model="course_class.type" name="type" id="type" class="form-control">
                                         <option value="live">live</option>

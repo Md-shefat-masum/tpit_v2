@@ -53,7 +53,16 @@
     border: 1px solid transparent;
     color: #ffffff;
 }
-
+.course_details_area .course_details_part .course_info .course_info_div .course_info_thubnail_and_icon {
+    position: relative;
+    width: 411px;
+    /* height: 272px; */
+    /* height: 100%; */
+    text-align: center;
+    /* margin: 20px; */
+    margin: 20px 0px;
+    border-radius: 16px 16px 0px 0px;
+}
 .my_courses_area .my_contunued_courses .my_contunued_all_courses .c_card .card_title_area .card_title .batch_text {
     border: 0px solid red;
     font-size: 16px;

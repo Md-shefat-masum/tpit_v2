@@ -20,26 +20,32 @@ class CourseModuleClassSeeder extends Seeder
             [
                 'title' => 'What is http',
                 'type' => 'recorded',
+                'link' => 'https://www.youtube.com/embed/oS1SkU2ksZM'
             ],
             [
                 'title' => 'What is ssl',
                 'type' => 'recorded',
+                'link' => 'https://www.youtube.com/embed/7InxDgQmzn8'
             ],
             [
                 'title' => 'What is ftp',
                 'type' => 'recorded',
+                'link' => 'https://www.youtube.com/embed/RhDQF7EQnzM'
             ],
             [
                 'title' => 'Vs code installation',
                 'type' => 'recorded',
+                'link' => 'https://www.youtube.com/embed/W3aSGmu0WlM'
             ],
             [
                 'title' => 'Node js installation',
                 'type' => 'recorded',
+                'link' => 'https://www.youtube.com/embed/D8BSmv3qtIw'
             ],
             [
                 'title' => 'First html project',
                 'type' => 'recorded',
+                'link' => 'https://www.youtube.com/embed/4eOfT3YQ7aQ'
             ]
         ];
 
@@ -51,7 +57,7 @@ class CourseModuleClassSeeder extends Seeder
                 'class_no' =>  $key+1,
                 'title' => $item['title'],
                 'type' => $item['type'],
-                'class_video_link' => 'https://www.youtube.com/embed/oS1SkU2ksZM?si=2XFBVu8BME7VsrxI',
+                'class_video_link' => $item['link'],
                 'class_video_poster' => 'uploads/course/graphic.jpg',
             ]);
         }
@@ -92,7 +98,7 @@ class CourseModuleClassSeeder extends Seeder
                 'class_no' =>  $key+1,
                 'title' => $item['title'],
                 'type' => $item['type'],
-                'class_video_link' => 'https://www.youtube.com/embed/oS1SkU2ksZM?si=2XFBVu8BME7VsrxI',
+                'class_video_link' => 'https://www.youtube.com/embed/7InxDgQmzn8?si=2XFBVu8BME7VsrxI',
                 'class_video_poster' => 'uploads/course/graphic.jpg',
             ]);
         }
@@ -132,7 +138,7 @@ class CourseModuleClassSeeder extends Seeder
                 'class_no' =>  $key+1,
                 'title' => $item['title'],
                 'type' => $item['type'],
-                'class_video_link' => 'https://www.youtube.com/embed/oS1SkU2ksZM?si=2XFBVu8BME7VsrxI',
+                'class_video_link' => 'https://www.youtube.com/embed/RhDQF7EQnzM?si=2XFBVu8BME7VsrxI',
                 'class_video_poster' => 'uploads/course/graphic.jpg',
             ]);
         }

@@ -23,19 +23,9 @@
                                 <td>{{ course.title }}</td>
                                 <td>{{ course.type }}</td>
                                 <td>
-                                    
-                                    <div class="btn-group">
-                                        <button class="btn btn-sm btn-outline-secondary dropdown-toggle" type="button"
-                                            data-toggle="dropdown" aria-expanded="false">
-                                            <i class="fa fa-gears"></i>
-                                        </button>
-                                        <div class="dropdown-menu">
-                                            <a class="dropdown-item" @click.prevent="course_edit(course)">
-                                                <i class="fa text-warning fa-pencil mr-2"></i> <span>Edit</span>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    
+                                    <a @click.prevent="course_edit(course)" class="btn btn-sm btn-outline-secondary">
+                                        <i class="fa text-warning fa-pencil mr-1"></i> <span>Edit</span>
+                                    </a>
                                 </td>
                             </tr>
                         </tbody>
