@@ -5640,6 +5640,8 @@ var staticRenderFns = [function () {
     staticClass: "row g-3"
   }, [_c("div", {
     staticClass: "col-md-6"
+  }, [_c("div", {
+    staticClass: "form-group"
   }, [_c("label", {
     staticClass: "form-label",
     attrs: {
@@ -5653,8 +5655,10 @@ var staticRenderFns = [function () {
       name: "batch_name",
       placeholder: "GD-1"
     }
-  })]), _vm._v(" "), _c("div", {
+  })])]), _vm._v(" "), _c("div", {
     staticClass: "col-md-6"
+  }, [_c("div", {
+    staticClass: "form-group"
   }, [_c("label", {
     staticClass: "form-label",
     attrs: {
@@ -5668,8 +5672,10 @@ var staticRenderFns = [function () {
       name: "batch_student_limit",
       placeholder: "eg: 40,50"
     }
-  })]), _vm._v(" "), _c("div", {
+  })])]), _vm._v(" "), _c("div", {
     staticClass: "col-md-6"
+  }, [_c("div", {
+    staticClass: "form-group"
   }, [_c("label", {
     staticClass: "form-label",
     attrs: {
@@ -5683,8 +5689,10 @@ var staticRenderFns = [function () {
       id: "seat_booked",
       placeholder: "eg: 40,50"
     }
-  })]), _vm._v(" "), _c("div", {
+  })])]), _vm._v(" "), _c("div", {
     staticClass: "col-md-6"
+  }, [_c("div", {
+    staticClass: "form-group"
   }, [_c("label", {
     staticClass: "form-label",
     attrs: {
@@ -5698,12 +5706,14 @@ var staticRenderFns = [function () {
       id: "booked_percent",
       placeholder: "eg: 40,50"
     }
-  })])]), _vm._v(" "), _c("hr", {
+  })])])]), _vm._v(" "), _c("hr", {
     staticClass: "my-2 mx-n2"
   }), _vm._v(" "), _c("h6", [_vm._v("2.Batch pricing 🏷️")]), _vm._v(" "), _c("div", {
     staticClass: "row"
   }, [_c("div", {
     staticClass: "col-md-6"
+  }, [_c("div", {
+    staticClass: "form-group"
   }, [_c("label", {
     staticClass: "form-label",
     attrs: {
@@ -5717,8 +5727,10 @@ var staticRenderFns = [function () {
       id: "course_price",
       placeholder: "eg: 10500, 9500"
     }
-  })]), _vm._v(" "), _c("div", {
+  })])]), _vm._v(" "), _c("div", {
     staticClass: "col-md-6"
+  }, [_c("div", {
+    staticClass: "form-group"
   }, [_c("label", {
     staticClass: "form-label",
     attrs: {
@@ -5732,8 +5744,10 @@ var staticRenderFns = [function () {
       id: "course_discount",
       placeholder: "eg: 30,20"
     }
-  })]), _vm._v(" "), _c("div", {
+  })])]), _vm._v(" "), _c("div", {
     staticClass: "col-md-6"
+  }, [_c("div", {
+    staticClass: "form-group"
   }, [_c("label", {
     staticClass: "form-label",
     attrs: {
@@ -5747,12 +5761,14 @@ var staticRenderFns = [function () {
       id: "after_discount_price",
       placeholder: "eg: 9500,8200"
     }
-  })])]), _vm._v(" "), _c("hr", {
+  })])])]), _vm._v(" "), _c("hr", {
     staticClass: "my-2 mx-n2"
   }), _vm._v(" "), _c("h6", [_vm._v("3.Batch Schedule and time 🗓️")]), _vm._v(" "), _c("div", {
     staticClass: "row g-3"
   }, [_c("div", {
     staticClass: "col-md-6"
+  }, [_c("div", {
+    staticClass: "form-group"
   }, [_c("label", {
     staticClass: "form-label",
     attrs: {
@@ -5765,8 +5781,10 @@ var staticRenderFns = [function () {
       name: "admission_start_date",
       id: "admission_start_date"
     }
-  })]), _vm._v(" "), _c("div", {
+  })])]), _vm._v(" "), _c("div", {
     staticClass: "col-md-6"
+  }, [_c("div", {
+    staticClass: "form-group"
   }, [_c("label", {
     staticClass: "form-label",
     attrs: {
@@ -5779,8 +5797,10 @@ var staticRenderFns = [function () {
       name: "admission_end_date",
       id: "admission_end_date"
     }
-  })]), _vm._v(" "), _c("div", {
+  })])]), _vm._v(" "), _c("div", {
     staticClass: "col-md-6"
+  }, [_c("div", {
+    staticClass: "form-group"
   }, [_c("label", {
     staticClass: "form-label",
     attrs: {
@@ -5793,8 +5813,10 @@ var staticRenderFns = [function () {
       name: "first_class_date",
       id: "first_class_date"
     }
-  })]), _vm._v(" "), _c("div", {
+  })])]), _vm._v(" "), _c("div", {
     staticClass: "col-md-6"
+  }, [_c("div", {
+    staticClass: "form-group"
   }, [_c("label", {
     staticClass: "form-label",
     attrs: {
@@ -5807,8 +5829,10 @@ var staticRenderFns = [function () {
       name: "class_start_time",
       id: "class_start_time"
     }
-  })]), _vm._v(" "), _c("div", {
+  })])]), _vm._v(" "), _c("div", {
     staticClass: "col-md-6"
+  }, [_c("div", {
+    staticClass: "form-group"
   }, [_c("label", {
     staticClass: "form-label",
     attrs: {
@@ -5821,8 +5845,10 @@ var staticRenderFns = [function () {
       name: "class_end_time",
       id: "class_end_time"
     }
-  })]), _vm._v(" "), _c("div", {
+  })])]), _vm._v(" "), _c("div", {
     staticClass: "col-md-6"
+  }, [_c("div", {
+    staticClass: "form-group"
   }, [_c("label", {
     staticClass: "form-label",
     attrs: {
@@ -5837,7 +5863,7 @@ var staticRenderFns = [function () {
       placeholder: "রবিবার,মঙ্গলবার,বৃহস্পতিবার",
       "aria-label": "রবিবার,মঙ্গলবার,বৃহস্পতিবার"
     }
-  })])])])])]);
+  })])])])])])]);
 }, function () {
   var _vm = this,
     _c = _vm._self._c;
@@ -6423,6 +6449,8 @@ var staticRenderFns = [function () {
     staticClass: "row g-3"
   }, [_c("div", {
     staticClass: "col-md-12"
+  }, [_c("div", {
+    staticClass: "form-group"
   }, [_c("label", {
     staticClass: "form-label",
     attrs: {
@@ -6436,8 +6464,10 @@ var staticRenderFns = [function () {
       name: "title",
       placeholder: "24/7 support"
     }
-  })]), _vm._v(" "), _c("div", {
+  })])]), _vm._v(" "), _c("div", {
     staticClass: "col-md-12"
+  }, [_c("div", {
+    staticClass: "form-group"
   }, [_c("label", {
     staticClass: "form-label",
     attrs: {
@@ -6449,7 +6479,7 @@ var staticRenderFns = [function () {
       id: "description",
       name: "description"
     }
-  })])])])])]);
+  })])])])])])]);
 }, function () {
   var _vm = this,
     _c = _vm._self._c;
@@ -6819,6 +6849,8 @@ var staticRenderFns = [function () {
     staticClass: "row g-3"
   }, [_c("div", {
     staticClass: "col-md-12"
+  }, [_c("div", {
+    staticClass: "form-group"
   }, [_c("label", {
     staticClass: "form-label",
     attrs: {
@@ -6832,7 +6864,7 @@ var staticRenderFns = [function () {
       name: "title",
       placeholder: "website design"
     }
-  })])])])])]);
+  })])])])])])]);
 }, function () {
   var _vm = this,
     _c = _vm._self._c;
@@ -7185,6 +7217,8 @@ var staticRenderFns = [function () {
     staticClass: "row g-3"
   }, [_c("div", {
     staticClass: "col-md-12"
+  }, [_c("div", {
+    staticClass: "form-group"
   }, [_c("label", {
     staticClass: "form-label",
     attrs: {
@@ -7198,7 +7232,7 @@ var staticRenderFns = [function () {
       name: "title",
       placeholder: "web developer"
     }
-  })])])])])]);
+  })])])])])])]);
 }, function () {
   var _vm = this,
     _c = _vm._self._c;
@@ -7551,6 +7585,8 @@ var staticRenderFns = [function () {
     staticClass: "row g-3"
   }, [_c("div", {
     staticClass: "col-md-12"
+  }, [_c("div", {
+    staticClass: "form-group"
   }, [_c("label", {
     staticClass: "form-label",
     attrs: {
@@ -7564,7 +7600,7 @@ var staticRenderFns = [function () {
       name: "title",
       placeholder: "website design"
     }
-  })])])])])]);
+  })])])])])])]);
 }, function () {
   var _vm = this,
     _c = _vm._self._c;
@@ -7813,6 +7849,8 @@ var staticRenderFns = [function () {
     staticClass: "row g-3"
   }, [_c("div", {
     staticClass: "col-md-12"
+  }, [_c("div", {
+    staticClass: "form-group"
   }, [_c("label", {
     staticClass: "form-label",
     attrs: {
@@ -7826,8 +7864,10 @@ var staticRenderFns = [function () {
       name: "title",
       placeholder: "Js advance work"
     }
-  })]), _vm._v(" "), _c("div", {
+  })])]), _vm._v(" "), _c("div", {
     staticClass: "col-md-12"
+  }, [_c("div", {
+    staticClass: "form-group"
   }, [_c("label", {
     staticClass: "form-label",
     attrs: {
@@ -7841,7 +7881,7 @@ var staticRenderFns = [function () {
       name: "milestone_no",
       placeholder: "1,2"
     }
-  })])])])])]);
+  })])])])])])]);
 }, function () {
   var _vm = this,
     _c = _vm._self._c;
@@ -8589,6 +8629,8 @@ var staticRenderFns = [function () {
   }, [_c("div", {
     staticClass: "row g-3"
   }, [_c("div", {
+    staticClass: "form-group"
+  }, [_c("div", {
     staticClass: "col-md-12"
   }, [_c("label", {
     staticClass: "form-label",
@@ -8603,7 +8645,9 @@ var staticRenderFns = [function () {
       name: "title",
       placeholder: "Js advance work"
     }
-  })]), _vm._v(" "), _c("div", {
+  })])]), _vm._v(" "), _c("div", {
+    staticClass: "form-group"
+  }, [_c("div", {
     staticClass: "col-md-12"
   }, [_c("label", {
     staticClass: "form-label",
@@ -8618,7 +8662,7 @@ var staticRenderFns = [function () {
       name: "module_no",
       placeholder: "1,2"
     }
-  })])])])])]);
+  })])])])])])]);
 }, function () {
   var _vm = this,
     _c = _vm._self._c;
@@ -8949,9 +8993,11 @@ var render = function render() {
   }, [_c("div", {
     staticClass: "col-xl-10 col-12"
   }, [_c("div", {
-    staticClass: "row g-3"
+    staticClass: "row"
   }, [_vm._m(0), _vm._v(" "), _vm._m(1), _vm._v(" "), _c("div", {
     staticClass: "col-md-12"
+  }, [_c("div", {
+    staticClass: "form-group"
   }, [_c("label", {
     staticClass: "form-label",
     attrs: {
@@ -8970,8 +9016,10 @@ var render = function render() {
         value: milestone.id
       }
     }, [_vm._v(_vm._s(milestone.title))]);
-  }), 0)]), _vm._v(" "), _c("div", {
+  }), 0)])]), _vm._v(" "), _c("div", {
     staticClass: "col-md-12"
+  }, [_c("div", {
+    staticClass: "form-group"
   }, [_c("label", {
     staticClass: "form-label",
     attrs: {
@@ -8990,13 +9038,15 @@ var render = function render() {
         value: module.id
       }
     }, [_vm._v(_vm._s(module.title))]);
-  }), 0)]), _vm._v(" "), _vm._m(2), _vm._v(" "), _vm._m(3), _vm._v(" "), _vm._m(4), _vm._v(" "), _vm._m(5)])])])]), _vm._v(" "), _vm._m(6)])])]);
+  }), 0)])]), _vm._v(" "), _vm._m(2), _vm._v(" "), _vm._m(3), _vm._v(" "), _vm._m(4), _vm._v(" "), _vm._m(5)])])])]), _vm._v(" "), _vm._m(6)])])]);
 };
 var staticRenderFns = [function () {
   var _vm = this,
     _c = _vm._self._c;
   return _c("div", {
     staticClass: "col-md-12"
+  }, [_c("div", {
+    staticClass: "form-group"
   }, [_c("label", {
     staticClass: "form-label",
     attrs: {
@@ -9010,12 +9060,14 @@ var staticRenderFns = [function () {
       name: "title",
       placeholder: "Js advance work"
     }
-  })]);
+  })])]);
 }, function () {
   var _vm = this,
     _c = _vm._self._c;
   return _c("div", {
     staticClass: "col-md-12"
+  }, [_c("div", {
+    staticClass: "form-group"
   }, [_c("label", {
     staticClass: "form-label",
     attrs: {
@@ -9029,12 +9081,14 @@ var staticRenderFns = [function () {
       name: "class_no",
       placeholder: "1,2"
     }
-  })]);
+  })])]);
 }, function () {
   var _vm = this,
     _c = _vm._self._c;
   return _c("div", {
     staticClass: "col-md-12"
+  }, [_c("div", {
+    staticClass: "form-group"
   }, [_c("label", {
     staticClass: "form-label",
     attrs: {
@@ -9048,12 +9102,14 @@ var staticRenderFns = [function () {
       name: "milestone_no",
       placeholder: "1,2"
     }
-  })]);
+  })])]);
 }, function () {
   var _vm = this,
     _c = _vm._self._c;
   return _c("div", {
     staticClass: "col-md-12"
+  }, [_c("div", {
+    staticClass: "form-group"
   }, [_c("label", {
     staticClass: "form-label",
     attrs: {
@@ -9073,12 +9129,14 @@ var staticRenderFns = [function () {
     attrs: {
       value: "live"
     }
-  }, [_vm._v("live")])])]);
+  }, [_vm._v("live")])])])]);
 }, function () {
   var _vm = this,
     _c = _vm._self._c;
   return _c("div", {
     staticClass: "col-md-12"
+  }, [_c("div", {
+    staticClass: "form-group"
   }, [_c("label", {
     staticClass: "form-label",
     attrs: {
@@ -9092,12 +9150,14 @@ var staticRenderFns = [function () {
       name: "class_video_link",
       placeholder: "youtube.com"
     }
-  })]);
+  })])]);
 }, function () {
   var _vm = this,
     _c = _vm._self._c;
   return _c("div", {
     staticClass: "col-md-12"
+  }, [_c("div", {
+    staticClass: "form-group"
   }, [_c("label", {
     attrs: {
       "for": ""
@@ -9109,7 +9169,7 @@ var staticRenderFns = [function () {
       accept: "image/*",
       type: "file"
     }
-  })]);
+  })])]);
 }, function () {
   var _vm = this,
     _c = _vm._self._c;

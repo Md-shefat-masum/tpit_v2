@@ -15,14 +15,19 @@
                     <div class="row justify-content-center">
                         <div class="col-xl-10 col-12">
                             <div class="row g-3">
-                                <div class="col-md-12">
-                                    <label class="form-label" for="title">Title</label>
-                                    <input type="text" id="title" name="title" class="form-control" placeholder="Js advance work" />
+                                <div class="form-group">
+                                    <div class="col-md-12">
+                                        <label class="form-label" for="title">Title</label>
+                                        <input type="text" id="title" name="title" class="form-control" placeholder="Js advance work" />
+                                    </div>
                                 </div>
-                                <div class="col-md-12">
-                                    <label class="form-label" for="description">Module No</label>
-                                    <input type="text" id="module_no" name="module_no" class="form-control" placeholder="1,2" />
+                                <div class="form-group">
+                                    <div class="col-md-12">
+                                        <label class="form-label" for="description">Module No</label>
+                                        <input type="text" id="module_no" name="module_no" class="form-control" placeholder="1,2" />
+                                    </div>
                                 </div>
+
                             </div>
                         </div>
                     </div>
