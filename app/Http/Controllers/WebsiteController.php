@@ -224,9 +224,12 @@ class WebsiteController extends Controller
         $course_routines = CourseModuleClassRoutines::select('id' , 'course_id','date')->where('course_id', $course_id)->get();
         $month = [];
         // ddd($course_routines);
-        foreach($course_routines as $course_routine) {
-            $formated_date = $course_routine->date->format('m');
-            array_push($month, $formated_date);
+        if(count($course_routines) > 0) {
+            foreach($course_routines as $course_routine) {
+                // dd($course_routine->date->format('m'));
+                $formated_date = $course_routine->date->format('m');
+                array_push($month, $formated_date);
+            }
         }
 
         $months = array_unique($month);

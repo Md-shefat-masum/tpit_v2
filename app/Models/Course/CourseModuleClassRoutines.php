@@ -10,7 +10,7 @@ class CourseModuleClassRoutines extends Model
     use HasFactory;
     protected $guarded = [];
     protected $casts = [
-    //    'date' => "date"  
+       'date' => "date"  
     ];
     protected static function booted()
     {
