@@ -12,6 +12,21 @@
             </div>
             <form @keyup.enter="store_course_class($event.target)" @submit.prevent="store_course_class($event.target)" class="user_create_form">
                 <div class="card-body">
+                    <router-link :to="{ name: 'CourseModuleCSV' }" class="btn btn-sm btn-primary mb-2 mr-1">
+                        <i class="fa-solid fa-plus mr-1"></i> <span>Upload CSV</span>
+                    </router-link>
+
+                    <router-link :to="{ name: 'CourseMileStone' }" class="btn btn-sm btn-primary mb-2 mr-1">
+                        <i class="fa-solid"></i> <span>Milestones</span>
+                    </router-link>
+
+                    <router-link :to="{ name: 'CourseModuleAll' }" class="btn btn-sm btn-primary mb-2 mr-1">
+                        <i class="fa-solid"></i> <span>Modules</span>
+                    </router-link>
+
+                    <router-link :to="{ name: 'CourseClassAll' }" class="btn btn-sm btn-primary mb-2 mr-1">
+                        <i class="fa-solid"></i> <span>Classes</span>
+                    </router-link>
                     <div class="row justify-content-center">
                         <div class="col-xl-10 col-12">
                             <div class="row">

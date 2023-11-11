@@ -7834,14 +7834,50 @@ var render = function render() {
         return _vm.store_course_faq($event.target);
       }
     }
-  }, [_vm._m(0), _vm._v(" "), _vm._m(1)])])]);
+  }, [_c("div", {
+    staticClass: "card-body"
+  }, [_c("router-link", {
+    staticClass: "btn btn-sm btn-primary mb-2 mr-1",
+    attrs: {
+      to: {
+        name: "CourseModuleCSV"
+      }
+    }
+  }, [_c("i", {
+    staticClass: "fa-solid fa-plus mr-1"
+  }), _vm._v(" "), _c("span", [_vm._v("Upload CSV")])]), _vm._v(" "), _c("router-link", {
+    staticClass: "btn btn-sm btn-primary mb-2 mr-1",
+    attrs: {
+      to: {
+        name: "CourseMileStone"
+      }
+    }
+  }, [_c("i", {
+    staticClass: "fa-solid"
+  }), _vm._v(" "), _c("span", [_vm._v("Milestones")])]), _vm._v(" "), _c("router-link", {
+    staticClass: "btn btn-sm btn-primary mb-2 mr-1",
+    attrs: {
+      to: {
+        name: "CourseModuleAll"
+      }
+    }
+  }, [_c("i", {
+    staticClass: "fa-solid"
+  }), _vm._v(" "), _c("span", [_vm._v("Modules")])]), _vm._v(" "), _c("router-link", {
+    staticClass: "btn btn-sm btn-primary mb-2 mr-1",
+    attrs: {
+      to: {
+        name: "CourseClassAll"
+      }
+    }
+  }, [_c("i", {
+    staticClass: "fa-solid"
+  }), _vm._v(" "), _c("span", [_vm._v("Classes")])]), _vm._v(" "), _vm._m(0)], 1), _vm._v(" "), _vm._m(1)])])]);
 };
 var staticRenderFns = [function () {
   var _vm = this,
     _c = _vm._self._c;
   return _c("div", {
-    staticClass: "card-body"
-  }, [_c("div", {
     staticClass: "row justify-content-center"
   }, [_c("div", {
     staticClass: "col-xl-10 col-12"
@@ -7881,7 +7917,7 @@ var staticRenderFns = [function () {
       name: "milestone_no",
       placeholder: "1,2"
     }
-  })])])])])])]);
+  })])])])])]);
 }, function () {
   var _vm = this,
     _c = _vm._self._c;
@@ -7921,6 +7957,42 @@ var render = function render() {
   }, [_vm._m(0), _vm._v(" "), _c("div", {
     staticClass: "card-body"
   }, [_c("router-link", {
+    staticClass: "btn btn-sm btn-primary mb-2 mr-1",
+    attrs: {
+      to: {
+        name: "CourseModuleCSV"
+      }
+    }
+  }, [_c("i", {
+    staticClass: "fa-solid fa-plus mr-1"
+  }), _vm._v(" "), _c("span", [_vm._v("Upload CSV")])]), _vm._v(" "), _c("router-link", {
+    staticClass: "btn btn-sm btn-primary mb-2 mr-1",
+    attrs: {
+      to: {
+        name: "CourseMileStone"
+      }
+    }
+  }, [_c("i", {
+    staticClass: "fa-solid"
+  }), _vm._v(" "), _c("span", [_vm._v("Milestones")])]), _vm._v(" "), _c("router-link", {
+    staticClass: "btn btn-sm btn-primary mb-2 mr-1",
+    attrs: {
+      to: {
+        name: "CourseModuleAll"
+      }
+    }
+  }, [_c("i", {
+    staticClass: "fa-solid"
+  }), _vm._v(" "), _c("span", [_vm._v("Modules")])]), _vm._v(" "), _c("router-link", {
+    staticClass: "btn btn-sm btn-primary mb-2 mr-1",
+    attrs: {
+      to: {
+        name: "CourseClassAll"
+      }
+    }
+  }, [_c("i", {
+    staticClass: "fa-solid"
+  }), _vm._v(" "), _c("span", [_vm._v("Classes")])]), _vm._v(" "), _c("router-link", {
     staticClass: "btn btn-primary mb-2 float-right",
     attrs: {
       to: {
@@ -8615,23 +8687,59 @@ var render = function render() {
         return _vm.store_course_module($event.target);
       }
     }
-  }, [_vm._m(0), _vm._v(" "), _vm._m(1)])])]);
+  }, [_c("div", {
+    staticClass: "card-body"
+  }, [_c("router-link", {
+    staticClass: "btn btn-sm btn-primary mb-2 mr-1",
+    attrs: {
+      to: {
+        name: "CourseModuleCSV"
+      }
+    }
+  }, [_c("i", {
+    staticClass: "fa-solid fa-plus mr-1"
+  }), _vm._v(" "), _c("span", [_vm._v("Upload CSV")])]), _vm._v(" "), _c("router-link", {
+    staticClass: "btn btn-sm btn-primary mb-2 mr-1",
+    attrs: {
+      to: {
+        name: "CourseMileStone"
+      }
+    }
+  }, [_c("i", {
+    staticClass: "fa-solid"
+  }), _vm._v(" "), _c("span", [_vm._v("Milestones")])]), _vm._v(" "), _c("router-link", {
+    staticClass: "btn btn-sm btn-primary mb-2 mr-1",
+    attrs: {
+      to: {
+        name: "CourseModuleAll"
+      }
+    }
+  }, [_c("i", {
+    staticClass: "fa-solid"
+  }), _vm._v(" "), _c("span", [_vm._v("Modules")])]), _vm._v(" "), _c("router-link", {
+    staticClass: "btn btn-sm btn-primary mb-2 mr-1",
+    attrs: {
+      to: {
+        name: "CourseClassAll"
+      }
+    }
+  }, [_c("i", {
+    staticClass: "fa-solid"
+  }), _vm._v(" "), _c("span", [_vm._v("Classes")])]), _vm._v(" "), _vm._m(0)], 1), _vm._v(" "), _vm._m(1)])])]);
 };
 var staticRenderFns = [function () {
   var _vm = this,
     _c = _vm._self._c;
   return _c("div", {
-    staticClass: "card-body"
-  }, [_c("div", {
     staticClass: "row justify-content-center"
   }, [_c("div", {
     staticClass: "col-xl-10 col-12"
   }, [_c("div", {
     staticClass: "row g-3"
   }, [_c("div", {
-    staticClass: "form-group"
-  }, [_c("div", {
     staticClass: "col-md-12"
+  }, [_c("div", {
+    staticClass: "form-group"
   }, [_c("label", {
     staticClass: "form-label",
     attrs: {
@@ -8646,9 +8754,9 @@ var staticRenderFns = [function () {
       placeholder: "Js advance work"
     }
   })])]), _vm._v(" "), _c("div", {
-    staticClass: "form-group"
-  }, [_c("div", {
     staticClass: "col-md-12"
+  }, [_c("div", {
+    staticClass: "form-group"
   }, [_c("label", {
     staticClass: "form-label",
     attrs: {
@@ -8662,7 +8770,7 @@ var staticRenderFns = [function () {
       name: "module_no",
       placeholder: "1,2"
     }
-  })])])])])])]);
+  })])])])])]);
 }, function () {
   var _vm = this,
     _c = _vm._self._c;
@@ -8806,6 +8914,42 @@ var render = function render() {
   }, [_vm._m(0), _vm._v(" "), _c("div", {
     staticClass: "card-body"
   }, [_c("router-link", {
+    staticClass: "btn btn-sm btn-primary mb-2 mr-1",
+    attrs: {
+      to: {
+        name: "CourseModuleCSV"
+      }
+    }
+  }, [_c("i", {
+    staticClass: "fa-solid fa-plus mr-1"
+  }), _vm._v(" "), _c("span", [_vm._v("Upload CSV")])]), _vm._v(" "), _c("router-link", {
+    staticClass: "btn btn-sm btn-primary mb-2 mr-1",
+    attrs: {
+      to: {
+        name: "CourseMileStone"
+      }
+    }
+  }, [_c("i", {
+    staticClass: "fa-solid"
+  }), _vm._v(" "), _c("span", [_vm._v("Milestones")])]), _vm._v(" "), _c("router-link", {
+    staticClass: "btn btn-sm btn-primary mb-2 mr-1",
+    attrs: {
+      to: {
+        name: "CourseModuleAll"
+      }
+    }
+  }, [_c("i", {
+    staticClass: "fa-solid"
+  }), _vm._v(" "), _c("span", [_vm._v("Modules")])]), _vm._v(" "), _c("router-link", {
+    staticClass: "btn btn-sm btn-primary mb-2 mr-1",
+    attrs: {
+      to: {
+        name: "CourseClassAll"
+      }
+    }
+  }, [_c("i", {
+    staticClass: "fa-solid"
+  }), _vm._v(" "), _c("span", [_vm._v("Classes")])]), _vm._v(" "), _c("router-link", {
     staticClass: "btn btn-primary mb-2 float-right",
     attrs: {
       to: {
@@ -8988,7 +9132,43 @@ var render = function render() {
     }
   }, [_c("div", {
     staticClass: "card-body"
-  }, [_c("div", {
+  }, [_c("router-link", {
+    staticClass: "btn btn-sm btn-primary mb-2 mr-1",
+    attrs: {
+      to: {
+        name: "CourseModuleCSV"
+      }
+    }
+  }, [_c("i", {
+    staticClass: "fa-solid fa-plus mr-1"
+  }), _vm._v(" "), _c("span", [_vm._v("Upload CSV")])]), _vm._v(" "), _c("router-link", {
+    staticClass: "btn btn-sm btn-primary mb-2 mr-1",
+    attrs: {
+      to: {
+        name: "CourseMileStone"
+      }
+    }
+  }, [_c("i", {
+    staticClass: "fa-solid"
+  }), _vm._v(" "), _c("span", [_vm._v("Milestones")])]), _vm._v(" "), _c("router-link", {
+    staticClass: "btn btn-sm btn-primary mb-2 mr-1",
+    attrs: {
+      to: {
+        name: "CourseModuleAll"
+      }
+    }
+  }, [_c("i", {
+    staticClass: "fa-solid"
+  }), _vm._v(" "), _c("span", [_vm._v("Modules")])]), _vm._v(" "), _c("router-link", {
+    staticClass: "btn btn-sm btn-primary mb-2 mr-1",
+    attrs: {
+      to: {
+        name: "CourseClassAll"
+      }
+    }
+  }, [_c("i", {
+    staticClass: "fa-solid"
+  }), _vm._v(" "), _c("span", [_vm._v("Classes")])]), _vm._v(" "), _c("div", {
     staticClass: "row justify-content-center"
   }, [_c("div", {
     staticClass: "col-xl-10 col-12"
@@ -9038,7 +9218,7 @@ var render = function render() {
         value: module.id
       }
     }, [_vm._v(_vm._s(module.title))]);
-  }), 0)])]), _vm._v(" "), _vm._m(2), _vm._v(" "), _vm._m(3), _vm._v(" "), _vm._m(4), _vm._v(" "), _vm._m(5)])])])]), _vm._v(" "), _vm._m(6)])])]);
+  }), 0)])]), _vm._v(" "), _vm._m(2), _vm._v(" "), _vm._m(3), _vm._v(" "), _vm._m(4), _vm._v(" "), _vm._m(5)])])])], 1), _vm._v(" "), _vm._m(6)])])]);
 };
 var staticRenderFns = [function () {
   var _vm = this,
@@ -9232,6 +9412,42 @@ var render = function render() {
   }, [_vm._m(0), _vm._v(" "), _c("div", {
     staticClass: "card-body"
   }, [_c("router-link", {
+    staticClass: "btn btn-sm btn-primary mb-2 mr-1",
+    attrs: {
+      to: {
+        name: "CourseModuleCSV"
+      }
+    }
+  }, [_c("i", {
+    staticClass: "fa-solid fa-plus mr-1"
+  }), _vm._v(" "), _c("span", [_vm._v("Upload CSV")])]), _vm._v(" "), _c("router-link", {
+    staticClass: "btn btn-sm btn-primary mb-2 mr-1",
+    attrs: {
+      to: {
+        name: "CourseMileStone"
+      }
+    }
+  }, [_c("i", {
+    staticClass: "fa-solid"
+  }), _vm._v(" "), _c("span", [_vm._v("Milestones")])]), _vm._v(" "), _c("router-link", {
+    staticClass: "btn btn-sm btn-primary mb-2 mr-1",
+    attrs: {
+      to: {
+        name: "CourseModuleAll"
+      }
+    }
+  }, [_c("i", {
+    staticClass: "fa-solid"
+  }), _vm._v(" "), _c("span", [_vm._v("Modules")])]), _vm._v(" "), _c("router-link", {
+    staticClass: "btn btn-sm btn-primary mb-2 mr-1",
+    attrs: {
+      to: {
+        name: "CourseClassAll"
+      }
+    }
+  }, [_c("i", {
+    staticClass: "fa-solid"
+  }), _vm._v(" "), _c("span", [_vm._v("Classes")])]), _vm._v(" "), _c("router-link", {
     staticClass: "btn btn-primary mb-2 float-right",
     attrs: {
       to: {
