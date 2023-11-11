@@ -9639,6 +9639,8 @@ var render = function render() {
     staticClass: "row g-3"
   }, [_vm.current_batch != "" ? _c("div", {
     staticClass: "col-md-12"
+  }, [_c("div", {
+    staticClass: "form-group"
   }, [_c("label", {
     staticClass: "form-label",
     attrs: {
@@ -9674,8 +9676,10 @@ var render = function render() {
         value: batch.id
       }
     }, [_vm._v(_vm._s(batch.batch_name))]);
-  }), 0)]) : _vm._e(), _vm._v(" "), _vm.current_teacher != "" ? _c("div", {
+  }), 0)])]) : _vm._e(), _vm._v(" "), _vm.current_teacher != "" ? _c("div", {
     staticClass: "col-md-12"
+  }, [_c("div", {
+    staticClass: "form-group"
   }, [_c("label", {
     staticClass: "form-label",
     attrs: {
@@ -9711,7 +9715,7 @@ var render = function render() {
         value: teacher.id
       }
     }, [_vm._v(_vm._s(teacher.full_name))]);
-  }), 0)]) : _vm._e()])])])]), _vm._v(" "), _vm._m(0)])])]);
+  }), 0)])]) : _vm._e()])])])]), _vm._v(" "), _vm._m(0)])])]);
 };
 var staticRenderFns = [function () {
   var _vm = this,
