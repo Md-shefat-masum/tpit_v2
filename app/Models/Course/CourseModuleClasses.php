@@ -25,7 +25,7 @@ class CourseModuleClasses extends Model
 
     public function routine()
     {
-        return $this->hasOne(CourseModuleClasses::class, 'class_id', 'id');
+        return $this->hasOne(CourseModuleClassRoutines::class, 'class_id');
     }
 
     public function module()

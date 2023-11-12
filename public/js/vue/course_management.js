@@ -2809,7 +2809,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
-      course_id: ''
+      course_id: '',
+      course_milestones: ''
     };
   },
   methods: {
@@ -2843,18 +2844,45 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         return _store_course_module.apply(this, arguments);
       }
       return store_course_module;
+    }(),
+    get_course_milestones: function () {
+      var _get_course_milestones = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2() {
+        var _this = this;
+        return _regeneratorRuntime().wrap(function _callee2$(_context2) {
+          while (1) switch (_context2.prev = _context2.next) {
+            case 0:
+              _context2.next = 2;
+              return axios.get('/api/v1/course/course-milestones/all-milestones/' + this.course_id).then(function (response) {
+                _this.course_milestones = response.data;
+              })["catch"](function (e) {
+                console.log(e);
+              });
+            case 2:
+            case "end":
+              return _context2.stop();
+          }
+        }, _callee2, this);
+      }));
+      function get_course_milestones() {
+        return _get_course_milestones.apply(this, arguments);
+      }
+      return get_course_milestones;
     }()
   },
   computed: {},
   created: function () {
-    var _created = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2() {
-      return _regeneratorRuntime().wrap(function _callee2$(_context2) {
-        while (1) switch (_context2.prev = _context2.next) {
+    var _created = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee3() {
+      return _regeneratorRuntime().wrap(function _callee3$(_context3) {
+        while (1) switch (_context3.prev = _context3.next) {
           case 0:
+            this.course_id = this.$route.params.id;
+            _context3.next = 3;
+            return this.get_course_milestones();
+          case 3:
           case "end":
-            return _context2.stop();
+            return _context3.stop();
         }
-      }, _callee2);
+      }, _callee3, this);
     }));
     function created() {
       return _created.apply(this, arguments);
@@ -8728,18 +8756,40 @@ var render = function render() {
     }
   }, [_c("i", {
     staticClass: "fa-solid"
-  }), _vm._v(" "), _c("span", [_vm._v("Classes")])]), _vm._v(" "), _vm._m(0)], 1), _vm._v(" "), _vm._m(1)])])]);
-};
-var staticRenderFns = [function () {
-  var _vm = this,
-    _c = _vm._self._c;
-  return _c("div", {
+  }), _vm._v(" "), _c("span", [_vm._v("Classes")])]), _vm._v(" "), _c("div", {
     staticClass: "row justify-content-center"
   }, [_c("div", {
     staticClass: "col-xl-10 col-12"
   }, [_c("div", {
     staticClass: "row g-3"
   }, [_c("div", {
+    staticClass: "col-md-12"
+  }, [_c("div", {
+    staticClass: "form-group"
+  }, [_c("label", {
+    staticClass: "form-label",
+    attrs: {
+      "for": "milestone"
+    }
+  }, [_vm._v("Milestones")]), _vm._v(" "), _c("select", {
+    staticClass: "form-control",
+    attrs: {
+      name: "milestone_id",
+      id: "milestone"
+    }
+  }, _vm._l(_vm.course_milestones, function (milestone, index) {
+    return _c("option", {
+      key: index,
+      domProps: {
+        value: milestone.id
+      }
+    }, [_vm._v(_vm._s(milestone.title))]);
+  }), 0)])]), _vm._v(" "), _vm._m(0), _vm._v(" "), _vm._m(1)])])])], 1), _vm._v(" "), _vm._m(2)])])]);
+};
+var staticRenderFns = [function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("div", {
     staticClass: "col-md-12"
   }, [_c("div", {
     staticClass: "form-group"
@@ -8756,7 +8806,11 @@ var staticRenderFns = [function () {
       name: "title",
       placeholder: "Js advance work"
     }
-  })])]), _vm._v(" "), _c("div", {
+  })])]);
+}, function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("div", {
     staticClass: "col-md-12"
   }, [_c("div", {
     staticClass: "form-group"
@@ -8773,7 +8827,7 @@ var staticRenderFns = [function () {
       name: "module_no",
       placeholder: "1,2"
     }
-  })])])])])]);
+  })])]);
 }, function () {
   var _vm = this,
     _c = _vm._self._c;
@@ -9385,7 +9439,7 @@ var staticRenderFns = [function () {
   }, [_vm._v("class Date")]), _vm._v(" "), _c("input", {
     staticClass: "form-control",
     attrs: {
-      name: "class_date",
+      name: "date",
       type: "date"
     }
   })])]);
@@ -9403,7 +9457,7 @@ var staticRenderFns = [function () {
   }, [_vm._v("class Time")]), _vm._v(" "), _c("input", {
     staticClass: "form-control",
     attrs: {
-      name: "start_time",
+      name: "time",
       type: "time"
     }
   })])]);
@@ -9595,7 +9649,95 @@ var render = function render() {
           _vm.$set(course_class, "class_no", $event.target.value);
         }
       }
-    })]), _vm._v(" "), _vm._m(2, true), _vm._v(" "), _vm._m(3, true), _vm._v(" "), _c("td", [_c("select", {
+    })]), _vm._v(" "), _c("td", [course_class.routine ? _c("input", {
+      directives: [{
+        name: "model",
+        rawName: "v-model",
+        value: course_class.routine.show_date,
+        expression: "course_class.routine.show_date"
+      }],
+      staticClass: "form-control",
+      attrs: {
+        type: "date",
+        name: "date",
+        id: "date"
+      },
+      domProps: {
+        value: course_class.routine.show_date
+      },
+      on: {
+        input: function input($event) {
+          if ($event.target.composing) return;
+          _vm.$set(course_class.routine, "show_date", $event.target.value);
+        }
+      }
+    }) : _c("input", {
+      directives: [{
+        name: "model",
+        rawName: "v-model",
+        value: course_class.date,
+        expression: "course_class.date"
+      }],
+      staticClass: "form-control",
+      attrs: {
+        type: "date",
+        name: "date",
+        id: "date"
+      },
+      domProps: {
+        value: course_class.date
+      },
+      on: {
+        input: function input($event) {
+          if ($event.target.composing) return;
+          _vm.$set(course_class, "date", $event.target.value);
+        }
+      }
+    })]), _vm._v(" "), _c("td", [course_class.routine ? _c("input", {
+      directives: [{
+        name: "model",
+        rawName: "v-model",
+        value: course_class.routine.time,
+        expression: "course_class.routine.time"
+      }],
+      staticClass: "form-control",
+      attrs: {
+        type: "time",
+        name: "time",
+        id: "time"
+      },
+      domProps: {
+        value: course_class.routine.time
+      },
+      on: {
+        input: function input($event) {
+          if ($event.target.composing) return;
+          _vm.$set(course_class.routine, "time", $event.target.value);
+        }
+      }
+    }) : _c("input", {
+      directives: [{
+        name: "model",
+        rawName: "v-model",
+        value: course_class.time,
+        expression: "course_class.time"
+      }],
+      staticClass: "form-control",
+      attrs: {
+        type: "time",
+        name: "time",
+        id: "time"
+      },
+      domProps: {
+        value: course_class.time
+      },
+      on: {
+        input: function input($event) {
+          if ($event.target.composing) return;
+          _vm.$set(course_class, "time", $event.target.value);
+        }
+      }
+    })]), _vm._v(" "), _c("td", [_c("select", {
       directives: [{
         name: "model",
         rawName: "v-model",
@@ -9690,28 +9832,6 @@ var staticRenderFns = [function () {
   var _vm = this,
     _c = _vm._self._c;
   return _c("thead", [_c("tr", [_c("td", [_vm._v("sl")]), _vm._v(" "), _c("td", [_vm._v("Banner")]), _vm._v(" "), _c("td", [_vm._v("Module name")]), _vm._v(" "), _c("td", [_vm._v("Title")]), _vm._v(" "), _c("td", [_vm._v("Class No")]), _vm._v(" "), _c("td", [_vm._v("Class Date")]), _vm._v(" "), _c("td", [_vm._v("Class time")]), _vm._v(" "), _c("td", [_vm._v("type")]), _vm._v(" "), _c("td", [_vm._v("Video link")]), _vm._v(" "), _c("td", [_vm._v("Status")])])]);
-}, function () {
-  var _vm = this,
-    _c = _vm._self._c;
-  return _c("td", [_c("input", {
-    staticClass: "form-control",
-    attrs: {
-      type: "date",
-      name: "date",
-      id: "date"
-    }
-  })]);
-}, function () {
-  var _vm = this,
-    _c = _vm._self._c;
-  return _c("td", [_c("input", {
-    staticClass: "form-control",
-    attrs: {
-      type: "time",
-      name: "time",
-      id: "time"
-    }
-  })]);
 }];
 render._withStripped = true;
 

@@ -37,6 +37,14 @@
                             <div class="row g-3">
                                 <div class="col-md-12">
                                     <div class="form-group">
+                                        <label class="form-label" for="milestone">Milestones</label>
+                                        <select name="milestone_id" class="form-control" id="milestone">
+                                            <option v-for="(milestone, index) in course_milestones" :key="index" :value="milestone.id">{{ milestone.title }}</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-group">
                                         <label class="form-label" for="title">Title</label>
                                         <input type="text" id="title" name="title" class="form-control"
                                             placeholder="Js advance work" />
@@ -69,7 +77,8 @@
 export default {
     data() {
         return {
-            course_id: ''
+            course_id: '',
+            course_milestones: ''
         }
     },
     methods: {
@@ -91,13 +100,23 @@ export default {
                     console.log(e);
                 });
         },
+
+        get_course_milestones: async function() {
+            await axios.get('/api/v1/course/course-milestones/all-milestones/'+this.course_id).then((response) => {
+                this.course_milestones = response.data;
+            })
+            .catch((e) => {
+                console.log(e);
+            });
+        },
     },
     computed: {
 
     },
 
     created: async function () {
-
+        this.course_id = this.$route.params.id;
+        await this.get_course_milestones();
     },
 }
 </script>

@@ -97,14 +97,14 @@
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label for="">class Date</label>
-                                        <input name="class_date" type="date" class="form-control">
+                                        <input name="date" type="date" class="form-control">
                                     </div>
                                 </div>
 
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label for="">class Time</label>
-                                        <input name="start_time" type="time" class="form-control">
+                                        <input name="time" type="time" class="form-control">
                                     </div>
                                 </div>
                             </div>

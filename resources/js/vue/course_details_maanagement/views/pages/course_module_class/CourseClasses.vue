@@ -66,11 +66,13 @@
                                     <!-- <span class="text-warning cursor_pointer">{{ course_class.title }}</span> -->
                                 </td>
                                 <td>
-                                    <input type="date" name="date" id="date" class="form-control">
+                                    <input v-if="course_class.routine" type="date" v-model="course_class.routine.show_date" name="date" id="date" class="form-control">
+                                    <input v-else type="date" v-model="course_class.date" name="date" id="date" class="form-control">
                                     <!-- <span class="text-warning cursor_pointer">{{ course_class.title }}</span> -->
                                 </td>
                                 <td>
-                                    <input type="time" name="time" id="time" class="form-control">
+                                    <input  v-if="course_class.routine" type="time" v-model="course_class.routine.time" name="time" id="time" class="form-control">
+                                    <input v-else type="time" v-model="course_class.time" name="time" id="time" class="form-control">
                                     <!-- <span class="text-warning cursor_pointer">{{ course_class.title }}</span> -->
                                 </td>
 

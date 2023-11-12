@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use App\Models\ContactMessage;
 use App\Models\Course\CourseModuleClasses;
+use App\Models\Course\CourseModuleClassRoutines;
 use Intervention\Image\Facades\Image;
 
 class CourseModuleClassController extends Controller
@@ -46,12 +47,13 @@ class CourseModuleClassController extends Controller
 
     public function all_module_classes($course_id) {
         $course_classes = CourseModuleClasses::where('status', 'active')
-        ->where('course_id', $course_id)->orderBy('id', 'DESC')->with(['module'])->paginate(10);
+        ->where('course_id', $course_id)->orderBy('id', 'DESC')->with(['module', 'routine'])->paginate(10);
         return response()->json($course_classes);
     }
 
     public function update_class_module() {
         foreach (request()->data as $key => $module_class) {
+            // dd($module_class->routine->time);
             $module_class = (object) $module_class;
             $module_class_check = CourseModuleClasses::where('course_id', $module_class->course_id)->where('id', $module_class->id)->first();
 
@@ -61,6 +63,19 @@ class CourseModuleClassController extends Controller
                 $module_class_check->type = $module_class->type;
                 $module_class_check->class_video_link = $module_class->class_video_link;
                 $module_class_check->save();
+
+                $routine = (object) $module_class->routine;
+                $class_routine = CourseModuleClassRoutines::where('class_id', $module_class_check->id)->first();
+                if($class_routine != null) {
+                    // dd($routine->topic);
+                    $class_routine->course_id = $module_class_check->course_id;
+                    $class_routine->module_id = $module_class_check->course_modules_id;
+                    $class_routine->class_id = $module_class_check->id;
+                    $class_routine->topic = $routine->topic;
+                    $class_routine->date = $routine->show_date;
+                    $class_routine->time = $routine->time;
+                    $class_routine->save();
+                }
             }
         }
         return response()->json(["message" => "Course uploaded successfully!"], 200);
@@ -113,6 +128,7 @@ class CourseModuleClassController extends Controller
             ], 404);
         }
     }
+
     public function store()
     {
         $validator = Validator::make(request()->all(), [
@@ -122,6 +138,9 @@ class CourseModuleClassController extends Controller
             'title' => ['required'],
             'type' => ['required'],
             'class_video_link' => ['required'],
+            'topic' => ['required'],
+            'date' => ['required'],
+            'time' => ['required']
 
         ]);
 
@@ -140,6 +159,16 @@ class CourseModuleClassController extends Controller
         $data->type = request()->type;
         $data->class_video_link = request()->class_video_link;
         $data->save();
+
+        $routine = new CourseModuleClassRoutines();
+        $routine->course_id = request()->course_id;
+        $routine->module_id = request()->course_modules_id;
+        $routine->class_id = $data->id;
+        $routine->topic = request()->topic;
+        $routine->date = request()->date;
+        $routine->time = request()->time;
+        $routine->save();
+
         if(request()->hasFile('class_video_poster')) {
             $file = request()->file('class_video_poster');
             $path = 'uploads/class_video_thumbs/cp-' . $data->id . rand(1000, 9999) . '.';
