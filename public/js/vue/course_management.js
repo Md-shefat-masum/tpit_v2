@@ -3388,26 +3388,29 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
   },
   methods: {
     get_course_routines: function () {
-      var _get_course_routines = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee() {
+      var _get_course_routines = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee(url) {
         var _this = this;
         var course_id;
         return _regeneratorRuntime().wrap(function _callee$(_context) {
           while (1) switch (_context.prev = _context.next) {
             case 0:
               course_id = this.$route.params.id;
-              axios.get("/api/v1/course/course-routines/all/".concat(course_id)).then(function (response) {
-                _this.course_routine = response.data.data;
+              if (!url) {
+                url = "/api/v1/course/course-routines/all/".concat(course_id, "?");
+              }
+              axios.get(url).then(function (response) {
+                _this.course_routine = response.data;
                 // console.log(this.course_routine);
               })["catch"](function (e) {
                 console.log(e);
               });
-            case 2:
+            case 3:
             case "end":
               return _context.stop();
           }
         }, _callee, this);
       }));
-      function get_course_routines() {
+      function get_course_routines(_x) {
         return _get_course_routines.apply(this, arguments);
       }
       return get_course_routines;
@@ -3425,7 +3428,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               confirm = _context2.sent;
               if (confirm) {
                 axios.post("/api/v1/course/course-routines/store-all", {
-                  data: this.course_routine
+                  data: this.course_routine.data
                 }).then(function (response) {
                   // console.log(response.data);
                   window.toaster("Course routine updated successfully!");
@@ -9738,7 +9741,7 @@ var render = function render() {
     staticClass: "table-responsive"
   }, [_c("table", {
     staticClass: "table table-bordered table-hover"
-  }, [_vm._m(1), _vm._v(" "), _vm.course_routine && _vm.course_routine.length > 0 ? _c("tbody", _vm._l(_vm.course_routine, function (routine, index) {
+  }, [_vm._m(1), _vm._v(" "), _vm.course_routine.data && _vm.course_routine.data.length > 0 ? _c("tbody", _vm._l(_vm.course_routine.data, function (routine, index) {
     return _c("tr", {
       key: index
     }, [_c("td", [_c("span", {
@@ -9772,8 +9775,8 @@ var render = function render() {
       directives: [{
         name: "model",
         rawName: "v-model",
-        value: routine.date,
-        expression: "routine.date"
+        value: routine.show_date,
+        expression: "routine.show_date"
       }],
       staticClass: "form-control",
       attrs: {
@@ -9781,12 +9784,12 @@ var render = function render() {
         name: "date"
       },
       domProps: {
-        value: routine.date
+        value: routine.show_date
       },
       on: {
         input: function input($event) {
           if ($event.target.composing) return;
-          _vm.$set(routine, "date", $event.target.value);
+          _vm.$set(routine, "show_date", $event.target.value);
         }
       }
     })]), _vm._v(" "), _c("td", [_c("input", {
@@ -9811,7 +9814,13 @@ var render = function render() {
         }
       }
     })])]);
-  }), 0) : _vm._e()])])]), _vm._v(" "), _c("div", {
+  }), 0) : _vm._e()]), _vm._v(" "), _vm.course_routine ? _c("pagination", {
+    staticClass: "mt-2",
+    attrs: {
+      data: _vm.course_routine,
+      method: _vm.get_course_routines
+    }
+  }) : _vm._e()], 1)]), _vm._v(" "), _c("div", {
     staticClass: "card-footer text-center"
   }, [_c("button", {
     staticClass: "btn btn-outline-info",

@@ -126,18 +126,16 @@ class CourseModuleClassRoutinesController extends Controller
 
     public function store_all() {
         foreach (request()->data as $key => $routine) {
+            // dd($routine);
             $routine = (object) $routine;
             $routine_check = CourseModuleClassRoutines::where('course_id', $routine->course_id)->where('module_id', $routine->module_id)
             ->where('class_id', $routine->class_id)->first();
 
-
             if($routine_check != null) {
-                $routine_check->date = $routine->date;
+                $routine_check->date = $routine->show_date;
                 $routine_check->time = $routine->time;
                 $routine_check->topic = $routine->topic;
                 $routine_check->save();
-
-                
             }
         }
         return response()->json(["message" => "Course uploaded successfully!"], 200);

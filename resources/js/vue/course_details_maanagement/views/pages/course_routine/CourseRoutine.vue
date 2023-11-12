@@ -17,9 +17,9 @@
                                 <td>time</td>
                             </tr>
                         </thead>
-                        <tbody v-if="course_routine && course_routine.length > 0">
+                        <tbody v-if="course_routine.data && course_routine.data.length > 0">
                             <!-- <form action="#" @submit.prevent="CourseRoutineSubmit()"> -->
-                                <tr v-for="(routine, index) in course_routine" :key="index">
+                                <tr v-for="(routine, index) in course_routine.data" :key="index">
                                     <td><span class="text-primary">#{{ index + 1 }}</span></td>
                                     <td>
                                         <span v-if="routine.class" class="text-warning cursor_pointer">{{ routine.class.title }}</span>
@@ -27,10 +27,11 @@
                                     <!-- <td><span class="cursor_pointer">{{ routine.description }}</span></td> -->
                                     <td><span v-if="routine.class" class="badge">{{ routine.class.class_no }}</span></td>
                                     <td>
+                                        
                                         <input type="text" class="form-control" v-model="routine.topic" name="topic">
                                     </td>
                                     <td>
-                                        <input type="date" class="form-control" v-model="routine.date" name="date">
+                                        <input type="date" class="form-control" v-model="routine.show_date" name="date">
                                     </td>
                                     
                                     <td>
@@ -42,6 +43,7 @@
                         </tbody>
                         
                     </table>
+                    <pagination class="mt-2" v-if="course_routine" :data="course_routine" :method="get_course_routines" />
                 </div>
             </div>
             <div class="card-footer text-center">
@@ -74,10 +76,13 @@ export default {
         }
     },
     methods: {
-        get_course_routines: async function () {
+        get_course_routines: async function (url) {
             let course_id = this.$route.params.id
-            axios.get(`/api/v1/course/course-routines/all/${course_id}`).then((response) => {
-                this.course_routine = response.data.data;
+            if (!url) {
+                url = `/api/v1/course/course-routines/all/${course_id}?`;
+            }
+            axios.get(url).then((response) => {
+                this.course_routine = response.data;
                 // console.log(this.course_routine);
             })
             .catch((e) => {
@@ -88,7 +93,7 @@ export default {
             // console.log('hello');
             let confirm = await window.s_confirm("Are you sure?");
             if (confirm) {
-                axios.post(`/api/v1/course/course-routines/store-all`, {data: this.course_routine}).then((response) => {
+                axios.post(`/api/v1/course/course-routines/store-all`, {data: this.course_routine.data}).then((response) => {
                     // console.log(response.data);
                     window.toaster("Course routine updated successfully!");
                     this.get_course_routines();
