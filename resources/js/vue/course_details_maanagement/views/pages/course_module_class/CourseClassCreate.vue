@@ -86,6 +86,27 @@
                                         <input name="class_video_poster" accept="image/*" type="file" class="form-control">
                                     </div>
                                 </div>
+
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label for="">class topic</label>
+                                        <input name="topic" type="text" class="form-control">
+                                    </div>
+                                </div>
+
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label for="">class Date</label>
+                                        <input name="class_date" type="date" class="form-control">
+                                    </div>
+                                </div>
+
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label for="">class Time</label>
+                                        <input name="start_time" type="time" class="form-control">
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>

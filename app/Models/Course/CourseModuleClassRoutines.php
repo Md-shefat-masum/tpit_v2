@@ -22,6 +22,6 @@ class CourseModuleClassRoutines extends Model
 
     public function class()
     {
-        return $this->hasOne(CourseModuleClasses::class,'id', 'class_id');
+        return $this->belongsTo(CourseModuleClasses::class,'id', 'class_id');
     }
 }

@@ -61,7 +61,7 @@
         }
 
         /* The container <div> - needed to position the dropdown content */
-        .dropdown {
+        .dropdown_menu {
             position: relative;
             display: inline-block;
         }
@@ -69,28 +69,17 @@
         /* Dropdown Content (Hidden by Default) */
         .dropdown-content {
             display: none;
+            top: calc(100% + 10px);
+            left: 35px;
             position: absolute;
             background-color: #fff;
             /* min-width: 160px; */
-            width: 100%;
+            width: 200px;
             box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
             z-index: 1;
         }
 
-        /* Links inside the dropdown */
-        .dropdown-content .dropdown-list-item {
-
-            font-size: 16px;
-            line-height: 12px;
-            color: #1c1c1c;
-            font-family: "Medium";
-            border: 1px solid #6b7280;
-            padding: 14.5px 30.5px;
-            border-radius: 6px;
-            width: 100%;
-            margin-left: 0px !important;
-            transition-duration: 0.4s;
-        }
+        
 
         .header_area .header_area_content .nav_and_login_area .full_nav_are .login_area a {
             border: 0px solid red;
@@ -98,12 +87,25 @@
             line-height: 12px;
             color: #1c1c1c;
             font-family: "Medium";
-            border: 1px solid #6b7280;
             padding: 14.5px 30.5px;
+            border: 1px solid #6b7280;
             border-radius: 6px;
             transition-duration: 0.4s;
         }
 
+        /* Links inside the dropdown */
+        .dropdown-content .dropdown-single-item {
+            border: unset !important;
+            font-size: 16px;
+            line-height: 12px;
+            color: #1c1c1c;
+            font-family: "Medium";
+            padding: 14.5px 30.5px;
+            border-radius: 6px;
+            width: 100%;
+            margin-left: 0px !important;
+            transition-duration: 0.4s;
+        }
         /* Change color of dropdown links on hover */
         .dropdown-content a:hover {
             background-color: #fff;
@@ -213,7 +215,11 @@
                                 </li>
                                 @auth    
                                     <li>
-                                        <a href="{{ route('logout') }}">লগআউট</a>
+                                        <a href="javascript:void(0)"
+                                        onclick="event.preventDefault();document.getElementById('logout-form').submit();">লগআউট</a>
+                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                            @csrf
+                                        </form>
                                     </li>
                                 @endauth
                             </ul>
@@ -225,18 +231,22 @@
                         @guest
                             @if (Route::has('login'))
                                 <div class="login_area">
-                                    <a href="/login">লগ-ইন</a>
+                                    <a class="login-btn" href="/login">লগ-ইন</a>
                                 </div>
                             @endif
                         @else
                             <div class="login_area">
-                                <div class="dropdown">
+                                <div class="dropdown dropdown_menu">
                                     <button onclick="dropdown_list()" class="dropbtn"><i
                                             class="fa-regular fa-circle-user fa-lg me-1"></i>
                                         {{ Auth::user()->first_name }} {{ Auth::user()->last_name }}</button>
                                     <div id="myDropdown" class="dropdown-content">
-                                        <a class="dropdown-list-item" href="{{ route('myCourse') }}">My courses</a>
-                                        <a class="dropdown-list-item" href="{{ route('logout') }}">Logout</a>
+                                        <a class="dropdown-single-item" href="{{ route('myCourse') }}">আমার কোর্সসমূহ</a>
+                                        <a class="dropdown-single-item" href="javascript:void(0)"
+                                        onclick="event.preventDefault();document.getElementById('logout-form').submit();">লগআউট</a>
+                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                            @csrf
+                                        </form> 
                                     </div>
                                 </div>
 

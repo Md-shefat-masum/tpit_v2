@@ -23,6 +23,7 @@
                 <router-link :to="{ name: 'CourseClassCreate' }" class="btn btn-primary mb-2 float-right">
                     <i class="fa-solid fa-plus mr-1"></i> <span>Create</span>
                 </router-link>
+
                 <div class="table-responsive">
                     <table class="table table-bordered table-hover">
                         <thead>
@@ -32,8 +33,8 @@
                                 <td>Module name</td>
                                 <td>Title</td>
                                 <td>Class No</td>
-                                <td>Start time</td>
-                                <td>End time</td>
+                                <td>Class Date</td>
+                                <td>Class time</td>
                                 <td>type</td>
                                 <td>Video link</td>
                                 <td>Status</td>
@@ -56,33 +57,34 @@
                                 </td>
                                 <td>
                                     <input type="text" name="title" id="title" class="form-control"
-                                        v-model="course_class.title">
+                                        v-model="course_class.title" style="width: 200px;">
                                     <!-- <span class="text-warning cursor_pointer">{{ course_class.title }}</span> -->
                                 </td>
                                 <td>
-                                    <input type="number" name="title" id="title" class="form-control"
+                                    <input type="number" style="width: 50px;" name="title" id="title" class="form-control"
                                         v-model="course_class.class_no">
                                     <!-- <span class="text-warning cursor_pointer">{{ course_class.title }}</span> -->
                                 </td>
                                 <td>
-                                    <input type="time" name="start_time" id="start_time" class="form-control">
+                                    <input type="date" name="date" id="date" class="form-control">
                                     <!-- <span class="text-warning cursor_pointer">{{ course_class.title }}</span> -->
                                 </td>
                                 <td>
-                                    <input type="time" name="end_time" id="end_time" class="form-control">
+                                    <input type="time" name="time" id="time" class="form-control">
                                     <!-- <span class="text-warning cursor_pointer">{{ course_class.title }}</span> -->
                                 </td>
 
 
                                 <td>
-                                    <select v-model="course_class.type" name="type" id="type" class="form-control">
+                                    <select style="width: 100px;" v-model="course_class.type" name="type" id="type" class="form-control">
                                         <option value="live">live</option>
                                         <option value="recorded">recorded</option>
                                     </select>
                                     <!-- <span class="badge">{{ course_class.type }}</span> -->
                                 </td>
                                 <td>
-                                    <input type="text" class="form-control" v-model="course_class.class_video_link">
+                                    <textarea name="video_link" class="form-control" style="width: 200px;" id="video_link" v-model="course_class.class_video_link"></textarea>
+                                    <!-- <input type="text" class="form-control" v-model="course_class.class_video_link"> -->
                                     <!-- <a target="_blank" :href="course_class.class_video_link" class="text-primary">{{ course_class.class_video_link }}</a> -->
                                 </td>
                                 <td><span class="badge">{{ course_class.status }}</span></td>

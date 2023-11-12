@@ -9218,7 +9218,7 @@ var render = function render() {
         value: module.id
       }
     }, [_vm._v(_vm._s(module.title))]);
-  }), 0)])]), _vm._v(" "), _vm._m(2), _vm._v(" "), _vm._m(3), _vm._v(" "), _vm._m(4), _vm._v(" "), _vm._m(5)])])])], 1), _vm._v(" "), _vm._m(6)])])]);
+  }), 0)])]), _vm._v(" "), _vm._m(2), _vm._v(" "), _vm._m(3), _vm._v(" "), _vm._m(4), _vm._v(" "), _vm._m(5), _vm._v(" "), _vm._m(6), _vm._v(" "), _vm._m(7), _vm._v(" "), _vm._m(8)])])])], 1), _vm._v(" "), _vm._m(9)])])]);
 };
 var staticRenderFns = [function () {
   var _vm = this,
@@ -9348,6 +9348,60 @@ var staticRenderFns = [function () {
       name: "class_video_poster",
       accept: "image/*",
       type: "file"
+    }
+  })])]);
+}, function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("div", {
+    staticClass: "col-md-12"
+  }, [_c("div", {
+    staticClass: "form-group"
+  }, [_c("label", {
+    attrs: {
+      "for": ""
+    }
+  }, [_vm._v("class topic")]), _vm._v(" "), _c("input", {
+    staticClass: "form-control",
+    attrs: {
+      name: "topic",
+      type: "text"
+    }
+  })])]);
+}, function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("div", {
+    staticClass: "col-md-12"
+  }, [_c("div", {
+    staticClass: "form-group"
+  }, [_c("label", {
+    attrs: {
+      "for": ""
+    }
+  }, [_vm._v("class Date")]), _vm._v(" "), _c("input", {
+    staticClass: "form-control",
+    attrs: {
+      name: "class_date",
+      type: "date"
+    }
+  })])]);
+}, function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("div", {
+    staticClass: "col-md-12"
+  }, [_c("div", {
+    staticClass: "form-group"
+  }, [_c("label", {
+    attrs: {
+      "for": ""
+    }
+  }, [_vm._v("class Time")]), _vm._v(" "), _c("input", {
+    staticClass: "form-control",
+    attrs: {
+      name: "start_time",
+      type: "time"
     }
   })])]);
 }, function () {
@@ -9496,6 +9550,9 @@ var render = function render() {
         expression: "course_class.title"
       }],
       staticClass: "form-control",
+      staticStyle: {
+        width: "200px"
+      },
       attrs: {
         type: "text",
         name: "title",
@@ -9518,6 +9575,9 @@ var render = function render() {
         expression: "course_class.class_no"
       }],
       staticClass: "form-control",
+      staticStyle: {
+        width: "50px"
+      },
       attrs: {
         type: "number",
         name: "title",
@@ -9540,6 +9600,9 @@ var render = function render() {
         expression: "course_class.type"
       }],
       staticClass: "form-control",
+      staticStyle: {
+        width: "100px"
+      },
       attrs: {
         name: "type",
         id: "type"
@@ -9563,7 +9626,7 @@ var render = function render() {
       attrs: {
         value: "recorded"
       }
-    }, [_vm._v("recorded")])])]), _vm._v(" "), _c("td", [_c("input", {
+    }, [_vm._v("recorded")])])]), _vm._v(" "), _c("td", [_c("textarea", {
       directives: [{
         name: "model",
         rawName: "v-model",
@@ -9571,8 +9634,12 @@ var render = function render() {
         expression: "course_class.class_video_link"
       }],
       staticClass: "form-control",
+      staticStyle: {
+        width: "200px"
+      },
       attrs: {
-        type: "text"
+        name: "video_link",
+        id: "video_link"
       },
       domProps: {
         value: course_class.class_video_link
@@ -9619,16 +9686,16 @@ var staticRenderFns = [function () {
 }, function () {
   var _vm = this,
     _c = _vm._self._c;
-  return _c("thead", [_c("tr", [_c("td", [_vm._v("sl")]), _vm._v(" "), _c("td", [_vm._v("Banner")]), _vm._v(" "), _c("td", [_vm._v("Module name")]), _vm._v(" "), _c("td", [_vm._v("Title")]), _vm._v(" "), _c("td", [_vm._v("Class No")]), _vm._v(" "), _c("td", [_vm._v("Start time")]), _vm._v(" "), _c("td", [_vm._v("End time")]), _vm._v(" "), _c("td", [_vm._v("type")]), _vm._v(" "), _c("td", [_vm._v("Video link")]), _vm._v(" "), _c("td", [_vm._v("Status")])])]);
+  return _c("thead", [_c("tr", [_c("td", [_vm._v("sl")]), _vm._v(" "), _c("td", [_vm._v("Banner")]), _vm._v(" "), _c("td", [_vm._v("Module name")]), _vm._v(" "), _c("td", [_vm._v("Title")]), _vm._v(" "), _c("td", [_vm._v("Class No")]), _vm._v(" "), _c("td", [_vm._v("Class Date")]), _vm._v(" "), _c("td", [_vm._v("Class time")]), _vm._v(" "), _c("td", [_vm._v("type")]), _vm._v(" "), _c("td", [_vm._v("Video link")]), _vm._v(" "), _c("td", [_vm._v("Status")])])]);
 }, function () {
   var _vm = this,
     _c = _vm._self._c;
   return _c("td", [_c("input", {
     staticClass: "form-control",
     attrs: {
-      type: "time",
-      name: "start_time",
-      id: "start_time"
+      type: "date",
+      name: "date",
+      id: "date"
     }
   })]);
 }, function () {
@@ -9638,8 +9705,8 @@ var staticRenderFns = [function () {
     staticClass: "form-control",
     attrs: {
       type: "time",
-      name: "end_time",
-      id: "end_time"
+      name: "time",
+      id: "time"
     }
   })]);
 }];
@@ -13773,7 +13840,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_laravel_mix_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_laravel_mix_node_modules_css_loader_dist_runtime_cssWithMappingToString_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.ck-editor__editable {\r\n    min-height: 400px;\n}\n.ck.ck-editor__main>.ck-editor__editable {\r\n    background-color: #283046;\r\n    border-color: #757575;\n}\r\n", "",{"version":3,"sources":["webpack://./WhatIsThisCourse.vue"],"names":[],"mappings":";AAmHA;IACA,iBAAA;AACA;AAEA;IACA,yBAAA;IACA,qBAAA;AACA","sourcesContent":["<template>\r\n    <div>\r\n        <h6 class=\"mb-1\">What is this course</h6>\r\n\r\n        <form class=\"m-2\" @submit.prevent=\"updateWhatCourse($event.target)\">\r\n\r\n            <div class=\"form-group\">\r\n                <label class=\"form-label\" for=\"title\">Course Title</label>\r\n                <input type=\"text\" id=\"title\" v-model=\"course_title\" name=\"title\" class=\"form-control\" />\r\n            </div>\r\n\r\n            <div class=\"form-group\">\r\n                <label class=\"form-label\" for=\"title\">Course Intro video</label>\r\n                <input type=\"text\" id=\"title\" v-model=\"course_intro\" name=\"title\" class=\"form-control\" />\r\n            </div>\r\n\r\n            <div class=\"form-group\">\r\n                <h5>banner</h5>\r\n                <label v-if=\"course_image\" :for=\"`classData${course_id}`\">\r\n                    <img height=\"100\" width=\"100\" class=\"img-fluid\" :src=\"'/' + course_image\">\r\n                </label>\r\n                <input type=\"file\" @change=\"updateImage($event)\" :id=\"`classData${course_id}`\"\r\n                    class=\"form-control d-none\" accept=\".jpg,.png,.jpeg,.webp\">\r\n            </div>\r\n            <div class=\"form-group\">\r\n\r\n                <label for=\"\">What is this course</label>\r\n                <!-- <textarea class=\"form-control\" name=\"what_is_this_course\" id=\"default\" cols=\"30\" rows=\"10\" v-model=\"what_course\"></textarea> -->\r\n                <ckeditor :editor=\"editor\" v-model=\"what_course\" :config=\"editorConfig\"></ckeditor>\r\n            </div>\r\n            <button type=\"submit\" class=\"btn btn-primary waves-effect waves-light\">update</button>\r\n        </form>\r\n    </div>\r\n</template>\r\n\r\n<script>\r\nimport ClassicEditor from '@ckeditor/ckeditor5-build-classic';\r\nexport default {\r\n    data() {\r\n        return {\r\n            editor: ClassicEditor,\r\n            what_course: null,\r\n            course_title: null,\r\n            course_image: null,\r\n            course_id: '',\r\n            course_intro: '',\r\n            editorConfig: {\r\n                // The configuration of the editor.\r\n                uiColor: '#283046',\r\n                height: 400,\r\n            }\r\n\r\n        }\r\n    },\r\n    methods: {\r\n        updateWhatCourse: async function (event) {\r\n            let formData = new FormData(event);\r\n            formData.append('what_is_this_course', this.what_course);\r\n            formData.append('title', this.course_title);\r\n            formData.append('intro_video', this.course_intro);\r\n            formData.append('id', this.course_id);\r\n\r\n            let data = {\r\n                formData: formData,\r\n            }\r\n\r\n            await axios.post('/api/v1/course/update', data.formData).then((response) => {\r\n                localStorage.setItem('current_course', JSON.stringify(response?.data))\r\n                this.get_course_details();\r\n                window.toaster(\"Course Data updated successfully!\");\r\n            })\r\n                .catch((e) => {\r\n                    console.log(e);\r\n                });\r\n        },\r\n        updateImage: async function(event) {\r\n            var image_pic = event.target.files[0];\r\n            \r\n            let form = new FormData(document.createElement(\"form\"));\r\n            form.append('image', image_pic);\r\n            form.append('id', this.course_id);\r\n\r\n            axios.post(`/api/v1/course/update`, form).then((response) => {\r\n                // console.log(response.data);\r\n                localStorage.setItem('current_course', JSON.stringify(response?.data))\r\n                window.toaster(\"Image updated successfully!\");\r\n            })\r\n            .catch((e) => {\r\n                console.log(e);\r\n            });\r\n        },\r\n        get_course_details: async function (event) {\r\n            let whatcourse = localStorage.getItem('current_course');\r\n            if (whatcourse) {\r\n                whatcourse = JSON.parse(whatcourse);\r\n                this.what_course = whatcourse.what_is_this_course;\r\n                this.course_title = whatcourse.title;\r\n                this.course_image = whatcourse.image;\r\n                this.course_intro = whatcourse.intro_video;\r\n                this.course_id = whatcourse.id\r\n            }\r\n        }\r\n    },\r\n    computed: {\r\n\r\n    },\r\n\r\n    created: async function () {\r\n        await this.get_course_details();\r\n\r\n    },\r\n}\r\n</script>\r\n\r\n<style>\r\n.ck-editor__editable {\r\n    min-height: 400px;\r\n}\r\n\r\n.ck.ck-editor__main>.ck-editor__editable {\r\n    background-color: #283046;\r\n    border-color: #757575;\r\n}\r\n</style>"],"sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.ck-editor__editable {\r\n    min-height: 400px;\n}\n.ck.ck-editor__main>.ck-editor__editable {\r\n    background-color: #283046;\r\n    border-color: #757575;\n}\r\n", "",{"version":3,"sources":["webpack://./resources/js/vue/course_details_maanagement/views/pages/WhatIsThisCourse.vue"],"names":[],"mappings":";AAmHA;IACA,iBAAA;AACA;AAEA;IACA,yBAAA;IACA,qBAAA;AACA","sourcesContent":["<template>\r\n    <div>\r\n        <h6 class=\"mb-1\">What is this course</h6>\r\n\r\n        <form class=\"m-2\" @submit.prevent=\"updateWhatCourse($event.target)\">\r\n\r\n            <div class=\"form-group\">\r\n                <label class=\"form-label\" for=\"title\">Course Title</label>\r\n                <input type=\"text\" id=\"title\" v-model=\"course_title\" name=\"title\" class=\"form-control\" />\r\n            </div>\r\n\r\n            <div class=\"form-group\">\r\n                <label class=\"form-label\" for=\"title\">Course Intro video</label>\r\n                <input type=\"text\" id=\"title\" v-model=\"course_intro\" name=\"title\" class=\"form-control\" />\r\n            </div>\r\n\r\n            <div class=\"form-group\">\r\n                <h5>banner</h5>\r\n                <label v-if=\"course_image\" :for=\"`classData${course_id}`\">\r\n                    <img height=\"100\" width=\"100\" class=\"img-fluid\" :src=\"'/' + course_image\">\r\n                </label>\r\n                <input type=\"file\" @change=\"updateImage($event)\" :id=\"`classData${course_id}`\"\r\n                    class=\"form-control d-none\" accept=\".jpg,.png,.jpeg,.webp\">\r\n            </div>\r\n            <div class=\"form-group\">\r\n\r\n                <label for=\"\">What is this course</label>\r\n                <!-- <textarea class=\"form-control\" name=\"what_is_this_course\" id=\"default\" cols=\"30\" rows=\"10\" v-model=\"what_course\"></textarea> -->\r\n                <ckeditor :editor=\"editor\" v-model=\"what_course\" :config=\"editorConfig\"></ckeditor>\r\n            </div>\r\n            <button type=\"submit\" class=\"btn btn-primary waves-effect waves-light\">update</button>\r\n        </form>\r\n    </div>\r\n</template>\r\n\r\n<script>\r\nimport ClassicEditor from '@ckeditor/ckeditor5-build-classic';\r\nexport default {\r\n    data() {\r\n        return {\r\n            editor: ClassicEditor,\r\n            what_course: null,\r\n            course_title: null,\r\n            course_image: null,\r\n            course_id: '',\r\n            course_intro: '',\r\n            editorConfig: {\r\n                // The configuration of the editor.\r\n                uiColor: '#283046',\r\n                height: 400,\r\n            }\r\n\r\n        }\r\n    },\r\n    methods: {\r\n        updateWhatCourse: async function (event) {\r\n            let formData = new FormData(event);\r\n            formData.append('what_is_this_course', this.what_course);\r\n            formData.append('title', this.course_title);\r\n            formData.append('intro_video', this.course_intro);\r\n            formData.append('id', this.course_id);\r\n\r\n            let data = {\r\n                formData: formData,\r\n            }\r\n\r\n            await axios.post('/api/v1/course/update', data.formData).then((response) => {\r\n                localStorage.setItem('current_course', JSON.stringify(response?.data))\r\n                this.get_course_details();\r\n                window.toaster(\"Course Data updated successfully!\");\r\n            })\r\n                .catch((e) => {\r\n                    console.log(e);\r\n                });\r\n        },\r\n        updateImage: async function(event) {\r\n            var image_pic = event.target.files[0];\r\n            \r\n            let form = new FormData(document.createElement(\"form\"));\r\n            form.append('image', image_pic);\r\n            form.append('id', this.course_id);\r\n\r\n            axios.post(`/api/v1/course/update`, form).then((response) => {\r\n                // console.log(response.data);\r\n                localStorage.setItem('current_course', JSON.stringify(response?.data))\r\n                window.toaster(\"Image updated successfully!\");\r\n            })\r\n            .catch((e) => {\r\n                console.log(e);\r\n            });\r\n        },\r\n        get_course_details: async function (event) {\r\n            let whatcourse = localStorage.getItem('current_course');\r\n            if (whatcourse) {\r\n                whatcourse = JSON.parse(whatcourse);\r\n                this.what_course = whatcourse.what_is_this_course;\r\n                this.course_title = whatcourse.title;\r\n                this.course_image = whatcourse.image;\r\n                this.course_intro = whatcourse.intro_video;\r\n                this.course_id = whatcourse.id\r\n            }\r\n        }\r\n    },\r\n    computed: {\r\n\r\n    },\r\n\r\n    created: async function () {\r\n        await this.get_course_details();\r\n\r\n    },\r\n}\r\n</script>\r\n\r\n<style>\r\n.ck-editor__editable {\r\n    min-height: 400px;\r\n}\r\n\r\n.ck.ck-editor__main>.ck-editor__editable {\r\n    background-color: #283046;\r\n    border-color: #757575;\r\n}\r\n</style>"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ __webpack_exports__["default"] = (___CSS_LOADER_EXPORT___);
 

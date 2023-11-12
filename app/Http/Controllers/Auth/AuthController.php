@@ -82,7 +82,7 @@ class AuthController extends Controller
             auth()->logout();
         }
 
-        return redirect()->route('website')->withCookie(cookie("AXRF-TOKEN",''));
+        return redirect('/')->withCookie(cookie("AXRF-TOKEN",''));
     }
 
     public function remove_access_token()
