@@ -42,6 +42,7 @@
                                                 </div>
                                             </div>
                                         </div>
+                                        <button class="btn btn-sm btn-info" type="button" @click="reset_value()">Reset</button>
                                         <table class="table table-bordered table-hover">
                                             <thead>
                                                 <tr>
@@ -57,10 +58,10 @@
                                                         <div class="custom-control custom-checkbox">
                                                             <!-- <label v-if="is_selected() == true" class="custom-control-label"
                                                                 :for="`question_${question.id}`"> -->
-                                                                <input class="form-control-input" type="checkbox" v-if="is_selected() == true" @click="SetQuestionIds(question)"
-                                                                :id="`question_${question.id}`" checked>
-                                                                <input class="form-control-input" type="checkbox" v-else @click="SetQuestionIds(question)"
-                                                                :id="`question_${question.id}`">
+                                                                <input class="form-control-input" type="checkbox" @click="SetQuestionIds(question)"
+                                                                :id="`question_${question.id}`" :checked="is_selected(question)">
+                                                                <!-- <input class="form-control-input" type="checkbox" v-else @click="SetQuestionIds(question)"
+                                                                :id="`question_${question.id}`"> -->
                                                             <!-- </label> -->
                                                             <!-- <label v-else class="custom-control-label"
                                                                 :for="`question_${question.id}`"> -->
@@ -160,7 +161,8 @@ export default {
                 console.log(e);
             });
         },
-        is_selected: async function(question) {
+        
+        is_selected: function(question) {
             var check_question = this.selected_questions.find((element) => element.id == question.id);
             if(check_question) {
                 return true;
@@ -168,6 +170,7 @@ export default {
                 return false;
             }
         },
+
         remove_selected_question: async function(question) {
             
             var check_question = this.selected_questions.find((element) => element.id == question.id);
@@ -176,18 +179,20 @@ export default {
                 this.selected_questions.splice(serial, 1);
             }
 
-            if(this.question_ids.includes(question.id)) {
-                let index = this.question_ids.indexOf(question.id);
-                this.question_ids.splice(index, 1);
-            }
+            // if(this.question_ids.includes(question.id)) {
+            //     let index = this.question_ids.indexOf(question.id);
+            //     this.question_ids.splice(index, 1);
+            // }
         },
         SetQuestionIds: async function(question) {
-            this.selected_questions.push(question);
-            if(!this.question_ids.includes(question.id)) {
-                this.question_ids.push(question.id)
+            
+
+            var check_question = this.selected_questions.find((element) => element.id == question.id);
+            if(!check_question) {
+                this.selected_questions.push(question);
             }else {
-                let index = this.question_ids.indexOf(question.id);
-                this.question_ids.splice(index, 1);
+                var serial = this.selected_questions.findIndex((element) => element.id == question.id);
+                this.selected_questions.splice(serial, 1);
             }
         },
         filterBytopic: async function(event) {
@@ -207,6 +212,13 @@ export default {
                 .catch((e) => {
                     console.log(e);
                 });
+        },
+
+        reset_value: async function() {
+            this.search_key = null;
+            this.topic_id = null;
+
+            await this.get_all_questions();
         },
 
         get_all_questions: async function (url) {

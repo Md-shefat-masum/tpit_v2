@@ -210,38 +210,21 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       }
       return store_quiz;
     }(),
-    is_selected: function () {
-      var _is_selected = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2(question) {
-        var check_question;
+    is_selected: function is_selected(question) {
+      var check_question = this.selected_questions.find(function (element) {
+        return element.id == question.id;
+      });
+      if (check_question) {
+        return true;
+      } else {
+        return false;
+      }
+    },
+    remove_selected_question: function () {
+      var _remove_selected_question = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2(question) {
+        var check_question, serial;
         return _regeneratorRuntime().wrap(function _callee2$(_context2) {
           while (1) switch (_context2.prev = _context2.next) {
-            case 0:
-              check_question = this.selected_questions.find(function (element) {
-                return element.id == question.id;
-              });
-              if (!check_question) {
-                _context2.next = 5;
-                break;
-              }
-              return _context2.abrupt("return", true);
-            case 5:
-              return _context2.abrupt("return", false);
-            case 6:
-            case "end":
-              return _context2.stop();
-          }
-        }, _callee2, this);
-      }));
-      function is_selected(_x) {
-        return _is_selected.apply(this, arguments);
-      }
-      return is_selected;
-    }(),
-    remove_selected_question: function () {
-      var _remove_selected_question = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee3(question) {
-        var check_question, serial, index;
-        return _regeneratorRuntime().wrap(function _callee3$(_context3) {
-          while (1) switch (_context3.prev = _context3.next) {
             case 0:
               check_question = this.selected_questions.find(function (element) {
                 return element.id == question.id;
@@ -252,51 +235,74 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 });
                 this.selected_questions.splice(serial, 1);
               }
-              if (this.question_ids.includes(question.id)) {
-                index = this.question_ids.indexOf(question.id);
-                this.question_ids.splice(index, 1);
-              }
-            case 3:
+
+              // if(this.question_ids.includes(question.id)) {
+              //     let index = this.question_ids.indexOf(question.id);
+              //     this.question_ids.splice(index, 1);
+              // }
+            case 2:
             case "end":
-              return _context3.stop();
+              return _context2.stop();
           }
-        }, _callee3, this);
+        }, _callee2, this);
       }));
-      function remove_selected_question(_x2) {
+      function remove_selected_question(_x) {
         return _remove_selected_question.apply(this, arguments);
       }
       return remove_selected_question;
     }(),
     SetQuestionIds: function () {
-      var _SetQuestionIds = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee4(question) {
-        var index;
+      var _SetQuestionIds = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee3(question) {
+        var check_question, serial;
+        return _regeneratorRuntime().wrap(function _callee3$(_context3) {
+          while (1) switch (_context3.prev = _context3.next) {
+            case 0:
+              check_question = this.selected_questions.find(function (element) {
+                return element.id == question.id;
+              });
+              if (!check_question) {
+                this.selected_questions.push(question);
+              } else {
+                serial = this.selected_questions.findIndex(function (element) {
+                  return element.id == question.id;
+                });
+                this.selected_questions.splice(serial, 1);
+              }
+            case 2:
+            case "end":
+              return _context3.stop();
+          }
+        }, _callee3, this);
+      }));
+      function SetQuestionIds(_x2) {
+        return _SetQuestionIds.apply(this, arguments);
+      }
+      return SetQuestionIds;
+    }(),
+    filterBytopic: function () {
+      var _filterBytopic = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee4(event) {
         return _regeneratorRuntime().wrap(function _callee4$(_context4) {
           while (1) switch (_context4.prev = _context4.next) {
             case 0:
-              this.selected_questions.push(question);
-              if (!this.question_ids.includes(question.id)) {
-                this.question_ids.push(question.id);
-              } else {
-                index = this.question_ids.indexOf(question.id);
-                this.question_ids.splice(index, 1);
-              }
+              this.topic_id = event.target.value;
+              this.get_all_questions();
             case 2:
             case "end":
               return _context4.stop();
           }
         }, _callee4, this);
       }));
-      function SetQuestionIds(_x3) {
-        return _SetQuestionIds.apply(this, arguments);
+      function filterBytopic(_x3) {
+        return _filterBytopic.apply(this, arguments);
       }
-      return SetQuestionIds;
+      return filterBytopic;
     }(),
-    filterBytopic: function () {
-      var _filterBytopic = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee5(event) {
+    filterBySearch: function () {
+      var _filterBySearch = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee5(event) {
         return _regeneratorRuntime().wrap(function _callee5$(_context5) {
           while (1) switch (_context5.prev = _context5.next) {
             case 0:
-              this.topic_id = event.target.value;
+              this.search_key = event.target.value;
               this.get_all_questions();
             case 2:
             case "end":
@@ -304,36 +310,18 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           }
         }, _callee5, this);
       }));
-      function filterBytopic(_x4) {
-        return _filterBytopic.apply(this, arguments);
-      }
-      return filterBytopic;
-    }(),
-    filterBySearch: function () {
-      var _filterBySearch = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee6(event) {
-        return _regeneratorRuntime().wrap(function _callee6$(_context6) {
-          while (1) switch (_context6.prev = _context6.next) {
-            case 0:
-              this.search_key = event.target.value;
-              this.get_all_questions();
-            case 2:
-            case "end":
-              return _context6.stop();
-          }
-        }, _callee6, this);
-      }));
-      function filterBySearch(_x5) {
+      function filterBySearch(_x4) {
         return _filterBySearch.apply(this, arguments);
       }
       return filterBySearch;
     }(),
     get_all_topics: function () {
-      var _get_all_topics = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee7() {
+      var _get_all_topics = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee6() {
         var _this = this;
-        return _regeneratorRuntime().wrap(function _callee7$(_context7) {
-          while (1) switch (_context7.prev = _context7.next) {
+        return _regeneratorRuntime().wrap(function _callee6$(_context6) {
+          while (1) switch (_context6.prev = _context6.next) {
             case 0:
-              _context7.next = 2;
+              _context6.next = 2;
               return axios.get('/api/v1/quiz-topics/all-topic').then(function (response) {
                 _this.topics = response.data;
               })["catch"](function (e) {
@@ -341,14 +329,34 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               });
             case 2:
             case "end":
-              return _context7.stop();
+              return _context6.stop();
           }
-        }, _callee7);
+        }, _callee6);
       }));
       function get_all_topics() {
         return _get_all_topics.apply(this, arguments);
       }
       return get_all_topics;
+    }(),
+    reset_value: function () {
+      var _reset_value = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee7() {
+        return _regeneratorRuntime().wrap(function _callee7$(_context7) {
+          while (1) switch (_context7.prev = _context7.next) {
+            case 0:
+              this.search_key = null;
+              this.topic_id = null;
+              _context7.next = 4;
+              return this.get_all_questions();
+            case 4:
+            case "end":
+              return _context7.stop();
+          }
+        }, _callee7, this);
+      }));
+      function reset_value() {
+        return _reset_value.apply(this, arguments);
+      }
+      return reset_value;
     }(),
     get_all_questions: function () {
       var _get_all_questions = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee8(url) {
@@ -379,7 +387,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           }
         }, _callee8, this);
       }));
-      function get_all_questions(_x6) {
+      function get_all_questions(_x5) {
         return _get_all_questions.apply(this, arguments);
       }
       return get_all_questions;
@@ -2114,30 +2122,31 @@ var render = function render() {
         return _vm.filterBySearch($event);
       }
     }
-  })])])]), _vm._v(" "), _c("table", {
+  })])])]), _vm._v(" "), _c("button", {
+    staticClass: "btn btn-sm btn-info",
+    attrs: {
+      type: "button"
+    },
+    on: {
+      click: function click($event) {
+        return _vm.reset_value();
+      }
+    }
+  }, [_vm._v("Reset")]), _vm._v(" "), _c("table", {
     staticClass: "table table-bordered table-hover"
   }, [_vm._m(0), _vm._v(" "), _vm.questions.data && _vm.questions.data.length > 0 ? _c("tbody", _vm._l(_vm.questions.data, function (question, index) {
     return _c("tr", {
       key: question.id
     }, [_c("td", [_c("div", {
       staticClass: "custom-control custom-checkbox"
-    }, [_vm.is_selected() == true ? _c("input", {
-      staticClass: "form-control-input",
-      attrs: {
-        type: "checkbox",
-        id: "question_".concat(question.id),
-        checked: ""
-      },
-      on: {
-        click: function click($event) {
-          return _vm.SetQuestionIds(question);
-        }
-      }
-    }) : _c("input", {
+    }, [_c("input", {
       staticClass: "form-control-input",
       attrs: {
         type: "checkbox",
         id: "question_".concat(question.id)
+      },
+      domProps: {
+        checked: _vm.is_selected(question)
       },
       on: {
         click: function click($event) {
