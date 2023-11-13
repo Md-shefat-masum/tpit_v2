@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use App\Models\ContactMessage;
 use App\Models\Course\CourseModuleClasses;
+use App\Models\Course\CourseModuleClassQuizes;
 use App\Models\Course\CourseModuleClassRoutines;
 use Intervention\Image\Facades\Image;
 
@@ -79,6 +80,42 @@ class CourseModuleClassController extends Controller
             }
         }
         return response()->json(["message" => "Course uploaded successfully!"], 200);
+    }
+
+    public function add_quiz()  {
+        $validator = Validator::make(request()->all(), [
+            'class_id' => ['required'],
+
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json([
+                'err_message' => 'validation error',
+                'errors' => $validator->errors(),
+            ], 422);
+        }   
+        $class_details = CourseModuleClasses::where('id', request()->class_id)->first();
+
+        foreach (request()->quizes as $key => $quiz) {
+            $quiz = (object) $quiz; 
+            $quiz_check = CourseModuleClassQuizes::where('quiz_id', $quiz->id)->first();
+            if($quiz_check != null) {
+                $quiz_check->course_id = $class_details->course_id;
+                $quiz_check->course_module_id = $class_details->course_modules_id;
+                $quiz_check->course_module_class_id = $class_details->id;
+                $quiz_check->quiz_id = $quiz->id;
+                $quiz_check->save();
+            }else {
+                $class_quiz = new CourseModuleClassQuizes();
+                $class_quiz->course_id = $class_details->course_id;
+                $class_quiz->course_module_id = $class_details->course_modules_id;
+                $class_quiz->course_module_class_id = $class_details->id;
+                $class_quiz->quiz_id = $quiz->id;
+                $class_quiz->save();
+            }
+        }
+
+        return response()->json(['message' => 'course class quiz updated successfully!', 200]);
     }
 
     public function update_image() {

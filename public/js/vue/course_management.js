@@ -2645,6 +2645,338 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/vue/course_details_maanagement/views/pages/course_module/CourseClassQuiz.vue?vue&type=script&lang=js&":
+/*!********************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/vue/course_details_maanagement/views/pages/course_module/CourseClassQuiz.vue?vue&type=script&lang=js& ***!
+  \********************************************************************************************************************************************************************************************************************************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
+function _regeneratorRuntime() { "use strict"; /*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/facebook/regenerator/blob/main/LICENSE */ _regeneratorRuntime = function _regeneratorRuntime() { return exports; }; var exports = {}, Op = Object.prototype, hasOwn = Op.hasOwnProperty, defineProperty = Object.defineProperty || function (obj, key, desc) { obj[key] = desc.value; }, $Symbol = "function" == typeof Symbol ? Symbol : {}, iteratorSymbol = $Symbol.iterator || "@@iterator", asyncIteratorSymbol = $Symbol.asyncIterator || "@@asyncIterator", toStringTagSymbol = $Symbol.toStringTag || "@@toStringTag"; function define(obj, key, value) { return Object.defineProperty(obj, key, { value: value, enumerable: !0, configurable: !0, writable: !0 }), obj[key]; } try { define({}, ""); } catch (err) { define = function define(obj, key, value) { return obj[key] = value; }; } function wrap(innerFn, outerFn, self, tryLocsList) { var protoGenerator = outerFn && outerFn.prototype instanceof Generator ? outerFn : Generator, generator = Object.create(protoGenerator.prototype), context = new Context(tryLocsList || []); return defineProperty(generator, "_invoke", { value: makeInvokeMethod(innerFn, self, context) }), generator; } function tryCatch(fn, obj, arg) { try { return { type: "normal", arg: fn.call(obj, arg) }; } catch (err) { return { type: "throw", arg: err }; } } exports.wrap = wrap; var ContinueSentinel = {}; function Generator() {} function GeneratorFunction() {} function GeneratorFunctionPrototype() {} var IteratorPrototype = {}; define(IteratorPrototype, iteratorSymbol, function () { return this; }); var getProto = Object.getPrototypeOf, NativeIteratorPrototype = getProto && getProto(getProto(values([]))); NativeIteratorPrototype && NativeIteratorPrototype !== Op && hasOwn.call(NativeIteratorPrototype, iteratorSymbol) && (IteratorPrototype = NativeIteratorPrototype); var Gp = GeneratorFunctionPrototype.prototype = Generator.prototype = Object.create(IteratorPrototype); function defineIteratorMethods(prototype) { ["next", "throw", "return"].forEach(function (method) { define(prototype, method, function (arg) { return this._invoke(method, arg); }); }); } function AsyncIterator(generator, PromiseImpl) { function invoke(method, arg, resolve, reject) { var record = tryCatch(generator[method], generator, arg); if ("throw" !== record.type) { var result = record.arg, value = result.value; return value && "object" == _typeof(value) && hasOwn.call(value, "__await") ? PromiseImpl.resolve(value.__await).then(function (value) { invoke("next", value, resolve, reject); }, function (err) { invoke("throw", err, resolve, reject); }) : PromiseImpl.resolve(value).then(function (unwrapped) { result.value = unwrapped, resolve(result); }, function (error) { return invoke("throw", error, resolve, reject); }); } reject(record.arg); } var previousPromise; defineProperty(this, "_invoke", { value: function value(method, arg) { function callInvokeWithMethodAndArg() { return new PromiseImpl(function (resolve, reject) { invoke(method, arg, resolve, reject); }); } return previousPromise = previousPromise ? previousPromise.then(callInvokeWithMethodAndArg, callInvokeWithMethodAndArg) : callInvokeWithMethodAndArg(); } }); } function makeInvokeMethod(innerFn, self, context) { var state = "suspendedStart"; return function (method, arg) { if ("executing" === state) throw new Error("Generator is already running"); if ("completed" === state) { if ("throw" === method) throw arg; return { value: void 0, done: !0 }; } for (context.method = method, context.arg = arg;;) { var delegate = context.delegate; if (delegate) { var delegateResult = maybeInvokeDelegate(delegate, context); if (delegateResult) { if (delegateResult === ContinueSentinel) continue; return delegateResult; } } if ("next" === context.method) context.sent = context._sent = context.arg;else if ("throw" === context.method) { if ("suspendedStart" === state) throw state = "completed", context.arg; context.dispatchException(context.arg); } else "return" === context.method && context.abrupt("return", context.arg); state = "executing"; var record = tryCatch(innerFn, self, context); if ("normal" === record.type) { if (state = context.done ? "completed" : "suspendedYield", record.arg === ContinueSentinel) continue; return { value: record.arg, done: context.done }; } "throw" === record.type && (state = "completed", context.method = "throw", context.arg = record.arg); } }; } function maybeInvokeDelegate(delegate, context) { var methodName = context.method, method = delegate.iterator[methodName]; if (undefined === method) return context.delegate = null, "throw" === methodName && delegate.iterator["return"] && (context.method = "return", context.arg = undefined, maybeInvokeDelegate(delegate, context), "throw" === context.method) || "return" !== methodName && (context.method = "throw", context.arg = new TypeError("The iterator does not provide a '" + methodName + "' method")), ContinueSentinel; var record = tryCatch(method, delegate.iterator, context.arg); if ("throw" === record.type) return context.method = "throw", context.arg = record.arg, context.delegate = null, ContinueSentinel; var info = record.arg; return info ? info.done ? (context[delegate.resultName] = info.value, context.next = delegate.nextLoc, "return" !== context.method && (context.method = "next", context.arg = undefined), context.delegate = null, ContinueSentinel) : info : (context.method = "throw", context.arg = new TypeError("iterator result is not an object"), context.delegate = null, ContinueSentinel); } function pushTryEntry(locs) { var entry = { tryLoc: locs[0] }; 1 in locs && (entry.catchLoc = locs[1]), 2 in locs && (entry.finallyLoc = locs[2], entry.afterLoc = locs[3]), this.tryEntries.push(entry); } function resetTryEntry(entry) { var record = entry.completion || {}; record.type = "normal", delete record.arg, entry.completion = record; } function Context(tryLocsList) { this.tryEntries = [{ tryLoc: "root" }], tryLocsList.forEach(pushTryEntry, this), this.reset(!0); } function values(iterable) { if (iterable || "" === iterable) { var iteratorMethod = iterable[iteratorSymbol]; if (iteratorMethod) return iteratorMethod.call(iterable); if ("function" == typeof iterable.next) return iterable; if (!isNaN(iterable.length)) { var i = -1, next = function next() { for (; ++i < iterable.length;) if (hasOwn.call(iterable, i)) return next.value = iterable[i], next.done = !1, next; return next.value = undefined, next.done = !0, next; }; return next.next = next; } } throw new TypeError(_typeof(iterable) + " is not iterable"); } return GeneratorFunction.prototype = GeneratorFunctionPrototype, defineProperty(Gp, "constructor", { value: GeneratorFunctionPrototype, configurable: !0 }), defineProperty(GeneratorFunctionPrototype, "constructor", { value: GeneratorFunction, configurable: !0 }), GeneratorFunction.displayName = define(GeneratorFunctionPrototype, toStringTagSymbol, "GeneratorFunction"), exports.isGeneratorFunction = function (genFun) { var ctor = "function" == typeof genFun && genFun.constructor; return !!ctor && (ctor === GeneratorFunction || "GeneratorFunction" === (ctor.displayName || ctor.name)); }, exports.mark = function (genFun) { return Object.setPrototypeOf ? Object.setPrototypeOf(genFun, GeneratorFunctionPrototype) : (genFun.__proto__ = GeneratorFunctionPrototype, define(genFun, toStringTagSymbol, "GeneratorFunction")), genFun.prototype = Object.create(Gp), genFun; }, exports.awrap = function (arg) { return { __await: arg }; }, defineIteratorMethods(AsyncIterator.prototype), define(AsyncIterator.prototype, asyncIteratorSymbol, function () { return this; }), exports.AsyncIterator = AsyncIterator, exports.async = function (innerFn, outerFn, self, tryLocsList, PromiseImpl) { void 0 === PromiseImpl && (PromiseImpl = Promise); var iter = new AsyncIterator(wrap(innerFn, outerFn, self, tryLocsList), PromiseImpl); return exports.isGeneratorFunction(outerFn) ? iter : iter.next().then(function (result) { return result.done ? result.value : iter.next(); }); }, defineIteratorMethods(Gp), define(Gp, toStringTagSymbol, "Generator"), define(Gp, iteratorSymbol, function () { return this; }), define(Gp, "toString", function () { return "[object Generator]"; }), exports.keys = function (val) { var object = Object(val), keys = []; for (var key in object) keys.push(key); return keys.reverse(), function next() { for (; keys.length;) { var key = keys.pop(); if (key in object) return next.value = key, next.done = !1, next; } return next.done = !0, next; }; }, exports.values = values, Context.prototype = { constructor: Context, reset: function reset(skipTempReset) { if (this.prev = 0, this.next = 0, this.sent = this._sent = undefined, this.done = !1, this.delegate = null, this.method = "next", this.arg = undefined, this.tryEntries.forEach(resetTryEntry), !skipTempReset) for (var name in this) "t" === name.charAt(0) && hasOwn.call(this, name) && !isNaN(+name.slice(1)) && (this[name] = undefined); }, stop: function stop() { this.done = !0; var rootRecord = this.tryEntries[0].completion; if ("throw" === rootRecord.type) throw rootRecord.arg; return this.rval; }, dispatchException: function dispatchException(exception) { if (this.done) throw exception; var context = this; function handle(loc, caught) { return record.type = "throw", record.arg = exception, context.next = loc, caught && (context.method = "next", context.arg = undefined), !!caught; } for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i], record = entry.completion; if ("root" === entry.tryLoc) return handle("end"); if (entry.tryLoc <= this.prev) { var hasCatch = hasOwn.call(entry, "catchLoc"), hasFinally = hasOwn.call(entry, "finallyLoc"); if (hasCatch && hasFinally) { if (this.prev < entry.catchLoc) return handle(entry.catchLoc, !0); if (this.prev < entry.finallyLoc) return handle(entry.finallyLoc); } else if (hasCatch) { if (this.prev < entry.catchLoc) return handle(entry.catchLoc, !0); } else { if (!hasFinally) throw new Error("try statement without catch or finally"); if (this.prev < entry.finallyLoc) return handle(entry.finallyLoc); } } } }, abrupt: function abrupt(type, arg) { for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i]; if (entry.tryLoc <= this.prev && hasOwn.call(entry, "finallyLoc") && this.prev < entry.finallyLoc) { var finallyEntry = entry; break; } } finallyEntry && ("break" === type || "continue" === type) && finallyEntry.tryLoc <= arg && arg <= finallyEntry.finallyLoc && (finallyEntry = null); var record = finallyEntry ? finallyEntry.completion : {}; return record.type = type, record.arg = arg, finallyEntry ? (this.method = "next", this.next = finallyEntry.finallyLoc, ContinueSentinel) : this.complete(record); }, complete: function complete(record, afterLoc) { if ("throw" === record.type) throw record.arg; return "break" === record.type || "continue" === record.type ? this.next = record.arg : "return" === record.type ? (this.rval = this.arg = record.arg, this.method = "return", this.next = "end") : "normal" === record.type && afterLoc && (this.next = afterLoc), ContinueSentinel; }, finish: function finish(finallyLoc) { for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i]; if (entry.finallyLoc === finallyLoc) return this.complete(entry.completion, entry.afterLoc), resetTryEntry(entry), ContinueSentinel; } }, "catch": function _catch(tryLoc) { for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i]; if (entry.tryLoc === tryLoc) { var record = entry.completion; if ("throw" === record.type) { var thrown = record.arg; resetTryEntry(entry); } return thrown; } } throw new Error("illegal catch attempt"); }, delegateYield: function delegateYield(iterable, resultName, nextLoc) { return this.delegate = { iterator: values(iterable), resultName: resultName, nextLoc: nextLoc }, "next" === this.method && (this.arg = undefined), ContinueSentinel; } }, exports; }
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+/* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      course_id: null,
+      course_routine: {},
+      all_quizes: {},
+      course_milestones: null,
+      course_modules: null,
+      search_key: null,
+      module_id: null,
+      search_key_quiz: null,
+      selected_class_id: '',
+      selected_quizes: []
+    };
+  },
+  methods: {
+    setClassId: function () {
+      var _setClassId = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee(event) {
+        return _regeneratorRuntime().wrap(function _callee$(_context) {
+          while (1) switch (_context.prev = _context.next) {
+            case 0:
+              this.selected_class_id = event.target.value;
+            case 1:
+            case "end":
+              return _context.stop();
+          }
+        }, _callee, this);
+      }));
+      function setClassId(_x) {
+        return _setClassId.apply(this, arguments);
+      }
+      return setClassId;
+    }(),
+    get_course_routines: function () {
+      var _get_course_routines = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2(url) {
+        var _this = this;
+        var course_id;
+        return _regeneratorRuntime().wrap(function _callee2$(_context2) {
+          while (1) switch (_context2.prev = _context2.next) {
+            case 0:
+              course_id = this.$route.params.id;
+              if (!url) {
+                url = "/api/v1/course/course-routines/all/".concat(course_id, "?");
+              }
+              if (this.search_key && this.search_key != '') {
+                url += "search_key=".concat(this.search_key);
+              }
+              if (this.module_id && this.module_id != '') {
+                url += "&module_id=".concat(this.module_id);
+              }
+              axios.get(url).then(function (response) {
+                _this.course_routine = response.data;
+              })["catch"](function (e) {
+                console.log(e);
+              });
+            case 5:
+            case "end":
+              return _context2.stop();
+          }
+        }, _callee2, this);
+      }));
+      function get_course_routines(_x2) {
+        return _get_course_routines.apply(this, arguments);
+      }
+      return get_course_routines;
+    }(),
+    get_all_quiz: function () {
+      var _get_all_quiz = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee3(url) {
+        var _this2 = this;
+        return _regeneratorRuntime().wrap(function _callee3$(_context3) {
+          while (1) switch (_context3.prev = _context3.next) {
+            case 0:
+              if (!url) {
+                url = "/api/v1/quiz/all?";
+              }
+              if (this.search_key_quiz && this.search_key_quiz != '') {
+                url += "search_key=".concat(this.search_key_quiz);
+              }
+              axios.get(url).then(function (response) {
+                _this2.all_quizes = response.data;
+              })["catch"](function (e) {
+                console.log(e);
+              });
+            case 3:
+            case "end":
+              return _context3.stop();
+          }
+        }, _callee3, this);
+      }));
+      function get_all_quiz(_x3) {
+        return _get_all_quiz.apply(this, arguments);
+      }
+      return get_all_quiz;
+    }(),
+    SetQuizIds: function () {
+      var _SetQuizIds = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee4(question) {
+        var check_quiz, serial;
+        return _regeneratorRuntime().wrap(function _callee4$(_context4) {
+          while (1) switch (_context4.prev = _context4.next) {
+            case 0:
+              check_quiz = this.selected_quizes.find(function (element) {
+                return element.id == question.id;
+              });
+              if (!check_quiz) {
+                this.selected_quizes.push(question);
+              } else {
+                serial = this.selected_quizes.findIndex(function (element) {
+                  return element.id == question.id;
+                });
+                this.selected_quizes.splice(serial, 1);
+              }
+            case 2:
+            case "end":
+              return _context4.stop();
+          }
+        }, _callee4, this);
+      }));
+      function SetQuizIds(_x4) {
+        return _SetQuizIds.apply(this, arguments);
+      }
+      return SetQuizIds;
+    }(),
+    is_selected: function is_selected(question) {
+      var check_quiz = this.selected_quizes.find(function (element) {
+        return element.id == question.id;
+      });
+      if (check_quiz) {
+        return true;
+      } else {
+        return false;
+      }
+    },
+    filterByModule: function () {
+      var _filterByModule = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee5() {
+        return _regeneratorRuntime().wrap(function _callee5$(_context5) {
+          while (1) switch (_context5.prev = _context5.next) {
+            case 0:
+              this.module_id = event.target.value;
+              this.get_course_routines();
+            case 2:
+            case "end":
+              return _context5.stop();
+          }
+        }, _callee5, this);
+      }));
+      function filterByModule() {
+        return _filterByModule.apply(this, arguments);
+      }
+      return filterByModule;
+    }(),
+    filterBySearch: function () {
+      var _filterBySearch = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee6(event) {
+        return _regeneratorRuntime().wrap(function _callee6$(_context6) {
+          while (1) switch (_context6.prev = _context6.next) {
+            case 0:
+              this.search_key = event.target.value;
+              this.get_course_routines();
+            case 2:
+            case "end":
+              return _context6.stop();
+          }
+        }, _callee6, this);
+      }));
+      function filterBySearch(_x5) {
+        return _filterBySearch.apply(this, arguments);
+      }
+      return filterBySearch;
+    }(),
+    filterQuizBySearch: function () {
+      var _filterQuizBySearch = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee7(event) {
+        return _regeneratorRuntime().wrap(function _callee7$(_context7) {
+          while (1) switch (_context7.prev = _context7.next) {
+            case 0:
+              this.search_key_quiz = event.target.value;
+              this.get_all_quiz();
+            case 2:
+            case "end":
+              return _context7.stop();
+          }
+        }, _callee7, this);
+      }));
+      function filterQuizBySearch(_x6) {
+        return _filterQuizBySearch.apply(this, arguments);
+      }
+      return filterQuizBySearch;
+    }(),
+    resetFilter: function () {
+      var _resetFilter = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee8() {
+        return _regeneratorRuntime().wrap(function _callee8$(_context8) {
+          while (1) switch (_context8.prev = _context8.next) {
+            case 0:
+              this.search_key = null;
+              this.module_id = null;
+              _context8.next = 4;
+              return this.get_course_routines();
+            case 4:
+            case "end":
+              return _context8.stop();
+          }
+        }, _callee8, this);
+      }));
+      function resetFilter() {
+        return _resetFilter.apply(this, arguments);
+      }
+      return resetFilter;
+    }(),
+    CourseQuizSubmit: function () {
+      var _CourseQuizSubmit = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee9() {
+        var _this3 = this;
+        var data, confirm;
+        return _regeneratorRuntime().wrap(function _callee9$(_context9) {
+          while (1) switch (_context9.prev = _context9.next) {
+            case 0:
+              // console.log('hello');
+              data = {
+                class_id: this.selected_class_id,
+                course_id: this.course_id,
+                quizes: this.selected_quizes
+              };
+              _context9.next = 3;
+              return window.s_confirm("Are you sure?");
+            case 3:
+              confirm = _context9.sent;
+              if (confirm) {
+                axios.post("/api/v1/course/course-modules-class/add-quiz", data).then(function (response) {
+                  // console.log(response.data);
+                  window.toaster("Course routine updated successfully!");
+                  _this3.get_course_routines();
+                })["catch"](function (e) {
+                  console.log(e);
+                });
+              }
+            case 5:
+            case "end":
+              return _context9.stop();
+          }
+        }, _callee9, this);
+      }));
+      function CourseQuizSubmit() {
+        return _CourseQuizSubmit.apply(this, arguments);
+      }
+      return CourseQuizSubmit;
+    }(),
+    get_course_modules: function () {
+      var _get_course_modules = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee10() {
+        var _this4 = this;
+        return _regeneratorRuntime().wrap(function _callee10$(_context10) {
+          while (1) switch (_context10.prev = _context10.next) {
+            case 0:
+              _context10.next = 2;
+              return axios.get('/api/v1/course/course-modules/all-modules/' + this.course_id).then(function (response) {
+                _this4.course_modules = response.data;
+              })["catch"](function (e) {
+                console.log(e);
+              });
+            case 2:
+            case "end":
+              return _context10.stop();
+          }
+        }, _callee10, this);
+      }));
+      function get_course_modules() {
+        return _get_course_modules.apply(this, arguments);
+      }
+      return get_course_modules;
+    }(),
+    get_course_milestones: function () {
+      var _get_course_milestones = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee11() {
+        var _this5 = this;
+        return _regeneratorRuntime().wrap(function _callee11$(_context11) {
+          while (1) switch (_context11.prev = _context11.next) {
+            case 0:
+              _context11.next = 2;
+              return axios.get('/api/v1/course/course-milestones/all-milestones/' + this.course_id).then(function (response) {
+                _this5.course_milestones = response.data;
+              })["catch"](function (e) {
+                console.log(e);
+              });
+            case 2:
+            case "end":
+              return _context11.stop();
+          }
+        }, _callee11, this);
+      }));
+      function get_course_milestones() {
+        return _get_course_milestones.apply(this, arguments);
+      }
+      return get_course_milestones;
+    }()
+  },
+  computed: {},
+  created: function () {
+    var _created = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee12() {
+      return _regeneratorRuntime().wrap(function _callee12$(_context12) {
+        while (1) switch (_context12.prev = _context12.next) {
+          case 0:
+            this.course_id = this.$route.params.id;
+            _context12.next = 3;
+            return this.get_course_modules();
+          case 3:
+            _context12.next = 5;
+            return this.get_course_routines();
+          case 5:
+            _context12.next = 7;
+            return this.get_all_quiz();
+          case 7:
+          case "end":
+            return _context12.stop();
+        }
+      }, _callee12, this);
+    }));
+    function created() {
+      return _created.apply(this, arguments);
+    }
+    return created;
+  }()
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/vue/course_details_maanagement/views/pages/course_module/CourseModule.vue?vue&type=script&lang=js&":
 /*!*****************************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/vue/course_details_maanagement/views/pages/course_module/CourseModule.vue?vue&type=script&lang=js& ***!
@@ -5352,6 +5684,16 @@ var render = function render() {
   }, [_c("i", {
     staticClass: "far fa-circle mr-1"
   }), _vm._v(" "), _c("div", [_vm._v("\n                            Course class modules\n                        ")])])], 1), _vm._v(" "), _c("li", [_c("router-link", {
+    staticClass: "router-link-active",
+    attrs: {
+      to: {
+        name: "CourseClassQuiz"
+      },
+      "aria-current": "page"
+    }
+  }, [_c("i", {
+    staticClass: "far fa-circle mr-1"
+  }), _vm._v(" "), _c("div", [_vm._v("\n                            Course class quiz\n                        ")])])], 1), _vm._v(" "), _c("li", [_c("router-link", {
     staticClass: "router-link-active",
     attrs: {
       to: {
@@ -8255,6 +8597,279 @@ var render = function render() {
   return _c("h2", [_vm._v("At a glance")]);
 };
 var staticRenderFns = [];
+render._withStripped = true;
+
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/lib/loaders/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/vue/course_details_maanagement/views/pages/course_module/CourseClassQuiz.vue?vue&type=template&id=ff3f7d0c&":
+/*!*******************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/lib/loaders/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/vue/course_details_maanagement/views/pages/course_module/CourseClassQuiz.vue?vue&type=template&id=ff3f7d0c& ***!
+  \*******************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   render: function() { return /* binding */ render; },
+/* harmony export */   staticRenderFns: function() { return /* binding */ staticRenderFns; }
+/* harmony export */ });
+var render = function render() {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("div", {
+    staticClass: "custom_scroll"
+  }, [_c("div", {
+    staticClass: "card list_card"
+  }, [_c("div", {
+    staticClass: "card-header"
+  }, [_c("h4", [_vm._v("Create Class Quiz")]), _vm._v(" "), _c("div", {
+    staticClass: "btns"
+  }, [_c("a", {
+    staticClass: "btn rounded-pill btn-outline-warning",
+    on: {
+      click: function click($event) {
+        return _vm.$router.go(-1);
+      }
+    }
+  }, [_c("i", {
+    staticClass: "fa fa-arrow-left me-5px"
+  }), _vm._v("\n                    Back\n                ")])])]), _vm._v(" "), _c("form", {
+    staticClass: "user_create_form",
+    on: {
+      keyup: function keyup($event) {
+        if (!$event.type.indexOf("key") && _vm._k($event.keyCode, "enter", 13, $event.key, "Enter")) return null;
+        return _vm.CourseQuizSubmit($event.target);
+      },
+      submit: function submit($event) {
+        $event.preventDefault();
+        return _vm.CourseQuizSubmit($event.target);
+      }
+    }
+  }, [_c("div", {
+    staticClass: "card-body"
+  }, [_c("router-link", {
+    staticClass: "btn btn-sm btn-primary mb-2 mr-1",
+    attrs: {
+      to: {
+        name: "CourseModuleCSV"
+      }
+    }
+  }, [_c("i", {
+    staticClass: "fa-solid fa-plus mr-1"
+  }), _vm._v(" "), _c("span", [_vm._v("Upload CSV")])]), _vm._v(" "), _c("router-link", {
+    staticClass: "btn btn-sm btn-primary mb-2 mr-1",
+    attrs: {
+      to: {
+        name: "CourseMileStone"
+      }
+    }
+  }, [_c("i", {
+    staticClass: "fa-solid"
+  }), _vm._v(" "), _c("span", [_vm._v("Milestones")])]), _vm._v(" "), _c("router-link", {
+    staticClass: "btn btn-sm btn-primary mb-2 mr-1",
+    attrs: {
+      to: {
+        name: "CourseModuleAll"
+      }
+    }
+  }, [_c("i", {
+    staticClass: "fa-solid"
+  }), _vm._v(" "), _c("span", [_vm._v("Modules")])]), _vm._v(" "), _c("router-link", {
+    staticClass: "btn btn-sm btn-primary mb-2 mr-1",
+    attrs: {
+      to: {
+        name: "CourseClassAll"
+      }
+    }
+  }, [_c("i", {
+    staticClass: "fa-solid"
+  }), _vm._v(" "), _c("span", [_vm._v("Classes")])]), _vm._v(" "), _c("div", {
+    staticClass: "row"
+  }, [_c("div", {
+    staticClass: "col-md-6"
+  }, [_c("button", {
+    staticClass: "btn btn-sm btn-outline-primary mb-1",
+    attrs: {
+      type: "button"
+    },
+    on: {
+      click: function click($event) {
+        return _vm.resetFilter();
+      }
+    }
+  }, [_vm._v("Reset\n                            filter")]), _vm._v(" "), _c("div", {
+    staticClass: "row"
+  }, [_c("div", {
+    staticClass: "col-md-6"
+  }, [_c("div", {
+    staticClass: "form-group"
+  }, [_c("label", {
+    staticClass: "form-label",
+    attrs: {
+      "for": "module"
+    }
+  }, [_vm._v("Module")]), _vm._v(" "), _c("select", {
+    staticClass: "form-control",
+    attrs: {
+      name: "course_modules_id",
+      id: "module"
+    },
+    on: {
+      change: function change($event) {
+        $event.preventDefault();
+        return _vm.filterByModule($event);
+      }
+    }
+  }, _vm._l(_vm.course_modules, function (module, index) {
+    return _c("option", {
+      key: index,
+      domProps: {
+        value: module.id
+      }
+    }, [_vm._v(_vm._s(module.title))]);
+  }), 0)])]), _vm._v(" "), _c("div", {
+    staticClass: "col-md-6"
+  }, [_c("div", {
+    staticClass: "form-group"
+  }, [_c("label", {
+    staticClass: "form-label",
+    attrs: {
+      "for": "topic"
+    }
+  }, [_vm._v("Search")]), _vm._v(" "), _c("input", {
+    staticClass: "form-control",
+    attrs: {
+      type: "text",
+      name: "search",
+      id: "search"
+    },
+    on: {
+      keyup: function keyup($event) {
+        $event.preventDefault();
+        return _vm.filterBySearch($event);
+      }
+    }
+  })])])]), _vm._v(" "), _c("div", {
+    staticClass: "table-responsive"
+  }, [_c("table", {
+    staticClass: "table table-bordered table-hover"
+  }, [_vm._m(0), _vm._v(" "), _vm.course_routine.data && _vm.course_routine.data.length > 0 ? _c("tbody", _vm._l(_vm.course_routine.data, function (routine, index) {
+    return _c("tr", {
+      key: index
+    }, [_c("td", [_c("input", {
+      directives: [{
+        name: "model",
+        rawName: "v-model",
+        value: _vm.selected_class_id,
+        expression: "selected_class_id"
+      }],
+      staticClass: "form-control-input",
+      attrs: {
+        type: "radio",
+        name: "selected_class_id",
+        id: "selected_class_id"
+      },
+      domProps: {
+        value: routine.id,
+        checked: _vm._q(_vm.selected_class_id, routine.id)
+      },
+      on: {
+        change: function change($event) {
+          _vm.selected_class_id = routine.id;
+        }
+      }
+    })]), _vm._v(" "), _c("td", [routine["class"] ? _c("span", {
+      staticClass: "text-warning cursor_pointer"
+    }, [_vm._v(_vm._s(routine["class"].title))]) : _vm._e()]), _vm._v(" "), _c("td", [_vm._v("\n                                            " + _vm._s(routine.show_date) + "\n                                        ")])]);
+  }), 0) : _vm._e()]), _vm._v(" "), _vm.course_routine ? _c("pagination", {
+    staticClass: "mt-2",
+    attrs: {
+      data: _vm.course_routine,
+      method: _vm.get_course_routines
+    }
+  }) : _vm._e()], 1)]), _vm._v(" "), _c("div", {
+    staticClass: "col-md-6"
+  }, [_c("button", {
+    staticClass: "btn btn-sm btn-outline-primary mb-1",
+    attrs: {
+      type: "button"
+    },
+    on: {
+      click: function click($event) {
+        return _vm.resetFilter();
+      }
+    }
+  }, [_vm._v("Reset\n                            filter")]), _vm._v(" "), _c("div", {
+    staticClass: "row"
+  }, [_c("div", {
+    staticClass: "col-md-12"
+  }, [_c("div", {
+    staticClass: "form-group"
+  }, [_c("label", {
+    staticClass: "form-label",
+    attrs: {
+      "for": "topic"
+    }
+  }, [_vm._v("Search")]), _vm._v(" "), _c("input", {
+    staticClass: "form-control",
+    attrs: {
+      type: "text",
+      name: "search",
+      id: "search"
+    },
+    on: {
+      keyup: function keyup($event) {
+        $event.preventDefault();
+        return _vm.filterQuizBySearch($event);
+      }
+    }
+  })])])]), _vm._v(" "), _c("div", {
+    staticClass: "table-responsive"
+  }, [_c("table", {
+    staticClass: "table table-bordered table-hover"
+  }, [_vm._m(1), _vm._v(" "), _vm.all_quizes.data && _vm.all_quizes.data.length > 0 ? _c("tbody", _vm._l(_vm.all_quizes.data, function (quiz, index) {
+    return _c("tr", {
+      key: index
+    }, [_c("td", [_c("input", {
+      staticClass: "form-control-input",
+      attrs: {
+        type: "checkbox",
+        id: "quiz_".concat(quiz.id)
+      },
+      domProps: {
+        checked: _vm.is_selected(quiz)
+      },
+      on: {
+        click: function click($event) {
+          return _vm.SetQuizIds(quiz);
+        }
+      }
+    })]), _vm._v(" "), _c("td", [_vm._v(_vm._s(quiz.title))])]);
+  }), 0) : _vm._e()])])])])], 1), _vm._v(" "), _vm._m(2)])])]);
+};
+var staticRenderFns = [function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("thead", [_c("tr", [_c("td", [_vm._v("sl")]), _vm._v(" "), _c("td", [_vm._v("class title")]), _vm._v(" "), _c("td", [_vm._v("date")])])]);
+}, function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("thead", [_c("tr", [_c("td", [_vm._v("#")]), _vm._v(" "), _c("td", [_vm._v("Title")])])]);
+}, function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("div", {
+    staticClass: "card-footer text-center"
+  }, [_c("button", {
+    staticClass: "btn btn-outline-info",
+    attrs: {
+      type: "submit"
+    }
+  }, [_c("i", {
+    staticClass: "fa fa-upload"
+  }), _vm._v("\n                    Submit\n                ")])]);
+}];
 render._withStripped = true;
 
 
@@ -11580,8 +12195,8 @@ function getAlldata() {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_61__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm.js");
-/* harmony import */ var vue_router__WEBPACK_IMPORTED_MODULE_62__ = __webpack_require__(/*! vue-router */ "./node_modules/vue-router/dist/vue-router.esm.js");
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_62__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm.js");
+/* harmony import */ var vue_router__WEBPACK_IMPORTED_MODULE_63__ = __webpack_require__(/*! vue-router */ "./node_modules/vue-router/dist/vue-router.esm.js");
 /* harmony import */ var _views_pages_Layout_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./views/pages/Layout.vue */ "./resources/js/vue/course_details_maanagement/views/pages/Layout.vue");
 /* harmony import */ var _views_Layout_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./views/Layout.vue */ "./resources/js/vue/course_details_maanagement/views/Layout.vue");
 /* harmony import */ var _views_AllCourse_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./views/AllCourse.vue */ "./resources/js/vue/course_details_maanagement/views/AllCourse.vue");
@@ -11642,7 +12257,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _views_pages_course_module_CreateModules_vue__WEBPACK_IMPORTED_MODULE_57__ = __webpack_require__(/*! ./views/pages/course_module/CreateModules.vue */ "./resources/js/vue/course_details_maanagement/views/pages/course_module/CreateModules.vue");
 /* harmony import */ var _views_pages_course_module_CsvUpload_vue__WEBPACK_IMPORTED_MODULE_58__ = __webpack_require__(/*! ./views/pages/course_module/CsvUpload.vue */ "./resources/js/vue/course_details_maanagement/views/pages/course_module/CsvUpload.vue");
 /* harmony import */ var _views_pages_course_module_AtAglance_vue__WEBPACK_IMPORTED_MODULE_59__ = __webpack_require__(/*! ./views/pages/course_module/AtAglance.vue */ "./resources/js/vue/course_details_maanagement/views/pages/course_module/AtAglance.vue");
-/* harmony import */ var _views_pages_course_routine_CourseRoutine_vue__WEBPACK_IMPORTED_MODULE_60__ = __webpack_require__(/*! ./views/pages/course_routine/CourseRoutine.vue */ "./resources/js/vue/course_details_maanagement/views/pages/course_routine/CourseRoutine.vue");
+/* harmony import */ var _views_pages_course_module_CourseClassQuiz_vue__WEBPACK_IMPORTED_MODULE_60__ = __webpack_require__(/*! ./views/pages/course_module/CourseClassQuiz.vue */ "./resources/js/vue/course_details_maanagement/views/pages/course_module/CourseClassQuiz.vue");
+/* harmony import */ var _views_pages_course_routine_CourseRoutine_vue__WEBPACK_IMPORTED_MODULE_61__ = __webpack_require__(/*! ./views/pages/course_routine/CourseRoutine.vue */ "./resources/js/vue/course_details_maanagement/views/pages/course_routine/CourseRoutine.vue");
 
 
 
@@ -11730,10 +12346,11 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
 // course routines
 
-vue__WEBPACK_IMPORTED_MODULE_61__["default"].use(vue_router__WEBPACK_IMPORTED_MODULE_62__["default"]);
-window.Fire = new vue__WEBPACK_IMPORTED_MODULE_61__["default"]();
+vue__WEBPACK_IMPORTED_MODULE_62__["default"].use(vue_router__WEBPACK_IMPORTED_MODULE_63__["default"]);
+window.Fire = new vue__WEBPACK_IMPORTED_MODULE_62__["default"]();
 var routes = [{
   path: '',
   component: _views_Layout_vue__WEBPACK_IMPORTED_MODULE_1__["default"],
@@ -12027,15 +12644,21 @@ var routes = [{
       name: "CourseModuleCSV",
       component: _views_pages_course_module_CsvUpload_vue__WEBPACK_IMPORTED_MODULE_58__["default"]
     },
+    // class quiz
+    {
+      path: 'class-quiz',
+      name: "CourseClassQuiz",
+      component: _views_pages_course_module_CourseClassQuiz_vue__WEBPACK_IMPORTED_MODULE_60__["default"]
+    },
     // course routines
     {
       path: 'routines',
       name: "CourseRoutines",
-      component: _views_pages_course_routine_CourseRoutine_vue__WEBPACK_IMPORTED_MODULE_60__["default"]
+      component: _views_pages_course_routine_CourseRoutine_vue__WEBPACK_IMPORTED_MODULE_61__["default"]
     }]
   }]
 }];
-var management_router = new vue_router__WEBPACK_IMPORTED_MODULE_62__["default"]({
+var management_router = new vue_router__WEBPACK_IMPORTED_MODULE_63__["default"]({
   routes: routes,
   mode: 'hash',
   linkExactActiveClass: 'active'
@@ -15878,6 +16501,42 @@ component.options.__file = "resources/js/vue/course_details_maanagement/views/pa
 
 /***/ }),
 
+/***/ "./resources/js/vue/course_details_maanagement/views/pages/course_module/CourseClassQuiz.vue":
+/*!***************************************************************************************************!*\
+  !*** ./resources/js/vue/course_details_maanagement/views/pages/course_module/CourseClassQuiz.vue ***!
+  \***************************************************************************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _CourseClassQuiz_vue_vue_type_template_id_ff3f7d0c___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./CourseClassQuiz.vue?vue&type=template&id=ff3f7d0c& */ "./resources/js/vue/course_details_maanagement/views/pages/course_module/CourseClassQuiz.vue?vue&type=template&id=ff3f7d0c&");
+/* harmony import */ var _CourseClassQuiz_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./CourseClassQuiz.vue?vue&type=script&lang=js& */ "./resources/js/vue/course_details_maanagement/views/pages/course_module/CourseClassQuiz.vue?vue&type=script&lang=js&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! !../../../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+;
+var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _CourseClassQuiz_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _CourseClassQuiz_vue_vue_type_template_id_ff3f7d0c___WEBPACK_IMPORTED_MODULE_0__.render,
+  _CourseClassQuiz_vue_vue_type_template_id_ff3f7d0c___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns,
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/vue/course_details_maanagement/views/pages/course_module/CourseClassQuiz.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
 /***/ "./resources/js/vue/course_details_maanagement/views/pages/course_module/CourseModule.vue":
 /*!************************************************************************************************!*\
   !*** ./resources/js/vue/course_details_maanagement/views/pages/course_module/CourseModule.vue ***!
@@ -17269,6 +17928,19 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/vue/course_details_maanagement/views/pages/course_module/CourseClassQuiz.vue?vue&type=script&lang=js&":
+/*!****************************************************************************************************************************!*\
+  !*** ./resources/js/vue/course_details_maanagement/views/pages/course_module/CourseClassQuiz.vue?vue&type=script&lang=js& ***!
+  \****************************************************************************************************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_CourseClassQuiz_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./CourseClassQuiz.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/vue/course_details_maanagement/views/pages/course_module/CourseClassQuiz.vue?vue&type=script&lang=js&");
+ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_CourseClassQuiz_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
 /***/ "./resources/js/vue/course_details_maanagement/views/pages/course_module/CourseModule.vue?vue&type=script&lang=js&":
 /*!*************************************************************************************************************************!*\
   !*** ./resources/js/vue/course_details_maanagement/views/pages/course_module/CourseModule.vue?vue&type=script&lang=js& ***!
@@ -18198,6 +18870,23 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   staticRenderFns: function() { return /* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_lib_loaders_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_lib_index_js_vue_loader_options_AtAglance_vue_vue_type_template_id_0a56e70a___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns; }
 /* harmony export */ });
 /* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_lib_loaders_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_lib_index_js_vue_loader_options_AtAglance_vue_vue_type_template_id_0a56e70a___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??ruleSet[1].rules[2]!../../../../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./AtAglance.vue?vue&type=template&id=0a56e70a& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/lib/loaders/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/vue/course_details_maanagement/views/pages/course_module/AtAglance.vue?vue&type=template&id=0a56e70a&");
+
+
+/***/ }),
+
+/***/ "./resources/js/vue/course_details_maanagement/views/pages/course_module/CourseClassQuiz.vue?vue&type=template&id=ff3f7d0c&":
+/*!**********************************************************************************************************************************!*\
+  !*** ./resources/js/vue/course_details_maanagement/views/pages/course_module/CourseClassQuiz.vue?vue&type=template&id=ff3f7d0c& ***!
+  \**********************************************************************************************************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   render: function() { return /* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_lib_loaders_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_lib_index_js_vue_loader_options_CourseClassQuiz_vue_vue_type_template_id_ff3f7d0c___WEBPACK_IMPORTED_MODULE_0__.render; },
+/* harmony export */   staticRenderFns: function() { return /* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_lib_loaders_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_lib_index_js_vue_loader_options_CourseClassQuiz_vue_vue_type_template_id_ff3f7d0c___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns; }
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_lib_loaders_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_lib_index_js_vue_loader_options_CourseClassQuiz_vue_vue_type_template_id_ff3f7d0c___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??ruleSet[1].rules[2]!../../../../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./CourseClassQuiz.vue?vue&type=template&id=ff3f7d0c& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/lib/loaders/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/vue/course_details_maanagement/views/pages/course_module/CourseClassQuiz.vue?vue&type=template&id=ff3f7d0c&");
 
 
 /***/ }),

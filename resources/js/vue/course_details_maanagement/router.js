@@ -91,6 +91,7 @@ import CourseModuleAll from "./views/pages/course_module/Modules.vue";
 import CourseModuleCreate from "./views/pages/course_module/CreateModules.vue";
 import CourseModuleCSV from "./views/pages/course_module/CsvUpload.vue";
 import CourseAtAglance from "./views/pages/course_module/AtAglance.vue";
+import CourseClassQuiz from "./views/pages/course_module/CourseClassQuiz.vue";
 
 // course routines
 import CourseRoutines from "./views/pages/course_routine/CourseRoutine.vue";
@@ -474,6 +475,13 @@ const routes = [
                         path: 'csv-upload',
                         name: `CourseModuleCSV`,
                         component: CourseModuleCSV,
+                    },
+
+                    // class quiz
+                    {
+                        path: 'class-quiz',
+                        name: `CourseClassQuiz`,
+                        component: CourseClassQuiz,
                     },
 
                     // course routines
