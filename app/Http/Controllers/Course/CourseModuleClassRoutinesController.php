@@ -60,13 +60,19 @@ class CourseModuleClassRoutinesController extends Controller
             $key = request()->search_key;
             $query->where(function ($q) use ($key) {
                 return $q->where('id', '%' . $key . '%')
-                    ->orWhere('course_id', '%' . $key . '%')
-                    ->orWhere('module_id', '%' . $key . '%')
-                    ->orWhere('class_id', '%' . $key . '%')
-                    ->orWhere('date', '%' . $key . '%')
+                    ->orWhere('date','LIKE', '%' . $key . '%')
                     ->orWhere('time', 'LIKE', '%' . $key . '%')
-                    ->orWhere('topic', 'LIKE', '%' . $key . '%');
+                    ->orWhere('topic', 'LIKE', '%' . $key . '%')
+                    ->orWhereHas('class', function ($q) use ($key) {
+                        $q->where('title', 'LIKE', '%' . $key . '%')
+                        ->orWhere('type', 'LIKE', '%' . $key . '%');
+                    });
             });
+        }
+
+        if(request()->has('module_id')) {
+            $module_id = (int) request()->module_id;
+            $query->where('module_id', $module_id);
         }
 
         $datas = $query->with('class')->paginate($paginate);

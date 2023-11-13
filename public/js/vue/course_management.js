@@ -3411,7 +3411,12 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
-      course_routine: {}
+      course_id: null,
+      course_routine: {},
+      course_milestones: null,
+      course_modules: null,
+      search_key: null,
+      module_id: null
     };
   },
   methods: {
@@ -3426,13 +3431,18 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               if (!url) {
                 url = "/api/v1/course/course-routines/all/".concat(course_id, "?");
               }
+              if (this.search_key && this.search_key != '') {
+                url += "search_key=".concat(this.search_key);
+              }
+              if (this.module_id && this.module_id != '') {
+                url += "&module_id=".concat(this.module_id);
+              }
               axios.get(url).then(function (response) {
                 _this.course_routine = response.data;
-                // console.log(this.course_routine);
               })["catch"](function (e) {
                 console.log(e);
               });
-            case 3:
+            case 5:
             case "end":
               return _context.stop();
           }
@@ -3443,17 +3453,73 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       }
       return get_course_routines;
     }(),
-    CourseRoutineSubmit: function () {
-      var _CourseRoutineSubmit = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2() {
-        var _this2 = this;
-        var confirm;
+    filterByModule: function () {
+      var _filterByModule = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2() {
         return _regeneratorRuntime().wrap(function _callee2$(_context2) {
           while (1) switch (_context2.prev = _context2.next) {
             case 0:
-              _context2.next = 2;
+              this.module_id = event.target.value;
+              this.get_course_routines();
+            case 2:
+            case "end":
+              return _context2.stop();
+          }
+        }, _callee2, this);
+      }));
+      function filterByModule() {
+        return _filterByModule.apply(this, arguments);
+      }
+      return filterByModule;
+    }(),
+    filterBySearch: function () {
+      var _filterBySearch = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee3(event) {
+        return _regeneratorRuntime().wrap(function _callee3$(_context3) {
+          while (1) switch (_context3.prev = _context3.next) {
+            case 0:
+              this.search_key = event.target.value;
+              this.get_course_routines();
+            case 2:
+            case "end":
+              return _context3.stop();
+          }
+        }, _callee3, this);
+      }));
+      function filterBySearch(_x2) {
+        return _filterBySearch.apply(this, arguments);
+      }
+      return filterBySearch;
+    }(),
+    resetFilter: function () {
+      var _resetFilter = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee4() {
+        return _regeneratorRuntime().wrap(function _callee4$(_context4) {
+          while (1) switch (_context4.prev = _context4.next) {
+            case 0:
+              this.search_key = null;
+              this.module_id = null;
+              _context4.next = 4;
+              return this.get_course_routines();
+            case 4:
+            case "end":
+              return _context4.stop();
+          }
+        }, _callee4, this);
+      }));
+      function resetFilter() {
+        return _resetFilter.apply(this, arguments);
+      }
+      return resetFilter;
+    }(),
+    CourseRoutineSubmit: function () {
+      var _CourseRoutineSubmit = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee5() {
+        var _this2 = this;
+        var confirm;
+        return _regeneratorRuntime().wrap(function _callee5$(_context5) {
+          while (1) switch (_context5.prev = _context5.next) {
+            case 0:
+              _context5.next = 2;
               return window.s_confirm("Are you sure?");
             case 2:
-              confirm = _context2.sent;
+              confirm = _context5.sent;
               if (confirm) {
                 axios.post("/api/v1/course/course-routines/store-all", {
                   data: this.course_routine.data
@@ -3467,29 +3533,82 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               }
             case 4:
             case "end":
-              return _context2.stop();
+              return _context5.stop();
           }
-        }, _callee2, this);
+        }, _callee5, this);
       }));
       function CourseRoutineSubmit() {
         return _CourseRoutineSubmit.apply(this, arguments);
       }
       return CourseRoutineSubmit;
+    }(),
+    get_course_modules: function () {
+      var _get_course_modules = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee6() {
+        var _this3 = this;
+        return _regeneratorRuntime().wrap(function _callee6$(_context6) {
+          while (1) switch (_context6.prev = _context6.next) {
+            case 0:
+              _context6.next = 2;
+              return axios.get('/api/v1/course/course-modules/all-modules/' + this.course_id).then(function (response) {
+                _this3.course_modules = response.data;
+              })["catch"](function (e) {
+                console.log(e);
+              });
+            case 2:
+            case "end":
+              return _context6.stop();
+          }
+        }, _callee6, this);
+      }));
+      function get_course_modules() {
+        return _get_course_modules.apply(this, arguments);
+      }
+      return get_course_modules;
+    }(),
+    get_course_milestones: function () {
+      var _get_course_milestones = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee7() {
+        var _this4 = this;
+        return _regeneratorRuntime().wrap(function _callee7$(_context7) {
+          while (1) switch (_context7.prev = _context7.next) {
+            case 0:
+              _context7.next = 2;
+              return axios.get('/api/v1/course/course-milestones/all-milestones/' + this.course_id).then(function (response) {
+                _this4.course_milestones = response.data;
+              })["catch"](function (e) {
+                console.log(e);
+              });
+            case 2:
+            case "end":
+              return _context7.stop();
+          }
+        }, _callee7, this);
+      }));
+      function get_course_milestones() {
+        return _get_course_milestones.apply(this, arguments);
+      }
+      return get_course_milestones;
     }()
   },
   computed: {},
   created: function () {
-    var _created = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee3() {
-      return _regeneratorRuntime().wrap(function _callee3$(_context3) {
-        while (1) switch (_context3.prev = _context3.next) {
+    var _created = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee8() {
+      return _regeneratorRuntime().wrap(function _callee8$(_context8) {
+        while (1) switch (_context8.prev = _context8.next) {
           case 0:
-            _context3.next = 2;
+            this.course_id = this.$route.params.id;
+            _context8.next = 3;
+            return this.get_course_milestones();
+          case 3:
+            _context8.next = 5;
+            return this.get_course_modules();
+          case 5:
+            _context8.next = 7;
             return this.get_course_routines();
-          case 2:
+          case 7:
           case "end":
-            return _context3.stop();
+            return _context8.stop();
         }
-      }, _callee3, this);
+      }, _callee8, this);
     }));
     function created() {
       return _created.apply(this, arguments);
@@ -9857,7 +9976,69 @@ var render = function render() {
     staticClass: "card"
   }, [_vm._m(0), _vm._v(" "), _c("div", {
     staticClass: "card-body"
+  }, [_c("button", {
+    staticClass: "btn btn-sm btn-primary",
+    attrs: {
+      type: "button"
+    },
+    on: {
+      click: function click($event) {
+        return _vm.resetFilter();
+      }
+    }
+  }, [_vm._v("Reset filter")]), _vm._v(" "), _c("div", {
+    staticClass: "row"
   }, [_c("div", {
+    staticClass: "col-md-6"
+  }, [_c("div", {
+    staticClass: "form-group"
+  }, [_c("label", {
+    staticClass: "form-label",
+    attrs: {
+      "for": "module"
+    }
+  }, [_vm._v("Module")]), _vm._v(" "), _c("select", {
+    staticClass: "form-control",
+    attrs: {
+      name: "course_modules_id",
+      id: "module"
+    },
+    on: {
+      change: function change($event) {
+        $event.preventDefault();
+        return _vm.filterByModule($event);
+      }
+    }
+  }, _vm._l(_vm.course_modules, function (module, index) {
+    return _c("option", {
+      key: index,
+      domProps: {
+        value: module.id
+      }
+    }, [_vm._v(_vm._s(module.title))]);
+  }), 0)])]), _vm._v(" "), _c("div", {
+    staticClass: "col-md-6"
+  }, [_c("div", {
+    staticClass: "form-group"
+  }, [_c("label", {
+    staticClass: "form-label",
+    attrs: {
+      "for": "topic"
+    }
+  }, [_vm._v("Search")]), _vm._v(" "), _c("input", {
+    staticClass: "form-control",
+    attrs: {
+      type: "text",
+      name: "search",
+      id: "search"
+    },
+    on: {
+      keyup: function keyup($event) {
+        $event.preventDefault();
+        return _vm.filterBySearch($event);
+      }
+    }
+  })])])]), _vm._v(" "), _c("div", {
     staticClass: "table-responsive"
   }, [_c("table", {
     staticClass: "table table-bordered table-hover"
