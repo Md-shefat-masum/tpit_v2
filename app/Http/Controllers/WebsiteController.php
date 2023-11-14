@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Blog\Blogs;
+use App\Models\Blog\BlogsCategories;
 use App\Models\Course\Course;
 use App\Models\Course\CourseBatches;
 use App\Models\Course\CourseBatchStudent;
@@ -178,7 +180,14 @@ class WebsiteController extends Controller
 
     public function blog()
     {
-        return view('frontend.pages.blog');
+        $blog_categories = BlogsCategories::active()->get();
+        $blogs = Blogs::where('published', 1)->where('status', 'active')->with(['category'])->paginate(6);
+        return view('frontend.pages.blog', compact('blog_categories', 'blogs'));
+    }
+
+    public function blog_details($slug) {
+        $blog = Blogs::where('slug', $slug)->where('published', 1)->where('status', 'active')->with(['category'])->first();
+        return view('frontend.pages.blog-details', compact('blog'));
     }
 
     public function seminar()

@@ -48,27 +48,11 @@ $meta = [
                 <li>
                     <a href="#">সব</a>
                 </li>
-                <li>
-                    <a href="#">বিজ্ঞান ও প্রযুক্তি</a>
-                </li>
-                <li>
-                    <a href="#">ভ্রমণ</a>
-                </li>
-                <li>
-                    <a href="#">শিক্ষা</a>
-                </li>
-                <li>
-                    <a href="#">সমসাময়িক</a>
-                </li>
-                <li>
-                    <a href="#">সোস্যাল মিডিয়া</a>
-                </li>
-                <li>
-                    <a href="#">ডিজাইনিং</a>
-                </li>
-                <li>
-                    <a href="#">ডেভোলাপমেন্ট</a>
-                </li>
+                @foreach ($blog_categories as $category)    
+                    <li>
+                        <a href="#">{{ $category->title }}</a>
+                    </li>
+                @endforeach
             </ul>
         </div>
         <!-- blog nav bar area end -->
@@ -77,198 +61,44 @@ $meta = [
         <div class="blog_list">
 
             <!-- blog start -->
-            <div class="blog">
+            @foreach ($blogs as $blog)
+                <div class="blog">
 
-                <div class="blog_image_and_image_button_area">
-                    <div class="blog_image">
-                        <img src="{{ asset('frontend') }}/assets/images/blog_page_image/blog_list_1.png" alt="tech_park_it">
+                    <div class="blog_image_and_image_button_area">
+                        <div class="blog_image">
+                            <img src="/{{ $blog->image }}" alt="tech_park_it">
+                        </div>
+                        {{-- <div class="img_button">
+                            <a href="#">{{ $blog->category[0]->title }}</a>
+                        </div> --}}
                     </div>
-                    <div class="img_button">
-                        <a href="#">বিজ্ঞান ও প্রযুক্তি</a>
+
+                    {{-- <div class="extra_rite_area">
+                        <img src="{{ asset('frontend') }}/assets/images/blog_page_image/bg.png" alt="tech park it">
+                        
+                    </div> --}}
+
+                    <div class="blog_text_content">
+                        <div class="day_and_time">
+                            <span class="day_text">{{ $blog->created_at->diffForHumans() }} | </span>
+                           
+                            <span class="min_text">{{ rand(6, 15) }} min. to read </span>
+                        </div>
+                        <div class="text_title">
+                            <a href="{{ route('blog_details', $blog->slug) }}">
+                                <h2 class="title">{{ $blog->title }}</h2>
+                            </a>
+                        </div>
+                        <div class="text_sub_title">
+                            <p class="sub_title">{{ \Str::limit($blog->short_description, 100) }}
+                                {{-- প্রযুক্তির জগতে স্বাগতম! আজকের দ্রুত-গতির বিশ্বে, প্রযুক্তি দ্রুত গতিতে
+                                বিকশিত হচ্ছে, এবং সর্বশেষ প্রবণতা [...] --}}
+                            </p>
+                        </div>
                     </div>
+
                 </div>
-
-                <div class="extra_rite_area">
-                    <img src="{{ asset('frontend') }}/assets/images/blog_page_image/bg.png" alt="tech park it">
-                </div>
-
-                <div class="blog_text_content">
-                    <div class="day_and_time">
-                        <span class="day_text">2 days ago | </span>
-                        <span class="min_text">10 min. to read </span>
-                    </div>
-                    <div class="text_title">
-                        <h2 class="title">টেকটক: ২০২৩ সালে প্রযুক্তির সাম্প্রতিক ট্রেন্ডস এবং উন্নয়নগুলি</h2>
-                    </div>
-                    <div class="text_sub_title">
-                        <p class="sub_title">প্রযুক্তির জগতে স্বাগতম! আজকের দ্রুত-গতির বিশ্বে, প্রযুক্তি দ্রুত গতিতে
-                            বিকশিত হচ্ছে, এবং সর্বশেষ প্রবণতা [...]</p>
-                    </div>
-                </div>
-
-            </div>
-            <!-- blog end -->
-
-            <!-- blog start -->
-            <div class="blog">
-
-                <div class="blog_image_and_image_button_area">
-                    <div class="blog_image">
-                        <img src="{{ asset('frontend') }}/assets/images/blog_page_image/blog_list_1.png" alt="tech_park_it">
-                    </div>
-                    <div class="img_button">
-                        <a href="#">বিজ্ঞান ও প্রযুক্তি</a>
-                    </div>
-                </div>
-
-                <div class="extra_rite_area">
-                    <img src="{{ asset('frontend') }}/assets/images/blog_page_image/bg.png" alt="tech park it">
-                </div>
-
-                <div class="blog_text_content">
-                    <div class="day_and_time">
-                        <span class="day_text">2 days ago | </span>
-                        <span class="min_text">10 min. to read </span>
-                    </div>
-                    <div class="text_title">
-                        <h2 class="title">টেকটক: ২০২৩ সালে প্রযুক্তির সাম্প্রতিক ট্রেন্ডস এবং উন্নয়নগুলি</h2>
-                    </div>
-                    <div class="text_sub_title">
-                        <p class="sub_title">প্রযুক্তির জগতে স্বাগতম! আজকের দ্রুত-গতির বিশ্বে, প্রযুক্তি দ্রুত গতিতে
-                            বিকশিত হচ্ছে, এবং সর্বশেষ প্রবণতা [...]</p>
-                    </div>
-                </div>
-
-            </div>
-            <!-- blog end -->
-            <!-- blog start -->
-            <div class="blog">
-
-                <div class="blog_image_and_image_button_area">
-                    <div class="blog_image">
-                        <img src="{{ asset('frontend') }}/assets/images/blog_page_image/blog_list_1.png" alt="tech_park_it">
-                    </div>
-                    <div class="img_button">
-                        <a href="#">বিজ্ঞান ও প্রযুক্তি</a>
-                    </div>
-                </div>
-
-                <div class="extra_rite_area">
-                    <img src="{{ asset('frontend') }}/assets/images/blog_page_image/bg.png" alt="tech park it">
-                </div>
-
-                <div class="blog_text_content">
-                    <div class="day_and_time">
-                        <span class="day_text">2 days ago | </span>
-                        <span class="min_text">10 min. to read </span>
-                    </div>
-                    <div class="text_title">
-                        <h2 class="title">টেকটক: ২০২৩ সালে প্রযুক্তির সাম্প্রতিক ট্রেন্ডস এবং উন্নয়নগুলি</h2>
-                    </div>
-                    <div class="text_sub_title">
-                        <p class="sub_title">প্রযুক্তির জগতে স্বাগতম! আজকের দ্রুত-গতির বিশ্বে, প্রযুক্তি দ্রুত গতিতে
-                            বিকশিত হচ্ছে, এবং সর্বশেষ প্রবণতা [...]</p>
-                    </div>
-                </div>
-
-            </div>
-            <!-- blog end -->
-            <!-- blog start -->
-            <div class="blog">
-
-                <div class="blog_image_and_image_button_area">
-                    <div class="blog_image">
-                        <img src="{{ asset('frontend') }}/assets/images/blog_page_image/blog_list_1.png" alt="tech_park_it">
-                    </div>
-                    <div class="img_button">
-                        <a href="#">বিজ্ঞান ও প্রযুক্তি</a>
-                    </div>
-                </div>
-
-                <div class="extra_rite_area">
-                    <img src="{{ asset('frontend') }}/assets/images/blog_page_image/bg.png" alt="tech park it">
-                </div>
-
-                <div class="blog_text_content">
-                    <div class="day_and_time">
-                        <span class="day_text">2 days ago | </span>
-                        <span class="min_text">10 min. to read </span>
-                    </div>
-                    <div class="text_title">
-                        <h2 class="title">টেকটক: ২০২৩ সালে প্রযুক্তির সাম্প্রতিক ট্রেন্ডস এবং উন্নয়নগুলি</h2>
-                    </div>
-                    <div class="text_sub_title">
-                        <p class="sub_title">প্রযুক্তির জগতে স্বাগতম! আজকের দ্রুত-গতির বিশ্বে, প্রযুক্তি দ্রুত গতিতে
-                            বিকশিত হচ্ছে, এবং সর্বশেষ প্রবণতা [...]</p>
-                    </div>
-                </div>
-
-            </div>
-            <!-- blog end -->
-            <!-- blog start -->
-            <div class="blog">
-
-                <div class="blog_image_and_image_button_area">
-                    <div class="blog_image">
-                        <img src="{{ asset('frontend') }}/assets/images/blog_page_image/blog_list_1.png" alt="tech_park_it">
-                    </div>
-                    <div class="img_button">
-                        <a href="#">বিজ্ঞান ও প্রযুক্তি</a>
-                    </div>
-                </div>
-
-                <div class="extra_rite_area">
-                    <img src="{{ asset('frontend') }}/assets/images/blog_page_image/bg.png" alt="tech park it">
-                </div>
-
-                <div class="blog_text_content">
-                    <div class="day_and_time">
-                        <span class="day_text">2 days ago | </span>
-                        <span class="min_text">10 min. to read </span>
-                    </div>
-                    <div class="text_title">
-                        <h2 class="title">টেকটক: ২০২৩ সালে প্রযুক্তির সাম্প্রতিক ট্রেন্ডস এবং উন্নয়নগুলি</h2>
-                    </div>
-                    <div class="text_sub_title">
-                        <p class="sub_title">প্রযুক্তির জগতে স্বাগতম! আজকের দ্রুত-গতির বিশ্বে, প্রযুক্তি দ্রুত গতিতে
-                            বিকশিত হচ্ছে, এবং সর্বশেষ প্রবণতা [...]</p>
-                    </div>
-                </div>
-
-            </div>
-            <!-- blog end -->
-
-            <!-- blog start -->
-            <div class="blog">
-
-                <div class="blog_image_and_image_button_area">
-                    <div class="blog_image">
-                        <img src="{{ asset('frontend') }}/assets/images/blog_page_image/blog_list_1.png" alt="tech_park_it">
-                    </div>
-                    <div class="img_button">
-                        <a href="#">বিজ্ঞান ও প্রযুক্তি</a>
-                    </div>
-                </div>
-
-                <div class="extra_rite_area">
-                    <img src="{{ asset('frontend') }}/assets/images/blog_page_image/bg.png" alt="tech park it">
-                </div>
-
-                <div class="blog_text_content">
-                    <div class="day_and_time">
-                        <span class="day_text">2 days ago | </span>
-                        <span class="min_text">10 min. to read </span>
-                    </div>
-                    <div class="text_title">
-                        <h2 class="title">টেকটক: ২০২৩ সালে প্রযুক্তির সাম্প্রতিক ট্রেন্ডস এবং উন্নয়নগুলি</h2>
-                    </div>
-                    <div class="text_sub_title">
-                        <p class="sub_title">প্রযুক্তির জগতে স্বাগতম! আজকের দ্রুত-গতির বিশ্বে, প্রযুক্তি দ্রুত গতিতে
-                            বিকশিত হচ্ছে, এবং সর্বশেষ প্রবণতা [...]</p>
-                    </div>
-                </div>
-
-            </div>
+            @endforeach
             <!-- blog end -->
 
         </div>
@@ -276,7 +106,8 @@ $meta = [
 
         <!-- next_page_button_area start -->
         <div class="next_page_button_area">
-            <ul>
+            {{ $blogs->links() }}
+            {{-- <ul>
                 <li>
                     <a href="#" class="title"> <span class="left_angle"><i
                                 class="fa-solid fa-angle-left"></i></span> পূর্বের পেজ</a>
@@ -291,7 +122,7 @@ $meta = [
                     <a href="#" class="title">পরবর্তী পেজ <span class="right_angle"> <i
                                 class="fa-solid fa-angle-right"></i></span></a>
                 </li>
-            </ul>
+            </ul> --}}
         </div>
         <!-- next_page_button_area end -->
 
@@ -307,7 +138,7 @@ $meta = [
             <form action="#">
                 <div class="subscribe_form_area">
                     <input type="text" placeholder="mail@yourmail.com">
-                    <button class="subscribe_button">Subscribe Us</button>
+                    <button type="button" class="subscribe_button">Subscribe Us</button>
                 </div>
             </form>
               <!-- subscribe_form_area end -->

@@ -75,3 +75,18 @@
 .my_courses_area .my_contunued_courses .my_contunued_all_courses .c_card .card_title_area .card_title .batch_text:hover {
     color: #dc2626;
 }
+
+.science_and_technology .blog_list .blog .blog_image_and_image_button_area {
+    border: 0px solid red;
+    z-index: 10;
+    position: relative;
+}
+
+.science_and_technology .blog_list .blog .blog_image_and_image_button_area .blog_image img {
+    border: 1px solid #1c1c1c;
+    width: 100%;
+    border-radius: 8px;
+    height: 100%;
+    object-fit: cover;
+    overflow: hidden;
+}

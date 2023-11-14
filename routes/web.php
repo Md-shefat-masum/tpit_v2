@@ -33,6 +33,7 @@ Route::group( ['prefix'=>'','namespace' => "Controllers" ],function(){
 
     Route::get('/gallery', 'WebsiteController@gallery')->name("gallery");
     Route::get('/blog', 'WebsiteController@blog')->name("blog");
+    Route::get('/blog/{slug}', 'WebsiteController@blog_details')->name("blog_details");
     Route::get('/seminar', 'WebsiteController@seminar')->name("seminar");
     Route::get('/it-solution-services', 'WebsiteController@it_solution_services')->name("it_solution_services");
     Route::post('/seminar-registration', 'WebsiteController@registerSeminar')->name("registerSeminar");

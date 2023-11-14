@@ -25,10 +25,10 @@ class CreateBlogsCategoriesTable extends Migration
             $table->timestamps();
         });
 
-        Schema::create('blog_blog_category', function (Blueprint $table) {
+        Schema::create('blogs_blogs_categories', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('blog_category_id')->nullable();
-            $table->bigInteger('blog_id')->nullable();
+            $table->bigInteger('blogs_categories_id')->nullable();
+            $table->bigInteger('blogs_id')->nullable();
 
             $table->timestamps();
         });
