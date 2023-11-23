@@ -386,6 +386,7 @@ Route::group(
                     Route::get('/all-classes/{course_id}', 'Course\CourseModuleClassController@all_module_classes');
                     Route::post('/store', 'Course\CourseModuleClassController@store');
                     Route::post('/store-all', 'Course\CourseModuleClassController@update_class_module');
+                    Route::post('/add-quiz', 'Course\CourseModuleClassController@add_quiz');
                     Route::post('/canvas-store', 'Course\CourseModuleClassController@canvas_store');
                     Route::post('/update', 'Course\CourseModuleClassController@update');
                     Route::post('/update-image', 'Course\CourseModuleClassController@update_image');

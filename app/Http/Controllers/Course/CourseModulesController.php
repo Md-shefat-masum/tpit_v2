@@ -88,6 +88,7 @@ class CourseModulesController extends Controller
         $data = new CourseModule();
         $data->course_id = request()->course_id;
         $data->module_no = request()->module_no;
+        $data->milestone_id = request()->milestone_id;
         $data->title = request()->title;
         $data->save();
 

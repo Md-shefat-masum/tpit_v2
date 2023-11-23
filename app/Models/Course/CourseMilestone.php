@@ -18,10 +18,10 @@ class CourseMilestone extends Model
         });
     }
 
-    // public function course_modules()
-    // {
-    //     return $this->hasMany(CourseModule::class, 'milestone_id');
-    // }
+    public function course_modules()
+    {
+        return $this->hasMany(CourseModule::class, 'milestone_id');
+    }
 
     public function course()
     {

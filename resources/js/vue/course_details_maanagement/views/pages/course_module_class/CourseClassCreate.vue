@@ -12,48 +12,100 @@
             </div>
             <form @keyup.enter="store_course_class($event.target)" @submit.prevent="store_course_class($event.target)" class="user_create_form">
                 <div class="card-body">
+                    <router-link :to="{ name: 'CourseModuleCSV' }" class="btn btn-sm btn-primary mb-2 mr-1">
+                        <i class="fa-solid fa-plus mr-1"></i> <span>Upload CSV</span>
+                    </router-link>
+
+                    <router-link :to="{ name: 'CourseMileStone' }" class="btn btn-sm btn-primary mb-2 mr-1">
+                        <i class="fa-solid"></i> <span>Milestones</span>
+                    </router-link>
+
+                    <router-link :to="{ name: 'CourseModuleAll' }" class="btn btn-sm btn-primary mb-2 mr-1">
+                        <i class="fa-solid"></i> <span>Modules</span>
+                    </router-link>
+
+                    <router-link :to="{ name: 'CourseClassAll' }" class="btn btn-sm btn-primary mb-2 mr-1">
+                        <i class="fa-solid"></i> <span>Classes</span>
+                    </router-link>
                     <div class="row justify-content-center">
                         <div class="col-xl-10 col-12">
-                            <div class="row g-3">
+                            <div class="row">
                                 <div class="col-md-12">
-                                    <label class="form-label" for="title">Title</label>
-                                    <input type="text" id="title" name="title" class="form-control" placeholder="Js advance work" />
+                                    <div class="form-group">
+                                        <label class="form-label" for="title">Title</label>
+                                        <input type="text" id="title" name="title" class="form-control" placeholder="Js advance work" />
+                                    </div>
                                 </div>
                                 <div class="col-md-12">
-                                    <label class="form-label" for="title">Class no</label>
-                                    <input type="text" id="class_no" name="class_no" class="form-control" placeholder="1,2" />
+                                    <div class="form-group">
+                                        <label class="form-label" for="title">Class no</label>
+                                        <input type="text" id="class_no" name="class_no" class="form-control" placeholder="1,2" />
+                                    </div>
                                 </div>
                                 <div class="col-md-12">
-                                    <label class="form-label" for="milestone">Milestones</label>
-                                    <select name="milestone_id" class="form-control" id="milestone">
-                                        <option v-for="(milestone, index) in course_milestones" :key="index" :value="milestone.id">{{ milestone.title }}</option>
-                                    </select>
+                                    <div class="form-group">
+                                        <label class="form-label" for="milestone">Milestones</label>
+                                        <select name="milestone_id" class="form-control" id="milestone">
+                                            <option v-for="(milestone, index) in course_milestones" :key="index" :value="milestone.id">{{ milestone.title }}</option>
+                                        </select>
+                                    </div>
                                 </div>
                                 <div class="col-md-12">
-                                    <label class="form-label" for="module">Module</label>
-                                    <select name="course_modules_id" class="form-control" id="module">
-                                        <option v-for="(module, index) in course_modules" :key="index" :value="module.id">{{ module.title }}</option>
-                                    </select>
+                                    <div class="form-group">
+                                        <label class="form-label" for="module">Module</label>
+                                        <select name="course_modules_id" class="form-control" id="module">
+                                            <option v-for="(module, index) in course_modules" :key="index" :value="module.id">{{ module.title }}</option>
+                                        </select>
+                                    </div>
                                 </div>
                                 <div class="col-md-12">
-                                    <label class="form-label" for="description">Class No</label>
-                                    <input type="text" id="milestone_no" name="milestone_no" class="form-control" placeholder="1,2" />
+                                    <div class="form-group">
+                                        <label class="form-label" for="description">Class No</label>
+                                        <input type="text" id="milestone_no" name="milestone_no" class="form-control" placeholder="1,2" />
+                                    </div>
                                 </div>
                                 <div class="col-md-12">
-                                    <label class="form-label" for="description">Class Type</label>
-                                    <select name="type" class="form-control" id="type">
-                                        <option value="recorded">recorded</option>
-                                        <option value="live">live</option>
-                                    </select>
+                                    <div class="form-group">
+                                        <label class="form-label" for="description">Class Type</label>
+                                        <select name="type" class="form-control" id="type">
+                                            <option value="recorded">recorded</option>
+                                            <option value="live">live</option>
+                                        </select>
+                                    </div>
                                     <!-- <input type="text" id="milestone_no" name="milestone_no" class="form-control" placeholder="1,2" /> -->
                                 </div>
                                 <div class="col-md-12">
-                                    <label class="form-label" for="description">Class Video link</label>
-                                    <input type="text" id="class_video_link" name="class_video_link" class="form-control" placeholder="youtube.com" />
+                                    <div class="form-group">
+                                        <label class="form-label" for="description">Class Video link</label>
+                                        <input type="text" id="class_video_link" name="class_video_link" class="form-control" placeholder="youtube.com" />
+                                    </div>
                                 </div>
                                 <div class="col-md-12">
-                                    <label for="">class video poster</label>
-                                    <input name="class_video_poster" accept="image/*" type="file" class="form-control">
+                                    <div class="form-group">
+                                        <label for="">class video poster</label>
+                                        <input name="class_video_poster" accept="image/*" type="file" class="form-control">
+                                    </div>
+                                </div>
+
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label for="">class topic</label>
+                                        <input name="topic" type="text" class="form-control">
+                                    </div>
+                                </div>
+
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label for="">class Date</label>
+                                        <input name="date" type="date" class="form-control">
+                                    </div>
+                                </div>
+
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label for="">class Time</label>
+                                        <input name="time" type="time" class="form-control">
+                                    </div>
                                 </div>
                             </div>
                         </div>

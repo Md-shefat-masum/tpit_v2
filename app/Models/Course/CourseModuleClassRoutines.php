@@ -2,6 +2,7 @@
 
 namespace App\Models\Course;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -10,7 +11,10 @@ class CourseModuleClassRoutines extends Model
     use HasFactory;
     protected $guarded = [];
     protected $casts = [
-    //    'date' => "date"  
+       'date' => "date"  
+    ];
+    protected $appends = [
+        "show_date"
     ];
     protected static function booted()
     {
@@ -20,8 +24,13 @@ class CourseModuleClassRoutines extends Model
         });
     }
 
+    public function getShowDateAttribute()
+    {
+        return Carbon::parse($this->date)->toDateString();
+    }
+
     public function class()
     {
-        return $this->hasOne(CourseModuleClasses::class,'id', 'class_id');
+        return $this->belongsTo(CourseModuleClasses::class,'class_id');
     }
 }

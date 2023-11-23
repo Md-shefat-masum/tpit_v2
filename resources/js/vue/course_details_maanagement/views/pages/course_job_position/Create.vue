@@ -4,27 +4,32 @@
             <div class="card-header">
                 <h4>Create Job positions</h4>
                 <div class="btns">
-                    <a @click="$router.go(-1)" class="btn rounded-pill btn-outline-warning" >
+                    <a @click="$router.go(-1)" class="btn rounded-pill btn-outline-warning">
                         <i class="fa fa-arrow-left me-5px"></i>
                         Back
                     </a>
                 </div>
             </div>
-            <form @keyup.enter="store_batch($event.target)" @submit.prevent="store_batch($event.target)" class="user_create_form">
+            <form @keyup.enter="store_batch($event.target)" @submit.prevent="store_batch($event.target)"
+                class="user_create_form">
                 <div class="card-body">
                     <div class="row justify-content-center">
                         <div class="col-xl-10 col-12">
                             <div class="row g-3">
+
                                 <div class="col-md-12">
-                                    <label class="form-label" for="title">Title</label>
-                                    <input type="text" id="title" name="title" class="form-control" placeholder="web developer" />
+                                    <div class="form-group">
+                                        <label class="form-label" for="title">Title</label>
+                                        <input type="text" id="title" name="title" class="form-control"
+                                            placeholder="web developer" />
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="card-footer text-center">
-                    <button type="submit" class="btn btn-outline-info" >
+                    <button type="submit" class="btn btn-outline-info">
                         <i class="fa fa-upload"></i>
                         Submit
                     </button>
@@ -42,7 +47,7 @@ export default {
         }
     },
     methods: {
-        store_batch: async function(event) {
+        store_batch: async function (event) {
             let formData = new FormData(event);
             let course_id = this.$route.params.id;
             formData.append('course_id', course_id);
@@ -56,9 +61,9 @@ export default {
                 window.toaster("Course Job position added successfully!");
                 event.reset();
             })
-            .catch((e) => {
-                console.log(e);
-            });
+                .catch((e) => {
+                    console.log(e);
+                });
         },
         // get_course_details: async function (event) {
         //     let whatcourse = localStorage.getItem('current_course');
@@ -73,12 +78,10 @@ export default {
     },
 
     created: async function () {
-        
+
     },
 }
 </script>
 
 
-<style>
-
-</style>
+<style></style>

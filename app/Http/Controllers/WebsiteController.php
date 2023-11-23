@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Blog\Blogs;
+use App\Models\Blog\BlogsCategories;
 use App\Models\Course\Course;
 use App\Models\Course\CourseBatches;
 use App\Models\Course\CourseBatchStudent;
@@ -61,7 +63,7 @@ class WebsiteController extends Controller
     {
         $today = Carbon::today();
         $query = Course::select('id', 'title', 'slug', 'image')
-        ->where('published_at', '<=', $today)->orWhere('published_at', NULL)->active();
+        ->where('published_at', '<=', $today)->where('is_published', 1)->orWhere('published_at', NULL)->active();
         if (request()->has('course_type')) {
             $query->whereExists(function ($query) {
                 $query->from('course_course_types')
@@ -178,7 +180,14 @@ class WebsiteController extends Controller
 
     public function blog()
     {
-        return view('frontend.pages.blog');
+        $blog_categories = BlogsCategories::active()->get();
+        $blogs = Blogs::where('published', 1)->where('status', 'active')->with(['category'])->paginate(6);
+        return view('frontend.pages.blog', compact('blog_categories', 'blogs'));
+    }
+
+    public function blog_details($slug) {
+        $blog = Blogs::where('slug', $slug)->where('published', 1)->where('status', 'active')->with(['category'])->first();
+        return view('frontend.pages.blog-details', compact('blog'));
     }
 
     public function seminar()
@@ -224,9 +233,12 @@ class WebsiteController extends Controller
         $course_routines = CourseModuleClassRoutines::select('id' , 'course_id','date')->where('course_id', $course_id)->get();
         $month = [];
         // ddd($course_routines);
-        foreach($course_routines as $course_routine) {
-            $formated_date = $course_routine->date->format('m');
-            array_push($month, $formated_date);
+        if(count($course_routines) > 0) {
+            foreach($course_routines as $course_routine) {
+                // dd($course_routine->date->format('m'));
+                $formated_date = $course_routine->date->format('m');
+                array_push($month, $formated_date);
+            }
         }
 
         $months = array_unique($month);

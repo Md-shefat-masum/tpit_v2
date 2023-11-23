@@ -5,17 +5,36 @@
                 <h4 class="card-title">All Course classes: 🎓</h4>
             </div>
             <div class="card-body">
-                <router-link :to="{ name: 'CourseClassCreate'}" class="btn btn-primary mb-2 float-right">
+                <router-link :to="{ name: 'CourseModuleCSV' }" class="btn btn-sm btn-primary mb-2 mr-1">
+                    <i class="fa-solid fa-plus mr-1"></i> <span>Upload CSV</span>
+                </router-link>
+
+                <router-link :to="{ name: 'CourseMileStone' }" class="btn btn-sm btn-primary mb-2 mr-1">
+                    <i class="fa-solid"></i> <span>Milestones</span>
+                </router-link>
+
+                <router-link :to="{ name: 'CourseModuleAll' }" class="btn btn-sm btn-primary mb-2 mr-1">
+                    <i class="fa-solid"></i> <span>Modules</span>
+                </router-link>
+
+                <router-link :to="{ name: 'CourseClassAll' }" class="btn btn-sm btn-primary mb-2 mr-1">
+                    <i class="fa-solid"></i> <span>Classes</span>
+                </router-link>
+                <router-link :to="{ name: 'CourseClassCreate' }" class="btn btn-primary mb-2 float-right">
                     <i class="fa-solid fa-plus mr-1"></i> <span>Create</span>
                 </router-link>
+
                 <div class="table-responsive">
                     <table class="table table-bordered table-hover">
                         <thead>
                             <tr>
                                 <td>sl</td>
                                 <td>Banner</td>
+                                <td>Module name</td>
                                 <td>Title</td>
                                 <td>Class No</td>
+                                <td>Class Date</td>
+                                <td>Class time</td>
                                 <td>type</td>
                                 <td>Video link</td>
                                 <td>Status</td>
@@ -27,27 +46,47 @@
                                 <td><span class="text-primary">#{{ index + 1 }}</span></td>
                                 <td>
                                     <label :for="`classData${index}`">
-                                        <img height="50" width="50" class="img-fluid" :src="'/'+course_class.class_video_poster">
+                                        <img height="50" width="50" class="img-fluid"
+                                            :src="'/' + course_class.class_video_poster">
                                     </label>
-                                    <input type="file" @change="updateImage($event, course_class)" :id="`classData${index}`" class="form-control d-none" accept=".jpg,.png,.jpeg,.webp">
+                                    <input type="file" @change="updateImage($event, course_class)" :id="`classData${index}`"
+                                        class="form-control d-none" accept=".jpg,.png,.jpeg,.webp">
                                 </td>
                                 <td>
-                                    <input type="text" name="title" id="title" class="form-control" v-model="course_class.title">
+                                    {{ course_class.module.title }}
+                                </td>
+                                <td>
+                                    <input type="text" name="title" id="title" class="form-control"
+                                        v-model="course_class.title" style="width: 200px;">
                                     <!-- <span class="text-warning cursor_pointer">{{ course_class.title }}</span> -->
                                 </td>
                                 <td>
-                                    <input type="number" name="title" id="title" class="form-control" v-model="course_class.class_no">
+                                    <input type="number" style="width: 50px;" name="title" id="title" class="form-control"
+                                        v-model="course_class.class_no">
                                     <!-- <span class="text-warning cursor_pointer">{{ course_class.title }}</span> -->
                                 </td>
                                 <td>
-                                    <select v-model="course_class.type" name="type" id="type" class="form-control">
+                                    <input v-if="course_class.routine" type="date" v-model="course_class.routine.show_date" name="date" id="date" class="form-control">
+                                    <input v-else type="date" v-model="course_class.date" name="date" id="date" class="form-control">
+                                    <!-- <span class="text-warning cursor_pointer">{{ course_class.title }}</span> -->
+                                </td>
+                                <td>
+                                    <input  v-if="course_class.routine" type="time" v-model="course_class.routine.time" name="time" id="time" class="form-control">
+                                    <input v-else type="time" v-model="course_class.time" name="time" id="time" class="form-control">
+                                    <!-- <span class="text-warning cursor_pointer">{{ course_class.title }}</span> -->
+                                </td>
+
+
+                                <td>
+                                    <select style="width: 100px;" v-model="course_class.type" name="type" id="type" class="form-control">
                                         <option value="live">live</option>
                                         <option value="recorded">recorded</option>
                                     </select>
                                     <!-- <span class="badge">{{ course_class.type }}</span> -->
                                 </td>
                                 <td>
-                                    <input type="text" class="form-control" v-model="course_class.class_video_link">
+                                    <textarea name="video_link" class="form-control" style="width: 200px;" id="video_link" v-model="course_class.class_video_link"></textarea>
+                                    <!-- <input type="text" class="form-control" v-model="course_class.class_video_link"> -->
                                     <!-- <a target="_blank" :href="course_class.class_video_link" class="text-primary">{{ course_class.class_video_link }}</a> -->
                                 </td>
                                 <td><span class="badge">{{ course_class.status }}</span></td>
@@ -98,24 +137,24 @@ export default {
         // },
         get_course_classes: async function (url) {
             let id = this.$route.params.id
-            if(!url) {
+            if (!url) {
                 url = `/api/v1/course/course-modules-class/all-classes/${id}?`;
             }
             axios.get(url).then((response) => {
                 // console.log(response.data);
                 this.course_classes = response.data;
             })
-            .catch((e) => {
-                console.log(e);
-                // if(e.response.status == 401) {
-                //     console.log(e.response.data);
-                //     location.href = '/';
-                // }
-            });
-        }, 
-        updateImage: async function(event, course_class) {
+                .catch((e) => {
+                    console.log(e);
+                    // if(e.response.status == 401) {
+                    //     console.log(e.response.data);
+                    //     location.href = '/';
+                    // }
+                });
+        },
+        updateImage: async function (event, course_class) {
             var image_pic = event.target.files[0];
-            
+
             let form = new FormData(document.createElement("form"));
             form.append('banner', image_pic);
             form.append('course', JSON.stringify(course_class));
@@ -125,21 +164,21 @@ export default {
                 window.toaster("Image updated successfully!");
                 this.get_course_classes();
             })
-            .catch((e) => {
-                console.log(e);
-            });
+                .catch((e) => {
+                    console.log(e);
+                });
         },
-        update_course_modules_classes: async function() {
+        update_course_modules_classes: async function () {
             let confirm = await window.s_confirm("Are you sure?");
             if (confirm) {
-                axios.post(`/api/v1/course/course-modules-class/store-all`, {data: this.course_classes.data}).then((response) => {
+                axios.post(`/api/v1/course/course-modules-class/store-all`, { data: this.course_classes.data }).then((response) => {
                     // console.log(response.data);
                     window.toaster("Course module classes updated successfully!");
                     this.get_course_classes();
                 })
-                .catch((e) => {
-                    console.log(e);
-                });
+                    .catch((e) => {
+                        console.log(e);
+                    });
             }
         }
     },
@@ -153,6 +192,4 @@ export default {
 }
 </script>
 
-<style>
-
-</style>
+<style></style>

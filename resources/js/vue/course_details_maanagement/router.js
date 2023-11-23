@@ -69,7 +69,7 @@ import CourseTrainerLayout from "./views/pages/course_trainer/CourseTrainerLayou
 import CourseTrainerCreate from "./views/pages/course_trainer/Trainer.vue";
 
 // course milestones
-import CourseMileStoneLayout from "./views/pages/course_milestone/CourseMileStoneLayout.vue";
+import CourseMilestoneLayout from "./views/pages/course_milestone/CourseMilestoneLayout.vue";
 import CourseMileStone from "./views/pages/course_milestone/Milestones.vue";
 import CourseMileStoneCreate from "./views/pages/course_milestone/MilestoneCreate.vue";
 
@@ -90,7 +90,8 @@ import CourseModule from "./views/pages/course_module/CourseModule.vue";
 import CourseModuleAll from "./views/pages/course_module/Modules.vue";
 import CourseModuleCreate from "./views/pages/course_module/CreateModules.vue";
 import CourseModuleCSV from "./views/pages/course_module/CsvUpload.vue";
-import CourseAtaGlance from "./views/pages/course_module/AtaGlance.vue";
+import CourseAtAglance from "./views/pages/course_module/AtAglance.vue";
+import CourseClassQuiz from "./views/pages/course_module/CourseClassQuiz.vue";
 
 // course routines
 import CourseRoutines from "./views/pages/course_routine/CourseRoutine.vue";
@@ -383,7 +384,7 @@ const routes = [
                     // couese milestones
                     {
                         path: 'milestones',
-                        component: CourseMileStoneLayout,
+                        component: CourseMilestoneLayout,
                         children: [
                             {
                                 path: '',
@@ -467,13 +468,20 @@ const routes = [
                     },
                     {
                         path: 'at-a-glance',
-                        name: `CourseAtaGlance`,
-                        component: CourseAtaGlance,
+                        name: `CourseAtAglance`,
+                        component: CourseAtAglance,
                     },
                     {
                         path: 'csv-upload',
                         name: `CourseModuleCSV`,
                         component: CourseModuleCSV,
+                    },
+
+                    // class quiz
+                    {
+                        path: 'class-quiz',
+                        name: `CourseClassQuiz`,
+                        component: CourseClassQuiz,
                     },
 
                     // course routines

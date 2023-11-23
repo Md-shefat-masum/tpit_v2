@@ -17,7 +17,7 @@
     @else
         @include('frontend.layouts.includes.meta', ['seo' => (object) $seo])
     @endif
-    <link rel="shortcut icon" type="image/x-icon" href="{{$meta->fabicon ?? asset(setting(key:'fabicon')) }}">
+    <link rel="shortcut icon" type="image/x-icon" href="{{ $meta->fabicon ?? asset(setting(key: 'fabicon')) }}">
     <link rel="stylesheet" href="{{ asset('css/plugins/bootstrap.css') }}">
     <link rel="stylesheet" href="{{ asset('frontend') }}/assets/icon/fontawesome-free-6.2.0-web/css/all.min.css">
     <link rel="stylesheet" href="{{ asset('frontend') }}/assets/styles/style.css">
@@ -38,18 +38,96 @@
 
     {{-- pwa setup --}}
     {{-- <script src="{{ asset('main.js') }}" defer></script> --}}
+    <style>
+        /* Dropdown Button */
+        .dropbtn {
+            border: 0px solid red;
+            font-size: 16px;
+            line-height: 12px;
+            color: #1c1c1c;
+            font-family: "Medium";
+            border: 1px solid #6b7280;
+            padding: 14.5px 30.5px;
+            border-radius: 6px;
+            margin-left: 32px;
+            transition-duration: 0.4s;
+            background-color: #fff;
+        }
+
+        /* Dropdown button on hover & focus */
+        .dropbtn:hover {
+            background-color: #dc2626;
+            color: #fff;
+        }
+
+        /* The container <div> - needed to position the dropdown content */
+        .dropdown_menu {
+            position: relative;
+            display: inline-block;
+        }
+
+        /* Dropdown Content (Hidden by Default) */
+        .dropdown-content {
+            display: none;
+            top: calc(100% + 10px);
+            left: 35px;
+            position: absolute;
+            background-color: #fff;
+            /* min-width: 160px; */
+            width: 200px;
+            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+        }
+
+        
+
+        .header_area .header_area_content .nav_and_login_area .full_nav_are .login_area a {
+            border: 0px solid red;
+            font-size: 16px;
+            line-height: 12px;
+            color: #1c1c1c;
+            font-family: "Medium";
+            padding: 14.5px 30.5px;
+            border: 1px solid #6b7280;
+            border-radius: 6px;
+            transition-duration: 0.4s;
+        }
+
+        /* Links inside the dropdown */
+        .dropdown-content .dropdown-single-item {
+            border: unset !important;
+            font-size: 16px;
+            line-height: 12px;
+            color: #1c1c1c;
+            font-family: "Medium";
+            padding: 14.5px 30.5px;
+            border-radius: 6px;
+            width: 100%;
+            margin-left: 0px !important;
+            transition-duration: 0.4s;
+        }
+        /* Change color of dropdown links on hover */
+        .dropdown-content a:hover {
+            background-color: #fff;
+        }
+
+        /* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
+        .show {
+            display: block;
+        }
+    </style>
 </head>
 
 <body id="top">
 
     @if (session()->has('success'))
         <script>
-            window.toaster("{{session()->get('success')}}");
+            window.toaster("{{ session()->get('success') }}");
         </script>
     @endif
     @if (session()->has('warning'))
         <script>
-            window.toaster("{{session()->get('warning')}}", 'warning');
+            window.toaster("{{ session()->get('warning') }}", 'warning');
         </script>
     @endif
 
@@ -60,7 +138,7 @@
                 <!-- logo_area start -->
                 <div class="logo_area">
                     <a href="/">
-                        <img src="{{ asset(setting(key:'header_logo')) }}" alt="tech park it">
+                        <img src="{{ asset(setting(key: 'header_logo')) }}" alt="tech park it">
                     </a>
                 </div>
                 <!-- logo_area end -->
@@ -71,6 +149,7 @@
                 </div> --}}
 
                 @guest
+
                     @if (Route::has('login'))
                         <div class="extra_login_area">
                             <a href="/login">লগ-ইন</a>
@@ -84,6 +163,7 @@
                         </a>
                     </div>
                 @endguest
+
                 <!-- xs login_area end -->
 
                 <!-- menu_ber area start -->
@@ -133,6 +213,15 @@
                                 <li>
                                     <a href="/contact">যোগাযোগ</a>
                                 </li>
+                                @auth    
+                                    <li>
+                                        <a href="javascript:void(0)"
+                                        onclick="event.preventDefault();document.getElementById('logout-form').submit();">লগআউট</a>
+                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                            @csrf
+                                        </form>
+                                    </li>
+                                @endauth
                             </ul>
                         </nav>
                         <!-- nav_area end -->
@@ -142,17 +231,48 @@
                         @guest
                             @if (Route::has('login'))
                                 <div class="login_area">
-                                    <a href="/login">লগ-ইন</a>
+                                    <a class="login-btn" href="/login">লগ-ইন</a>
                                 </div>
                             @endif
                         @else
                             <div class="login_area">
-                                <a href="{{ route('myCourse') }}">
-                                    <i class="fa-regular fa-circle-user fa-lg"></i>
-                                    {{ Auth::user()->first_name }} {{ Auth::user()->last_name }}
-                                </a>
+                                <div class="dropdown dropdown_menu">
+                                    <button onclick="dropdown_list()" class="dropbtn"><i
+                                            class="fa-regular fa-circle-user fa-lg me-1"></i>
+                                        {{ Auth::user()->first_name }} {{ Auth::user()->last_name }}</button>
+                                    <div id="myDropdown" class="dropdown-content">
+                                        <a class="dropdown-single-item" href="{{ route('myCourse') }}">আমার কোর্সসমূহ</a>
+                                        <a class="dropdown-single-item" href="javascript:void(0)"
+                                        onclick="event.preventDefault();document.getElementById('logout-form').submit();">লগআউট</a>
+                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                            @csrf
+                                        </form> 
+                                    </div>
+                                </div>
+
                             </div>
                         @endguest
+                        <script>
+                            /* When the user clicks on the button, 
+                                                                                                    toggle between hiding and showing the dropdown content */
+                            function dropdown_list() {
+                                document.getElementById("myDropdown").classList.toggle("show");
+                            }
+
+                            // Close the dropdown if the user clicks outside of it
+                            window.onclick = function(event) {
+                                if (!event.target.matches('.dropbtn')) {
+                                    var dropdowns = document.getElementsByClassName("dropdown-content");
+                                    var i;
+                                    for (i = 0; i < dropdowns.length; i++) {
+                                        var openDropdown = dropdowns[i];
+                                        if (openDropdown.classList.contains('show')) {
+                                            openDropdown.classList.remove('show');
+                                        }
+                                    }
+                                }
+                            }
+                        </script>
                         <!-- login_area end -->
 
                     </div>
@@ -179,8 +299,7 @@
                             <!-- footer_logo area start -->
                             <div class="footer_logo_area">
                                 <a href="#">
-                                    <img src="/{{setting(key:'footer_logo')}}"
-                                        alt="logo tech_park_it">
+                                    <img src="/{{ setting(key: 'footer_logo') }}" alt="logo tech_park_it">
                                 </a>
                             </div>
                             <!-- footer_logo area end -->
@@ -203,7 +322,8 @@
                                             </div>
                                             <div class="number">
                                                 @foreach (setting(key: 'phone_numbers', multiple: true) as $item)
-                                                    <a href="tel:{{ $item->value }}" class="text"> {{ $item->value }} </a> <br>
+                                                    <a href="tel:{{ $item->value }}" class="text">
+                                                        {{ $item->value }} </a> <br>
                                                 @endforeach
                                             </div>
                                         </div>
@@ -215,7 +335,7 @@
                                                 <i class="fa-brands fa-square-whatsapp"></i>
                                             </div>
                                             <div class="number">
-                                                <p class="text">{{ setting(key:'whatsapp') }}</p>
+                                                <p class="text">{{ setting(key: 'whatsapp') }}</p>
                                             </div>
                                         </a>
                                     </li>
@@ -226,7 +346,7 @@
                                                 <i class="fa-brands fa-telegram"></i>
                                             </div>
                                             <div class="number">
-                                                <p class="text">{{ setting(key:'telegram') }}</p>
+                                                <p class="text">{{ setting(key: 'telegram') }}</p>
                                             </div>
                                         </a>
                                     </li>
@@ -237,7 +357,7 @@
                                                 <i class="fa-regular fa-envelope"></i>
                                             </div>
                                             <div class="number email_address">
-                                                <p class="text">{{ setting(key:'emails') }}</p>
+                                                <p class="text">{{ setting(key: 'emails') }}</p>
                                             </div>
                                         </a>
                                     </li>
@@ -253,27 +373,27 @@
                                     <div class="social_media">
                                         <ul>
                                             <li>
-                                                <a href="{{ setting(key:'facebook') }}" class="facebook">
+                                                <a href="{{ setting(key: 'facebook') }}" class="facebook">
                                                     <i class="fa-brands fa-square-facebook"></i>
                                                 </a>
                                             </li>
                                             <li>
-                                                <a href="{{ setting(key:'instagram') }}" class="instagram">
+                                                <a href="{{ setting(key: 'instagram') }}" class="instagram">
                                                     <i class="fa-brands fa-square-instagram"></i>
                                                 </a>
                                             </li>
                                             <li>
-                                                <a href="{{ setting(key:'youtube') }}" class="youtube">
+                                                <a href="{{ setting(key: 'youtube') }}" class="youtube">
                                                     <i class="fa-brands fa-youtube"></i>
                                                 </a>
                                             </li>
                                             <li>
-                                                <a href="{{ setting(key:'linkedin') }}" class="linkedin-in">
+                                                <a href="{{ setting(key: 'linkedin') }}" class="linkedin-in">
                                                     <i class="fa-brands fa-linkedin-in"></i>
                                                 </a>
                                             </li>
                                             <li>
-                                                <a href="{{ setting(key:'twitter') }}" class="twitter">
+                                                <a href="{{ setting(key: 'twitter') }}" class="twitter">
                                                     <i class="fa-brands fa-twitter"></i>
                                                 </a>
                                             </li>
@@ -433,7 +553,7 @@
 
                             <!-- address start -->
                             <div class="address">
-                                <p class="text">{{setting(key:'address_bangla')}}</p>
+                                <p class="text">{{ setting(key: 'address_bangla') }}</p>
                             </div>
                             <!-- address end -->
 
@@ -444,7 +564,7 @@
                                 </div>
 
                                 <div class="full_map">
-                                    {!! setting(key:'map_link')  !!}
+                                    {!! setting(key: 'map_link') !!}
                                     {{-- <iframe
                                         src="{{setting(key:'map_link')}}"
                                         width="100%" height="" style="border:0;" allowfullscreen=""
@@ -462,7 +582,7 @@
 
         <!-- footer_copyright_area start -->
         <div class="footer_copyright_area">
-            <p class="text">{{setting(key:'copy_right')}}</p>
+            <p class="text">{{ setting(key: 'copy_right') }}</p>
         </div>
         <!-- footer_copyright_area end -->
     </footer>

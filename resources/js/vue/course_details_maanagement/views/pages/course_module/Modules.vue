@@ -5,7 +5,22 @@
                 <h4 class="card-title">All Course Modules: 🎓</h4>
             </div>
             <div class="card-body">
-                <router-link :to="{ name: 'CourseModuleCreate'}" class="btn btn-primary mb-2 float-right">
+                <router-link :to="{ name: 'CourseModuleCSV' }" class="btn btn-sm btn-primary mb-2 mr-1">
+                    <i class="fa-solid fa-plus mr-1"></i> <span>Upload CSV</span>
+                </router-link>
+
+                <router-link :to="{ name: 'CourseMileStone' }" class="btn btn-sm btn-primary mb-2 mr-1">
+                    <i class="fa-solid"></i> <span>Milestones</span>
+                </router-link>
+
+                <router-link :to="{ name: 'CourseModuleAll' }" class="btn btn-sm btn-primary mb-2 mr-1">
+                    <i class="fa-solid"></i> <span>Modules</span>
+                </router-link>
+
+                <router-link :to="{ name: 'CourseClassAll' }" class="btn btn-sm btn-primary mb-2 mr-1">
+                    <i class="fa-solid"></i> <span>Classes</span>
+                </router-link>
+                <router-link :to="{ name: 'CourseModuleCreate' }" class="btn btn-primary mb-2 float-right">
                     <i class="fa-solid fa-plus mr-1"></i> <span>Create</span>
                 </router-link>
                 <div class="table-responsive">
@@ -28,7 +43,7 @@
                                 </td>
                                 <td>
                                     <!-- <span class="cursor_pointer">{{ module.module_no }}</span> -->
-                                    <input type="text" class="form-control" v-model="module.module_no">    
+                                    <input type="text" class="form-control" v-model="module.module_no">
                                 </td>
                                 <td><span class="badge">{{ module.status }}</span></td>
                                 <td>
@@ -41,10 +56,12 @@
                                             <!-- <router-link :to="{ name: 'CourseWhatmoduleCreate', params: { id: module.id }}" class="dropdown-item">
                                                 <i class="fa text-info fa-eye mr-2"></i> <span>Details</span>
                                             </router-link> -->
-                                            <router-link :to="{ name: 'CourseJobWorkEdit', params: { id: module.id }}" class="dropdown-item">
+                                            <router-link :to="{ name: 'CourseJobWorkEdit', params: { id: module.id } }"
+                                                class="dropdown-item">
                                                 <i class="fa text-warning fa-pencil mr-2"></i> <span>Edit</span>
                                             </router-link>
-                                            <a href="javascript:void(0)" @click.prevent="deleteCoursejobWork(module.id)" class="dropdown-item">
+                                            <a href="javascript:void(0)" @click.prevent="deleteCoursejobWork(module.id)"
+                                                class="dropdown-item">
                                                 <i class="fa text-danger fa-trash mr-2"></i> <span>Delete</span>
                                             </a>
                                         </div>
@@ -84,26 +101,26 @@ export default {
                 // console.log(response.data);
                 this.modules = response.data;
             })
-            .catch((e) => {
-                console.log(e);
-                // if(e.response.status == 401) {
-                //     console.log(e.response.data);
-                //     location.href = '/';
-                // }
-            });
+                .catch((e) => {
+                    console.log(e);
+                    // if(e.response.status == 401) {
+                    //     console.log(e.response.data);
+                    //     location.href = '/';
+                    // }
+                });
         },
-        update_course_modules: async function() {
+        update_course_modules: async function () {
             let confirm = await window.s_confirm("Are you sure?");
             if (confirm) {
-                axios.post(`/api/v1/course/course-modules/store-all`, {data: this.modules}).then((response) => {
+                axios.post(`/api/v1/course/course-modules/store-all`, { data: this.modules }).then((response) => {
                     // console.log(response.data);
                     window.toaster("Course modules updated successfully!");
                     this.get_course_modules();
                 })
-                .catch((e) => {
-                    console.log(e);
-                });
-            }        
+                    .catch((e) => {
+                        console.log(e);
+                    });
+            }
         }
     },
     computed: {
@@ -116,6 +133,4 @@ export default {
 }
 </script>
 
-<style>
-
-</style>
+<style></style>

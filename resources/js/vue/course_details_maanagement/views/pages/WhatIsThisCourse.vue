@@ -8,6 +8,12 @@
                 <label class="form-label" for="title">Course Title</label>
                 <input type="text" id="title" v-model="course_title" name="title" class="form-control" />
             </div>
+
+            <div class="form-group">
+                <label class="form-label" for="title">Course Intro video</label>
+                <input type="text" id="title" v-model="course_intro" name="title" class="form-control" />
+            </div>
+
             <div class="form-group">
                 <h5>banner</h5>
                 <label v-if="course_image" :for="`classData${course_id}`">
@@ -37,6 +43,7 @@ export default {
             course_title: null,
             course_image: null,
             course_id: '',
+            course_intro: '',
             editorConfig: {
                 // The configuration of the editor.
                 uiColor: '#283046',
@@ -50,6 +57,7 @@ export default {
             let formData = new FormData(event);
             formData.append('what_is_this_course', this.what_course);
             formData.append('title', this.course_title);
+            formData.append('intro_video', this.course_intro);
             formData.append('id', this.course_id);
 
             let data = {
@@ -88,6 +96,7 @@ export default {
                 this.what_course = whatcourse.what_is_this_course;
                 this.course_title = whatcourse.title;
                 this.course_image = whatcourse.image;
+                this.course_intro = whatcourse.intro_video;
                 this.course_id = whatcourse.id
             }
         }

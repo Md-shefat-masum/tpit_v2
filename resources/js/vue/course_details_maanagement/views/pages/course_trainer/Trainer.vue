@@ -16,17 +16,21 @@
                         <div class="col-xl-10 col-12">
                             <div class="row g-3">
                                 <div class="col-md-12" v-if="current_batch != ''">
-                                    <label class="form-label" for="title">Select Batch</label>
-                                    <select name="batch_id" id="" class="form-control" v-model="current_batch">
-                                        <option v-for="(batch, index) in course_batches" :key="index" :value="batch.id">{{ batch.batch_name }}</option>
-                                    </select>
+                                    <div class="form-group">
+                                        <label class="form-label" for="title">Select Batch</label>
+                                        <select name="batch_id" id="" class="form-control" v-model="current_batch">
+                                            <option v-for="(batch, index) in course_batches" :key="index" :value="batch.id">{{ batch.batch_name }}</option>
+                                        </select>
+                                    </div>
                                     <!-- <input type="text" id="title" name="title" class="form-control" placeholder="website design" /> -->
                                 </div>
                                 <div class="col-md-12" v-if="current_teacher != ''">
-                                    <label class="form-label" for="title">Select teacher</label>
-                                    <select name="instructor_id" id="" class="form-control" v-model="current_teacher">
-                                        <option v-for="(teacher, index) in course_teachers" :key="index" :value="teacher.id">{{  teacher.full_name }}</option>
-                                    </select>
+                                    <div class="form-group">
+                                        <label class="form-label" for="title">Select teacher</label>
+                                        <select name="instructor_id" id="" class="form-control" v-model="current_teacher">
+                                            <option v-for="(teacher, index) in course_teachers" :key="index" :value="teacher.id">{{  teacher.full_name }}</option>
+                                        </select>
+                                    </div>
                                 </div>
                             </div>
                         </div>

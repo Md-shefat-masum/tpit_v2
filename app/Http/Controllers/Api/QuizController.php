@@ -22,7 +22,7 @@ class QuizController extends Controller
             $key = request()->search_key;
             $query->where(function ($q) use ($key) {
                 return $q->where('id', '%' . $key . '%')
-                    ->orWhere('title', '%' . $key . '%');
+                    ->orWhere('title', 'LIKE', '%' . $key . '%');
             });
         }
 
