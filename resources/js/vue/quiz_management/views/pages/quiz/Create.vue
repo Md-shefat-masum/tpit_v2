@@ -13,8 +13,8 @@
             <form @keyup.enter="store_quiz($event.target)" @submit.prevent="store_quiz($event.target)"
                 class="user_create_form">
                 <div class="card-body">
-                    <div class="row justify-content-center">
-                        <div class="col-xl-10 col-12">
+                    <div class="row">
+                        <div class="col-xl-12 col-12">
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group mb-2">
@@ -22,7 +22,7 @@
                                         <input v-model="quiz_title" type="text" name="quiz_title" id="quiz_title" class="form-control">
                                     </div>
                                 </div>
-                                <div class="col-md-12">
+                                <div class="col-xl-8">
                                     <div class="table-responsive">
                                         <div class="row">
                                             <div class="col-md-6">
@@ -55,9 +55,13 @@
                                                 <tr v-for="(question, index) in questions.data" :key="index">
                                                     <td>
                                                         <div class="custom-control custom-checkbox">
-                                                            <input type="checkbox" @click="SetQuestionIds(question)" class="custom-control-input"
+                                                            <input v-if="is_selected == true" type="checkbox" @click="SetQuestionIds(question)" class="custom-control-input"
+                                                                :id="`question_${question.id}`" checked>
+                                                            <input v-else type="checkbox" @click="SetQuestionIds(question)" class="custom-control-input"
                                                                 :id="`question_${question.id}`">
-                                                            <label class="custom-control-label"
+                                                            <label v-if="is_selected == true" class="custom-control-label"
+                                                                :for="`question_${question.id}`"></label>
+                                                            <label v-else class="custom-control-label"
                                                                 :for="`question_${question.id}`"></label>
                                                         </div>
                                                     </td>
@@ -80,6 +84,26 @@
                                             </tbody>
                                         </table>
                                         <pagination class="mt-2" v-if="questions" :data="questions" :method="get_all_questions" />
+                                    </div>
+                                </div>
+                                <div class="col-xl-4">
+                                    <div class="table-responsive">
+                                        
+                                        <table class="table table-bordered table-hover">
+                                            <thead>
+                                                <tr>
+                                                    <td>Title</td>
+                                                </tr>
+                                            </thead>
+                                            <tbody v-if="selected_questions && selected_questions.length > 0">
+                                                <tr v-for="(selected_ques, index) in selected_questions" :key="index">
+                                                    <td>
+                                                        <button type="button" @click.prevent="remove_selected_question(selected_ques)" class="btn btn-sm btn-danger mr-1"><i class="fa fa-trash"></i></button>
+                                                        {{ selected_ques.title }}
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
                                     </div>
                                 </div>
                             </div>
@@ -111,12 +135,15 @@ export default {
             question_ids: [
 
             ],
-            quiz_title: ''
+            quiz_title: '',
+            selected_questions: [
+
+            ]
         }
     },
     methods: {
         store_quiz: async function () {
-            let question_ids = JSON.stringify(this.question_ids);
+            let question_ids = JSON.stringify(this.selected_questions);
             let data = {
                 question_ids: question_ids,
                 title: this.quiz_title
@@ -130,8 +157,29 @@ export default {
                 console.log(e);
             });
         },
+        is_selected: async function(question) {
+            var check_question = this.selected_questions.find((element) => element.id == question.id);
+            if(check_question) {
+                return true;
+            }else {
+                return false;
+            }
+        },
+        remove_selected_question: async function(question) {
+            
+            var check_question = this.selected_questions.find((element) => element.id == question.id);
+            if(check_question) {
+                var serial = this.selected_questions.findIndex((element) => element.id == question.id);
+                this.selected_questions.splice(serial, 1);
+            }
+
+            if(this.question_ids.includes(question.id)) {
+                let index = this.question_ids.indexOf(question.id);
+                this.question_ids.splice(index, 1);
+            }
+        },
         SetQuestionIds: async function(question) {
-            console.log(this.question_ids);
+            this.selected_questions.push(question);
             if(!this.question_ids.includes(question.id)) {
                 this.question_ids.push(question.id)
             }else {

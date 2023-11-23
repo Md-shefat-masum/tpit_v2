@@ -167,7 +167,8 @@ export default {
             await axios.post('/api/v1/quiz-questions/store', data).then((response) => {
                 // localStorage.setItem('current_course', JSON.stringify(response?.data))
                 window.toaster(response?.data.message);
-
+                this.questions = [];
+                this.append_new_question();
 
             })
                 .catch((e) => {

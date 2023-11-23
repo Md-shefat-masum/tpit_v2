@@ -28,9 +28,9 @@
                                             <i class="fa fa-gears"></i>
                                         </button>
                                         <div class="dropdown-menu">
-                                            <a class="dropdown-item" @click.prevent="quiz_edit(quiz)">
+                                            <router-link :to="{ name: 'EditQuiz' , params: { quiz_id: quiz.id }}" class="dropdown-item" @click.prevent="quiz_edit(quiz)">
                                                 <i class="fa text-warning fa-pencil mr-2"></i> <span>Edit</span>
-                                            </a>
+                                            </router-link >
                                             <router-link :to="{ name: 'DetailsQuiz' , params: { quiz_id: quiz.id }}" class="dropdown-item">
                                                 <i class="fa text-info fa-eye mr-2"></i> <span>Details</span>
                                             </router-link>
@@ -59,12 +59,6 @@ export default {
         }
     },
     methods: {
-        quiz_edit: async function(quiz) {
-            let current_quiz = JSON.stringify(quiz)
-            localStorage.setItem('current_quiz', current_quiz);
-            this.$router.push({ name: 'CourseDetails', params: { id: quiz.id } })
-        },
-        
         get_all_quiz: async function (event) {
             
             axios.get('/api/v1/quiz/all').then((response) => {

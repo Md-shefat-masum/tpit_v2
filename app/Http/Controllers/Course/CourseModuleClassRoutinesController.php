@@ -12,7 +12,38 @@ use App\Models\Course\CourseModuleClassRoutines;
 
 class CourseModuleClassRoutinesController extends Controller
 {
-    public function all()
+    // public function all()
+    // {
+    //     $paginate = (int) request()->paginate ?? 10;
+    //     $orderBy = request()->orderBy ?? 'id';
+    //     $orderByType = request()->orderByType ?? 'ASC';
+
+    //     $status = 1;
+    //     if (request()->has('status')) {
+    //         $status = request()->status;
+    //     }
+
+    //     $query = CourseModuleClassRoutines::where('status', $status)->orderBy($orderBy, $orderByType);
+
+    //     if (request()->has('search_key')) {
+    //         $key = request()->search_key;
+    //         $query->where(function ($q) use ($key) {
+    //             return $q->where('id', '%' . $key . '%')
+    //                 ->orWhere('course_id', '%' . $key . '%')
+    //                 ->orWhere('module_id', '%' . $key . '%')
+    //                 ->orWhere('class_id', '%' . $key . '%')
+    //                 ->orWhere('date', '%' . $key . '%')
+    //                 ->orWhere('time', 'LIKE', '%' . $key . '%')
+    //                 ->orWhere('topic', 'LIKE', '%' . $key . '%');
+              
+    //         });
+    //     }
+
+    //     $datas = $query->paginate($paginate);
+    //     return response()->json($datas);
+    // }
+
+    public function all($course_id)
     {
         $paginate = (int) request()->paginate ?? 10;
         $orderBy = request()->orderBy ?? 'id';
@@ -23,7 +54,7 @@ class CourseModuleClassRoutinesController extends Controller
             $status = request()->status;
         }
 
-        $query = CourseModuleClassRoutines::where('status', $status)->orderBy($orderBy, $orderByType);
+        $query = CourseModuleClassRoutines::where('status', $status)->where('course_id', $course_id)->orderBy($orderBy, $orderByType);
 
         if (request()->has('search_key')) {
             $key = request()->search_key;
@@ -35,11 +66,10 @@ class CourseModuleClassRoutinesController extends Controller
                     ->orWhere('date', '%' . $key . '%')
                     ->orWhere('time', 'LIKE', '%' . $key . '%')
                     ->orWhere('topic', 'LIKE', '%' . $key . '%');
-              
             });
         }
 
-        $datas = $query->paginate($paginate);
+        $datas = $query->with('class')->paginate($paginate);
         return response()->json($datas);
     }
 
@@ -92,6 +122,25 @@ class CourseModuleClassRoutinesController extends Controller
         $data->save();
 
         return response()->json($data, 200);
+    }
+
+    public function store_all() {
+        foreach (request()->data as $key => $routine) {
+            $routine = (object) $routine;
+            $routine_check = CourseModuleClassRoutines::where('course_id', $routine->course_id)->where('module_id', $routine->module_id)
+            ->where('class_id', $routine->class_id)->first();
+
+
+            if($routine_check != null) {
+                $routine_check->date = $routine->date;
+                $routine_check->time = $routine->time;
+                $routine_check->topic = $routine->topic;
+                $routine_check->save();
+
+                
+            }
+        }
+        return response()->json(["message" => "Course uploaded successfully!"], 200);
     }
 
     public function canvas_store()

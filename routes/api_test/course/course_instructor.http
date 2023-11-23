@@ -31,7 +31,7 @@ content-type: application/json
 {
     "user_id": "1",
     "course_id": "2",
-    "cover_photo": "uplodes/course/trainer.png",
+    "cover_photo": "uploads/course/trainer.png",
     "full_name": "{{full_name}}",
     "designation": "ওয়েব ডিজাইন ও ডেভোলাপমেন্ট",
     "details": "৩ বছরেরও বেশি সময় ধরে ওয়েব ডিজাইন"
@@ -47,7 +47,7 @@ content-type: application/json
 {
     "user_id": "1",
     "course_id": "2",
-    "cover_photo": "uplodes/course/trainer.png",
+    "cover_photo": "uploads/course/trainer.png",
     "full_name": "{{full_name}}",
     "designation": "ওয়েব ডিজাইন ও ডেভোলাপমেন্ট",
     "details": "৩ বছরেরও বেশি সময় ধরে ওয়েব ডিজাইন"
@@ -63,7 +63,7 @@ content-type: application/json
     "id": "{{id}}",
     "user_id": "1",
     "course_id": "2",
-    "cover_photo": "uplodes/course/trainer.png",
+    "cover_photo": "uploads/course/trainer.png",
     "full_name": "tarek update",
     "designation": "ওয়েব ডিজাইন ও ডেভোলাপমেন্ট",
     "details": "৩ বছরেরও বেশি সময় ধরে ওয়েব ডিজাইন"
@@ -79,7 +79,7 @@ content-type: application/json
      "id": "{{id}}",
     "user_id": "1",
     "course_id": "2",
-    "cover_photo": "uplodes/course/trainer.png",
+    "cover_photo": "uploads/course/trainer.png",
     "full_name": "cavous update",
     "designation": "ওয়েব ডিজাইন ও ডেভোলাপমেন্ট",
     "details": "৩ বছরেরও বেশি সময় ধরে ওয়েব ডিজাইন"

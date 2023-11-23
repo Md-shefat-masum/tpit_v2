@@ -21,7 +21,7 @@ class BlogWriterSeeder extends Seeder
                'title'=>'tarek',
                'designation'=>'web developer',
                'description'=>'Are you busy recording your YouTube channel or podcast episodes and cant find the time to ALSO write content for your website?',
-               'image' =>'uplodes/blog/writer.png',           
+               'image' =>'uploads/blog/writer.png',           
         ]);
 
         DB::table('blog_blog_writer')->truncate();

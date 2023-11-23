@@ -269,12 +269,12 @@
                                             <tbody>
                                                 @foreach ($routine as $class_routine)
                                                     <tr>
-                                                        <td>ক্লাস {{ $class_routine->class->class_no }}</td>
+                                                        <td>ক্লাস {{ $class_routine->class ? $class_routine->class->class_no : '' }}</td>
                                                         <td>{{ $class_routine->date->format('d F') }} - {{ $class_routine->date->format('l') }}</td>
                                                         <td>রাত {{ Carbon\Carbon::parse($class_routine->time)->format('g:i A') }}</td>
                                                         <td>
                                                             <div>
-                                                                @if($class_routine->class->type == 'recorded')
+                                                                @if($class_routine->class && $class_routine->class->type == 'recorded')
                                                                     রেকর্ডেড ক্লাসঃ {{ $class_routine->topic }}
                                                                 @else
                                                                     লাইভ ক্লাসঃ {{ $class_routine->topic }}

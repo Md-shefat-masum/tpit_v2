@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use App\Models\ContactMessage;
 use App\Models\Course\CourseModuleClasses;
+use Intervention\Image\Facades\Image;
 
 class CourseModuleClassController extends Controller
 {
@@ -43,6 +44,53 @@ class CourseModuleClassController extends Controller
         return response()->json($datas);
     }
 
+    public function all_module_classes($course_id) {
+        $course_classes = CourseModuleClasses::where('status', 'active')->where('course_id', $course_id)->orderBy('id', 'DESC')->paginate(10);
+        return response()->json($course_classes);
+    }
+
+    public function update_class_module() {
+        foreach (request()->data as $key => $module_class) {
+            $module_class = (object) $module_class;
+            $module_class_check = CourseModuleClasses::where('course_id', $module_class->course_id)->where('id', $module_class->id)->first();
+
+            if($module_class_check != null) {
+                $module_class_check->title = $module_class->title;
+                $module_class_check->class_no = $module_class->class_no;
+                $module_class_check->type = $module_class->type;
+                $module_class_check->class_video_link = $module_class->class_video_link;
+                $module_class_check->save();
+            }
+        }
+        return response()->json(["message" => "Course uploaded successfully!"], 200);
+    }
+
+    public function update_image() {
+        $course_class = json_decode(request()->course);
+        if(request()->hasFile('banner')) {
+            $course_class_check = CourseModuleClasses::where('course_id', $course_class->course_id)->where('id', $course_class->id)->first();
+
+            if($course_class_check != null) {
+                
+                $file = request()->file('banner');
+                $path = 'uploads/class_video_thumbs/cp-' . $course_class_check->id . rand(1000, 9999) . '.';
+                
+                $path .= $file->getClientOriginalExtension();
+                Image::make($file)->fit(720, 450)->save(public_path($path));
+                $course_class_check->class_video_poster = $path;
+                $course_class_check->save();
+
+                return response()->json([
+                    'message' => 'image updated successfully!',
+                ], 200);
+            }
+        }else {
+            return response()->json([
+                'message' => 'image not found!',
+            ], 422);
+        }
+    }
+
     public function show($id)
     {
 
@@ -73,7 +121,6 @@ class CourseModuleClassController extends Controller
             'title' => ['required'],
             'type' => ['required'],
             'class_video_link' => ['required'],
-            'class_video_poster' => ['required'],
 
         ]);
 
@@ -91,7 +138,16 @@ class CourseModuleClassController extends Controller
         $data->title = request()->title;
         $data->type = request()->type;
         $data->class_video_link = request()->class_video_link;
-        $data->class_video_poster = request()->class_video_poster;
+        $data->save();
+        if(request()->hasFile('class_video_poster')) {
+            $file = request()->file('class_video_poster');
+            $path = 'uploads/class_video_thumbs/cp-' . $data->id . rand(1000, 9999) . '.';
+            
+            $path .= $file->getClientOriginalExtension();
+            Image::make($file)->fit(720, 450)->save(public_path($path));
+            $data->class_video_poster = $path;
+            $data->save();
+        }
         $data->save();
 
         return response()->json($data, 200);

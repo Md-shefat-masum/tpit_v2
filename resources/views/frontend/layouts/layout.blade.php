@@ -17,7 +17,7 @@
     @else
         @include('frontend.layouts.includes.meta', ['seo' => (object) $seo])
     @endif
-    <link rel="fabicon" type="image/png" sizes="16x16" href="{{ setting(key:'facebook') }}">
+    <link rel="shortcut icon" type="image/x-icon" href="{{$meta->fabicon ?? asset(setting(key:'fabicon')) }}">
     <link rel="stylesheet" href="{{ asset('css/plugins/bootstrap.css') }}">
     <link rel="stylesheet" href="{{ asset('frontend') }}/assets/icon/fontawesome-free-6.2.0-web/css/all.min.css">
     <link rel="stylesheet" href="{{ asset('frontend') }}/assets/styles/style.css">

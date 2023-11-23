@@ -19,19 +19,19 @@ class BlogCategorySeeder extends Seeder
         BlogsCategories::truncate();
         BlogsCategories::create([
             'title' => 'Programming',
-            'image' => 'uplodes/blog/babr.png',
+            'image' => 'uploads/blog/babr.png',
 
         ]);
 
         BlogsCategories::create([
             'title' => 'web design',
-            'image' => 'uplodes/blog/babr.png',
+            'image' => 'uploads/blog/babr.png',
 
         ]);
 
         BlogsCategories::create([
             'title' => 'degital marketing',
-            'image' => 'uplodes/blog/eeu.png',
+            'image' => 'uploads/blog/eeu.png',
 
         ]);
 

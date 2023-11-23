@@ -21,7 +21,7 @@ class CourseModuleClassRoutinesSeeder extends Seeder
             'course_id' => 1,
             'module_id' => 1,
             'class_id'  => 1,
-            'date' => '2023-01-11',
+            'date' => Carbon::parse('2023-01-11')->toDate(),
             'time' => '21:00',
             'topic' => 'php',
 
@@ -31,7 +31,7 @@ class CourseModuleClassRoutinesSeeder extends Seeder
             'course_id' => 1,
             'module_id' => 2,
             'class_id'  => 4,
-            'date' => '2023-01-12',
+            'date' => Carbon::parse('2023-01-12')->toDate(),
             'time' => '22:00',
             'topic' => 'javaScript',
 
@@ -41,7 +41,7 @@ class CourseModuleClassRoutinesSeeder extends Seeder
             'course_id' => 1,
             'module_id' => 3,
             'class_id'  => 7,
-            'date' => '2023-01-13',
+            'date' => Carbon::parse('2023-01-13')->toDate(),
             'time' => '21:00',
             'topic' => 'vue js',
 

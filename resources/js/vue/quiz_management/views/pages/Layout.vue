@@ -22,14 +22,14 @@
                         </router-link>
                     </li>
 
-                    <li>
+                    <!-- <li>
                         <router-link :to="{ name: `CourseFaqAll` }" aria-current="page" class="router-link-active">
                             <i class="far fa-circle mr-1"></i>
                             <div>
                                 Quiz Options
                             </div>
                         </router-link>
-                    </li>
+                    </li> -->
 
                     <li>
                         <router-link :to="{ name: `QuizQuestionAll` }" aria-current="page" class="router-link-active">

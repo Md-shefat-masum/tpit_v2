@@ -13,8 +13,7 @@ class QuizQuestionController extends Controller
     {
         $paginate = (int) request()->paginate ?? 10;
         $orderBy = request()->orderBy ?? 'id';
-        $orderByType = request()->orderByType ?? 'ASC';
-
+        $orderByType = request()->orderByType ?? 'DESC';
         $query = QuizQuestion::orderBy($orderBy, $orderByType);
 
         if (request()->has('search_key')) {

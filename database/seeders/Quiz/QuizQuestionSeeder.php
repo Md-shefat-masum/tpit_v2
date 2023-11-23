@@ -4,6 +4,7 @@ namespace Database\Seeders\Quiz;
 
 use App\Models\Quiz\QuizQuestion;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class QuizQuestionSeeder extends Seeder
 {
@@ -14,8 +15,9 @@ class QuizQuestionSeeder extends Seeder
      */
     public function run()
     {
+        DB::table('quiz_quiz_question')->truncate();
         QuizQuestion::truncate();
-
+        
         $data = new QuizQuestion();
 
         $data->quiz_id = '1';

@@ -93,6 +93,7 @@ Route::group(
             Route::get('/all', 'Api\QuizController@all');
             Route::post('/store', 'Api\QuizController@store');
             Route::post('/update', 'Api\QuizController@update');
+            Route::post('/add-question', 'Api\QuizController@add_question');
             Route::post('/soft-delete', 'Api\QuizController@soft_delete');
             Route::post('/destroy', 'Api\QuizController@destroy');
             Route::post('/restore', 'Api\QuizController@restore');
@@ -205,6 +206,35 @@ Route::group(
                     Route::get('/{id}', 'Course\CourseFaqsController@show');
                 });
 
+                Route::group(['prefix' => 'course-routines'], function () {
+                    Route::get('/all/{course_id}', 'Course\CourseModuleClassRoutinesController@all');
+                    Route::post('/store', 'Course\CourseModuleClassRoutinesController@store');
+                    Route::post('/store-all', 'Course\CourseModuleClassRoutinesController@store_all');
+                    Route::post('/canvas-store', 'Course\CourseModuleClassRoutinesController@canvas_store');
+                    Route::post('/update', 'Course\CourseModuleClassRoutinesController@update');
+                    Route::post('/canvas-update', 'Course\CourseModuleClassRoutinesController@canvas_update');
+                    Route::post('/soft-delete', 'Course\CourseModuleClassRoutinesController@soft_delete');
+                    Route::post('/destroy', 'Course\CourseModuleClassRoutinesController@destroy');
+                    Route::post('/restore', 'Course\CourseModuleClassRoutinesController@restore');
+                    Route::post('/bulk-import', 'Course\CourseModuleClassRoutinesController@bulk_import');
+                    Route::get('/{id}', 'Course\CourseModuleClassRoutinesController@show');
+                });
+
+                Route::group(['prefix' => 'course-milestones'], function () {
+                    Route::get('/all', 'Course\CourseMileStoneController@all');
+                    Route::get('/all-milestones/{course_id}', 'Course\CourseMileStoneController@get_all_milestones');
+                    Route::post('/store', 'Course\CourseMileStoneController@store');
+                    Route::post('/store-all', 'Course\CourseMileStoneController@store_all');
+                    Route::post('/canvas-store', 'Course\CourseMileStoneController@canvas_store');
+                    Route::post('/update', 'Course\CourseMileStoneController@update');
+                    Route::post('/canvas-update', 'Course\CourseMileStoneController@canvas_update');
+                    Route::post('/soft-delete', 'Course\CourseMileStoneController@soft_delete');
+                    Route::post('/destroy', 'Course\CourseMileStoneController@destroy');
+                    Route::post('/restore', 'Course\CourseMileStoneController@restore');
+                    Route::post('/bulk-import', 'Course\CourseMileStoneController@bulk_import');
+                    Route::get('/{id}', 'Course\CourseMileStoneController@show');
+                });
+
                 Route::group(['prefix' => 'course-for-whoms'], function () {
                     Route::get('/all/{course_id}', 'Course\CourseForWhomsController@all');
                     Route::post('/store', 'Course\CourseForWhomsController@store');
@@ -285,7 +315,10 @@ Route::group(
 
                 Route::group(['prefix' => 'course-modules'], function () {
                     Route::get('/all', 'Course\CourseModulesController@all');
+                    Route::get('/all-modules/{course_id}', 'Course\CourseModulesController@all_modules');
                     Route::post('/store', 'Course\CourseModulesController@store');
+                    Route::post('/item-store', 'Course\CourseModulesController@store_item');
+                    Route::post('/store-all', 'Course\CourseModulesController@update_modules');
                     Route::post('/canvas-store', 'Course\CourseModulesController@canvas_store');
                     Route::post('/update', 'Course\CourseModulesController@update');
                     Route::post('/canvas-update', 'Course\CourseModulesController@canvas_update');
@@ -350,9 +383,12 @@ Route::group(
 
                 Route::group(['prefix' => 'course-modules-class'], function () {
                     Route::get('/all', 'Course\CourseModuleClassController@all');
+                    Route::get('/all-classes/{course_id}', 'Course\CourseModuleClassController@all_module_classes');
                     Route::post('/store', 'Course\CourseModuleClassController@store');
+                    Route::post('/store-all', 'Course\CourseModuleClassController@update_class_module');
                     Route::post('/canvas-store', 'Course\CourseModuleClassController@canvas_store');
                     Route::post('/update', 'Course\CourseModuleClassController@update');
+                    Route::post('/update-image', 'Course\CourseModuleClassController@update_image');
                     Route::post('/canvas-update', 'Course\CourseModuleClassController@canvas_update');
                     Route::post('/soft-delete', 'Course\CourseModuleClassController@soft_delete');
                     Route::post('/destroy', 'Course\CourseModuleClassController@destroy');

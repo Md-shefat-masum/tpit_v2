@@ -22,6 +22,11 @@ class CourseModule extends Model
         return $this->hasMany(CourseModuleClasses::class,'course_modules_id');
     }
 
+    public function course()
+    {
+        return $this->hasOne(Course::class, 'id');
+    }
+
     public function quizes()
     {
         return $this->hasMany(CourseModuleClassQuizes::class,'course_module_id');
