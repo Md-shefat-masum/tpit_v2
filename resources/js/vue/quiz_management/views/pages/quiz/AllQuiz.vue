@@ -29,17 +29,20 @@
                                         </button>
                                         <div class="dropdown-menu">
                                             <router-link :to="{ name: 'EditQuiz' , params: { quiz_id: quiz.id }}" class="dropdown-item" @click.prevent="quiz_edit(quiz)">
-                                                <i class="fa text-warning fa-pencil mr-2"></i> <span>Edit</span>
+                                                <i class="fa text-warning fa-pencil mr-2"></i>
+                                                <span>Edit</span>
                                             </router-link >
                                             <router-link :to="{ name: 'DetailsQuiz' , params: { quiz_id: quiz.id }}" class="dropdown-item">
-                                                <i class="fa text-info fa-eye mr-2"></i> <span>Details</span>
+                                                <i class="fa text-info fa-eye mr-2"></i>
+                                                <span>Details</span>
                                             </router-link>
                                             <a class="dropdown-item" @click.prevent="deleteQuiz(quiz.id)">
-                                                <i class="fa text-danger fa-trash mr-2"></i> <span>Delete</span>
+                                                <i class="fa text-danger fa-trash mr-2"></i>
+                                                <span>Delete</span>
                                             </a>
                                         </div>
                                     </div>
-                                    
+
                                 </td>
                             </tr>
                         </tbody>
@@ -47,7 +50,7 @@
                 </div>
             </div>
         </div>
-    
+
     </div>
 </template>
 
@@ -60,7 +63,7 @@ export default {
     },
     methods: {
         get_all_quiz: async function (event) {
-            
+
             axios.get('/api/v1/quiz/all').then((response) => {
                 // console.log(response.data);
                 this.all_quizes = response.data;
@@ -85,7 +88,7 @@ export default {
                     console.log(e);
                 });
             }
-            
+
         }
     },
     computed: {

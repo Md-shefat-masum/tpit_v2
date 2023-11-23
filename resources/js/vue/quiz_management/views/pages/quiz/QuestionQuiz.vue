@@ -134,7 +134,7 @@ export default {
         },
         get_quiz_details: async function (event) {
             let id = this.$route.params.quiz_id
-            
+
             axios.get(`/api/v1/quiz/${id}`).then((response) => {
                 this.quiz_details = response.data;
             })
@@ -183,7 +183,7 @@ export default {
             if (this.topic_id && this.topic_id != '') {
                 url += `&topicID=${this.topic_id}`;
             }
-            
+
             await axios.get(url).then((response) => {
                 // '/asset/index?page='+page
                 this.questions = response.data;

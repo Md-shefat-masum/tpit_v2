@@ -80,16 +80,14 @@
                                                     <div class="form-inline">
                                                         <div class="form-group">
                                                             <div class="input">
-                                                                <input class="form-check-input" value="1"
-                                                                    v-model="option.is_correct" type="checkbox"
-                                                                    id="gridCheck1">
+                                                                <input class="form-check-input" value="1" v-model="option.is_correct" type="checkbox" id="gridCheck1">
                                                                 <!-- <input v-else class="form-check-input" type="checkbox" id="gridCheck1"> -->
-                                                                <input type="text" v-model="option.title"
-                                                                    class="form-control">
+                                                                <input type="text" v-model="option.title" class="form-control">
                                                                 <button v-if="question.options.length > 1"
                                                                     @click.prevent="remove_option(question.options, serial)"
-                                                                    class="btn btn-danger btn-sm"><i
-                                                                        class="fa fa-trash"></i></button>
+                                                                    class="btn btn-danger btn-sm">
+                                                                    <i class="fa fa-trash"></i>
+                                                                </button>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -99,9 +97,10 @@
                                                 <div class="row">
                                                     <div class="col-md-12">
                                                         <div class="float-right">
-                                                            <button @click.prevent="append_new_option(question)"
-                                                                class="btn btn-primary btn-sm mr-1"><i
-                                                                    class="fa fa-plus mr-1"></i>Add new option</button>
+                                                            <button @click.prevent="append_new_option(question)" class="btn btn-primary btn-sm mr-1">
+                                                                <i class="fa fa-plus mr-1"></i>
+                                                                Add new option
+                                                            </button>
                                                         </div>
                                                     </div>
                                                 </div>

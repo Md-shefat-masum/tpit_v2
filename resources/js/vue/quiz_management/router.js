@@ -6,6 +6,7 @@ import AllQuiz from "./views/pages/quiz/AllQuiz.vue";
 import CreateQuiz from "./views/pages/quiz/Create.vue";
 import EditQuiz from "./views/pages/quiz/Edit.vue";
 import DetailsQuiz from "./views/pages/quiz/Details.vue";
+import AddQuestionQuiz from "./views/pages/quiz/QuestionQuiz.vue";
 
 // course batch
 import QuizTopicLayout from "./views/pages/quiz_topic/QuizTopicLayout.vue";
@@ -47,6 +48,16 @@ const routes = [
                 name: 'DetailsQuiz',
                 component: DetailsQuiz,
             },
+            {
+                path: 'edit/:quiz_id',
+                name: 'EditQuiz',
+                component: EditQuiz,
+            },
+            {
+                path: 'add-question/:quiz_id',
+                name: 'AddQuestionQuiz',
+                component: AddQuestionQuiz,
+            },
 
             {
                 path: 'topic',
@@ -54,7 +65,6 @@ const routes = [
                 children: [
                     {
                         path: '',
-                        name: 'QuizTopicAll',
                         component: QuizTopicAll,
                     },
                     {
@@ -68,12 +78,12 @@ const routes = [
                         component: QuizTopicCreate,
                     },
                     {
-                        path: 'edit/:topic_id',
+                        path: 'edit/:id',
                         name: 'QuizTopicEdit',
                         component: QuizTopicEdit,
                     },
                     {
-                        path: 'details/:topic_id',
+                        path: 'details/:id',
                         name: 'QuizTopicDetails',
                         component: QuizTopicDetails,
                     },
@@ -86,7 +96,6 @@ const routes = [
                 children: [
                     {
                         path: '',
-                        name: 'QuizQuestionAll',
                         component: QuizQuestionAll,
                     },
                     {

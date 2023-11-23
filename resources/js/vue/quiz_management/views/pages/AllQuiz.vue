@@ -22,7 +22,7 @@
                                 <td><span class="text-primary">#{{ index + 1 }}</span></td>
                                 <td>{{ quiz.title }}</td>
                                 <td>
-                                    
+
                                     <div class="btn-group">
                                         <button class="btn btn-sm btn-outline-secondary dropdown-toggle" type="button"
                                             data-toggle="dropdown" aria-expanded="false">
@@ -34,7 +34,7 @@
                                             </a>
                                         </div>
                                     </div>
-                                    
+
                                 </td>
                             </tr>
                         </tbody>
@@ -42,7 +42,7 @@
                 </div>
             </div>
         </div>
-    
+
     </div>
 </template>
 
@@ -60,7 +60,7 @@ export default {
             this.$router.push({ name: 'CourseDetails', params: { id: quiz.id } })
         },
         get_all_quiz: async function (event) {
-            
+
             axios.get('/api/v1/quiz/all').then((response) => {
                 // console.log(response.data);
                 this.all_quizes = response.data;

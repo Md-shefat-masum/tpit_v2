@@ -14,7 +14,7 @@
                 class="user_create_form">
                 <div class="card-body">
                     <div class="row justify-content-center">
-                        <div class="col-xl-10 col-12">
+                        <div class="col-12">
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group mb-2">
@@ -72,37 +72,36 @@
                                         <div class="form_group border boder-primary p-1 mb-2">
                                             <h4>Options</h4>
                                             <hr>
-                                            <div class="form-row">
+                                            <div class="d-flex flex-wrap" style="gap: 30px;">
 
-                                                <div v-for="(option, serial) in question.options" :key="serial"
-                                                    class="form-group col-md-6">
+                                                <div v-for="(option, serial) in question.options" :key="serial" class="form-group">
                                                     <label for="">Option {{ serial + 1 }}</label>
                                                     <div class="form-inline">
                                                         <div class="form-group">
-                                                            <div class="input">
-
+                                                            <div class="d-flex gap-4 align-items-center" style="gap: 10px;">
                                                                 <input v-if="question.is_multiple == 1" class="form-check-input" value="1" v-model="option.is_correct" type="checkbox" id="gridCheck1">
-                                                                <input v-else class="form-check-input" value="1" v-model="option.is_correct" type="radio" id="gridCheck1">
+                                                                <input v-else class="form-check-input" value="1" v-model="option.is_correct" name="selected_correct_option" type="radio" id="gridCheck1">
                                                                 <!-- <input v-else class="form-check-input" type="checkbox" id="gridCheck1"> -->
-                                                                <input type="text" v-model="option.title"
-                                                                    class="form-control">
-                                                                <button v-if="question.options.length > 1"
-                                                                    @click.prevent="remove_option(question.options, serial)"
-                                                                    class="btn btn-danger btn-sm"><i
-                                                                        class="fa fa-trash"></i></button>
+                                                                <input type="text" v-model="option.title" class="form-control">
+                                                                <button v-if="question.options.length > 1" @click.prevent="remove_option(question.options, serial)"
+                                                                    class="btn btn-danger btn-sm">
+                                                                    <i class="fa fa-trash"></i>
+                                                                </button>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
-
                                             </div>
+
                                             <div class="action_btns mt-1">
                                                 <div class="row">
                                                     <div class="col-md-12">
                                                         <div class="float-right">
                                                             <button @click.prevent="append_new_option(question)"
-                                                                class="btn btn-primary btn-sm mr-1"><i
-                                                                    class="fa fa-plus mr-1"></i>Add new option</button>
+                                                                class="btn btn-primary btn-sm mr-1">
+                                                                <i class="fa fa-plus mr-1"></i>
+                                                                Add new option
+                                                            </button>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -114,14 +113,18 @@
                                                 <div class="col-md-12">
                                                     <div class="float-right">
                                                         <button @click.prevent="append_new_question()"
-                                                            class="btn btn-primary btn-sm mr-1"><i
-                                                                class="fa fa-plus mr-1"></i>Add new Question</button>
+                                                            class="btn btn-primary btn-sm mr-1">
+                                                            <i class="fa fa-plus mr-1"></i>
+                                                            Add new Question
+                                                        </button>
                                                     </div>
                                                     <div class="float-right">
                                                         <button v-if="questions.length > 1"
                                                             @click.prevent="remove_question(questions, index)"
-                                                            class="btn btn-danger btn-sm mr-1"><i
-                                                                class="fa fa-trash mr-1"></i>Remove Question</button>
+                                                            class="btn btn-danger btn-sm mr-1">
+                                                            <i class="fa fa-trash mr-1"></i>
+                                                            Remove Question
+                                                        </button>
                                                     </div>
                                                 </div>
                                             </div>
