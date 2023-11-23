@@ -3,9 +3,10 @@ import VueRouter from 'vue-router'
 import PageLayout from "./views/pages/Layout.vue";
 import Layout from "./views/Layout.vue";
 
+import AllCourse from "./views/AllCourse.vue";
 import WhatIsThisCourse from "./views/pages/WhatIsThisCourse.vue";
 import WhyIsThisCourse from "./views/pages/WhyIsThisCourse.vue";
-import AllCourse from "./views/AllCourse.vue";
+import CourseBanner from "./views/pages/CourseBanner.vue";
 import Dashboard from "./views/Dashboard.vue";
 
 // course batch
@@ -67,6 +68,16 @@ import CourseWhatWillGetDetails from "./views/pages/course_what_will_get/Details
 import CourseTrainerLayout from "./views/pages/course_trainer/CourseTrainerLayout.vue";
 import CourseTrainerCreate from "./views/pages/course_trainer/Trainer.vue";
 
+// course milestones
+import CourseMilestoneLayout from "./views/pages/course_milestone/CourseMilestoneLayout.vue";
+import CourseMileStone from "./views/pages/course_milestone/Milestones.vue";
+import CourseMileStoneCreate from "./views/pages/course_milestone/MilestoneCreate.vue";
+
+// course module classes
+import CourseClassLayout from "./views/pages/course_module_class/CourseClassLayout.vue";
+import CourseClassAll from "./views/pages/course_module_class/CourseClasses.vue";
+import CourseClassCreate from "./views/pages/course_module_class/CourseClassCreate.vue";
+
 // course faq
 import CourseFaqLayout from "./views/pages/course_faq/CourseFaqLayout.vue";
 import CourseFaqAll from "./views/pages/course_faq/All.vue";
@@ -76,7 +87,14 @@ import CourseFaqDetails from "./views/pages/course_faq/Details.vue";
 
 // course module
 import CourseModule from "./views/pages/course_module/CourseModule.vue";
-import CourseAtaGlance from "./views/pages/course_module/AtaGlance.vue";
+import CourseModuleAll from "./views/pages/course_module/Modules.vue";
+import CourseModuleCreate from "./views/pages/course_module/CreateModules.vue";
+import CourseModuleCSV from "./views/pages/course_module/CsvUpload.vue";
+import CourseAtAglance from "./views/pages/course_module/AtAglance.vue";
+import CourseClassQuiz from "./views/pages/course_module/CourseClassQuiz.vue";
+
+// course routines
+import CourseRoutines from "./views/pages/course_routine/CourseRoutine.vue";
 
 
 Vue.use(VueRouter);
@@ -105,6 +123,11 @@ const routes = [
                         path: 'what-is-this-course',
                         name: 'WhatIsThisCourse',
                         component: WhatIsThisCourse,
+                    },
+                    {
+                        path: 'course-banner',
+                        name: 'CourseBanner',
+                        component: CourseBanner,
                     },
                     {
                         path: 'why-is-this-course',
@@ -358,6 +381,41 @@ const routes = [
                         ]
                     },
 
+                    // couese milestones
+                    {
+                        path: 'milestones',
+                        component: CourseMilestoneLayout,
+                        children: [
+                            {
+                                path: '',
+                                name: 'CourseMileStone',
+                                component: CourseMileStone,
+                            },
+                            {
+                                path: 'create',
+                                name: 'CourseMileStoneCreate',
+                                component: CourseMileStoneCreate,
+                            },
+                        ]
+                    },
+
+                    {
+                        path: 'classes',
+                        component: CourseClassLayout,
+                        children: [
+                            {
+                                path: '',
+                                name: 'CourseClassAll',
+                                component: CourseClassAll,
+                            },
+                            {
+                                path: 'create',
+                                name: 'CourseClassCreate',
+                                component: CourseClassCreate,
+                            },
+                        ]
+                    },
+
 
                     // couese Faq
                     {
@@ -399,10 +457,39 @@ const routes = [
                         component: CourseModule,
                     },
                     {
+                        path: 'all-modules',
+                        name: `CourseModuleAll`,
+                        component: CourseModuleAll,
+                    },
+                    {
+                        path: 'modules/create',
+                        name: `CourseModuleCreate`,
+                        component: CourseModuleCreate,
+                    },
+                    {
                         path: 'at-a-glance',
-                        name: `CourseAtaGlance`,
-                        component: CourseAtaGlance,
-                    }
+                        name: `CourseAtAglance`,
+                        component: CourseAtAglance,
+                    },
+                    {
+                        path: 'csv-upload',
+                        name: `CourseModuleCSV`,
+                        component: CourseModuleCSV,
+                    },
+
+                    // class quiz
+                    {
+                        path: 'class-quiz',
+                        name: `CourseClassQuiz`,
+                        component: CourseClassQuiz,
+                    },
+
+                    // course routines
+                    {
+                        path: 'routines',
+                        name: `CourseRoutines`,
+                        component: CourseRoutines,
+                    },
                 ],
             },
         ]

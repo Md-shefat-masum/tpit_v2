@@ -3,7 +3,27 @@
         <h6 class="mb-1">What is this course</h6>
 
         <form class="m-2" @submit.prevent="updateWhatCourse($event.target)">
+
             <div class="form-group">
+                <label class="form-label" for="title">Course Title</label>
+                <input type="text" id="title" v-model="course_title" name="title" class="form-control" />
+            </div>
+
+            <div class="form-group">
+                <label class="form-label" for="title">Course Intro video</label>
+                <input type="text" id="title" v-model="course_intro" name="title" class="form-control" />
+            </div>
+
+            <div class="form-group">
+                <h5>banner</h5>
+                <label v-if="course_image" :for="`classData${course_id}`">
+                    <img height="100" width="100" class="img-fluid" :src="'/' + course_image">
+                </label>
+                <input type="file" @change="updateImage($event)" :id="`classData${course_id}`"
+                    class="form-control d-none" accept=".jpg,.png,.jpeg,.webp">
+            </div>
+            <div class="form-group">
+
                 <label for="">What is this course</label>
                 <!-- <textarea class="form-control" name="what_is_this_course" id="default" cols="30" rows="10" v-model="what_course"></textarea> -->
                 <ckeditor :editor="editor" v-model="what_course" :config="editorConfig"></ckeditor>
@@ -20,19 +40,24 @@ export default {
         return {
             editor: ClassicEditor,
             what_course: null,
+            course_title: null,
+            course_image: null,
             course_id: '',
+            course_intro: '',
             editorConfig: {
                 // The configuration of the editor.
                 uiColor: '#283046',
                 height: 400,
             }
-            
+
         }
     },
     methods: {
-        updateWhatCourse: async function(event) {
+        updateWhatCourse: async function (event) {
             let formData = new FormData(event);
             formData.append('what_is_this_course', this.what_course);
+            formData.append('title', this.course_title);
+            formData.append('intro_video', this.course_intro);
             formData.append('id', this.course_id);
 
             let data = {
@@ -41,7 +66,24 @@ export default {
 
             await axios.post('/api/v1/course/update', data.formData).then((response) => {
                 localStorage.setItem('current_course', JSON.stringify(response?.data))
+                this.get_course_details();
                 window.toaster("Course Data updated successfully!");
+            })
+                .catch((e) => {
+                    console.log(e);
+                });
+        },
+        updateImage: async function(event) {
+            var image_pic = event.target.files[0];
+            
+            let form = new FormData(document.createElement("form"));
+            form.append('image', image_pic);
+            form.append('id', this.course_id);
+
+            axios.post(`/api/v1/course/update`, form).then((response) => {
+                // console.log(response.data);
+                localStorage.setItem('current_course', JSON.stringify(response?.data))
+                window.toaster("Image updated successfully!");
             })
             .catch((e) => {
                 console.log(e);
@@ -49,9 +91,12 @@ export default {
         },
         get_course_details: async function (event) {
             let whatcourse = localStorage.getItem('current_course');
-            if(whatcourse) {
+            if (whatcourse) {
                 whatcourse = JSON.parse(whatcourse);
                 this.what_course = whatcourse.what_is_this_course;
+                this.course_title = whatcourse.title;
+                this.course_image = whatcourse.image;
+                this.course_intro = whatcourse.intro_video;
                 this.course_id = whatcourse.id
             }
         }
@@ -62,17 +107,18 @@ export default {
 
     created: async function () {
         await this.get_course_details();
-        
+
     },
 }
 </script>
 
 <style>
-    .ck-editor__editable {
-        min-height: 400px;
-    }
-    .ck.ck-editor__main>.ck-editor__editable {
-        background-color: #283046;
-        border-color: #757575;
-    }
+.ck-editor__editable {
+    min-height: 400px;
+}
+
+.ck.ck-editor__main>.ck-editor__editable {
+    background-color: #283046;
+    border-color: #757575;
+}
 </style>

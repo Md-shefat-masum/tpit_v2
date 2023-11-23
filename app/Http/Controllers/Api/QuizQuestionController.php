@@ -21,7 +21,7 @@ class QuizQuestionController extends Controller
         }
 
         $orderBy = request()->orderBy ?? 'id';
-        $orderByType = request()->orderByType ?? 'ASC';
+        $orderByType = request()->orderByType ?? 'DESC';
         $query = QuizQuestion::orderBy($orderBy, $orderByType);
 
         if (request()->has('search_key')) {

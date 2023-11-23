@@ -101,11 +101,38 @@
                                                                     {{ $class->class_no }}</div>
 
 
-                                                                <div data-key="{{ $key }}"
+                                                                {{-- <div data-key="{{ $key }}"
                                                                     data-link="`{{ $class->link }}`"
                                                                     class="live_class_and_topic"
                                                                     style="cursor: {{ $class->is_complete ? 'pointer;' : 'not-allowed;' }};"
                                                                     @if ($class->is_complete) onclick="getClassVideolink(`{{ $class->class_video_link }}`)" @endif>
+                                                                    @if ($class->is_complete)
+                                                                        <div class="live_class_icon">
+                                                                            <i
+                                                                                class="fa-solid fa-circle-check text-success"></i>
+                                                                        </div>
+                                                                    @else
+                                                                        <div class="live_class_icon">
+                                                                            <img src="/frontend/assets/images/about_page_image/class_module/podcasts.png"
+                                                                                alt="" />
+                                                                        </div>
+                                                                    @endif
+                                                                    <div class="class_module_live_class">
+                                                                        @if ($class->type == 'live')
+                                                                            লাইভ ক্লাসঃ
+                                                                        @else
+                                                                            রেকর্ডেড ক্লাসঃ
+                                                                        @endif
+                                                                    </div>
+                                                                    <div class="class_module_topic cursor_pointer">
+                                                                        {{ $class->title }}</div>
+                                                                </div> --}}
+
+                                                                <div data-key="{{ $key }}"
+                                                                    data-link="`{{ $class->link }}`"
+                                                                    class="live_class_and_topic"
+                                                                    style="cursor: pointer"
+                                                                    onclick="getClassVideolink(`{{ $class->class_video_link }}`)">
                                                                     @if ($class->is_complete)
                                                                         <div class="live_class_icon">
                                                                             <i
@@ -269,12 +296,12 @@
                                             <tbody>
                                                 @foreach ($routine as $class_routine)
                                                     <tr>
-                                                        <td>ক্লাস {{ $class_routine->class->class_no }}</td>
+                                                        <td>ক্লাস {{ $class_routine->class ? $class_routine->class->class_no : '' }}</td>
                                                         <td>{{ $class_routine->date->format('d F') }} - {{ $class_routine->date->format('l') }}</td>
                                                         <td>রাত {{ Carbon\Carbon::parse($class_routine->time)->format('g:i A') }}</td>
                                                         <td>
                                                             <div>
-                                                                @if($class_routine->class->type == 'recorded')
+                                                                @if($class_routine->class && $class_routine->class->type == 'recorded')
                                                                     রেকর্ডেড ক্লাসঃ {{ $class_routine->topic }}
                                                                 @else
                                                                     লাইভ ক্লাসঃ {{ $class_routine->topic }}

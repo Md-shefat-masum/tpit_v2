@@ -47,6 +47,12 @@
                 </div>
             </div>
         </div>
+        <div class="card-footer text-center">
+            <button type="submit" class="btn btn-outline-info">
+                <i class="fa fa-upload"></i>
+                Submit
+            </button>
+        </div>
         <!-- <table>
             <thead>
                 <tr>

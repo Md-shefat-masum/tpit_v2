@@ -22,4 +22,9 @@ class CourseMilestone extends Model
     {
         return $this->hasMany(CourseModule::class, 'milestone_id');
     }
+
+    public function course()
+    {
+        return $this->hasOne(Course::class, 'id');
+    }
 }

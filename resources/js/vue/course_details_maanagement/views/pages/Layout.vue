@@ -113,6 +113,15 @@
                     </li>
 
                     <li>
+                        <router-link :to="{name: `CourseClassQuiz`}" aria-current="page" class="router-link-active">
+                            <i class="far fa-circle mr-1"></i>
+                            <div>
+                                Course class quiz
+                            </div>
+                        </router-link>
+                    </li>
+
+                    <li>
                         <router-link :to="{ name: `CourseTrainerCreate` }" aria-current="page" class="router-link-active">
                             <i class="far fa-circle mr-1"></i>
                             <div>
@@ -122,7 +131,7 @@
                     </li>
 
                     <li>
-                        <router-link :to="{name: `CourseModule`}" aria-current="page" class="router-link-active">
+                        <router-link :to="{name: `CourseRoutines`}" aria-current="page" class="router-link-active">
                             <i class="far fa-circle mr-1"></i>
                             <div>
                                 Course routine
