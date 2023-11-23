@@ -14,5 +14,10 @@ yarn-error.log
 /*.zip
 /*.svg
 .svg
-/public/js/vue
-/public/css/tailwind
+/public/js/vue/*
+/public/css/tailwind/*
+public/css/backend.css
+public/js/app.js
+public/css/style.css
+public/mix-manifest.json
+public/js/app.js.LICENSE.txt
