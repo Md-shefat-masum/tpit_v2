@@ -2,7 +2,7 @@
     <div class="custom_scroll">
         <div class="card list_card">
             <div class="card-header">
-                <h4>Edit course Job work</h4>
+                <h4>Edit Quiz Question:</h4>
                 <div class="btns">
                     <a @click="$router.go(-1)" class="btn rounded-pill btn-outline-warning" >
                         <i class="fa fa-arrow-left me-5px"></i>
@@ -38,7 +38,15 @@
 export default {
     data() {
         return {
-            course_for_whom: {},
+            course_id: '',
+            question: '',
+            topic_id: '',
+            topic_title: '',
+            question_id: '',
+            topics: [
+
+            ],
+            quiz_edit: ''
         }
     },
     methods: {

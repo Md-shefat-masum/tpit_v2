@@ -68,7 +68,12 @@ class QuizController extends Controller
             ], 422);
         }
 
-        $question_ids = json_decode(request()->question_ids);
+        $questions = json_decode(request()->question_ids);
+        $question_ids = [];
+        foreach ($questions as $key => $question_id) {
+            array_push($question_ids, $question_id->id);
+        }
+        // dd($question_ids);
         $data = new Quiz();
         $data->title = request()->title;
         $data->save();
