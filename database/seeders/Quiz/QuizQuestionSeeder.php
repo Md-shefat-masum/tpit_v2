@@ -17,7 +17,6 @@ class QuizQuestionSeeder extends Seeder
     {
         DB::table('quiz_quiz_question')->truncate();
         QuizQuestion::truncate();
-        
         $data = new QuizQuestion();
 
         $data->quiz_id = '1';

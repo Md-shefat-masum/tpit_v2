@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Models\Quiz\Quiz;
+use App\Models\Quiz\QuizQuestion;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
@@ -39,9 +40,7 @@ class QuizController extends Controller
         }
         $data = Quiz::where('id', $id)
             ->select($select)
-            ->with(['questions' => function($q) {
-                $q->with(['options']);
-            }])
+            ->with(['questions'])
             ->first();
         if ($data) {
             return response()->json($data, 200);
@@ -57,47 +56,7 @@ class QuizController extends Controller
 
     public function store()
     {
-        $validator = Validator::make(request()->all(), [
-            'title' => ['required'],
-        ]);
-
-        if ($validator->fails()) {
-            return response()->json([
-                'err_message' => 'validation error',
-                'errors' => $validator->errors(),
-            ], 422);
-        }
-
-        $questions = json_decode(request()->question_ids);
-        $question_ids = [];
-        foreach ($questions as $key => $question_id) {
-            array_push($question_ids, $question_id->id);
-        }
-        // dd($question_ids);
-        $data = new Quiz();
-        $data->title = request()->title;
-        $data->save();
-        $data->questions()->attach($question_ids);
-
-        // foreach ($question_ids as $key => $question_id) {
-        //     $quiz_question = QuizQuestion::where('id', $question_id)->first();
-        //     // dd($quiz_question);
-        //     $quiz_question->quiz_id = $data->id;
-        //     $quiz_question->save();
-        // }
-
-        return response()->json(["data" => $data, "message" => 'Quiz created successfully!'], 200);
-    }
-
-    public function add_question() {
-        $data = Quiz::find(request()->id);
-        if (!$data) {
-            return response()->json([
-                'err_message' => 'validation error',
-                'errors' => ['name' => ['data not found by given id ' . (request()->id ? request()->id : 'null')]],
-            ], 422);
-        }
-
+        // dd(request()->all());
         $validator = Validator::make(request()->all(), [
             'title' => ['required'],
         ]);
@@ -110,18 +69,19 @@ class QuizController extends Controller
         }
 
         $question_ids = json_decode(request()->question_ids);
+        $data = new Quiz();
         $data->title = request()->title;
         $data->save();
+
+
         foreach ($question_ids as $key => $question_id) {
-            $question_check = DB::table('quiz_quiz_question')->where('quiz_question_id', $question_id)->first();
-            if(!$question_check) {
-                DB::table('quiz_quiz_question')->insert([
-                    'quiz_id' => $data->id,
-                    'quiz_question_id' => $question_id
-                ]);
-            }
+            $quiz_question = QuizQuestion::where('id', $question_id)->first();
+            // dd($quiz_question);
+            $quiz_question->quiz_id = $data->id;
+            $quiz_question->save();
         }
-        return response()->json(["data" => $data, "message" => 'Quiz Updated successfully!'], 200);
+
+        return response()->json(["data" => $data, "message" => 'Quiz created successfully!'], 200);
     }
 
     public function update()
@@ -166,7 +126,7 @@ class QuizController extends Controller
     public function destroy()
     {
         $validator = Validator::make(request()->all(), [
-            'id' => ['required', 'exists:quizzes,id'],
+            'id' => ['required', 'exists:quizes,id'],
         ]);
 
         if ($validator->fails()) {
@@ -177,7 +137,6 @@ class QuizController extends Controller
         }
 
         $data = Quiz::find(request()->id);
-        $data->questions()->detach();
         $data->delete();
 
         return response()->json([

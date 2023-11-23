@@ -6,7 +6,6 @@ import AllQuiz from "./views/pages/quiz/AllQuiz.vue";
 import CreateQuiz from "./views/pages/quiz/Create.vue";
 import EditQuiz from "./views/pages/quiz/Edit.vue";
 import DetailsQuiz from "./views/pages/quiz/Details.vue";
-import AddQuestionQuiz from "./views/pages/quiz/QuestionQuiz.vue";
 
 // course batch
 import QuizTopicLayout from "./views/pages/quiz_topic/QuizTopicLayout.vue";
@@ -47,16 +46,6 @@ const routes = [
                 path: 'details/:quiz_id',
                 name: 'DetailsQuiz',
                 component: DetailsQuiz,
-            },
-            {
-                path: 'edit/:quiz_id',
-                name: 'EditQuiz',
-                component: EditQuiz,
-            },
-            {
-                path: 'add-question/:quiz_id',
-                name: 'AddQuestionQuiz',
-                component: AddQuestionQuiz,
             },
 
             {

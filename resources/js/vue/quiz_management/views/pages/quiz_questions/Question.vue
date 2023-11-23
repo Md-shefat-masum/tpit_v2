@@ -4,13 +4,14 @@
             <div class="card-header">
                 <h4>Create Quiz</h4>
                 <div class="btns">
-                    <a @click="$router.go(-1)" class="btn rounded-pill btn-outline-warning" >
+                    <a @click="$router.go(-1)" class="btn rounded-pill btn-outline-warning">
                         <i class="fa fa-arrow-left me-5px"></i>
                         Back
                     </a>
                 </div>
             </div>
-            <form @keyup.enter="store_course_work($event.target)" @submit.prevent="store_course_work($event.target)" class="user_create_form">
+            <form @keyup.enter="store_question($event.target)" @submit.prevent="store_question($event.target)"
+                class="user_create_form">
                 <div class="card-body">
                     <div class="row justify-content-center">
                         <div class="col-xl-10 col-12">
@@ -18,8 +19,9 @@
                                 <div class="col-md-12">
                                     <div class="form-group mb-2">
                                         <label class="form-label" for="topic">Topic</label>
-                                        <select name="topic" class="form-control" id="topic">
-                                            <option v-for="(topic, index) in topics" :key="index" :value="topic.id">{{ topic.title }}</option>
+                                        <select name="topic" class="form-control" v-model="topic_id" @change="setTopicTitle(topic)" id="topic">
+                                            <option v-for="(topic, index) in topics" :key="index" :value="topic.id">{{
+                                                topic.title }}</option>
                                         </select>
                                     </div>
                                 </div>
