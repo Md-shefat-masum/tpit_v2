@@ -2,7 +2,7 @@
 $meta = [
     // "meta" => [],
     "seo" => [
-        "title" => "contact",
+        "title" => "login",
         "image" => asset('seo.jpg'),
     ]
 ];
