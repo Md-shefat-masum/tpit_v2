@@ -1,7 +1,7 @@
 @php
     $meta = [
         'seo' => [
-            'title' => 'contact',
+            'title' => 'seminar',
             'image' => asset('seo.jpg'),
         ],
     ];
