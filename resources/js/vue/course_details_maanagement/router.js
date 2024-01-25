@@ -4,6 +4,7 @@ import PageLayout from "./views/pages/Layout.vue";
 import Layout from "./views/Layout.vue";
 
 import AllCourse from "./views/AllCourse.vue";
+import CreateCourse from "./views/CreateCourse.vue";
 import WhatIsThisCourse from "./views/pages/WhatIsThisCourse.vue";
 import WhyIsThisCourse from "./views/pages/WhyIsThisCourse.vue";
 import CourseBanner from "./views/pages/CourseBanner.vue";
@@ -109,6 +110,11 @@ const routes = [
                 path: '',
                 name: 'AllCourse',
                 component: AllCourse,
+            },
+            {
+                path: 'create-course',
+                name: 'CreateCourse',
+                component: CreateCourse,
             },
             {
                 path: '/courses/:id',
