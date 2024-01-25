@@ -2,7 +2,8 @@
     <div>
         <div class="card">
             <div class="card-header">
-                <h4 class="card-title">All course List: 🚀</h4>
+                <h4 class="card-title">All course Lists: 🚀</h4>
+                <a href="#/create-course"> Create Course</a>
             </div>
             <div class="card-body">
                 <div class="table-responsive">
